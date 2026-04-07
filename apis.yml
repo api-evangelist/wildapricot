@@ -1,8 +1,8 @@
 aid: wildapricot
 name: WildApricot
 description: >-
-  Manage your organization all in one placePowerful cloud software to help you
-  automate and simplify membership tasks. 
+  Manage your organization all in one placePowerful cloud software to help you automate
+  and simplify membership tasks.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -18,8 +18,8 @@ apis:
   - aid: wildapricot:wildapricot
     name: WildApricot
     description: >-
-      Manage your organization all in one placePowerful cloud software to help
-      you automate and simplify membership tasks. 
+      Manage your organization all in one placePowerful cloud software to help you
+      automate and simplify membership tasks.
     humanURL: https://app.wildapricot.com/interfaces/api
     tags:
       - Membership Management
