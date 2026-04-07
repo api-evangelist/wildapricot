@@ -7,8 +7,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-02-17'
 modified: '2026-03-16'
 url: >-
@@ -22,9 +21,9 @@ apis:
       automate and simplify membership tasks.
     humanURL: https://app.wildapricot.com/interfaces/api
     tags:
+      - Associations
       - Membership Management
       - Nonprofit
-      - Associations
     properties:
       - type: Documentation
         url: https://app.wildapricot.com/interfaces/api
