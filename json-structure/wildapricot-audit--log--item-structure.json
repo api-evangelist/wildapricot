@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-audit--log--item-structure.json",
+  "description": "AuditLogItem schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "int32",
+      "description": "Unique identifier."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "Timestamp": {
+      "type": "date",
+      "description": "Item creation date."
+    },
+    "Contact": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to related contact."
+        }
+      ]
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "Contact first name"
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Contact last name"
+    },
+    "Organization": {
+      "type": "string",
+      "description": "Contact organization"
+    },
+    "Email": {
+      "type": "string",
+      "description": "Contact primary email."
+    },
+    "Message": {
+      "type": "string",
+      "description": "Log item text."
+    },
+    "Severity": {
+      "type": "string",
+      "description": "Log item severity level.",
+      "enum": [
+        "Verbose",
+        "Information",
+        "AttentionRequired",
+        "Warning",
+        "Error",
+        "Critical"
+      ]
+    },
+    "OrderType": {
+      "type": "string",
+      "description": "The origin of the audit log entry.",
+      "enum": [
+        "MembershipApplication",
+        "MembershipRenewal",
+        "MembershipLevelChange",
+        "EventRegistration",
+        "Donation",
+        "ChangeBillingPlan",
+        "ChangeBillingInfo",
+        "LockInPlan",
+        "AssociationRenewal"
+      ]
+    },
+    "Properties": {
+      "type": "object",
+      "description": "Collection of audit log item properties that contains all technical information about transaction and other linked documents."
+    },
+    "Document": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to related document."
+        }
+      ]
+    },
+    "DocumentType": {
+      "type": "string",
+      "description": "Related document type.",
+      "enum": [
+        "Invoice",
+        "Payment",
+        "CreditMemo",
+        "Refund",
+        "Adjustment",
+        "DonationPayment",
+        "InvoicePayment"
+      ]
+    },
+    "DocumentAction": {
+      "type": "string",
+      "description": "Action performed on related document type.",
+      "enum": [
+        "Created",
+        "Changed",
+        "Deleted",
+        "Voided",
+        "Custom"
+      ]
+    }
+  },
+  "name": "AuditLogItem"
+}

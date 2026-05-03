@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-invoice-schema.json",
+  "title": "Invoice",
+  "description": "Invoice schema from WildApricot Admin API",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/FinanceDocument"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "DocumentNumber": {
+          "type": "string",
+          "description": "Invoice number."
+        },
+        "IsPaid": {
+          "type": "boolean",
+          "description": "Indicates if the invoice is fully paid."
+        },
+        "PaidAmount": {
+          "type": "number",
+          "description": "Sum already paid for this invoice."
+        },
+        "OrderType": {
+          "$ref": "#/components/schemas/InvoiceOrderType"
+        },
+        "EventRegistration": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/LinkedResource"
+            },
+            {
+              "description": "Link to related event registration or null."
+            }
+          ]
+        },
+        "OrderDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/OrderDetailRecord"
+          }
+        },
+        "Memo": {
+          "type": "string",
+          "description": "Internal note on invoice. Visible to administrators only."
+        },
+        "PublicMemo": {
+          "type": "string",
+          "description": "Comment on invoice. Visible to both administrators and the person being invoiced."
+        },
+        "VoidedDate": {
+          "type": "string",
+          "format": "date",
+          "description": "When invoice is voided this field indicates date of void. Voided invoice does not affect balance. For regular invoices this field is null."
+        }
+      }
+    }
+  ]
+}

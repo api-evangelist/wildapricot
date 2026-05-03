@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-bundle-schema.json",
+  "title": "Bundle",
+  "description": "Bundle schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique bundle identifier."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "Email": {
+      "type": "string",
+      "description": "Email of bundle administrator."
+    },
+    "ParticipantsCount": {
+      "type": "integer",
+      "description": "The number of members in the bundle."
+    },
+    "Administrator": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to bundle administrator."
+        }
+      ]
+    },
+    "MembershipLevel": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to membership level related to this bundle."
+        }
+      ]
+    },
+    "SpacesLeft": {
+      "type": "integer",
+      "description": "If bundle size is limited, then this field indicates number of vacant spaces left in the bundle."
+    },
+    "Members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LinkedResource"
+      },
+      "description": "Collection of links to members of the bundle."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "url": "https://app.wildapricot.com/example",
+  "contactId": 4003,
+  "number": "example-value",
+  "total": 245.0,
+  "subTotal": 113.01,
+  "isTaxesApplied": true,
+  "isTaxesIncludedTotal": true,
+  "invoiceId": 6842,
+  "invoiceNumber": 6955,
+  "status": null,
+  "paymentStatus": null,
+  "internalNote": null,
+  "products": [
+    null
+  ],
+  "shippingAddress": null,
+  "billingPerson": null,
+  "comment": "example-value",
+  "externalNote": null,
+  "currency": null,
+  "created": "2026-05-03T10:00:00Z",
+  "deliveryOption": null
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-event-schema.json",
+  "title": "Event",
+  "description": "Event schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique event identifier"
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Event title"
+    },
+    "EventType": {
+      "type": "string",
+      "enum": [
+        "Reqular",
+        "RSVP"
+      ],
+      "description": "Indicates if event is simple (RSVP) or regular."
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "datetime",
+      "description": "Date and time when the event is scheduled to start."
+    },
+    "StartTimeSpecified": {
+      "type": "boolean",
+      "description": "Indicates if event start time is specified. False means that StartDate contains only date component."
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "datetime",
+      "description": "Date and time when the event is scheduled to end. Could be empty."
+    },
+    "EndTimeSpecified": {
+      "type": "boolean",
+      "description": "Indicates if event end time is specified. False means that EndDate contains only date component."
+    },
+    "Location": {
+      "type": "string",
+      "description": "Location where the event will take place."
+    },
+    "RegistrationEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether registration to this event is enabled"
+    },
+    "HasEnabledRegistrationTypes": {
+      "type": "boolean",
+      "description": "Indicates that at least one registration type is enabled for this event."
+    },
+    "AccessLevel": {
+      "$ref": "#/components/schemas/EventAccessLevel"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A collection of tags associated with the event."
+    },
+    "Details": {
+      "$ref": "#/components/schemas/EventDetails"
+    },
+    "Sessions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EventSesssion"
+      },
+      "description": "Collection of event sessions. Exist in multisessions events only."
+    },
+    "RegistrationsLimit": {
+      "type": "integer",
+      "description": "Maximum number of registrations for this event."
+    },
+    "InviteeStat": {
+      "$ref": "#/components/schemas/EventInviteeStatistics"
+    },
+    "PendingRegistrationsCount": {
+      "type": "integer",
+      "description": "Number of participants already registered for this event but not confirmed yet."
+    },
+    "ConfirmedRegistrationsCount": {
+      "type": "integer",
+      "description": "Number of participants already registered for this event and already confirmed."
+    },
+    "CheckedInAttendeesNumber": {
+      "type": "integer",
+      "description": "Number of attendees already checked in on this event."
+    }
+  },
+  "required": [
+    "Id",
+    "Url",
+    "Name",
+    "EventType",
+    "StartDate"
+  ]
+}

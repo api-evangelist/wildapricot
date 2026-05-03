@@ -1,0 +1,26 @@
+{
+  "Id": 5690,
+  "Url": null,
+  "Name": "Jane Smith",
+  "EventType": "Reqular",
+  "StartDate": "example-value",
+  "StartTimeSpecified": true,
+  "EndDate": "example-value",
+  "EndTimeSpecified": true,
+  "Location": "example-value",
+  "RegistrationEnabled": true,
+  "HasEnabledRegistrationTypes": true,
+  "AccessLevel": null,
+  "Tags": [
+    "example-value"
+  ],
+  "Details": null,
+  "Sessions": [
+    null
+  ],
+  "RegistrationsLimit": 7108,
+  "InviteeStat": null,
+  "PendingRegistrationsCount": 2069,
+  "ConfirmedRegistrationsCount": 640,
+  "CheckedInAttendeesNumber": 2597
+}

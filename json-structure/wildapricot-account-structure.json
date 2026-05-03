@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-account-structure.json",
+  "description": "Information about Wild Apricot account",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "int32",
+      "description": "Account unique identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The account name. This corresponds to the organization name as it appears on the Organization details screen."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "PrimaryDomainName": {
+      "type": "string",
+      "description": "The primary domain name for the account."
+    },
+    "IsFreeAccount": {
+      "type": "boolean"
+    },
+    "Resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Collection of account-related resources."
+    },
+    "ContactLimitInfo": {
+      "$ref": "#/components/schemas/ContactLimitInfo"
+    },
+    "TimeZone": {
+      "$ref": "#/components/schemas/TimeZone"
+    },
+    "Currency": {
+      "$ref": "#/components/schemas/Currency"
+    },
+    "Localization": {
+      "$ref": "#/components/schemas/Localization"
+    },
+    "SquareRegisterSettings": {
+      "$ref": "#/components/schemas/SquareRegisterSettings"
+    },
+    "PaymentSettings": {
+      "$ref": "#/components/schemas/PaymentSettings"
+    },
+    "BillingPlan": {
+      "$ref": "#/components/schemas/BillingPlan"
+    }
+  },
+  "required": [
+    "Id",
+    "Name",
+    "PrimaryDomainName",
+    "ContactLimitInfo",
+    "Currency",
+    "Localization",
+    "SquareRegisterSettings"
+  ],
+  "name": "Account"
+}

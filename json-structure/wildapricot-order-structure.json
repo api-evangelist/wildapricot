@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-order-structure.json",
+  "description": "Order schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "contactId": {
+      "type": "int32"
+    },
+    "number": {
+      "type": "string"
+    },
+    "total": {
+      "type": "double"
+    },
+    "subTotal": {
+      "type": "double"
+    },
+    "isTaxesApplied": {
+      "type": "boolean"
+    },
+    "isTaxesIncludedTotal": {
+      "type": "boolean"
+    },
+    "invoiceId": {
+      "type": "int32"
+    },
+    "invoiceNumber": {
+      "type": "int32"
+    },
+    "status": {
+      "$ref": "#/components/schemas/OrderStatus"
+    },
+    "paymentStatus": {
+      "$ref": "#/components/schemas/PaymentStatus"
+    },
+    "internalNote": {
+      "$ref": "#/components/schemas/OrderInternalNote"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OrderProduct"
+      }
+    },
+    "shippingAddress": {
+      "$ref": "#/components/schemas/ShippingAddress"
+    },
+    "billingPerson": {
+      "$ref": "#/components/schemas/BillingPerson"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "externalNote": {
+      "$ref": "#/components/schemas/OrderExternalNote"
+    },
+    "currency": {
+      "$ref": "#/components/schemas/Currency"
+    },
+    "created": {
+      "type": "datetime"
+    },
+    "deliveryOption": {
+      "$ref": "#/components/schemas/OrderDeliveryOption"
+    }
+  },
+  "required": [
+    "contactId",
+    "total",
+    "subTotal",
+    "isTaxesApplied",
+    "isTaxesIncludedTotal",
+    "status",
+    "paymentStatus"
+  ],
+  "name": "Order"
+}

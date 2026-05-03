@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-donation-schema.json",
+  "title": "Donation",
+  "description": "Donation schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Contact": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to contact who is assigned to the donation."
+        }
+      ]
+    },
+    "Payment": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResource"
+        },
+        {
+          "description": "Link to payment assigned to the donation."
+        }
+      ]
+    },
+    "DonationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Donation date."
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name of the donor."
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name of the donor."
+    },
+    "Email": {
+      "type": "string",
+      "description": "Email of the donor."
+    },
+    "Organization": {
+      "type": "string",
+      "description": "Organization of the donor."
+    },
+    "Phone": {
+      "type": "string",
+      "description": "Phone of the donor."
+    },
+    "Comment": {
+      "type": "string",
+      "description": "Internal note on donation. Visible to administrators only."
+    },
+    "PublicComment": {
+      "type": "string",
+      "description": "Comment on donation. Visible to both administrators and donors."
+    },
+    "Value": {
+      "type": "number",
+      "format": "float",
+      "description": "Donation amount."
+    },
+    "Type": {
+      "$ref": "#/components/schemas/DonationType"
+    },
+    "FieldValues": {
+      "type": "array",
+      "description": "For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.",
+      "items": {
+        "$ref": "#/components/schemas/FieldValue"
+      }
+    }
+  }
+}

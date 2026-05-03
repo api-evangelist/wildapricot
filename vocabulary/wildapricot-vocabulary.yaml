@@ -1,0 +1,244 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "WildApricot"
+  description: >-
+    Unified vocabulary for the WildApricot Admin API covering membership management,
+    event operations, financial transactions, and email communications for
+    associations and nonprofit organizations.
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: WildApricot Admin API
+      namespace: wildapricot-admin
+      version: "7.24.0"
+      baseUrl: https://api.wildapricot.org/v2.2
+      status: active
+
+  resources:
+    - name: contacts
+      description: Members and contacts in a WildApricot organization
+      apis: [wildapricot-admin]
+      actions: [list, get, create, update, delete]
+    - name: events
+      description: Events hosted by a WildApricot organization
+      apis: [wildapricot-admin]
+      actions: [list, get, create, update, delete, clone]
+    - name: event-registrations
+      description: Event registrations linking contacts to events
+      apis: [wildapricot-admin]
+      actions: [list, get, create, checkin]
+    - name: membership-levels
+      description: Membership tier definitions with pricing and benefits
+      apis: [wildapricot-admin]
+      actions: [list, get, create, update]
+    - name: invoices
+      description: Financial invoices for membership fees and event registrations
+      apis: [wildapricot-admin]
+      actions: [list, get, create, void]
+    - name: payments
+      description: Payment records linked to invoices
+      apis: [wildapricot-admin]
+      actions: [list, get, create, allocate]
+    - name: donations
+      description: Charitable donation records
+      apis: [wildapricot-admin]
+      actions: [list, get, create]
+    - name: email-drafts
+      description: Email campaign drafts and scheduling
+      apis: [wildapricot-admin]
+      actions: [list, get, create, send, schedule]
+    - name: member-groups
+      description: Contact/member groupings for communication
+      apis: [wildapricot-admin]
+      actions: [list, get, create, update]
+    - name: store-orders
+      description: Store/ecommerce order records
+      apis: [wildapricot-admin]
+      actions: [list, get, update-status]
+
+  actions:
+    - name: list
+      description: Retrieve a collection of resources
+      httpMethod: GET
+      pattern: read
+    - name: get
+      description: Retrieve a single resource by ID
+      httpMethod: GET
+      pattern: read
+    - name: create
+      description: Create a new resource
+      httpMethod: POST
+      pattern: write
+    - name: update
+      description: Update an existing resource
+      httpMethod: PUT
+      pattern: write
+    - name: delete
+      description: Remove a resource
+      httpMethod: DELETE
+      pattern: destructive
+    - name: void
+      description: Void an invoice or financial record
+      httpMethod: POST
+      pattern: destructive
+    - name: checkin
+      description: Check in an event attendee
+      httpMethod: POST
+      pattern: write
+    - name: send
+      description: Send an email campaign
+      httpMethod: POST
+      pattern: write
+    - name: clone
+      description: Clone an existing event
+      httpMethod: POST
+      pattern: write
+    - name: allocate
+      description: Allocate a payment to an invoice
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: Contact
+        description: Member or contact with profile fields, membership status, and level
+        key_properties: [Id, Email, FirstName, LastName, Status, MembershipLevel]
+      - name: Event
+        description: Event with details, dates, capacity, and registration settings
+        key_properties: [Id, Name, StartDate, EndDate, Location, RegistrationEnabled]
+      - name: EventRegistration
+        description: Event registration linking a contact to an event
+        key_properties: [Id, EventId, ContactId, RegistrationDate, RegistrationTypeId]
+      - name: MembershipLevel
+        description: Membership tier definition with pricing and renewal settings
+        key_properties: [Id, Name, Description, MembershipFee, RenewalPeriod]
+      - name: Invoice
+        description: Financial invoice for membership or event fees
+        key_properties: [Id, ContactId, IsPaid, Value, InvoiceDate, DueDate]
+      - name: Payment
+        description: Payment record linked to invoices
+        key_properties: [Id, ContactId, Value, PaymentDate, Tender]
+      - name: Donation
+        description: Charitable donation record
+        key_properties: [Id, ContactId, Value, DonationDate]
+
+  parameters:
+    identifiers:
+      - name: accountId
+        description: WildApricot account identifier
+      - name: contactId
+        description: Contact/member identifier
+      - name: eventId
+        description: Event identifier
+    filters:
+      - name: "$filter"
+        description: OData-style filter expression for contact and event queries
+      - name: "$select"
+        description: Comma-separated list of fields to return
+
+  enums:
+    contact_status:
+      - Active
+      - Lapsed
+      - Suspended
+      - PendingNew
+      - PendingRenewal
+    invoice_status:
+      - Unpaid
+      - Paid
+      - Void
+    event_access_level:
+      - Public
+      - MembersOnly
+      - AdminOnly
+
+  authentication:
+    schemes:
+      - name: OAuth2
+        type: oauth2
+        flow: clientCredentials
+        tokenUrl: https://oauth.wildapricot.org/auth/token
+        description: OAuth2 client credentials for API access
+
+capability:
+  workflows:
+    - name: Membership Management
+      file: capabilities/membership-management.yaml
+      description: Full membership lifecycle management including members, events, billing, and donations
+      apisUsed: [WildApricot Admin API]
+      toolCount: 9
+      personas: [Association Administrator, Membership Coordinator, Nonprofit Operations]
+      domains: [Membership, Events, Finance, Communications]
+
+  personas:
+    - id: association-admin
+      name: Association Administrator
+      description: Staff member managing day-to-day association operations
+      workflows: [Membership Management]
+    - id: membership-coordinator
+      name: Membership Coordinator
+      description: Team member managing member recruitment, renewals, and engagement
+      workflows: [Membership Management]
+    - id: nonprofit-operations
+      name: Nonprofit Operations
+      description: Operations team automating financial and administrative workflows
+      workflows: [Membership Management]
+
+  domains:
+    - name: Membership
+      description: Member lifecycle from registration through renewal and lapse
+      resources: [contacts, membership-levels, member-groups]
+    - name: Events
+      description: Event planning, registration management, and attendee tracking
+      resources: [events, event-registrations]
+    - name: Finance
+      description: Invoicing, payment processing, and donation management
+      resources: [invoices, payments, donations]
+    - name: Communications
+      description: Email campaign drafting, scheduling, and delivery
+      resources: [email-drafts]
+
+  namespaces:
+    - type: consumed
+      namespace: wildapricot-admin
+      baseUri: https://api.wildapricot.org/v2.2
+    - type: rest-exposed
+      namespace: wildapricot-membership-api
+      port: 8080
+    - type: mcp-exposed
+      namespace: wildapricot-membership-mcp
+      port: 9090
+
+  binds:
+    - name: WILDAPRICOT_API_KEY
+      description: OAuth2 bearer token for WildApricot API access
+      workflows: [Membership Management]
+
+crossReference:
+  - resource: contacts
+    operations:
+      - operationId: listContacts
+        method: GET
+        path: /accounts/{accountId}/contacts
+      - operationId: createContact
+        method: POST
+        path: /accounts/{accountId}/contacts
+    workflows: [Membership Management]
+    personas: [Association Administrator, Membership Coordinator]
+  - resource: events
+    operations:
+      - operationId: listEvents
+        method: GET
+        path: /accounts/{accountId}/events
+    workflows: [Membership Management]
+    personas: [Association Administrator, Membership Coordinator]
+  - resource: invoices
+    operations:
+      - operationId: listInvoices
+        method: GET
+        path: /accounts/{accountId}/invoices
+    workflows: [Membership Management]
+    personas: [Nonprofit Operations]

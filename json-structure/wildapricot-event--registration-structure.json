@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-event--registration-structure.json",
+  "description": "EventRegistration schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "int32",
+      "description": "Unique identifier of event registration"
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "Event": {
+      "$ref": "#/components/schemas/EventStub"
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/LinkedResourceWithName"
+    },
+    "RegistrationType": {
+      "$ref": "#/components/schemas/LinkedResourceWithName"
+    },
+    "RegistrationTypeId": {
+      "type": "int32",
+      "description": "Unique identifier of event registration type"
+    },
+    "GuestRegistrationsSummary": {
+      "$ref": "#/components/schemas/GuestRegistrationsSummary"
+    },
+    "DisplayName": {
+      "type": "string",
+      "description": "Contact display name."
+    },
+    "Organization": {
+      "type": "string",
+      "description": "Contact display name."
+    },
+    "IsCheckedIn": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates if registrant is already checked in for event."
+    },
+    "RegistrationFee": {
+      "type": "double",
+      "description": "The fee for this registration including all extra charges and taxes."
+    },
+    "PaidSum": {
+      "type": "double",
+      "description": "The sum that the registrant has already paid for the registration."
+    },
+    "IsPaid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates if the registrant has already paid for the registration."
+    },
+    "RegistrationFields": {
+      "type": "array",
+      "description": "A collection of registration fields values",
+      "items": {
+        "$ref": "#/components/schemas/FieldValue"
+      }
+    },
+    "ShowToPublic": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether this registration can be shown to other event registrants."
+    },
+    "RegistrationDate": {
+      "type": "string",
+      "description": "Date and time when registration was created. (Account local time)"
+    },
+    "Memo": {
+      "type": "string",
+      "description": "Some additional notes about this registration."
+    },
+    "IsGuestRegistration": {
+      "type": "boolean",
+      "default": false,
+      "description": "Boolean. True if this is a guest registration, otherwise false."
+    },
+    "OnWaitlist": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates if event registration is in waitlist."
+    },
+    "RecreateInvoice": {
+      "type": "boolean",
+      "default": false,
+      "description": "Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options."
+    },
+    "ParentRegistration": {
+      "$ref": "#/components/schemas/LinkedResource"
+    },
+    "Status": {
+      "$ref": "#/components/schemas/EventRegistrationStatus"
+    }
+  },
+  "required": [
+    "Id",
+    "Url",
+    "Event",
+    "Contact",
+    "RegistrationType",
+    "RegistrationTypeId",
+    "DisplayName",
+    "Organization",
+    "IsCheckedIn",
+    "RegistrationFee",
+    "PaidSum",
+    "IsPaid",
+    "ShowToPublic",
+    "RegistrationDate",
+    "IsGuestRegistration"
+  ],
+  "name": "EventRegistration"
+}

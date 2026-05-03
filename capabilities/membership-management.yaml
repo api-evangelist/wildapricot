@@ -1,0 +1,284 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "WildApricot Membership Management"
+  description: >-
+    Unified capability for managing membership organizations using WildApricot.
+    Covers contact/member lifecycle, event registration, membership levels,
+    invoicing, and payment processing. Intended for association administrators,
+    membership coordinators, and nonprofit operations staff automating
+    member engagement and financial workflows.
+  tags:
+    - WildApricot
+    - Membership Management
+    - Associations
+    - Nonprofit
+    - Events
+    - Payments
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+
+capability:
+  consumes:
+    - import: wildapricot-admin
+      location: ./shared/wildapricot-admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: wildapricot-membership-api
+      description: "Unified REST API for WildApricot membership management workflows."
+      resources:
+        - path: /v1/contacts
+          name: contacts
+          description: "Member and contact management"
+          operations:
+            - method: GET
+              name: list-contacts
+              description: "List all contacts/members"
+              call: "wildapricot-admin.list-contacts"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+            - method: POST
+              name: create-contact
+              description: "Create a new contact/member"
+              call: "wildapricot-admin.create-contact"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/contacts/{contactId}
+          name: contact
+          description: "Individual contact/member"
+          operations:
+            - method: GET
+              name: get-contact
+              description: "Get a contact by ID"
+              call: "wildapricot-admin.get-contact"
+              with:
+                accountId: "rest.accountId"
+                contactId: "rest.contactId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/events
+          name: events
+          description: "Event management"
+          operations:
+            - method: GET
+              name: list-events
+              description: "List all events"
+              call: "wildapricot-admin.list-events"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+            - method: POST
+              name: create-event
+              description: "Create a new event"
+              call: "wildapricot-admin.create-event"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/event-registrations
+          name: event-registrations
+          description: "Event registration management"
+          operations:
+            - method: GET
+              name: list-registrations
+              description: "List event registrations"
+              call: "wildapricot-admin.list-registrations"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/membership-levels
+          name: membership-levels
+          description: "Membership tiers and pricing"
+          operations:
+            - method: GET
+              name: list-membership-levels
+              description: "List all membership levels"
+              call: "wildapricot-admin.list-membership-levels"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/invoices
+          name: invoices
+          description: "Invoice management"
+          operations:
+            - method: GET
+              name: list-invoices
+              description: "List invoices"
+              call: "wildapricot-admin.list-invoices"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/payments
+          name: payments
+          description: "Payment records"
+          operations:
+            - method: GET
+              name: list-payments
+              description: "List payments"
+              call: "wildapricot-admin.list-payments"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/donations
+          name: donations
+          description: "Donation records"
+          operations:
+            - method: GET
+              name: list-donations
+              description: "List donations"
+              call: "wildapricot-admin.list-donations"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: wildapricot-membership-mcp
+      transport: http
+      description: "MCP server for AI-assisted WildApricot membership management."
+      tools:
+        - name: list-members
+          description: "Retrieve all contacts/members for a WildApricot organization account."
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "wildapricot-admin.list-contacts"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-member
+          description: "Retrieve full details for a specific WildApricot member including membership status, level, and contact fields."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.get-contact"
+          with:
+            accountId: "tools.accountId"
+            contactId: "tools.contactId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: add-member
+          description: "Create a new contact/member record in a WildApricot organization."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "wildapricot-admin.create-contact"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-events
+          description: "List all events for a WildApricot organization, including upcoming and past events."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-events"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-event-registrations
+          description: "List event registrations for a WildApricot organization to see who registered for which events."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-registrations"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-membership-levels
+          description: "Retrieve all membership levels with their pricing, renewal terms, and access privileges."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-membership-levels"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-invoices
+          description: "List outstanding and paid invoices for a WildApricot organization."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-invoices"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-payments
+          description: "List payment records for a WildApricot organization."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-payments"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-donations
+          description: "List donation records for a WildApricot organization."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "wildapricot-admin.list-donations"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-contact-schema.json",
+  "title": "Contact",
+  "description": "Contact schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique contact identifier."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "Shortcut for custom field value with system code 'FirstName'"
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Shortcut for custom field value with system code 'LastName'"
+    },
+    "Organization": {
+      "type": "string",
+      "description": "Shortcut for custom field value with system code 'Organization'"
+    },
+    "Email": {
+      "type": "string",
+      "description": "Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account."
+    },
+    "DisplayName": {
+      "type": "string",
+      "description": "Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists."
+    },
+    "ProfileLastUpdated": {
+      "type": "string",
+      "format": "date",
+      "description": "Timestamp of last contact details modification. Complies with ISO8601 format. The date and time that common fields, membership fields, or member group participation were last updated for the contact."
+    },
+    "MembershipLevel": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LinkedResourceWithName"
+        },
+        {
+          "description": "Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results."
+        }
+      ]
+    },
+    "MembershipEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether the contact is a member. A value of false indicates that the contact is a not a member or is a suspended member."
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Lapsed",
+        "PendingNew",
+        "PendingRenewal",
+        "PendingUpgrade"
+      ],
+      "description": "The status of the contact's membership. The status is only included in the results if the contact is a member."
+    },
+    "IsAccountAdministrator": {
+      "type": "boolean",
+      "description": "Indicates if the contact is an account administrator."
+    },
+    "TermsOfUseAccepted": {
+      "type": "boolean",
+      "description": "Indicates if the contact already accepted Wild Apricot's terms of use."
+    },
+    "FieldValues": {
+      "type": "array",
+      "description": "For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this contact are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned. If a custom field is restricted to certain access levels, then CustomAccessLevel indicates the level to which the field is restricted. Possible values are AdminOnly, Member, and Public.",
+      "items": {
+        "$ref": "#/components/schemas/ContactFieldValue"
+      }
+    }
+  }
+}

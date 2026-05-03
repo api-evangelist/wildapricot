@@ -1,0 +1,13 @@
+{
+  "Id": 1652,
+  "Name": "Jane Smith",
+  "Description": "Example description",
+  "PublicCanApply": true,
+  "Type": "Individual",
+  "BundleMembersLimit": 2018,
+  "MembershipFee": 125.07,
+  "MemberCanChangeToLevels": [
+    null
+  ],
+  "RenewalPeriod": null
+}

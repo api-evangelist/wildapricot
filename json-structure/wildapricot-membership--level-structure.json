@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-membership--level-structure.json",
+  "description": "MembershipLevel schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "int32",
+      "description": "Unique membership level identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "level name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "level description"
+    },
+    "PublicCanApply": {
+      "type": "boolean",
+      "description": "Indicates if non-member can apply for membership with this level."
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "Individual",
+        "Bundle"
+      ],
+      "description": "Indicates if membership level is individual or bundle."
+    },
+    "BundleMembersLimit": {
+      "type": "int32",
+      "description": "Maximum number of bundle members. Empty for individuals."
+    },
+    "MembershipFee": {
+      "type": "double",
+      "description": "Price of being a member with this level of membership. Price is for RenewalPeriod."
+    },
+    "MemberCanChangeToLevels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LinkedResource"
+      },
+      "description": "Member can switch from current level to one of levels from this list."
+    },
+    "RenewalPeriod": {
+      "$ref": "#/components/schemas/MembershipRenewalPeriod"
+    }
+  },
+  "name": "MembershipLevel"
+}

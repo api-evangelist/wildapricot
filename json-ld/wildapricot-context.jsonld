@@ -1,0 +1,432 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wa": "https://www.wildapricot.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "MembershipLevel": {
+      "@id": "wa:MembershipLevel",
+      "@type": "xsd:string"
+    },
+    "EmailDraft": "wa:EmailDraft",
+    "Event": "wa:Event",
+    "Bundle": "wa:Bundle",
+    "Contact": {
+      "@id": "wa:Contact",
+      "@type": "xsd:string"
+    },
+    "Account": "wa:Account",
+    "AuditLogItem": "wa:AuditLogItem",
+    "Order": "wa:Order",
+    "EventRegistration": "wa:EventRegistration",
+    "Donation": "wa:Donation",
+    "EventRegistrationType": "wa:EventRegistrationType",
+    "Id": {
+      "@id": "wa:Id",
+      "@type": "xsd:integer"
+    },
+    "Name": {
+      "@id": "wa:Name",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "wa:Description",
+      "@type": "xsd:string"
+    },
+    "PublicCanApply": {
+      "@id": "wa:PublicCanApply",
+      "@type": "xsd:boolean"
+    },
+    "Type": {
+      "@id": "wa:Type",
+      "@type": "xsd:string"
+    },
+    "BundleMembersLimit": {
+      "@id": "wa:BundleMembersLimit",
+      "@type": "xsd:integer"
+    },
+    "MembershipFee": {
+      "@id": "wa:MembershipFee",
+      "@type": "xsd:decimal"
+    },
+    "MemberCanChangeToLevels": {
+      "@id": "wa:MemberCanChangeToLevels",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreatedDate": {
+      "@id": "wa:CreatedDate",
+      "@type": "xsd:string"
+    },
+    "Subject": {
+      "@id": "wa:Subject",
+      "@type": "xsd:string"
+    },
+    "Body": {
+      "@id": "wa:Body",
+      "@type": "xsd:string"
+    },
+    "ReplyToName": {
+      "@id": "wa:ReplyToName",
+      "@type": "xsd:string"
+    },
+    "ReplyToAddress": {
+      "@id": "wa:ReplyToAddress",
+      "@type": "xsd:string"
+    },
+    "EventId": {
+      "@id": "wa:EventId",
+      "@type": "xsd:integer"
+    },
+    "IsLinkTrackingAllowed": {
+      "@id": "wa:IsLinkTrackingAllowed",
+      "@type": "xsd:boolean"
+    },
+    "LastChangedDate": {
+      "@id": "wa:LastChangedDate",
+      "@type": "xsd:string"
+    },
+    "IsScheduled": {
+      "@id": "wa:IsScheduled",
+      "@type": "xsd:boolean"
+    },
+    "ScheduledDate": {
+      "@id": "wa:ScheduledDate",
+      "@type": "xsd:string"
+    },
+    "EventType": {
+      "@id": "wa:EventType",
+      "@type": "xsd:string"
+    },
+    "StartDate": {
+      "@id": "wa:StartDate",
+      "@type": "xsd:string"
+    },
+    "StartTimeSpecified": {
+      "@id": "wa:StartTimeSpecified",
+      "@type": "xsd:boolean"
+    },
+    "EndDate": {
+      "@id": "wa:EndDate",
+      "@type": "xsd:string"
+    },
+    "EndTimeSpecified": {
+      "@id": "wa:EndTimeSpecified",
+      "@type": "xsd:boolean"
+    },
+    "Location": {
+      "@id": "wa:Location",
+      "@type": "xsd:string"
+    },
+    "RegistrationEnabled": {
+      "@id": "wa:RegistrationEnabled",
+      "@type": "xsd:boolean"
+    },
+    "HasEnabledRegistrationTypes": {
+      "@id": "wa:HasEnabledRegistrationTypes",
+      "@type": "xsd:boolean"
+    },
+    "Tags": {
+      "@id": "wa:Tags",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Sessions": {
+      "@id": "wa:Sessions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "RegistrationsLimit": {
+      "@id": "wa:RegistrationsLimit",
+      "@type": "xsd:integer"
+    },
+    "PendingRegistrationsCount": {
+      "@id": "wa:PendingRegistrationsCount",
+      "@type": "xsd:integer"
+    },
+    "ConfirmedRegistrationsCount": {
+      "@id": "wa:ConfirmedRegistrationsCount",
+      "@type": "xsd:integer"
+    },
+    "CheckedInAttendeesNumber": {
+      "@id": "wa:CheckedInAttendeesNumber",
+      "@type": "xsd:integer"
+    },
+    "Email": {
+      "@id": "wa:Email",
+      "@type": "xsd:string"
+    },
+    "ParticipantsCount": {
+      "@id": "wa:ParticipantsCount",
+      "@type": "xsd:integer"
+    },
+    "Administrator": {
+      "@id": "wa:Administrator",
+      "@type": "xsd:string"
+    },
+    "SpacesLeft": {
+      "@id": "wa:SpacesLeft",
+      "@type": "xsd:integer"
+    },
+    "Members": {
+      "@id": "wa:Members",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "FirstName": {
+      "@id": "wa:FirstName",
+      "@type": "xsd:string"
+    },
+    "LastName": {
+      "@id": "wa:LastName",
+      "@type": "xsd:string"
+    },
+    "Organization": {
+      "@id": "wa:Organization",
+      "@type": "xsd:string"
+    },
+    "DisplayName": {
+      "@id": "wa:DisplayName",
+      "@type": "xsd:string"
+    },
+    "ProfileLastUpdated": {
+      "@id": "wa:ProfileLastUpdated",
+      "@type": "xsd:date"
+    },
+    "MembershipEnabled": {
+      "@id": "wa:MembershipEnabled",
+      "@type": "xsd:boolean"
+    },
+    "Status": {
+      "@id": "wa:Status",
+      "@type": "xsd:string"
+    },
+    "IsAccountAdministrator": {
+      "@id": "wa:IsAccountAdministrator",
+      "@type": "xsd:boolean"
+    },
+    "TermsOfUseAccepted": {
+      "@id": "wa:TermsOfUseAccepted",
+      "@type": "xsd:boolean"
+    },
+    "FieldValues": {
+      "@id": "wa:FieldValues",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "PrimaryDomainName": {
+      "@id": "wa:PrimaryDomainName",
+      "@type": "xsd:string"
+    },
+    "IsFreeAccount": {
+      "@id": "wa:IsFreeAccount",
+      "@type": "xsd:boolean"
+    },
+    "Resources": {
+      "@id": "wa:Resources",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Timestamp": {
+      "@id": "wa:Timestamp",
+      "@type": "xsd:date"
+    },
+    "Message": {
+      "@id": "wa:Message",
+      "@type": "xsd:string"
+    },
+    "Severity": {
+      "@id": "wa:Severity",
+      "@type": "xsd:string"
+    },
+    "OrderType": {
+      "@id": "wa:OrderType",
+      "@type": "xsd:string"
+    },
+    "Properties": {
+      "@id": "wa:Properties",
+      "@type": "xsd:string"
+    },
+    "Document": {
+      "@id": "wa:Document",
+      "@type": "xsd:string"
+    },
+    "DocumentType": {
+      "@id": "wa:DocumentType",
+      "@type": "xsd:string"
+    },
+    "DocumentAction": {
+      "@id": "wa:DocumentAction",
+      "@type": "xsd:string"
+    },
+    "url": "schema:url",
+    "contactId": {
+      "@id": "wa:contactId",
+      "@type": "xsd:integer"
+    },
+    "number": {
+      "@id": "wa:number",
+      "@type": "xsd:string"
+    },
+    "total": {
+      "@id": "wa:total",
+      "@type": "xsd:decimal"
+    },
+    "subTotal": {
+      "@id": "wa:subTotal",
+      "@type": "xsd:decimal"
+    },
+    "isTaxesApplied": {
+      "@id": "wa:isTaxesApplied",
+      "@type": "xsd:boolean"
+    },
+    "isTaxesIncludedTotal": {
+      "@id": "wa:isTaxesIncludedTotal",
+      "@type": "xsd:boolean"
+    },
+    "invoiceId": {
+      "@id": "wa:invoiceId",
+      "@type": "xsd:integer"
+    },
+    "invoiceNumber": {
+      "@id": "wa:invoiceNumber",
+      "@type": "xsd:integer"
+    },
+    "products": {
+      "@id": "wa:products",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "comment": {
+      "@id": "wa:comment",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "wa:created",
+      "@type": "xsd:dateTime"
+    },
+    "RegistrationTypeId": {
+      "@id": "wa:RegistrationTypeId",
+      "@type": "xsd:integer"
+    },
+    "IsCheckedIn": {
+      "@id": "wa:IsCheckedIn",
+      "@type": "xsd:boolean"
+    },
+    "RegistrationFee": {
+      "@id": "wa:RegistrationFee",
+      "@type": "xsd:decimal"
+    },
+    "PaidSum": {
+      "@id": "wa:PaidSum",
+      "@type": "xsd:decimal"
+    },
+    "IsPaid": {
+      "@id": "wa:IsPaid",
+      "@type": "xsd:boolean"
+    },
+    "RegistrationFields": {
+      "@id": "wa:RegistrationFields",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ShowToPublic": {
+      "@id": "wa:ShowToPublic",
+      "@type": "xsd:boolean"
+    },
+    "RegistrationDate": {
+      "@id": "wa:RegistrationDate",
+      "@type": "xsd:string"
+    },
+    "Memo": {
+      "@id": "wa:Memo",
+      "@type": "xsd:string"
+    },
+    "IsGuestRegistration": {
+      "@id": "wa:IsGuestRegistration",
+      "@type": "xsd:boolean"
+    },
+    "OnWaitlist": {
+      "@id": "wa:OnWaitlist",
+      "@type": "xsd:boolean"
+    },
+    "RecreateInvoice": {
+      "@id": "wa:RecreateInvoice",
+      "@type": "xsd:boolean"
+    },
+    "Payment": {
+      "@id": "wa:Payment",
+      "@type": "xsd:string"
+    },
+    "DonationDate": {
+      "@id": "wa:DonationDate",
+      "@type": "xsd:date"
+    },
+    "Phone": {
+      "@id": "wa:Phone",
+      "@type": "xsd:string"
+    },
+    "Comment": {
+      "@id": "wa:Comment",
+      "@type": "xsd:string"
+    },
+    "PublicComment": {
+      "@id": "wa:PublicComment",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "wa:Value",
+      "@type": "xsd:decimal"
+    },
+    "IsEnabled": {
+      "@id": "wa:IsEnabled",
+      "@type": "xsd:boolean"
+    },
+    "BasePrice": {
+      "@id": "wa:BasePrice",
+      "@type": "xsd:decimal"
+    },
+    "GuestPrice": {
+      "@id": "wa:GuestPrice",
+      "@type": "xsd:decimal"
+    },
+    "UseTaxScopeSettings": {
+      "@id": "wa:UseTaxScopeSettings",
+      "@type": "xsd:boolean"
+    },
+    "RegistrationCode": {
+      "@id": "wa:RegistrationCode",
+      "@type": "xsd:string"
+    },
+    "AvailableForMembershipLevels": {
+      "@id": "wa:AvailableForMembershipLevels",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "AvailableFrom": {
+      "@id": "wa:AvailableFrom",
+      "@type": "xsd:string"
+    },
+    "AvailableThrough": {
+      "@id": "wa:AvailableThrough",
+      "@type": "xsd:string"
+    },
+    "MaximumRegistrantsCount": {
+      "@id": "wa:MaximumRegistrantsCount",
+      "@type": "xsd:integer"
+    },
+    "CurrentRegistrantsCount": {
+      "@id": "wa:CurrentRegistrantsCount",
+      "@type": "xsd:integer"
+    },
+    "CancellationDaysBeforeEvent": {
+      "@id": "wa:CancellationDaysBeforeEvent",
+      "@type": "xsd:integer"
+    },
+    "IsWaitlistEnabled": {
+      "@id": "wa:IsWaitlistEnabled",
+      "@type": "xsd:boolean"
+    }
+  }
+}

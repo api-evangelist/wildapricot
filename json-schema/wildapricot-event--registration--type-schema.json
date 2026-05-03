@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-event--registration--type-schema.json",
+  "title": "EventRegistrationType",
+  "description": "EventRegistrationType schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique event registration type identifier."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "IsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether this registration type is enabled"
+    },
+    "EventId": {
+      "type": "integer",
+      "description": "Identifier of event related to the registration type."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Registraton type title."
+    },
+    "Description": {
+      "type": "string",
+      "description": "Plain text description for the event registration type."
+    },
+    "BasePrice": {
+      "type": "number",
+      "description": "Base price registrant pays for this registration type."
+    },
+    "GuestPrice": {
+      "type": "number",
+      "description": "Price for each additional guest."
+    },
+    "UseTaxScopeSettings": {
+      "type": "boolean",
+      "description": "Indicates whether account tax scope settings should be used to calculate final price."
+    },
+    "Availability": {
+      "$ref": "#/components/schemas/EventRegistrationTypeAvailability"
+    },
+    "RegistrationCode": {
+      "type": "string",
+      "description": "Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired."
+    },
+    "AvailableForMembershipLevels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LinkedResource"
+      },
+      "description": "Which membership levels can apply for event. This property has value only if Availability is MembersOnly."
+    },
+    "AvailableFrom": {
+      "type": "string",
+      "format": "datetime",
+      "description": "This registration type is available starting from this date. Can be null."
+    },
+    "AvailableThrough": {
+      "type": "string",
+      "format": "datetime",
+      "description": "This registration type is available until this date. Can be null."
+    },
+    "MaximumRegistrantsCount": {
+      "type": "integer",
+      "description": "Maximum number of registrants for this registration type."
+    },
+    "CurrentRegistrantsCount": {
+      "type": "integer",
+      "description": "Current number of registrants for this registration type."
+    },
+    "GuestRegistrationPolicy": {
+      "$ref": "#/components/schemas/EventGuestRegistrationPolicy"
+    },
+    "UnavailabilityPolicy": {
+      "$ref": "#/components/schemas/EventRegistrationUnavailabilityPolicy"
+    },
+    "CancellationBehaviour": {
+      "$ref": "#/components/schemas/EventRegistrationCancellationBehavior"
+    },
+    "CancellationDaysBeforeEvent": {
+      "type": "integer",
+      "description": "In case if CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field indicates the minimum number of days before the event that cancellations are allowed."
+    },
+    "IsWaitlistEnabled": {
+      "type": "boolean",
+      "description": "Indicated if registrant should be added to waitlist if registrations have reached their limit."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "Id": 5207,
+  "Url": null,
+  "CreatedDate": "example-value",
+  "Type": null,
+  "Subject": "example-value",
+  "Body": "example-value",
+  "ReplyToName": "Jane Smith",
+  "ReplyToAddress": "example-value",
+  "EventId": 4137,
+  "Creator": null,
+  "IsLinkTrackingAllowed": true,
+  "Recipients": null,
+  "LastChangedDate": "example-value",
+  "Modifier": null,
+  "IsScheduled": true,
+  "ScheduledDate": "example-value"
+}

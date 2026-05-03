@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-structure/wildapricot-payment-structure.json",
+  "description": "Payment schema from WildApricot Admin API",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/FinanceDocument"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Tender": {
+          "$ref": "#/components/schemas/LinkedResourceWithName"
+        },
+        "Comment": {
+          "type": "string",
+          "description": "Internal note on payment. Visible to administrators only."
+        },
+        "PublicComment": {
+          "type": "string",
+          "description": "Comment on payment. Visible to both administrators and payors."
+        },
+        "AllocatedValue": {
+          "type": "float",
+          "description": "Total amount allocated to another finance documents (invoices or refunds)."
+        },
+        "RefundedAmount": {
+          "type": "double",
+          "description": "Amount of a refund assigned to the payment."
+        },
+        "Type": {
+          "$ref": "#/components/schemas/PaymentType"
+        },
+        "DonationId": {
+          "type": "int32",
+          "description": "Identifyer of Donation for payment of type DonationPayment."
+        },
+        "FieldValues": {
+          "type": "array",
+          "description": "For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.",
+          "items": {
+            "$ref": "#/components/schemas/FieldValue"
+          }
+        }
+      }
+    }
+  ],
+  "name": "Payment"
+}

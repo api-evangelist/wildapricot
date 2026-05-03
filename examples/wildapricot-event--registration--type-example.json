@@ -1,0 +1,25 @@
+{
+  "Id": 1021,
+  "Url": null,
+  "IsEnabled": true,
+  "EventId": 8974,
+  "Name": "Jane Smith",
+  "Description": "Example description",
+  "BasePrice": 338.18,
+  "GuestPrice": 266.19,
+  "UseTaxScopeSettings": true,
+  "Availability": null,
+  "RegistrationCode": "example-value",
+  "AvailableForMembershipLevels": [
+    null
+  ],
+  "AvailableFrom": "example-value",
+  "AvailableThrough": "example-value",
+  "MaximumRegistrantsCount": 8995,
+  "CurrentRegistrantsCount": 527,
+  "GuestRegistrationPolicy": null,
+  "UnavailabilityPolicy": null,
+  "CancellationBehaviour": null,
+  "CancellationDaysBeforeEvent": 9624,
+  "IsWaitlistEnabled": true
+}

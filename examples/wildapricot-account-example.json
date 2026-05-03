@@ -1,0 +1,17 @@
+{
+  "Id": 1630,
+  "Name": "Jane Smith",
+  "Url": null,
+  "PrimaryDomainName": "Jane Smith",
+  "IsFreeAccount": true,
+  "Resources": [
+    null
+  ],
+  "ContactLimitInfo": null,
+  "TimeZone": null,
+  "Currency": null,
+  "Localization": null,
+  "SquareRegisterSettings": null,
+  "PaymentSettings": null,
+  "BillingPlan": null
+}

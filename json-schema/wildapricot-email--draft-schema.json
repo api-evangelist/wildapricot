@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/json-schema/wildapricot-email--draft-schema.json",
+  "title": "EmailDraft",
+  "description": "EmailDraft schema from WildApricot Admin API",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "integer",
+      "description": "Unique email draft identifier."
+    },
+    "Url": {
+      "$ref": "#/components/schemas/ResourceUrl"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "datetime",
+      "description": "Date and time when the draft was created."
+    },
+    "Type": {
+      "$ref": "#/components/schemas/EmailDraftType"
+    },
+    "Subject": {
+      "type": "string",
+      "description": "Value for email subject. It may contain macros, which will be replaced before delivery.\n"
+    },
+    "Body": {
+      "type": "string",
+      "description": "Value for email body. Usually it is HTML content with macros, which will be replaced before delivery.\n"
+    },
+    "ReplyToName": {
+      "type": "string",
+      "description": "Display name for reply to"
+    },
+    "ReplyToAddress": {
+      "type": "string",
+      "description": "Email address to use as reply to."
+    },
+    "EventId": {
+      "type": "integer",
+      "description": "Event identifier for which the draft has been started (if any)."
+    },
+    "Creator": {
+      "$ref": "#/components/schemas/ShortContact"
+    },
+    "IsLinkTrackingAllowed": {
+      "type": "boolean",
+      "description": "Indicates if email tracking is enabled for this email."
+    },
+    "Recipients": {
+      "$ref": "#/components/schemas/EmailRecipients"
+    },
+    "LastChangedDate": {
+      "type": "string",
+      "format": "datetime",
+      "description": "Date and time when the draft was last modified."
+    },
+    "Modifier": {
+      "$ref": "#/components/schemas/ShortContact"
+    },
+    "IsScheduled": {
+      "type": "boolean",
+      "description": "Indicates if draft delivery is scheduled for a particular date. See ScheduledDate value."
+    },
+    "ScheduledDate": {
+      "type": "string",
+      "format": "datetime",
+      "description": "Date and time when the draft will be sent."
+    }
+  }
+}

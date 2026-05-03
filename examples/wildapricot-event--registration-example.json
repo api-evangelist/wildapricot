@@ -1,0 +1,26 @@
+{
+  "Id": 3231,
+  "Url": null,
+  "Event": null,
+  "Contact": null,
+  "RegistrationType": null,
+  "RegistrationTypeId": 9483,
+  "GuestRegistrationsSummary": null,
+  "DisplayName": "Jane Smith",
+  "Organization": "example-value",
+  "IsCheckedIn": false,
+  "RegistrationFee": 331.31,
+  "PaidSum": 44.47,
+  "IsPaid": false,
+  "RegistrationFields": [
+    null
+  ],
+  "ShowToPublic": false,
+  "RegistrationDate": "example-value",
+  "Memo": "example-value",
+  "IsGuestRegistration": false,
+  "OnWaitlist": false,
+  "RecreateInvoice": false,
+  "ParentRegistration": null,
+  "Status": null
+}
