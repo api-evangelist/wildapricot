@@ -1,0 +1,104 @@
+---
+title: "A Text-to-Give Fundraising Guide: Overview + Top 6 Platforms"
+url: "https://www.wildapricot.com/blog/text-to-give"
+date: "Thu, 12 Feb 2026 04:03:29 +0000"
+author: "Marlena Moore"
+feed_url: "https://www.wildapricot.com/feed"
+---
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">With cellphone and tablet use on the rise, fundraising in the digital space is increasingly important. In fact, <a class="PlaygroundEditorTheme__link" href="https://nonprofitssource.com/online-giving-statistics/#Mobile">mobile giving statistics</a> show that mobile giving donations have increased 205% over the last year. A whopping 51% of people who visit a nonprofit’s website access it on their mobile device—and 25% of donors complete donations there too.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Text-to-give campaigns combine the popularity of mobile devices with the human desire to do good in the world. It’s a simple way to empower people to donate—and take an administrative load off your nonprofit or association.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">In this guide, we’ll talk all things text-to-give fundraising and give you the best tools to try to make it a breeze.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Before you can <a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/blog/how-to-start-a-fundraiser">start your fundraiser</a>, you’ll need to understand text-to-give basics. Let’s start by briefly defining text-to-give.</p>
+<h2 class="PlaygroundEditorTheme__h2" dir="ltr">What is Text-to-Give Fundraising?</h2>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Simply put, text-to-give fundraising allows nonprofits and charities to accept donations via text message. Here’s how it works: A donor texts a predetermined dollar amount or a keyword to a nonprofit’s designated text-to-give phone number.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Some platforms will automatically charge the donation amount to the supporter’s cell phone bill. The phone carrier will then process the donation and transfer the funds to the organization.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Other text-to-give platforms will simply send a confirmation text to the donor prompting them to fill out a donation form on<a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/blog/best-nonprofit-websites" rel="noreferrer"> the nonprofit’s website</a>. Regardless of the process, this type of fundraising has become increasingly popular among nonprofits, as it provides an easy, fast and secure way for donors to give.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Read more: <a href="https://www.wildapricot.com/blog/donation-website-template"><b><strong class="PlaygroundEditorTheme__textBold">12 Donation Website Templates + Examples to Inspire You</strong></b></a></p>
+<h2 class="PlaygroundEditorTheme__h2" dir="ltr">Case Study: A Successful Text-to-Give Campaign</h2>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">One of the first and most widely publicized text-to-give campaigns occurred after the devastating earthquake in Haiti in 2010. As part of their relief efforts, the Red Cross advertised “Text HAITI to 90999” across broadcast, print, and online. By providing people from across the world with a swift and easy way to donate, they were able to raise tens of millions of dollars to help rebuild the country.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">According to <a class="PlaygroundEditorTheme__link" href="https://snowballfundraising.com/notable-mobile-fundraising/#red">Snowball’s list of top mobile fundraisers</a>, “for an overwhelming majority of people surveyed, the Haiti campaign was the first time they had ever used texting to donate to charity.” Due to its widespread success, it opened the door for other nonprofits to use text-to-give as a viable means of fundraising.</p>
+<h2 class="PlaygroundEditorTheme__h2" dir="ltr">4 Best Practices for Ramping Up Your Text-to-Give Efforts</h2>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Although most text-to-give platforms are designed to be exceptionally easy to use, there are a few things you’ll need to consider as you implement this kind of fundraising.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">1. Keep It Simple</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">According to <a class="PlaygroundEditorTheme__link" href="https://doublethedonation.com/top-fundraising-software-and-tools-old/text-to-give-guide/">Double the Donation</a>, text-to-give fundraising is popular because it “utilizes a form of technology that most donors use on a daily basis.” Donors are already texting on a daily basis, so this makes giving easy by using “an existing technology that donors are already extremely familiar with.”</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">As you’re setting up your text-to-give campaign, prioritize simplicity. Some text-to-give software providers will ask you to come up with a customized short code that your donors will use to make a donation. Choose a short and relevant keyword that will be memorable for donors and lessen the potential for typos.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">For example, a cat rescue nonprofit might choose “Kitty15” to be the designated number that initiates the donation. This will also give donors confidence that their gift is going to the right cause.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">2. Shout It From the Rooftops</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Well, not literally. After all, this is a technological solution. But you’ll want to get the word out about your method for accepting donations.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">The key to success is to make your new text-to-give function part of your <a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/blog/nonprofit-marketing-plan" rel="noreferrer">nonprofit’s regular marketing efforts</a>. Some ways you can do this include:</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><img alt="Market your text-to-give campaign through social media, email, your website, advertisements and more." height="inherit" src="https://www.wildapricot.com/wp-content/uploads/2018/10/Snowball_Wild-Apricot_A-Text-to-Give-Fundraising-Guide-Overview-Top-5-Platforms_Supplementary-1.jpg" width="inherit" /></p>
+<ul>
+<li class="PlaygroundEditorTheme__listItem" value="1">Posting the number and a short description of the process on all social media channels, newsletters, email blasts and other advertising efforts.</li>
+<li class="PlaygroundEditorTheme__listItem" value="1">Including it in board members’ email signatures.</li>
+<li class="PlaygroundEditorTheme__listItem" value="1">Displaying it prominently (and permanently) on your website.</li>
+<li class="PlaygroundEditorTheme__listItem" value="1">Asking supporters and influencers to share your text-to-give key word and designated number via their <a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/blog/social-media-guide-for-nonprofits">social media channels</a>.</li>
+<li class="PlaygroundEditorTheme__listItem" value="1">Investing in Facebook ads and online banner ads.</li>
+<li class="PlaygroundEditorTheme__listItem" value="1">Sending a press release to relevant trade or community publications announcing a new easy way for donors to lend their financial support.</li>
+</ul>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Taking a multichannel approach to marketing is particularly important in text-to-give campaigns because, without additional context, your donors might not feel a sense of urgency. For your campaign to succeed, you’ll need to make sure they know exactly why they should be donating.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">3. Provide a Step-by-Step Guide</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">You should make your campaign as compelling as possible, but it’s equally important that your potential donors know how to donate. To make the process easier, explain to donors how they can use text messaging to make a contribution.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Provide supporters with a <a class="PlaygroundEditorTheme__link" href="https://snowballfundraising.com/text-to-give-guide/">thorough text-to-give guide,</a> such as a video tutorial or step-by-step instructions. When they see how easy it is to give, they’ll be more likely to donate.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><img alt="Text-to-give can be as simple as sending a text, clicking a link, and filling out a donation form." height="inherit" src="https://www.wildapricot.com/wp-content/uploads/2018/10/Snowball_Wild-Apricot_A-Text-to-Give-Fundraising-Guide-Overview-Top-5-Platforms_Supplementary-2.jpg" width="inherit" /></p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">4. Don’t Forget to Follow Up</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">To keep your new text donors engaged, follow up after a contribution is made and explain the impact of their ongoing support.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Some easy ways to <a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/blog/donor-thank-you">thank donors</a> include:</p>
+<ul class="PlaygroundEditorTheme__ul">
+<li class="PlaygroundEditorTheme__listItem" value="1">Quickly shouting out a thank-you to any new donor via social media</li>
+<li class="PlaygroundEditorTheme__listItem" value="2">Writing a blog post that explains how donations were put to good use</li>
+<li class="PlaygroundEditorTheme__listItem" value="3">Sending a follow-up text to confirm their donation was received</li>
+<li class="PlaygroundEditorTheme__listItem" value="4">Having a scrolling list of new donors on your landing page for the campaign</li>
+<li class="PlaygroundEditorTheme__listItem" value="5">Adding them to your mailing list (online and offline) so that they stay posted on new initiatives</li>
+</ul>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Most text-to-give platforms allow you to customize a thank-you email or send donors directly to a microsite where their donation is confirmed. Here’s your chance to be grateful. Explain what their money is going towards, celebrate their generosity and make them feel appreciated.</p>
+<h2 class="PlaygroundEditorTheme__h2" dir="ltr">6 Text-to-Give Platforms to Consider</h2>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Still feel a little unsure about how text-to-give campaigns work? That’s where a good service provider comes in. Here are some of the most popular text-to-give platforms that you can use to get your campaign up and running.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">1. WildApricot</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><a class="PlaygroundEditorTheme__link" href="https://www.wildapricot.com/add-ons#:~:text=your%20organization%20makes!-,Text%20Messaging,-Strengthen%20your%20member" rel="noreferrer">WildApricot</a>‘s text messaging feature makes it easy to run effective text-to-give campaigns and fundraise on the go. WildApricot allows you to customize each message in a campaign with macros, schedule out future texts and track the success of your campaign right in one database.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Why You Might Choose WildApricot:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">This is a more than a text-to-give software, WildApricot’s comprehensive membership management software allows you to manage everything your organization needs in one place. Evaluate your fundraising success across all avenues from texts to emails to events for every contact.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Pricing:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">WildApricot’s text messaging add on is perfect for organization’s already using our software who are wanting to try out text-to-give without long term contracts. You only pay for what you use and can cancel at any time. There’s an initial $30 start up fee and a $6 monthly charge for a dedicated virtual phone number. You’ll also pay $0.04 per message, billed monthly.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Get your fundraising journey started today! <a class="PlaygroundEditorTheme__link" href="https://gethelp.wildapricot.com/en/articles/1902-getting-started-with-text-messaging" rel="noreferrer">Activate text messaging now on your WildApricot account here</a> or <a class="PlaygroundEditorTheme__link" href="https://register.wildapricot.com/" rel="noreferrer">start a 60-day free trial </a>of our all-in-one software to simplify and automate your admin. Here’s just a taste of what WildApricot can do for your organization’s fundraising:</p>
+<ul class="PlaygroundEditorTheme__ul">
+<li class="PlaygroundEditorTheme__listItem" value="1">Integrate with your current website (or build a fresh one!)</li>
+<li class="PlaygroundEditorTheme__listItem" value="2">Create and manage forms for donations and membership fees</li>
+<li class="PlaygroundEditorTheme__listItem" value="3">Set up recurring donations and membership renewals</li>
+<li class="PlaygroundEditorTheme__listItem" value="4">Securely process payments</li>
+<li class="PlaygroundEditorTheme__listItem" value="5">Automate emails from a thorough contact database</li>
+<li class="PlaygroundEditorTheme__listItem" value="6">Get unlimited support for any questions you might have</li>
+<li class="PlaygroundEditorTheme__listItem" value="7">And more</li>
+</ul>
+<p><a href="https://register.wildapricot.com/"><img alt="Click through to claim your 60-day trial of WildApricot to create effective QR codes that will speed up event check-in." class="alignnone size-large wp-image-4045" height="130" src="https://www.wildapricot.com/wp-content/uploads/2023/04/WildApricot-CTA-Project_Skinny-CTA-1-1024x208.png" width="640" /></a></p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">2. GiveSmart</h3>
+<p><a href="https://www.givesmart.com/">GiveSmart</a> is a mobile-first fundraising solution, and their text-to-donate feature makes it simple for nonprofits to capture donations anytime, anywhere. Their tools allow organizations to customize keywords, create branded donation pages and track campaign performances in real time.</p>
+<h4>Why you might choose GiveSmart:</h4>
+<p>GiveSmart was built with fundraising in mind, making it a great choice for nonprofits hosting events like fundraising galas, auctions or peer-to-peer campaigns. Their standout features include mobile bidding, peer-to-peer fundraising capabilities, and donor engagement tools to maximize giving before, during, and after your event.</p>
+<h4>Pricing:</h4>
+<p>GiveSmart offers custom pricing depending on the plan you choose. Connect with their sales team and request a demo to find the package that fits your specific fundraising goals.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">3. Snowball</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><a class="PlaygroundEditorTheme__link" href="https://snowballfundraising.com/text-to-give-fundraising/">Snowball</a> is one of the most well-known text-to-give platforms and mobile fundraising tools around. It bills itself as a complete fundraising software that offers online donation pages, secure text-to-give, event fundraising tools and more.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Why You Might Choose Snowball:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">This all-in-one solution is attractive because it takes care of a lot of fundraising tasks. The text-to-give component is lightning fast, which is a big plus for a lot of users, donors and nonprofits.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Pricing:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Snowball offers four price packages. Snowball Essential is free and includes an online donation page, transaction and donor data and more—though you’ll pay a standard 2.9% + $0.30 fee per transaction. If you want to amp up your fundraising, invest in Snowball Enterprise for $99/month.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">4. OneCause</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><a class="PlaygroundEditorTheme__link" href="https://www.onecause.com/">OneCause</a> is considered one of the best providers of mobile giving support. It helps you create personalized call-to-action keywords for your campaigns, hosts donation microsites with custom looks and donation amounts, and generates automated receipts and donor information reports.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Why You Might Choose OneCause:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Donor information is fully-integrated and secure. You’ll set up a keyword for each giving campaign, which you can use to develop marketing and promotion; people can then text that keyword to easily make a donation with their credit or debit card. This ensures you’ll be able to reach out to donors for follow-up, which can be difficult with some solutions.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Pricing:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">OneCause’s TextGgive Standard Package is $495/year.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">5. Bloomerang</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><a href="https://www.qgiv.com/text-to-donate">Bloomerang</a> (previously Qgiv) makes text-based fundraising simple. Donors can give on the spot by texting a custom keyword to your text-to-donate number, or they can pledge their support and complete their gift later (you can even send reminders!). Outbound messaging and screencasting of fundraising progress offer exciting ways to encourage donors to give—at home or at events!</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Why You Might Choose Bloogmerang:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Some text-to-give platforms have pre-set donation amounts, but with Bloomerang&#8217;s text fundraising, you can either tie specific amounts to keywords or leave keywords open for any amount of a donor’s choosing.</p>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Bloomerang&#8217;s Text Fundraising package also offers reminder messages so you can prompt supporters to complete their pledged donations; outbound messaging so you can send news, updates, event reminders and appeals to supporters; and even screencasting so you can display a fundraising thermometer with real-time updates at your next event!</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Pricing:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Bloomerang&#8217;s Fundraising package pricing starts at $40/month and includes donation forms, event management, and mobile apps in addition to their text fundraising features. However, they have extra add-ons, a CRM package, and a volunteer package with additional capabilities. Contact their sales team for a demo to see which plan is right for you.</p>
+<h3 class="PlaygroundEditorTheme__h3" dir="ltr">6. Give Lively</h3>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr"><a class="PlaygroundEditorTheme__link" href="https://www.givelively.org/text-to-donate">Give Lively’s Text-to-Donate</a> with Live Display is part of its completely free fundraising platform, which also includes peer-to-peer fundraising, event ticketing, fundraising widgets and more. A philanthropist-funded social investment initiative, Give Lively builds free online fundraising technology for nonprofits.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Why You Might Choose Give Lively:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Supporters text your nonprofit’s unique text code to a five-digit short code, 44-321, and can donate in just one tap with Apple Pay or Google Pay, or a few clicks via any other payment method they choose. You can create as many unique text codes as you need for all your campaigns, events, and more, and every fundraising page comes with its own Live Display that updates in realtime each time a donation is made.</p>
+<h4 class="PlaygroundEditorTheme__h4" dir="ltr">Pricing:</h4>
+<p class="PlaygroundEditorTheme__paragraph" dir="ltr">Give Lively is completely free: they don’t charge for the use of their technology or take a cut of donations. However, they do use third party services, like PayPal, that charge small financial transaction fees.</p>
+<p>The post <a href="https://www.wildapricot.com/blog/text-to-give">A Text-to-Give Fundraising Guide: Overview + Top 6 Platforms</a> appeared first on <a href="https://www.wildapricot.com">WildApricot</a>.</p>

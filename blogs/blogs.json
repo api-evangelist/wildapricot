@@ -1,0 +1,13 @@
+{
+  "repo": "wildapricot",
+  "feeds": [
+    {
+      "source": "https://www.wildapricot.com/blog",
+      "feed_url": "https://www.wildapricot.com/feed",
+      "saved": 9,
+      "title": "WildApricot"
+    }
+  ],
+  "post_count": 9,
+  "fetched": "2026-05-03T23:38:16Z"
+}
