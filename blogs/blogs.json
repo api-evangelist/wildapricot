@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://www.wildapricot.com/blog",
-      "feed_url": "https://www.wildapricot.com/feed",
-      "saved": 9,
-      "title": "WildApricot"
+      "feed_url": "https://www.wildapricot.com/blog/feed/",
+      "title": "The WildApricot Blog - Memberships, Events & more.",
+      "saved": 0
     }
   ],
   "post_count": 9,
-  "fetched": "2026-05-03T23:38:16Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
