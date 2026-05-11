@@ -133,6 +133,20 @@ common:
       - name: Mailchimp
         description: Member contact lists can be synced to Mailchimp for external email marketing campaigns.
 
+  - type: Integrations
+    url: https://www.wildapricot.com/features/integrations
+integrations:
+  - name: Personify WildApricot
+  - name: Associations
+  - name: Nonprofits
+  - name: Chambers
+  - name: Clubs
+  - name: Charities
+  - name: Chapters
+  - name: waving hand
+  - name: Capterra Shortlist 2023
+  - name: Software Advice 4.4 Rating
+  - name: GetApp 4.4 Rating
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
