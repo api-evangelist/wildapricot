@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — OnlineStore.Orders.Operations
+  description: 'WildApricot Admin API — OnlineStore.Orders.Operations. 1 operations. Lead operation: WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status.
+    Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - OnlineStore.Orders.Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-onlinestore-orders-operations
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — OnlineStore.Orders.Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-store-orders-orderNumber-status
+      path: /accounts/{accountId}/store/orders/{orderNumber}/status
+      operations:
+      - name: onlinestoreordersoperationssetorderstatus
+        method: PUT
+        description: WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orderNumber
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-onlinestore-orders-operations-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — OnlineStore.Orders.Operations. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/store/orders/{ordernumber}/status
+      name: accounts-accountid-store-orders-ordernumber-status
+      description: REST surface for accounts-accountId-store-orders-orderNumber-status.
+      operations:
+      - method: PUT
+        name: onlinestoreordersoperationssetorderstatus
+        description: WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status
+        call: admin-onlinestore-orders-operations.onlinestoreordersoperationssetorderstatus
+        with:
+          orderNumber: rest.orderNumber
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-onlinestore-orders-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — OnlineStore.Orders.Operations. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: wildapricot-put-accounts-accountid-store
+      description: WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-onlinestore-orders-operations.onlinestoreordersoperationssetorderstatus
+      with:
+        orderNumber: tools.orderNumber
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

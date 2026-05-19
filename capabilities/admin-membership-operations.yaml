@@ -1,0 +1,170 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Membership.Operations
+  description: 'WildApricot Admin API — Membership.Operations. 3 operations. Lead operation: WildApricot Approve Pending Membership..
+    Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Membership.Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-membership-operations
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Membership.Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: rpc-accountId-ApprovePendingMembership
+      path: /rpc/{accountId}/ApprovePendingMembership
+      operations:
+      - name: approvependingmembership
+        method: POST
+        description: WildApricot Approve Pending Membership.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: query
+          type: integer
+          description: Contact ID to approve membership
+          required: true
+    - name: rpc-accountId-GenerateInvoiceForPendingMembership
+      path: /rpc/{accountId}/GenerateInvoiceForPendingMembership
+      operations:
+      - name: generateinvoiceforpendingmembership
+        method: POST
+        description: WildApricot Generate or Update Invoice for Pending Membership.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: query
+          type: integer
+          description: Contact ID with pending membership
+          required: true
+        - name: updateIfExists
+          in: query
+          type: boolean
+          description: update the invoice items if already exists
+    - name: rpc-accountId-RejectPendingMembership
+      path: /rpc/{accountId}/RejectPendingMembership
+      operations:
+      - name: rejectpendingmembership
+        method: POST
+        description: WildApricot Reject Pending Membership.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: query
+          type: integer
+          description: Contact ID to reject membership
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-membership-operations-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Membership.Operations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/rpc/{accountid}/approvependingmembership
+      name: rpc-accountid-approvependingmembership
+      description: REST surface for rpc-accountId-ApprovePendingMembership.
+      operations:
+      - method: POST
+        name: approvependingmembership
+        description: WildApricot Approve Pending Membership.
+        call: admin-membership-operations.approvependingmembership
+        with:
+          contactId: rest.contactId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rpc/{accountid}/generateinvoiceforpendingmembership
+      name: rpc-accountid-generateinvoiceforpendingmembership
+      description: REST surface for rpc-accountId-GenerateInvoiceForPendingMembership.
+      operations:
+      - method: POST
+        name: generateinvoiceforpendingmembership
+        description: WildApricot Generate or Update Invoice for Pending Membership.
+        call: admin-membership-operations.generateinvoiceforpendingmembership
+        with:
+          contactId: rest.contactId
+          updateIfExists: rest.updateIfExists
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rpc/{accountid}/rejectpendingmembership
+      name: rpc-accountid-rejectpendingmembership
+      description: REST surface for rpc-accountId-RejectPendingMembership.
+      operations:
+      - method: POST
+        name: rejectpendingmembership
+        description: WildApricot Reject Pending Membership.
+        call: admin-membership-operations.rejectpendingmembership
+        with:
+          contactId: rest.contactId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-membership-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Membership.Operations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wildapricot-approve-pending-membership
+      description: WildApricot Approve Pending Membership.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-membership-operations.approvependingmembership
+      with:
+        contactId: tools.contactId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-generate-update-invoice-pending
+      description: WildApricot Generate or Update Invoice for Pending Membership.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-membership-operations.generateinvoiceforpendingmembership
+      with:
+        contactId: tools.contactId
+        updateIfExists: tools.updateIfExists
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-reject-pending-membership
+      description: WildApricot Reject Pending Membership.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-membership-operations.rejectpendingmembership
+      with:
+        contactId: tools.contactId
+      outputParameters:
+      - type: object
+        mapping: $.

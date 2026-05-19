@@ -1,0 +1,298 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Events
+  description: 'WildApricot Admin API — Events. 6 operations. Lead operation: WildApricot Events List. Self-contained Naftiko
+    capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-events
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-events
+      path: /accounts/{accountId}/events
+      operations:
+      - name: geteventslist
+        method: GET
+        description: WildApricot Events List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $async
+          in: query
+          type: boolean
+          description: Controls whether the API call is perform asynchronously. Default value if true.
+        - name: resultId
+          in: query
+          type: string
+          description: This parameter is used on a second step of asynchronous search. It should equal to the value of ResultId
+            in response to the first step of asynchronous search.
+        - name: $filter
+          in: query
+          type: string
+          description: Filters the results of the Events API call so that only those records that match the filter criteria
+            are included.
+        - name: $sort
+          in: query
+          type: string
+          description: This parameter can be used to sort list of IDs or list of events. Possible values are
+        - name: $count
+          in: query
+          type: boolean
+          description: Specifies that result should contain only a total number of records matching criteria. Requests with
+            specified $count parameter are always processed as synchron
+        - name: idsOnly
+          in: query
+          type: boolean
+          description: When idsOnly specified, the API returns only a list of identifiers matching criteria.
+      - name: createevent
+        method: POST
+        description: WildApricot Create a New Event Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts-accountId-events-eventId
+      path: /accounts/{accountId}/events/{eventId}
+      operations:
+      - name: geteventdetails
+        method: GET
+        description: WildApricot Retrieve Information About Specific Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: integer
+          description: Unique event identifier
+          required: true
+      - name: updateevent
+        method: PUT
+        description: WildApricot Update Information About Existing Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: integer
+          description: Unique event identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteevent
+        method: DELETE
+        description: WildApricot Completely Delete Event from System.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: integer
+          description: Unique event identifier
+          required: true
+    - name: rpc-accountId-CloneEvent
+      path: /rpc/{accountId}/CloneEvent
+      operations:
+      - name: cloneevent
+        method: POST
+        description: WildApricot Clone Existed Event.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-events-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Events. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/events
+      name: accounts-accountid-events
+      description: REST surface for accounts-accountId-events.
+      operations:
+      - method: GET
+        name: geteventslist
+        description: WildApricot Events List
+        call: admin-events.geteventslist
+        with:
+          $async: rest.$async
+          resultId: rest.resultId
+          $filter: rest.$filter
+          $sort: rest.$sort
+          $count: rest.$count
+          idsOnly: rest.idsOnly
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createevent
+        description: WildApricot Create a New Event Record
+        call: admin-events.createevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/events/{eventid}
+      name: accounts-accountid-events-eventid
+      description: REST surface for accounts-accountId-events-eventId.
+      operations:
+      - method: GET
+        name: geteventdetails
+        description: WildApricot Retrieve Information About Specific Event
+        call: admin-events.geteventdetails
+        with:
+          eventId: rest.eventId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateevent
+        description: WildApricot Update Information About Existing Event
+        call: admin-events.updateevent
+        with:
+          eventId: rest.eventId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteevent
+        description: WildApricot Completely Delete Event from System.
+        call: admin-events.deleteevent
+        with:
+          eventId: rest.eventId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rpc/{accountid}/cloneevent
+      name: rpc-accountid-cloneevent
+      description: REST surface for rpc-accountId-CloneEvent.
+      operations:
+      - method: POST
+        name: cloneevent
+        description: WildApricot Clone Existed Event.
+        call: admin-events.cloneevent
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Events. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: wildapricot-events-list
+      description: WildApricot Events List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-events.geteventslist
+      with:
+        $async: tools.$async
+        resultId: tools.resultId
+        $filter: tools.$filter
+        $sort: tools.$sort
+        $count: tools.$count
+        idsOnly: tools.idsOnly
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-create-new-event-record
+      description: WildApricot Create a New Event Record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-events.createevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-retrieve-information-about-specific
+      description: WildApricot Retrieve Information About Specific Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-events.geteventdetails
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-update-information-about-existing
+      description: WildApricot Update Information About Existing Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-events.updateevent
+      with:
+        eventId: tools.eventId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-completely-delete-event-system
+      description: WildApricot Completely Delete Event from System.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-events.deleteevent
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-clone-existed-event
+      description: WildApricot Clone Existed Event.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-events.cloneevent
+      outputParameters:
+      - type: object
+        mapping: $.

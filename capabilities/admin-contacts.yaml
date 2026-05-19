@@ -1,0 +1,352 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Contacts
+  description: 'WildApricot Admin API — Contacts. 7 operations. Lead operation: WildApricot Contacts List. Self-contained
+    Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Contacts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-contacts
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Contacts business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-contacts
+      path: /accounts/{accountId}/contacts
+      operations:
+      - name: getcontactslist
+        method: GET
+        description: WildApricot Contacts List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $async
+          in: query
+          type: boolean
+          description: Controls whether the API call is perform asynchronously. Default value if true.
+        - name: resultId
+          in: query
+          type: string
+          description: This parameter is used on a second step of asynchronous search. It should equal to the value of ResultId
+            in response to the first step of asynchronous search.
+        - name: $filter
+          in: query
+          type: string
+          description: Filters the results of the Contacts API call so that only those records that match the filter criteria
+            are included.
+        - name: $select
+          in: query
+          type: string
+          description: Controls which fields are returned in the Contacts API call.  The field names correspond to the fields
+            returned by the [ContactFields API call](#/Contacts.Custo
+        - name: $sort
+          in: query
+          type: string
+          description: Ordering expression. There are 2 sorting options - **Name** and  **MemberSince**. And also 2 direction
+            modifiers - **asc** and **desc**.
+        - name: simpleQuery
+          in: query
+          type: string
+          description: simpleQuery is a parameter which allows you to search for contacts by matching a substring in first
+            name, last name, organization, email or phone. This is simpl
+        - name: $count
+          in: query
+          type: boolean
+          description: Specifies that the result should contain only a total number of records matching criteria. Requests
+            with specified $count parameter are always processed as sync
+        - name: idsOnly
+          in: query
+          type: boolean
+          description: When idsOnly specified, the API returns only a list of identifiers matching criteria.
+      - name: createcontact
+        method: POST
+        description: WildApricot Create a New Contact or Member Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts-accountId-contacts-me
+      path: /accounts/{accountId}/contacts/me
+      operations:
+      - name: getcurrentcontactinfo
+        method: GET
+        description: WildApricot Retrieve Information About Current Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountId-contacts-contactId
+      path: /accounts/{accountId}/contacts/{contactId}
+      operations:
+      - name: getcontactdetails
+        method: GET
+        description: WildApricot Retrieve Information About Specific Member or Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: path
+          type: integer
+          description: Unique contact identifier
+          required: true
+        - name: getExtendedMembershipInfo
+          in: query
+          type: boolean
+          description: When GetExtendedMembershipInfo specified the API returns the information about membership order status,
+            membership invoice and allowed actions for current membe
+      - name: updatecontactdetails
+        method: PUT
+        description: WildApricot Update Information About Existing Member or Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: path
+          type: integer
+          description: Unique contact identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecontact
+        method: DELETE
+        description: WildApricot Delete an Archived Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: path
+          type: integer
+          description: Unique contact identifier
+          required: true
+    - name: rpc-accountId-AcceptTermsOfUse
+      path: /rpc/{accountId}/AcceptTermsOfUse
+      operations:
+      - name: accepttermsofuse
+        method: POST
+        description: WildApricot Accepts Terms of Use.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-contacts-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Contacts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/contacts
+      name: accounts-accountid-contacts
+      description: REST surface for accounts-accountId-contacts.
+      operations:
+      - method: GET
+        name: getcontactslist
+        description: WildApricot Contacts List
+        call: admin-contacts.getcontactslist
+        with:
+          $async: rest.$async
+          resultId: rest.resultId
+          $filter: rest.$filter
+          $select: rest.$select
+          $sort: rest.$sort
+          simpleQuery: rest.simpleQuery
+          $count: rest.$count
+          idsOnly: rest.idsOnly
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontact
+        description: WildApricot Create a New Contact or Member Record
+        call: admin-contacts.createcontact
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/contacts/me
+      name: accounts-accountid-contacts-me
+      description: REST surface for accounts-accountId-contacts-me.
+      operations:
+      - method: GET
+        name: getcurrentcontactinfo
+        description: WildApricot Retrieve Information About Current Contact
+        call: admin-contacts.getcurrentcontactinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/contacts/{contactid}
+      name: accounts-accountid-contacts-contactid
+      description: REST surface for accounts-accountId-contacts-contactId.
+      operations:
+      - method: GET
+        name: getcontactdetails
+        description: WildApricot Retrieve Information About Specific Member or Contact
+        call: admin-contacts.getcontactdetails
+        with:
+          contactId: rest.contactId
+          getExtendedMembershipInfo: rest.getExtendedMembershipInfo
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecontactdetails
+        description: WildApricot Update Information About Existing Member or Contact
+        call: admin-contacts.updatecontactdetails
+        with:
+          contactId: rest.contactId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontact
+        description: WildApricot Delete an Archived Contact
+        call: admin-contacts.deletecontact
+        with:
+          contactId: rest.contactId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rpc/{accountid}/accepttermsofuse
+      name: rpc-accountid-accepttermsofuse
+      description: REST surface for rpc-accountId-AcceptTermsOfUse.
+      operations:
+      - method: POST
+        name: accepttermsofuse
+        description: WildApricot Accepts Terms of Use.
+        call: admin-contacts.accepttermsofuse
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-contacts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Contacts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: wildapricot-contacts-list
+      description: WildApricot Contacts List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-contacts.getcontactslist
+      with:
+        $async: tools.$async
+        resultId: tools.resultId
+        $filter: tools.$filter
+        $select: tools.$select
+        $sort: tools.$sort
+        simpleQuery: tools.simpleQuery
+        $count: tools.$count
+        idsOnly: tools.idsOnly
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-create-new-contact-member
+      description: WildApricot Create a New Contact or Member Record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-contacts.createcontact
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-retrieve-information-about-current
+      description: WildApricot Retrieve Information About Current Contact
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-contacts.getcurrentcontactinfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-retrieve-information-about-specific
+      description: WildApricot Retrieve Information About Specific Member or Contact
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-contacts.getcontactdetails
+      with:
+        contactId: tools.contactId
+        getExtendedMembershipInfo: tools.getExtendedMembershipInfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-update-information-about-existing
+      description: WildApricot Update Information About Existing Member or Contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-contacts.updatecontactdetails
+      with:
+        contactId: tools.contactId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-delete-archived-contact
+      description: WildApricot Delete an Archived Contact
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-contacts.deletecontact
+      with:
+        contactId: tools.contactId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-accepts-terms-use
+      description: WildApricot Accepts Terms of Use.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-contacts.accepttermsofuse
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Internal.Features
+  description: 'WildApricot Admin API — Internal.Features. 1 operations. Lead operation: WildApricot Get Information About
+    Feature Availability for Specific Account.. Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Internal.Features
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-internal-features
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Internal.Features business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-features-featureId
+      path: /accounts/{accountId}/features/{featureId}
+      operations:
+      - name: getfeatureavailability
+        method: GET
+        description: WildApricot Get Information About Feature Availability for Specific Account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: featureId
+          in: path
+          type: integer
+          description: feature identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-internal-features-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Internal.Features. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/features/{featureid}
+      name: accounts-accountid-features-featureid
+      description: REST surface for accounts-accountId-features-featureId.
+      operations:
+      - method: GET
+        name: getfeatureavailability
+        description: WildApricot Get Information About Feature Availability for Specific Account.
+        call: admin-internal-features.getfeatureavailability
+        with:
+          featureId: rest.featureId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-internal-features-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Internal.Features. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wildapricot-get-information-about-feature
+      description: WildApricot Get Information About Feature Availability for Specific Account.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-internal-features.getfeatureavailability
+      with:
+        featureId: tools.featureId
+      outputParameters:
+      - type: object
+        mapping: $.

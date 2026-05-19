@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Emailing.Drafts
+  description: 'WildApricot Admin API — Emailing.Drafts. 3 operations. Lead operation: WildApricot Email Drafts. Self-contained
+    Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Emailing.Drafts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-emailing-drafts
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Emailing.Drafts business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-EmailDrafts
+      path: /accounts/{accountId}/EmailDrafts
+      operations:
+      - name: getemaildraftslist
+        method: GET
+        description: WildApricot Email Drafts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idsOnly
+          in: query
+          type: boolean
+          description: Should be set to true in order to get only a list of email identifiers as a result of search request.
+        - name: $filter
+          in: query
+          type: string
+          description: 'Allowed filter fields (**allowed operations**):'
+    - name: accounts-accountId-EmailDrafts-draftId
+      path: /accounts/{accountId}/EmailDrafts/{draftId}
+      operations:
+      - name: getemaildraft
+        method: GET
+        description: WildApricot Email Draft Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: draftId
+          in: path
+          type: integer
+          description: Email draft Id
+          required: true
+      - name: deleteemaildraft
+        method: DELETE
+        description: WildApricot Delete Email Draft
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: draftId
+          in: path
+          type: integer
+          description: Email draft Id
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-emailing-drafts-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Emailing.Drafts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/emaildrafts
+      name: accounts-accountid-emaildrafts
+      description: REST surface for accounts-accountId-EmailDrafts.
+      operations:
+      - method: GET
+        name: getemaildraftslist
+        description: WildApricot Email Drafts
+        call: admin-emailing-drafts.getemaildraftslist
+        with:
+          idsOnly: rest.idsOnly
+          $filter: rest.$filter
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/emaildrafts/{draftid}
+      name: accounts-accountid-emaildrafts-draftid
+      description: REST surface for accounts-accountId-EmailDrafts-draftId.
+      operations:
+      - method: GET
+        name: getemaildraft
+        description: WildApricot Email Draft Details
+        call: admin-emailing-drafts.getemaildraft
+        with:
+          draftId: rest.draftId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemaildraft
+        description: WildApricot Delete Email Draft
+        call: admin-emailing-drafts.deleteemaildraft
+        with:
+          draftId: rest.draftId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-emailing-drafts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Emailing.Drafts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: wildapricot-email-drafts
+      description: WildApricot Email Drafts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-emailing-drafts.getemaildraftslist
+      with:
+        idsOnly: tools.idsOnly
+        $filter: tools.$filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-email-draft-details
+      description: WildApricot Email Draft Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-emailing-drafts.getemaildraft
+      with:
+        draftId: tools.draftId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-delete-email-draft
+      description: WildApricot Delete Email Draft
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-emailing-drafts.deleteemaildraft
+      with:
+        draftId: tools.draftId
+      outputParameters:
+      - type: object
+        mapping: $.

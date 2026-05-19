@@ -1,0 +1,484 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Finances.Payments
+  description: 'WildApricot Admin API — Finances.Payments. 10 operations. Lead operation: WildApricot Get List of Payments
+    by Criteria.. Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Finances.Payments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-finances-payments
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Finances.Payments business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-payments
+      path: /accounts/{accountId}/payments
+      operations:
+      - name: getpaymentslist
+        method: GET
+        description: WildApricot Get List of Payments by Criteria.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: query
+          type: integer
+          description: Identifier of contact who made the payment.
+        - name: eventId
+          in: query
+          type: integer
+          description: Identifier of event. When specified API returns collection of payments settled to invoices associated
+            with event registrations for the event.
+        - name: idsOnly
+          in: query
+          type: boolean
+          description: When set to true, API returns only collection of identifiers instead of collection of payments.
+        - name: StartDate
+          in: query
+          type: string
+          description: Limits result to payments created since StartDate.
+        - name: EndDate
+          in: query
+          type: string
+          description: Limits result to payments created before EndDate.
+        - name: paimentType
+          in: query
+          type: string
+          description: Limits result to payment type.
+        - name: unsettledOnly
+          in: query
+          type: boolean
+          description: When set to true, API returns only unsettled payments.
+        - name: ids
+          in: query
+          type: string
+          description: You can filter the payments by specifying a set of payment IDs.
+      - name: createpayment
+        method: POST
+        description: WildApricot Creates a New Payment.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts-accountId-payments-donationId-AllocateRefundToDonation
+      path: /accounts/{accountId}/payments/{donationId}/AllocateRefundToDonation
+      operations:
+      - name: allocaterefundtodonation
+        method: POST
+        description: WildApricot Allocate Refund to Specific Donation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: donationId
+          in: path
+          type: integer
+          description: Unique donation identifier
+          required: true
+    - name: accounts-accountId-payments-donationId-UnallocateFromDonation
+      path: /accounts/{accountId}/payments/{donationId}/UnallocateFromDonation
+      operations:
+      - name: unallocatefinancedocumentfromdonation
+        method: POST
+        description: WildApricot Unallocate Finance Document from Specific Donation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: donationId
+          in: path
+          type: integer
+          description: Unique donation identifier
+          required: true
+    - name: accounts-accountId-payments-paymentId
+      path: /accounts/{accountId}/payments/{paymentId}
+      operations:
+      - name: getpaymentdetails
+        method: GET
+        description: WildApricot Retrieve Information About Specific Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          description: Unique payment identifier
+          required: true
+      - name: updatepayment
+        method: PUT
+        description: WildApricot Update Existing Payment Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepayment
+        method: DELETE
+        description: WildApricot Delete Existing Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          required: true
+    - name: accounts-accountId-payments-paymentId-AllocateInvoice
+      path: /accounts/{accountId}/payments/{paymentId}/AllocateInvoice
+      operations:
+      - name: allocateinvoice
+        method: POST
+        description: WildApricot Allocate Invoice to Specific Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          description: Unique payment identifier
+          required: true
+    - name: accounts-accountId-payments-paymentId-AllocateRefundToPayment
+      path: /accounts/{accountId}/payments/{paymentId}/AllocateRefundToPayment
+      operations:
+      - name: allocaterefundtopayment
+        method: POST
+        description: WildApricot Allocate Refund to Specific Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          description: Unique payment identifier
+          required: true
+    - name: accounts-accountId-payments-paymentId-UnallocateFromPayment
+      path: /accounts/{accountId}/payments/{paymentId}/UnallocateFromPayment
+      operations:
+      - name: unallocatefinancedocumentfrompayment
+        method: POST
+        description: WildApricot Unallocate Finance Document from Specific Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: integer
+          description: Unique payment identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-finances-payments-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Finances.Payments. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/payments
+      name: accounts-accountid-payments
+      description: REST surface for accounts-accountId-payments.
+      operations:
+      - method: GET
+        name: getpaymentslist
+        description: WildApricot Get List of Payments by Criteria.
+        call: admin-finances-payments.getpaymentslist
+        with:
+          contactId: rest.contactId
+          eventId: rest.eventId
+          idsOnly: rest.idsOnly
+          StartDate: rest.StartDate
+          EndDate: rest.EndDate
+          paimentType: rest.paimentType
+          unsettledOnly: rest.unsettledOnly
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpayment
+        description: WildApricot Creates a New Payment.
+        call: admin-finances-payments.createpayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{donationid}/allocaterefundtodonation
+      name: accounts-accountid-payments-donationid-allocaterefundtodonation
+      description: REST surface for accounts-accountId-payments-donationId-AllocateRefundToDonation.
+      operations:
+      - method: POST
+        name: allocaterefundtodonation
+        description: WildApricot Allocate Refund to Specific Donation
+        call: admin-finances-payments.allocaterefundtodonation
+        with:
+          donationId: rest.donationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{donationid}/unallocatefromdonation
+      name: accounts-accountid-payments-donationid-unallocatefromdonation
+      description: REST surface for accounts-accountId-payments-donationId-UnallocateFromDonation.
+      operations:
+      - method: POST
+        name: unallocatefinancedocumentfromdonation
+        description: WildApricot Unallocate Finance Document from Specific Donation
+        call: admin-finances-payments.unallocatefinancedocumentfromdonation
+        with:
+          donationId: rest.donationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{paymentid}
+      name: accounts-accountid-payments-paymentid
+      description: REST surface for accounts-accountId-payments-paymentId.
+      operations:
+      - method: GET
+        name: getpaymentdetails
+        description: WildApricot Retrieve Information About Specific Payment
+        call: admin-finances-payments.getpaymentdetails
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepayment
+        description: WildApricot Update Existing Payment Information
+        call: admin-finances-payments.updatepayment
+        with:
+          paymentId: rest.paymentId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepayment
+        description: WildApricot Delete Existing Payment
+        call: admin-finances-payments.deletepayment
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{paymentid}/allocateinvoice
+      name: accounts-accountid-payments-paymentid-allocateinvoice
+      description: REST surface for accounts-accountId-payments-paymentId-AllocateInvoice.
+      operations:
+      - method: POST
+        name: allocateinvoice
+        description: WildApricot Allocate Invoice to Specific Payment
+        call: admin-finances-payments.allocateinvoice
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{paymentid}/allocaterefundtopayment
+      name: accounts-accountid-payments-paymentid-allocaterefundtopayment
+      description: REST surface for accounts-accountId-payments-paymentId-AllocateRefundToPayment.
+      operations:
+      - method: POST
+        name: allocaterefundtopayment
+        description: WildApricot Allocate Refund to Specific Payment
+        call: admin-finances-payments.allocaterefundtopayment
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/payments/{paymentid}/unallocatefrompayment
+      name: accounts-accountid-payments-paymentid-unallocatefrompayment
+      description: REST surface for accounts-accountId-payments-paymentId-UnallocateFromPayment.
+      operations:
+      - method: POST
+        name: unallocatefinancedocumentfrompayment
+        description: WildApricot Unallocate Finance Document from Specific Payment
+        call: admin-finances-payments.unallocatefinancedocumentfrompayment
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-finances-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Finances.Payments. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wildapricot-get-list-payments-criteria
+      description: WildApricot Get List of Payments by Criteria.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-finances-payments.getpaymentslist
+      with:
+        contactId: tools.contactId
+        eventId: tools.eventId
+        idsOnly: tools.idsOnly
+        StartDate: tools.StartDate
+        EndDate: tools.EndDate
+        paimentType: tools.paimentType
+        unsettledOnly: tools.unsettledOnly
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-creates-new-payment
+      description: WildApricot Creates a New Payment.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.createpayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-allocate-refund-specific-donation
+      description: WildApricot Allocate Refund to Specific Donation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.allocaterefundtodonation
+      with:
+        donationId: tools.donationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-unallocate-finance-document-specific
+      description: WildApricot Unallocate Finance Document from Specific Donation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.unallocatefinancedocumentfromdonation
+      with:
+        donationId: tools.donationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-retrieve-information-about-specific
+      description: WildApricot Retrieve Information About Specific Payment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-finances-payments.getpaymentdetails
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-update-existing-payment-information
+      description: WildApricot Update Existing Payment Information
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-finances-payments.updatepayment
+      with:
+        paymentId: tools.paymentId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-delete-existing-payment
+      description: WildApricot Delete Existing Payment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-finances-payments.deletepayment
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-allocate-invoice-specific-payment
+      description: WildApricot Allocate Invoice to Specific Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.allocateinvoice
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-allocate-refund-specific-payment
+      description: WildApricot Allocate Refund to Specific Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.allocaterefundtopayment
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-unallocate-finance-document-specific-2
+      description: WildApricot Unallocate Finance Document from Specific Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-finances-payments.unallocatefinancedocumentfrompayment
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.

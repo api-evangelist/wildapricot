@@ -1,0 +1,168 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Finances.Donations
+  description: 'WildApricot Admin API — Finances.Donations. 3 operations. Lead operation: WildApricot Get List of Donations
+    by Criteria.. Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Finances.Donations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-finances-donations
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Finances.Donations business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-donations
+      path: /accounts/{accountId}/donations
+      operations:
+      - name: getdonationslist
+        method: GET
+        description: WildApricot Get List of Donations by Criteria.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: StartDate
+          in: query
+          type: string
+          description: Limits result to donations created since StartDate.
+        - name: EndDate
+          in: query
+          type: string
+          description: Limits result to donations created before EndDate.
+    - name: accounts-accountId-donations-donationId
+      path: /accounts/{accountId}/donations/{donationId}
+      operations:
+      - name: getdonationdetails
+        method: GET
+        description: WildApricot Retrieve Information About Specific Donation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: donationId
+          in: path
+          type: integer
+          description: Unique donation identifier
+          required: true
+      - name: updatedonation
+        method: PUT
+        description: WildApricot Update Existing Donation Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: donationId
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-finances-donations-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Finances.Donations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/donations
+      name: accounts-accountid-donations
+      description: REST surface for accounts-accountId-donations.
+      operations:
+      - method: GET
+        name: getdonationslist
+        description: WildApricot Get List of Donations by Criteria.
+        call: admin-finances-donations.getdonationslist
+        with:
+          StartDate: rest.StartDate
+          EndDate: rest.EndDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/donations/{donationid}
+      name: accounts-accountid-donations-donationid
+      description: REST surface for accounts-accountId-donations-donationId.
+      operations:
+      - method: GET
+        name: getdonationdetails
+        description: WildApricot Retrieve Information About Specific Donation
+        call: admin-finances-donations.getdonationdetails
+        with:
+          donationId: rest.donationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatedonation
+        description: WildApricot Update Existing Donation Information
+        call: admin-finances-donations.updatedonation
+        with:
+          donationId: rest.donationId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-finances-donations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Finances.Donations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wildapricot-get-list-donations-criteria
+      description: WildApricot Get List of Donations by Criteria.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-finances-donations.getdonationslist
+      with:
+        StartDate: tools.StartDate
+        EndDate: tools.EndDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-retrieve-information-about-specific
+      description: WildApricot Retrieve Information About Specific Donation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-finances-donations.getdonationdetails
+      with:
+        donationId: tools.donationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-update-existing-donation-information
+      description: WildApricot Update Existing Donation Information
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-finances-donations.updatedonation
+      with:
+        donationId: tools.donationId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

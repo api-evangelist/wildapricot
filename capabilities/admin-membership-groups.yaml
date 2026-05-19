@@ -1,0 +1,118 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WildApricot Admin API — Membership.Groups
+  description: 'WildApricot Admin API — Membership.Groups. 2 operations. Lead operation: WildApricot List of Ad Hoc Member
+    Groups.. Self-contained Naftiko capability covering one Wildapricot business surface.'
+  tags:
+  - Wildapricot
+  - Membership.Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WILDAPRICOT_API_KEY: WILDAPRICOT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-membership-groups
+    baseUri: https://api.wildapricot.org/v2.2
+    description: WildApricot Admin API — Membership.Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-membergroups
+      path: /accounts/{accountId}/membergroups
+      operations:
+      - name: getmembershipgroups
+        method: GET
+        description: WildApricot List of Ad Hoc Member Groups.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountId-membergroups-memberGroupId
+      path: /accounts/{accountId}/membergroups/{memberGroupId}
+      operations:
+      - name: getmembershipgroupdetails
+        method: GET
+        description: WildApricot Ad Hoc Member Group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: memberGroupId
+          in: path
+          type: integer
+          description: member group identifier
+          required: true
+        - name: includeArchivedMembers
+          in: query
+          type: boolean
+          description: include archived contacts in ContactIds list. Default - true.
+    authentication:
+      type: bearer
+      token: '{{env.WILDAPRICOT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-membership-groups-rest
+    port: 8080
+    description: REST adapter for WildApricot Admin API — Membership.Groups. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/membergroups
+      name: accounts-accountid-membergroups
+      description: REST surface for accounts-accountId-membergroups.
+      operations:
+      - method: GET
+        name: getmembershipgroups
+        description: WildApricot List of Ad Hoc Member Groups.
+        call: admin-membership-groups.getmembershipgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountid}/membergroups/{membergroupid}
+      name: accounts-accountid-membergroups-membergroupid
+      description: REST surface for accounts-accountId-membergroups-memberGroupId.
+      operations:
+      - method: GET
+        name: getmembershipgroupdetails
+        description: WildApricot Ad Hoc Member Group.
+        call: admin-membership-groups.getmembershipgroupdetails
+        with:
+          memberGroupId: rest.memberGroupId
+          includeArchivedMembers: rest.includeArchivedMembers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-membership-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WildApricot Admin API — Membership.Groups. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wildapricot-list-ad-hoc-member
+      description: WildApricot List of Ad Hoc Member Groups.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-membership-groups.getmembershipgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wildapricot-ad-hoc-member-group
+      description: WildApricot Ad Hoc Member Group.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-membership-groups.getmembershipgroupdetails
+      with:
+        memberGroupId: tools.memberGroupId
+        includeArchivedMembers: tools.includeArchivedMembers
+      outputParameters:
+      - type: object
+        mapping: $.
