@@ -2,12 +2,20 @@
   "repo": "wildapricot",
   "feeds": [
     {
-      "source": "https://www.wildapricot.com/blog",
+      "source": "https://www.wildapricot.com/blog/feed/",
       "feed_url": "https://www.wildapricot.com/blog/feed/",
-      "title": "The WildApricot Blog - Memberships, Events & more.",
-      "saved": 5
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://gethelp.wildapricot.com/",
+      "feed_url": "https://gethelp.wildapricot.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 14,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 15,
+  "fetched": "2026-06-01T23:35:02Z"
 }
