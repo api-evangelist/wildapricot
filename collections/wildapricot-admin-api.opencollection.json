@@ -1,0 +1,3387 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Base URL for Specific API Version.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "base URL for specific API version. It provides a list of resources that can be directly accessible by URL without providing any additional information like account ID etc."
+        },
+        {
+          "info": {
+            "name": "WildApricot List of Available Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of accounts available with current oAuth token. Typicaly here would be only one record in an array\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Details for Specific Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Details for specific account\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Contacts List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts",
+            "params": [
+              {
+                "name": "$async",
+                "value": "",
+                "type": "query",
+                "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n"
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Controls which fields are returned in the Contacts API call.  The field names correspond to the fields returned by the [ContactFields API call](#/Contacts.CustomFields/GetContactFieldDefinitions), not the field names that appear in Wild Apricot. Multiple field names are separated by commas, and field names with spaces or special characters are enclosed in single quotation marks.\n"
+              },
+              {
+                "name": "$sort",
+                "value": "",
+                "type": "query",
+                "description": "\nOrdering expression. There are 2 sorting options - **Name** and  **MemberSince**. And also 2 direction modifiers - **asc** and **desc**.\n---\nExample of valid expression - MemberSince asc\n"
+              },
+              {
+                "name": "simpleQuery",
+                "value": "",
+                "type": "query",
+                "description": "\nsimpleQuery is a parameter which allows you to search for contacts by matching a substring in first name, last name, organization, email or phone. This is simpler than using $filter parameter. \n"
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "\nSpecifies that the result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n"
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nContacts search can be executed in synchronous and asynchronous manner. It depends on $async query string parameters.\n  # Synchronous call\n  When API call is processing synchronously, then response is just an array of contacts.\n  To make a synchronous contacts search, client application should make a request with query string parameter **$async=false**.\n\n  `GET https://api.wildapricot.org/v2/accounts/{account_id}/contacts?$async=false&OTHER_QUERY_PARAMS`\n\n  # Asynchronous call\n  Contacts search"
+        },
+        {
+          "info": {
+            "name": "WildApricot Create a New Contact or Member Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Create a New Contact or Member Record"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Current Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/me",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Current Contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Member or Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              },
+              {
+                "name": "getExtendedMembershipInfo",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen GetExtendedMembershipInfo specified the API returns the information about membership order status, membership invoice and allowed actions for current member status.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Member or Contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Information About Existing Member or Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "In order to update contact details it is recommended to provide only the custom fields you want to modify. See POST .../contacts for more details.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete an Archived Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an archived contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Accepts Terms of Use.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/AcceptTermsOfUse",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Accepts Wild Apricot Terms of Use for currently loged in user. Does nothing if accepted already.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contacts.CustomFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Custom Fields Related to Contacts and Members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields",
+            "params": [
+              {
+                "name": "showSectionDividers",
+                "value": "",
+                "type": "query",
+                "description": "Default value is false. Specifies whether section dividers also should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and cannot be removed.\n - Custom fields can be defined by administrator to store some data specific to your account.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Contact / Membership Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Contact / Membership Field"
+        },
+        {
+          "info": {
+            "name": "WildApricot Updates an Existing Contact / Membership Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields/:contactFieldId",
+            "params": [
+              {
+                "name": "contactFieldId",
+                "value": "",
+                "type": "path",
+                "description": "contact field identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Limitations: field type cannot be changed; contact field cannot be transformed to membership field or vice versa"
+        },
+        {
+          "info": {
+            "name": "WildApricot Removes Existing Field by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields/:contactFieldId",
+            "params": [
+              {
+                "name": "contactFieldId",
+                "value": "",
+                "type": "path",
+                "description": "contact field identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "removes existing field by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contacts.SavedSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Saved Searches.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/savedsearches",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot List of Saved Searches."
+        },
+        {
+          "info": {
+            "name": "WildApricot Saved Search and Found Contacts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/savedsearches/:savedSearchId",
+            "params": [
+              {
+                "name": "savedSearchId",
+                "value": "",
+                "type": "path",
+                "description": "Saved Search identifier"
+              },
+              {
+                "name": "excludeArchived",
+                "value": "",
+                "type": "query",
+                "description": "exclude archived contacts from found ContactIDs."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Saved Search and Found Contacts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pictures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Download Picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/pictures/:pictureId",
+            "params": [
+              {
+                "name": "pictureId",
+                "value": "",
+                "type": "path",
+                "description": "Picture identifier"
+              },
+              {
+                "name": "fullSize",
+                "value": "",
+                "type": "query",
+                "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned."
+              },
+              {
+                "name": "asBase64",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded image will be returned."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Picture available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Upload Pictures",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/pictures",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Picture can be uploaded using multipart/form-data POST request (contains Content-Type header set to 'multipart/form-data'). A multipart/form-data request contains a series of parts, each representing a picture. Each part is expected to contain a \"Content-Disposition\" header whose value is \"form-data\". One of its properties (Name, FileName) must be set and have unique value. In case of similar values, only one of those part will be used, others will be dropped. For example, you have uploaded 2 pi"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Download Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/:attachmentId",
+            "params": [
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "Attachment identifier"
+              },
+              {
+                "name": "asBase64",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded image will be returned."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Attachment, available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Attachments Infos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/GetInfos",
+            "params": [
+              {
+                "name": "attachmentIds",
+                "value": "",
+                "type": "query",
+                "description": "list of comma separated Attachment identifiers"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Attachment infos, available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Upload Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/Upload",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Upload attachments data and get their identifiers to use for contact values.  Attachment not used for any Contact field value will be deleted in 30 minutes.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Membership.Levels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of All Membership Levels.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membershiplevels",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of All Membership Levels."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Membership Level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membershiplevels/:levelId",
+            "params": [
+              {
+                "name": "levelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique membership level identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Membership Level"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Membership.Bundles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Membership Bundles.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/bundles",
+            "params": [
+              {
+                "name": "levelId",
+                "value": "",
+                "type": "query",
+                "description": "Provide this parameter to get only bundles related to specific membership level."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Membership Bundles."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Membership Bundle Details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/bundles/:bundleId",
+            "params": [
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique bundle identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Membership Bundle Details."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Membership.Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Ad Hoc Member Groups.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membergroups",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot List of Ad Hoc Member Groups."
+        },
+        {
+          "info": {
+            "name": "WildApricot Ad Hoc Member Group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membergroups/:memberGroupId",
+            "params": [
+              {
+                "name": "memberGroupId",
+                "value": "",
+                "type": "path",
+                "description": "member group identifier"
+              },
+              {
+                "name": "includeArchivedMembers",
+                "value": "",
+                "type": "query",
+                "description": "include archived contacts in ContactIds list. Default - true."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Ad Hoc Member Group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Membership.Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Approve Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/ApprovePendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID to approve membership"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Reject Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/RejectPendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID to reject membership"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Generate or Update Invoice for Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/GenerateInvoiceForPendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID with pending membership"
+              },
+              {
+                "name": "updateIfExists",
+                "value": "",
+                "type": "query",
+                "description": "update the invoice items if already exists"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Events List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events",
+            "params": [
+              {
+                "name": "$async",
+                "value": "",
+                "type": "query",
+                "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n"
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n"
+              },
+              {
+                "name": "$sort",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc"
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n"
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Events List"
+        },
+        {
+          "info": {
+            "name": "WildApricot Create a New Event Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Create a New Event Record"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Event"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Information About Existing Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Information About Existing Event"
+        },
+        {
+          "info": {
+            "name": "WildApricot Completely Delete Event from System.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Completely delete event from system."
+        },
+        {
+          "info": {
+            "name": "WildApricot Clone Existed Event.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/CloneEvent",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Clone Existed Event."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events.EventRegistrationTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Event Registration Types List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EventRegistrationTypes",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration Types List"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Event Registration Type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EventRegistrationTypes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Event Registration Type."
+        },
+        {
+          "info": {
+            "name": "WildApricot Event Registration Type Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EventRegistrationTypes/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event registration type identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration Type Details"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Information About Existing Event Registration Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EventRegistrationTypes/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event registration type identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Information About Existing Event Registration Type"
+        },
+        {
+          "info": {
+            "name": "WildApricot Completely Delete Event Registration Type from the System.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EventRegistrationTypes/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event registration type identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Completely delete event registration type from the system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events.EventRegistrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Event Registrations List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "contact identifier"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "event identifier"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4â€¦.]\n"
+              },
+              {
+                "name": "includeDetails",
+                "value": "",
+                "type": "query",
+                "description": "If false, registration form data is not retrieved"
+              },
+              {
+                "name": "includeWaitlist",
+                "value": "",
+                "type": "query",
+                "description": "Defines if waitlist records should be included in result"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "âš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId, $filter or ids exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter event registrations. âš  Request parameter is required\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Event Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration Details"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Event Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration"
+        },
+        {
+          "info": {
+            "name": "WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/CheckInEventAttendee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag)."
+        },
+        {
+          "info": {
+            "name": "WildApricot Add Waitlisted Person as Event Attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/RegisterFromWaitlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Add Waitlisted Person as Event Attendee"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Invoices by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of contact to whom the invoice is assigned."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event."
+              },
+              {
+                "name": "eventRegistrationId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice."
+              },
+              {
+                "name": "unpaidOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only unpaid invoices."
+              },
+              {
+                "name": "paidOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only paid invoices."
+              },
+              {
+                "name": "includeVoided",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API also returns voided invoices."
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only collection of identifiers instead of collection of invoices."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to invoices created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to invoices created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nâš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId and eventRegistrationId exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter invoices.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Invoice."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique invoice identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Invoice"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Invoice Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Invoice Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Invoice"
+        },
+        {
+          "info": {
+            "name": "WildApricot Generate or Update Invoice for Existing Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/GenerateInvoiceForEventRegistration",
+            "params": [
+              {
+                "name": "eventRegistrationId",
+                "value": "",
+                "type": "query",
+                "description": "Event registration ID with pending membership"
+              },
+              {
+                "name": "updateIfExists",
+                "value": "",
+                "type": "query",
+                "description": "If set to true and invoice already exists, API will update the invoice items."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Generate or Update Invoice for Existing Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Void Active Invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/VoidInvoice",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "query",
+                "description": "invoiceId ID to void"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "See https://gethelp.wildapricot.com/en/articles/76#voiding for details on invoice voiding"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Payments by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of contact who made the payment."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event."
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only collection of identifiers instead of collection of payments."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to payments created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to payments created before EndDate."
+              },
+              {
+                "name": "paimentType",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to payment type."
+              },
+              {
+                "name": "unsettledOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only unsettled payments."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "You can filter the payments by specifying a set of payment IDs."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Payments by Criteria."
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Payment."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique payment identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Payment"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Payment Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Payment Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Payment"
+        },
+        {
+          "info": {
+            "name": "WildApricot Allocate Invoice to Specific Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId/AllocateInvoice",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique payment identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "After this operation invoice will be marked as paid."
+        },
+        {
+          "info": {
+            "name": "WildApricot Allocate Refund to Specific Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique payment identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Allocate Refund to Specific Payment"
+        },
+        {
+          "info": {
+            "name": "WildApricot Allocate Refund to Specific Donation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:donationId/AllocateRefundToDonation",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique donation identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Allocate Refund to Specific Donation"
+        },
+        {
+          "info": {
+            "name": "WildApricot Unallocate Finance Document from Specific Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:paymentId/UnallocateFromPayment",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique payment identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Unallocate Finance Document from Specific Payment"
+        },
+        {
+          "info": {
+            "name": "WildApricot Unallocate Finance Document from Specific Donation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/payments/:donationId/UnallocateFromDonation",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique donation identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Unallocate Finance Document from Specific Donation"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.PaymentAllocations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List Describing How Payments Are Allocated Among Invoices.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/paymentAllocations",
+            "params": [
+              {
+                "name": "InvoiceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of invoice."
+              },
+              {
+                "name": "PaymentId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of payment."
+              },
+              {
+                "name": "RefundId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of refund."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "At least one parameter InvoiceId or PaymentId or RefundId should be specified."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Refunds by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of contact to whom the refund was made."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event."
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only collection of identifiers instead of collection of refunds."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to refunds created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to refunds created before EndDate."
+              },
+              {
+                "name": "unsettledOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only unsettled refunds."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "You can filter the refunds by specifying a set of refund IDs."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Refunds by Criteria."
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Refund.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Refund."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path",
+                "description": "Unique refund identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Refund"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Refund Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Refund Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Refund"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.Tenders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Tenders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/tenders",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Tenders."
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Tender.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/tenders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Tender."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Tender",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/tenders/:tenderId",
+            "params": [
+              {
+                "name": "tenderId",
+                "value": "",
+                "type": "path",
+                "description": "Unique tender identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Tender"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Tender Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/tenders/:tenderId",
+            "params": [
+              {
+                "name": "tenderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Tender Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Tender",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/tenders/:tenderId",
+            "params": [
+              {
+                "name": "tenderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Tender"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.AuditLog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Audit Log Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/auditLogItems",
+            "params": [
+              {
+                "name": "filterObjectType",
+                "value": "",
+                "type": "query",
+                "description": "Kind of object for audit log filter"
+              },
+              {
+                "name": "FilterObjectId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifyer of type filterObjectType"
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to log items created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to log items created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List filter has limitations.\n - if filterObjectType is set then FilterObjectId must be set too.\n - empty filter not allowed (none of filterObjectType, FilterObjectId, StartDate and EndDate are set).\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Single Audit Log Item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/auditLogItems/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Audit log item identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Single Audit Log Item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Donation.CustomFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Custom Fields Related to Donations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields",
+            "params": [
+              {
+                "name": "showSectionDividers",
+                "value": "",
+                "type": "query",
+                "description": "Default value is false. Specifies whether section dividers also should be presented in the response."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and could not be removed.\n - Custom fields could be defined by administrator to store some data specific to your account.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Donation Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Donation Field"
+        },
+        {
+          "info": {
+            "name": "WildApricot Updates an Existing Donation Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields/:donationFieldId",
+            "params": [
+              {
+                "name": "donationFieldId",
+                "value": "",
+                "type": "path",
+                "description": "donation field identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Limitations: field type can not be changed"
+        },
+        {
+          "info": {
+            "name": "WildApricot Removes Existing Field by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields/:donationFieldId",
+            "params": [
+              {
+                "name": "donationFieldId",
+                "value": "",
+                "type": "path",
+                "description": "donation field identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "removes existing field by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Finances.Donations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Donations by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations",
+            "params": [
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to donations created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to donations created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Donations by Criteria."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Donation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations/:donationId",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique donation identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Donation"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Donation Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations/:donationId",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Donation Information"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emailing.SentEmails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Sent Emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/SentEmails",
+            "params": [
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "To get only a list of email identifiers as a result of search request.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Sent emails"
+        },
+        {
+          "info": {
+            "name": "WildApricot Sent Email Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/SentEmails/:emailId",
+            "params": [
+              {
+                "name": "emailId",
+                "value": "",
+                "type": "path",
+                "description": "Email unique Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Sent email details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emailing.Drafts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Email Drafts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts",
+            "params": [
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Email drafts"
+        },
+        {
+          "info": {
+            "name": "WildApricot Email Draft Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts/:draftId",
+            "params": [
+              {
+                "name": "draftId",
+                "value": "",
+                "type": "path",
+                "description": "Email draft Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Email draft details"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Email Draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts/:draftId",
+            "params": [
+              {
+                "name": "draftId",
+                "value": "",
+                "type": "path",
+                "description": "Email draft Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete email draft"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emailing.SentEmailRecipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Sent Email Recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/SentEmailRecipients",
+            "params": [
+              {
+                "name": "emailId",
+                "value": "",
+                "type": "query",
+                "description": "sent email Id (from email Log)"
+              },
+              {
+                "name": "LoadLinks",
+                "value": "",
+                "type": "query",
+                "description": "load clicked links information"
+              },
+              {
+                "name": "Delivered",
+                "value": "",
+                "type": "query",
+                "description": "load delivered or not delivered only"
+              },
+              {
+                "name": "Opened",
+                "value": "",
+                "type": "query",
+                "description": "load opened or not opened only"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Sent email recipients"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emailing.Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Pause or Resume Scheduled Draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/SetEmailDraftSchedule",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Pause or Resume Scheduled Draft."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Preview Version of Email.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/GetEmailDraftPreview",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Preview Version of Email."
+        },
+        {
+          "info": {
+            "name": "WildApricot Send Draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/SendEmailDraft",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Send Draft."
+        },
+        {
+          "info": {
+            "name": "WildApricot Send Draft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/SendEmail",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Send Draft."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Count of Real Email Recipients (unique Addresses).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/CountUniqueAddressesForEmailRecipients",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Count of Real Email Recipients (unique Addresses)."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Count of Real Email Recipients (unique Addresses).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/CountUniqueAddressesForEmailDraft",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Count of Real Email Recipients (unique Addresses)."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Unique Addresses of Real Email Recipients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/GetUniqueAddressesForEmailRecipients",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Unique Addresses of Real Email Recipients."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Unique Addresses of Real Email Recipients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/email/GetUniqueAddressesForEmailDraft",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Unique Addresses of Real Email Recipients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OnlineStore.Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/orders/{orderNumber}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/orders/:orderNumber",
+            "params": [
+              {
+                "name": "orderNumber",
+                "value": "",
+                "type": "path",
+                "description": "Order number"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/orders/{orderNumber}"
+        },
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/orders",
+            "params": [
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "'Specifies the number of records to skip (not include in a result set). For example if you expect about 300 records in result set and want to get them in small portions, you could make do so with 3 calls:'\n- ...&$top=100 - will return records from 0 to 99 - ...?$skip=100&top=100' - will return records from 100 to 199 - ...?$skip=200' - will return records from 199 to the end\n"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "this parameter specifies the maximum number of entries to be returned"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "paymentStatus",
+                "value": "",
+                "type": "query",
+                "description": "Invoice status"
+              },
+              {
+                "name": "From",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range"
+              },
+              {
+                "name": "To",
+                "value": "",
+                "type": "query",
+                "description": "End of the range"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/orders"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OnlineStore.Orders.Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/orders/:orderNumber/status",
+            "params": [
+              {
+                "name": "orderNumber",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OnlineStore.Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/products/{id}"
+        },
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/products",
+            "params": [
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/products"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Internal.Features",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get Information About Feature Availability for Specific Account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/features/:featureId",
+            "params": [
+              {
+                "name": "featureId",
+                "value": "",
+                "type": "path",
+                "description": "feature identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nThere is no way to get full list of features, so api client should know feature identifier. For any invalid featureId API will return {\"Allowed\":true}.\nThis method is reserved **_for internal use only_** and not expected to be used by third party client applications.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
