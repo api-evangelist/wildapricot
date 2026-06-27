@@ -46,10 +46,10 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/openapi/wildapricot-admin-api-openapi.yml
       - type: Authentication
         url: https://gethelp.wildapricot.com/en/articles/484
-      - type: SDK
+      - type: SDKs
         url: https://github.com/WildApricot/ApiSamples
         title: API Samples (.NET)
-      - type: SDK
+      - type: SDKs
         url: https://github.com/douglasdeodato/wildapricot-python-api
         title: Python SDK (Community)
 common:
