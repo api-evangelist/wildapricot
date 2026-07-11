@@ -53,6 +53,8 @@ apis:
         url: https://github.com/douglasdeodato/wildapricot-python-api
         title: Python SDK (Community)
 common:
+  - type: DomainSecurity
+    url: security/wildapricot-domain-security.yml
   - type: Authentication
     url: authentication/wildapricot-authentication.yml
   - type: OAuthScopes

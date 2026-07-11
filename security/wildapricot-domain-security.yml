@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.wildapricot.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  2 21:55:27 2026 GMT
+  hsts: false
+- host: app.wildapricot.com
+  https: false
+- host: api.wildapricot.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  6 15:53:34 2026 GMT
+  hsts: null
+domains:
+- domain: wildapricot.com
+  dnssec: false
+  caa:
+  - 0 issue "amazon.com"
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com"
+  - 0 issue "letsencrypt.org"
+  - 0 iodef "mailto:abuse@wildapricot.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: wildapricot.org
+  dnssec: false
+  caa:
+  - 0 issue "amazon.com"
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: none

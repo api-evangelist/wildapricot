@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wildapricot-admin-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://oauth.wildapricot.org/auth/token
+    scopes: 1
+  description: OAuth2 authentication for WildApricot API
+  sources:
+  - openapi/wildapricot-admin-api-openapi.yml
