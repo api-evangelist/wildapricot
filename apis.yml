@@ -53,6 +53,10 @@ apis:
         url: https://github.com/douglasdeodato/wildapricot-python-api
         title: Python SDK (Community)
 common:
+  - type: Authentication
+    url: authentication/wildapricot-authentication.yml
+  - type: OAuthScopes
+    url: scopes/wildapricot-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/wild-apricot
   - type: Website
