@@ -1,0 +1,360 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts OnlineStore.Orders API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: OnlineStore.Orders
+paths:
+  /accounts/{accountId}/store/orders/{orderNumber}:
+    get:
+      operationId: OnlineStoreOrders_GetByNumber
+      summary: WildApricot GET /accounts/{accountId}/store/orders/{orderNumber}
+      description: ''
+      tags:
+      - OnlineStore.Orders
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: orderNumber
+        in: path
+        required: true
+        description: Order number
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/store/orders:
+    get:
+      operationId: OnlineStoreOrders_GetList
+      summary: WildApricot GET /accounts/{accountId}/store/orders
+      description: ''
+      tags:
+      - OnlineStore.Orders
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: $skip
+        in: query
+        required: false
+        description: '''Specifies the number of records to skip (not include in a result set). For example if you expect about 300 records in result set and want to get them in small portions, you could make do so with 3 calls:''
+
+          - ...&$top=100 - will return records from 0 to 99 - ...?$skip=100&top=100'' - will return records from 100 to 199 - ...?$skip=200'' - will return records from 199 to the end
+
+          '
+        schema:
+          type: integer
+      - name: $top
+        in: query
+        required: false
+        description: this parameter specifies the maximum number of entries to be returned
+        schema:
+          type: integer
+      - name: status
+        in: query
+        required: false
+        description: Order status
+        schema:
+          type: string
+      - name: paymentStatus
+        in: query
+        required: false
+        description: Invoice status
+        schema:
+          type: string
+      - name: From
+        in: query
+        required: false
+        description: Start date of the range
+        schema:
+          type: string
+      - name: To
+        in: query
+        required: false
+        description: End of the range
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    OrderInternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    OrderStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - Unfulfilled
+      - Fulfilled
+      - Cancelled
+      enum:
+      - UNFULFILLED
+      - FULFILLED
+      - CANCELLED
+    PaymentStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - Unpaid
+      - Paid
+      - PartiallyPaid
+      - NoInvoice
+      - Free
+      enum:
+      - UNPAID
+      - PAID
+      - PARTIALLYPAID
+      - NOINVOICE
+      - FREE
+    ShippingAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        province:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+    BillingPerson:
+      type: object
+      required:
+      - contactId
+      properties:
+        contactId:
+          type: integer
+          format: int32
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        phone:
+          type: string
+    OrderProductType:
+      type: string
+      description: ''
+      x-enumNames:
+      - Physical
+      - Digital
+      enum:
+      - PHYSICAL
+      - DIGITAL
+    Country:
+      type: object
+      required:
+      - allowedPaymentMethods
+      properties:
+        name:
+          type: string
+        codeAlpha2:
+          type: string
+        codeAlpha3:
+          type: string
+        codeNumeric:
+          type: integer
+          format: int32
+        allowedPaymentMethods:
+          type: integer
+          format: int32
+    Order:
+      type: object
+      required:
+      - contactId
+      - total
+      - subTotal
+      - isTaxesApplied
+      - isTaxesIncludedTotal
+      - status
+      - paymentStatus
+      properties:
+        url:
+          type: string
+        contactId:
+          type: integer
+          format: int32
+        number:
+          type: string
+        total:
+          type: number
+          format: decimal
+        subTotal:
+          type: number
+          format: decimal
+        isTaxesApplied:
+          type: boolean
+        isTaxesIncludedTotal:
+          type: boolean
+        invoiceId:
+          type: integer
+          format: int32
+        invoiceNumber:
+          type: integer
+          format: int32
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        paymentStatus:
+          $ref: '#/components/schemas/PaymentStatus'
+        internalNote:
+          $ref: '#/components/schemas/OrderInternalNote'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProduct'
+        shippingAddress:
+          $ref: '#/components/schemas/ShippingAddress'
+        billingPerson:
+          $ref: '#/components/schemas/BillingPerson'
+        comment:
+          type: string
+        externalNote:
+          $ref: '#/components/schemas/OrderExternalNote'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        created:
+          type: string
+          format: date-time
+        deliveryOption:
+          $ref: '#/components/schemas/OrderDeliveryOption'
+    Currency:
+      type: object
+      properties:
+        Code:
+          type: string
+          description: Currency code according to ISO4217
+        Name:
+          type: string
+          description: Human-readable currency name
+        Symbol:
+          type: string
+          description: Currency symbol like $ or â‚¬
+    OrderExternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    DeliveryType:
+      type: string
+      description: ''
+      x-enumNames:
+      - Shipping
+      - Pickup
+      enum:
+      - SHIPPING
+      - PICKUP
+    OrderProduct:
+      type: object
+      required:
+      - price
+      - amount
+      - productId
+      - quantity
+      - productType
+      properties:
+        title:
+          type: string
+        price:
+          type: number
+          format: decimal
+        amount:
+          type: number
+          format: decimal
+        productId:
+          type: integer
+          format: int32
+        variantId:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        productType:
+          $ref: '#/components/schemas/OrderProductType'
+        digitalProduct:
+          $ref: '#/components/schemas/OrderDigitalProduct'
+    OrderDigitalProduct:
+      type: object
+      properties:
+        url:
+          type: string
+        code:
+          type: string
+        emailNote:
+          type: string
+    OrderDeliveryOption:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/DeliveryType'
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: decimal
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

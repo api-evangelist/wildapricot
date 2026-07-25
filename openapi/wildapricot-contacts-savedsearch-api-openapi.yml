@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Contacts.SavedSearch API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Contacts.SavedSearch
+paths:
+  /accounts/{accountId}/savedsearches:
+    get:
+      operationId: GetSavedSearchesList
+      summary: WildApricot List of Saved Searches.
+      description: ''
+      tags:
+      - Contacts.SavedSearch
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of saved search descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedSearchListItem'
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/savedsearches/{savedSearchId}:
+    get:
+      operationId: GetSavedSearchDetails
+      summary: WildApricot Saved Search and Found Contacts.
+      description: ''
+      tags:
+      - Contacts.SavedSearch
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: savedSearchId
+        in: path
+        required: true
+        description: Saved Search identifier
+        schema:
+          type: integer
+      - name: excludeArchived
+        in: query
+        required: false
+        description: exclude archived contacts from found ContactIDs.
+        schema:
+          type: boolean
+      - name: $filter
+        in: query
+        required: false
+        description: '
+
+          Filters the results of the Contacts API call so that only those records that match the filter criteria are included.
+
+          See [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.
+
+          '
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Saved Search description and found contact IDs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    SavedSearch:
+      allOf:
+      - $ref: '#/components/schemas/SavedSearchListItem'
+      - type: object
+        properties:
+          ContactIds:
+            type: array
+            items:
+              type: integer
+              description: Contact IDs found by Saved Search.
+    SavedSearchListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique search identifier
+        Name:
+          type: string
+          description: Saved search name
+        Description:
+          type: string
+          description: Save search description
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

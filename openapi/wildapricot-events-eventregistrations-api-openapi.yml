@@ -1,0 +1,595 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Events.EventRegistrations API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Events.EventRegistrations
+paths:
+  /accounts/{accountId}/eventregistrations:
+    get:
+      operationId: GetEventRegistrationsList
+      summary: WildApricot Event Registrations List
+      description: 'âš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId, $filter or ids exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter event registrations. âš  Request parameter is required
+
+        '
+      tags:
+      - Events.EventRegistrations
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: query
+        required: false
+        description: contact identifier
+        schema:
+          type: integer
+      - name: eventId
+        in: query
+        required: false
+        description: event identifier
+        schema:
+          type: integer
+      - name: $filter
+        in: query
+        required: false
+        description: "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4â€¦.]\n"
+        schema:
+          type: string
+      - name: includeDetails
+        in: query
+        required: false
+        description: If false, registration form data is not retrieved
+        schema:
+          type: boolean
+      - name: includeWaitlist
+        in: query
+        required: false
+        description: Defines if waitlist records should be included in result
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of event registrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistrationsResponse'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreateEventRegistration
+      summary: WildApricot Creates a New Event Registration.
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRegistrationPost'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Event registration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistration'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/eventregistrations/{event_registration_id}:
+    get:
+      operationId: GetEventRegistrationDetails
+      summary: WildApricot Event Registration Details
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: event_registration_id
+        in: path
+        required: true
+        description: event registration identifier
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of Event Registrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistration'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteEventRegistration
+      summary: WildApricot Event Registration
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: event_registration_id
+        in: path
+        required: true
+        description: event registration identifier
+        schema:
+          type: number
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    put:
+      operationId: UpdateEventRegistration
+      summary: WildApricot Update Event Registration.
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRegistrationPut'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: event_registration_id
+        in: path
+        required: true
+        description: event registration identifier
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Event registration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistration'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /rpc/{accountId}/CheckInEventAttendee:
+    post:
+      operationId: CheckInEventAttendee
+      summary: WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag).
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckInParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '400':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /rpc/{accountId}/RegisterFromWaitlist:
+    post:
+      operationId: RegisterFromWaitlist
+      summary: WildApricot Add Waitlisted Person as Event Attendee
+      description: ''
+      tags:
+      - Events.EventRegistrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterFromWaitlistParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Event registration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistration'
+        '401':
+          description: ''
+        '400':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    FieldValue:
+      type: object
+      properties:
+        FieldName:
+          type: string
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
+          type: string
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    EventRegistrationPut:
+      type: object
+      required:
+      - Id
+      properties:
+        Id:
+          type: integer
+          description: Unique identifier of event registration
+        RegistrationTypeId:
+          type: integer
+          description: Unique identifier of event registration type
+        IsCheckedIn:
+          type: boolean
+          description: Indicates if registrant is already checked in on event.
+        RegistrationFields:
+          type: array
+          description: A collection of registration fields values
+          items:
+            $ref: '#/components/schemas/FieldValue'
+        ShowToPublic:
+          type: boolean
+          description: Indicates whether this registration can be shown to other event registrants.
+        Memo:
+          type: string
+          description: Some additional notes about this registration.
+        GuestRegistrationsSummary:
+          $ref: '#/components/schemas/GuestRegistrationsSummary'
+        RecreateInvoice:
+          type: boolean
+          description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    EventRegistrationPost:
+      type: object
+      required:
+      - Event
+      - Contact
+      - RegistrationTypeId
+      properties:
+        Id:
+          type: integer
+          description: Unique identifier of event registration
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Event:
+          type: object
+          required:
+          - Id
+          properties:
+            Id:
+              type: integer
+        Contact:
+          type: object
+          required:
+          - Id
+          properties:
+            Id:
+              type: integer
+        RegistrationTypeId:
+          type: integer
+          description: Unique identifier of event registration type
+        GuestRegistrationsSummary:
+          $ref: '#/components/schemas/GuestRegistrationsSummary'
+        IsCheckedIn:
+          type: boolean
+          default: false
+          description: Indicates if registrant is already checked in on event.
+        RegistrationFields:
+          type: array
+          description: A collection of registration fields values
+          items:
+            $ref: '#/components/schemas/FieldValue'
+        ShowToPublic:
+          type: boolean
+          default: false
+          description: Indicates whether this registration can be shown to other event registrants.
+        RegistrationDate:
+          type: string
+          format: datetime
+          description: Date and time when registration was created. (Account local time)
+        Memo:
+          type: string
+          description: Some additional notes about this registration.
+        RecreateInvoice:
+          type: boolean
+          default: false
+          description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
+    CheckInParams:
+      type: object
+      required:
+      - RegistrationId
+      - CheckedIn
+      properties:
+        RegistrationId:
+          type: integer
+          description: Event registration Id.
+        CheckedIn:
+          type: boolean
+          description: Check in (true) or check out (false).
+        CheckedInGuests:
+          type: integer
+          description: For event registrations with anonymous guests (guests as number), sets number of checked-in guests.
+    GuestRegistrationsSummary:
+      properties:
+        NumberOfGuests:
+          type: integer
+          description: Number of guests registered along with the registrant. If event registration type requires guests registration with details (contact information, etc.), this value is 0.
+        NumberOfGuestsCheckedIn:
+          type: integer
+          description: Number of guests who already checked in. If event registration type requires guests registration with details (contact information, etc.), this value is null.
+        GuestRegistrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: 'List of guest registrations links. If event registration type expects guest registration by number (without contact information), this value is null. This value cannot be saved or updated using API.
+
+            '
+    EventRegistrationStatus:
+      type: string
+      description: 'Describes event registration status
+
+        '
+      enum:
+      - Undefined
+      - Paid
+      - Unpaid
+      - PartiallyPaid
+      - Canceled
+      - Free
+      - NoInvoice
+      - OnWaitlist
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    EventStub:
+      properties:
+        Id:
+          type: integer
+          description: Event identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+          description: Event Url to get event details from API.
+        Name:
+          type: string
+          description: Event title.
+        StartDate:
+          type: string
+          format: datetime
+          description: Date and time when the event is scheduled to start.
+        EndDate:
+          type: string
+          format: datetime
+          description: Date and time when the event is scheduled to end. Could be empty.
+        Location:
+          type: string
+          description: Location where the event will take place.
+    EventRegistrationsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistration'
+      description: List of event registrations that matches request criteria.
+    RegisterFromWaitlistParams:
+      type: object
+      required:
+      - WaitlistRegistrationId
+      - EventId
+      - GenerateInvoice
+      properties:
+        WaitlistRegistrationId:
+          type: integer
+          description: Event registration Id.
+        EventId:
+          type: integer
+          description: Event Id.
+        GenerateInvoice:
+          type: boolean
+          default: true
+          description: Defines if invoice should be generated in case if registration is considered paid (registration fee > 0 or any extra costs selected)
+    EventRegistration:
+      type: object
+      required:
+      - Id
+      - Url
+      - Event
+      - Contact
+      - RegistrationType
+      - RegistrationTypeId
+      - DisplayName
+      - Organization
+      - IsCheckedIn
+      - RegistrationFee
+      - PaidSum
+      - IsPaid
+      - ShowToPublic
+      - RegistrationDate
+      - IsGuestRegistration
+      properties:
+        Id:
+          type: integer
+          description: Unique identifier of event registration
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Event:
+          $ref: '#/components/schemas/EventStub'
+        Contact:
+          $ref: '#/components/schemas/LinkedResourceWithName'
+        RegistrationType:
+          $ref: '#/components/schemas/LinkedResourceWithName'
+        RegistrationTypeId:
+          type: integer
+          description: Unique identifier of event registration type
+        GuestRegistrationsSummary:
+          $ref: '#/components/schemas/GuestRegistrationsSummary'
+        DisplayName:
+          type: string
+          description: Contact display name.
+        Organization:
+          type: string
+          description: Contact display name.
+        IsCheckedIn:
+          type: boolean
+          default: false
+          description: Indicates if registrant is already checked in for event.
+        RegistrationFee:
+          type: number
+          format: decimal
+          description: The fee for this registration including all extra charges and taxes.
+        PaidSum:
+          type: number
+          format: decimal
+          description: The sum that the registrant has already paid for the registration.
+        IsPaid:
+          type: boolean
+          default: false
+          description: Indicates if the registrant has already paid for the registration.
+        RegistrationFields:
+          type: array
+          description: A collection of registration fields values
+          items:
+            $ref: '#/components/schemas/FieldValue'
+        ShowToPublic:
+          type: boolean
+          default: false
+          description: Indicates whether this registration can be shown to other event registrants.
+        RegistrationDate:
+          type: string
+          format: datetime
+          description: Date and time when registration was created. (Account local time)
+        Memo:
+          type: string
+          description: Some additional notes about this registration.
+        IsGuestRegistration:
+          type: boolean
+          default: false
+          description: Boolean. True if this is a guest registration, otherwise false.
+        OnWaitlist:
+          type: boolean
+          default: false
+          description: Indicates if event registration is in waitlist.
+        RecreateInvoice:
+          type: boolean
+          default: false
+          description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
+        ParentRegistration:
+          $ref: '#/components/schemas/LinkedResource'
+        Status:
+          $ref: '#/components/schemas/EventRegistrationStatus'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

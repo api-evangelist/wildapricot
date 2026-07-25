@@ -1,0 +1,602 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Finances.Invoices API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Finances.Invoices
+paths:
+  /accounts/{accountId}/invoices:
+    get:
+      operationId: GetInvoicesList
+      summary: WildApricot Get List of Invoices by Criteria.
+      description: '
+
+        âš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId and eventRegistrationId exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter invoices.
+
+        '
+      tags:
+      - Finances.Invoices
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: query
+        required: false
+        description: Identifier of contact to whom the invoice is assigned.
+        schema:
+          type: integer
+      - name: eventId
+        in: query
+        required: false
+        description: Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.
+        schema:
+          type: integer
+      - name: eventRegistrationId
+        in: query
+        required: false
+        description: Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.
+        schema:
+          type: integer
+      - name: unpaidOnly
+        in: query
+        required: false
+        description: When set to true, API returns only unpaid invoices.
+        schema:
+          type: boolean
+      - name: paidOnly
+        in: query
+        required: false
+        description: When set to true, API returns only paid invoices.
+        schema:
+          type: boolean
+      - name: includeVoided
+        in: query
+        required: false
+        description: When set to true, API also returns voided invoices.
+        schema:
+          type: boolean
+      - name: idsOnly
+        in: query
+        required: false
+        description: When set to true, API returns only collection of identifiers instead of collection of invoices.
+        schema:
+          type: boolean
+      - name: StartDate
+        in: query
+        required: false
+        description: Limits result to invoices created since StartDate.
+        schema:
+          type: string
+      - name: EndDate
+        in: query
+        required: false
+        description: Limits result to invoices created before EndDate.
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of invoices that match criteria.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoicesResponse'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreateInvoice
+      summary: WildApricot Creates a New Invoice.
+      description: ''
+      tags:
+      - Finances.Invoices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInvoiceParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Created invoice ID
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/invoices/{invoiceId}:
+    get:
+      operationId: GetInvoiceDetails
+      summary: WildApricot Retrieve Information About Specific Invoice
+      description: ''
+      tags:
+      - Finances.Invoices
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: invoiceId
+        in: path
+        required: true
+        description: Unique invoice identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: information about specific invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    put:
+      operationId: UpdateInvoice
+      summary: WildApricot Update Existing Invoice Information
+      description: ''
+      tags:
+      - Finances.Invoices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInvoiceParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: invoiceId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns 200 on successful data update
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteInvoice
+      summary: WildApricot Delete Existing Invoice
+      description: ''
+      tags:
+      - Finances.Invoices
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: invoiceId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns 200 on successful invoice deletion
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /rpc/{accountId}/GenerateInvoiceForEventRegistration:
+    post:
+      operationId: GenerateInvoiceForEventRegistration
+      summary: WildApricot Generate or Update Invoice for Existing Event Registration.
+      description: ''
+      tags:
+      - Finances.Invoices
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: eventRegistrationId
+        in: query
+        required: true
+        description: Event registration ID with pending membership
+        schema:
+          type: integer
+      - name: updateIfExists
+        in: query
+        required: false
+        description: If set to true and invoice already exists, API will update the invoice items.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: created or updated invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - OAuth2:
+        - auto
+  /rpc/{accountId}/VoidInvoice:
+    post:
+      operationId: VoidInvoice
+      summary: WildApricot Void Active Invoice.
+      description: See https://gethelp.wildapricot.com/en/articles/76#voiding for details on invoice voiding
+      tags:
+      - Finances.Invoices
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: invoiceId
+        in: query
+        required: true
+        description: invoiceId ID to void
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    SalesTax:
+      description: Taxes applied to the invoice according to account Tax Rules settings.
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Internal account tax name.
+        PublicId:
+          type: string
+          description: Public tax ID (displayed on invoices).
+        Rate:
+          type: number
+          description: Tax rate value.
+    InvoicesResponse:
+      allOf:
+      - $ref: '#/components/schemas/InvoiceIdsResponse'
+      - $ref: '#/components/schemas/InvoiceListResponse'
+    FinanceDocument:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique document identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Value:
+          type: number
+          format: float
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Contact:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Link to contact who is assigned to the financial document.
+        CreatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was created.
+        CreatedBy:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who created the document. Could be null.
+        UpdatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was last modified.  Could be null.
+        UpdatedBy:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who modified the document. Could be null.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    OrderDetailType:
+      type: string
+      description: Type of invoice detail item.
+      enum:
+      - Unspecified
+      - EventRegistration
+      - GuestsNumber
+      - GuestCard
+      - ExtraCost
+      - MemberLevel
+      - Prorate
+      - Discount
+      - Donation
+      - OnlineStoreProduct
+      - OnlineStoreShipping
+    InvoiceIdsResponse:
+      type: object
+      properties:
+        InvoiceIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of invoices identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    CreateInvoiceParams:
+      allOf:
+      - $ref: '#/components/schemas/EditInvoiceParams'
+    Invoice:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          DocumentNumber:
+            type: string
+            description: Invoice number.
+          IsPaid:
+            type: boolean
+            description: Indicates if the invoice is fully paid.
+          PaidAmount:
+            type: number
+            description: Sum already paid for this invoice.
+          OrderType:
+            $ref: '#/components/schemas/InvoiceOrderType'
+          EventRegistration:
+            allOf:
+            - $ref: '#/components/schemas/LinkedResource'
+            - description: Link to related event registration or null.
+          OrderDetails:
+            type: array
+            items:
+              $ref: '#/components/schemas/OrderDetailRecord'
+          Memo:
+            type: string
+            description: Internal note on invoice. Visible to administrators only.
+          PublicMemo:
+            type: string
+            description: Comment on invoice. Visible to both administrators and the person being invoiced.
+          VoidedDate:
+            type: string
+            format: date
+            description: When invoice is voided this field indicates date of void. Voided invoice does not affect balance. For regular invoices this field is null.
+    SalesTaxInfo:
+      type: object
+      description: Describe taxes applied to this invoice item
+      properties:
+        Amount:
+          type: number
+          description: total gross amount including all taxes
+        CalculatedTax1:
+          type: number
+          description: tax 1 amount
+        CalculatedTax2:
+          type: number
+          description: tax 2 amount
+        NetAmount:
+          type: number
+          description: net amount from invoice items
+        RoundedAmount:
+          type: number
+          description: rounded total amount including all taxes
+        Tax1:
+          allOf:
+          - $ref: '#/components/schemas/SalesTax'
+          - description: applied Tax 1 description
+        Tax2:
+          allOf:
+          - $ref: '#/components/schemas/SalesTax'
+          - description: applied Tax 2 description
+    UpdateInvoiceParams:
+      allOf:
+      - $ref: '#/components/schemas/EditInvoiceParams'
+      - properties:
+          Id:
+            type: integer
+            description: Identifier of the invoice to update
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code, like Validation / Search / ...
+        message:
+          type: string
+          description: An explanation of why this error occured
+        details:
+          type: object
+          description: More information about the error. Data structure is specific for each kind of error.
+    InvoiceListResponse:
+      type: object
+      properties:
+        Invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+          description: List of invoices that match request criteria.
+    EditInvoiceParams:
+      type: object
+      properties:
+        Value:
+          type: number
+          format: float
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Contact:
+          type: object
+          properties:
+            Id:
+              type: integer
+              description: ID of contact to whom the invoice is assigned.
+        CreatedBy:
+          type: object
+          properties:
+            Id:
+              type: integer
+              description: ID of contact who created the document. Could be null.
+        UpdatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was last modified.  Could be null.
+        UpdatedBy:
+          type: object
+          properties:
+            Id:
+              type: integer
+              description: ID of contact who modified the document. Could be null.
+        DocumentNumber:
+          type: string
+          description: Invoice number.
+        OrderType:
+          $ref: '#/components/schemas/InvoiceOrderType'
+        OrderDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDetailRecord'
+        Memo:
+          type: string
+          description: Internal note on invoice. Visible to administrators only.
+        PublicMemo:
+          type: string
+          description: Comment on invoice. Visible to both administrators and the person being invoicec.
+    InvoiceOrderType:
+      type: string
+      description: Type of invoice.
+      enum:
+      - Undefined
+      - MembershipApplication
+      - MembershipRenewal
+      - MembershipLevelChange
+      - EventRegistration
+      - Donation
+      - OnlineStore
+    OrderDetailRecord:
+      type: object
+      properties:
+        Value:
+          type: number
+          format: float
+          description: Sum to pay for this item. Can be negative (discounts).
+        OrderDetailType:
+          $ref: '#/components/schemas/OrderDetailType'
+        Notes:
+          type: string
+          description: Comment to order detail
+        Taxes:
+          $ref: '#/components/schemas/SalesTaxInfo'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

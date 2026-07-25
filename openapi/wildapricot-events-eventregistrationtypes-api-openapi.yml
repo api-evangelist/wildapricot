@@ -1,0 +1,388 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Events.EventRegistrationTypes API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Events.EventRegistrationTypes
+paths:
+  /accounts/{accountId}/EventRegistrationTypes:
+    get:
+      operationId: getEventRegistrationTypesList
+      summary: WildApricot Event Registration Types List
+      description: ''
+      tags:
+      - Events.EventRegistrationTypes
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: eventId
+        in: query
+        required: true
+        description: event identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of event registration types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistrationTypeResponse'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreateEventRegistrationType
+      summary: WildApricot Creates a New Event Registration Type.
+      description: ''
+      tags:
+      - Events.EventRegistrationTypes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRegistrationTypeEditParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Created event registration type ID
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/EventRegistrationTypes/{typeId}:
+    get:
+      operationId: GetEventRegistrationTypeDetails
+      summary: WildApricot Event Registration Type Details
+      description: ''
+      tags:
+      - Events.EventRegistrationTypes
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: typeId
+        in: path
+        required: true
+        description: Unique event registration type identifier
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Information about specific event registration type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegistrationType'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    put:
+      operationId: UpdateEventRegistrationType
+      summary: WildApricot Update Information About Existing Event Registration Type
+      description: ''
+      tags:
+      - Events.EventRegistrationTypes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRegistrationTypeEditParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: typeId
+        in: path
+        required: true
+        description: Unique event registration type identifier
+        schema:
+          type: number
+      responses:
+        '200':
+          description: No information returned on successful update
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteEventRegistrationType
+      summary: WildApricot Completely Delete Event Registration Type from the System.
+      description: Completely delete event registration type from the system.
+      tags:
+      - Events.EventRegistrationTypes
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: typeId
+        in: path
+        required: true
+        description: Unique event registration type identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    EventRegistrationTypeResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistrationType'
+      description: List of event registration types that match the request criteria.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    EventRegistrationUnavailabilityPolicy:
+      type: string
+      enum:
+      - ShowDisabled
+      - Hide
+      description: Indicates what is displayed if the registration type is not available for a particular visitor.
+    EventRegistrationCancellationBehavior:
+      type: string
+      enum:
+      - DoNotAllow
+      - AllowUpToPeriodBeforeEvent
+      - Allow
+      description: Indicates if it is possible for attendee to self-cancel event registration.
+    EventRegistrationType:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique event registration type identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        IsEnabled:
+          type: boolean
+          description: Indicates whether this registration type is enabled
+        EventId:
+          type: integer
+          description: Identifier of event related to the registration type.
+        Name:
+          type: string
+          description: Registraton type title.
+        Description:
+          type: string
+          description: Plain text description for the event registration type.
+        BasePrice:
+          type: number
+          description: Base price registrant pays for this registration type.
+        GuestPrice:
+          type: number
+          description: Price for each additional guest.
+        UseTaxScopeSettings:
+          type: boolean
+          description: Indicates whether account tax scope settings should be used to calculate final price.
+        Availability:
+          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
+        RegistrationCode:
+          type: string
+          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
+        AvailableForMembershipLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
+        AvailableFrom:
+          type: string
+          format: datetime
+          description: This registration type is available starting from this date. Can be null.
+        AvailableThrough:
+          type: string
+          format: datetime
+          description: This registration type is available until this date. Can be null.
+        MaximumRegistrantsCount:
+          type: integer
+          description: Maximum number of registrants for this registration type.
+        CurrentRegistrantsCount:
+          type: integer
+          description: Current number of registrants for this registration type.
+        GuestRegistrationPolicy:
+          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
+        UnavailabilityPolicy:
+          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
+        CancellationBehaviour:
+          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
+        CancellationDaysBeforeEvent:
+          type: integer
+          description: In case if CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field indicates the minimum number of days before the event that cancellations are allowed.
+        IsWaitlistEnabled:
+          type: boolean
+          description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
+    EventRegistrationTypeAvailability:
+      type: string
+      enum:
+      - Everyone
+      - MembersOnly
+      - CodeRequired
+      description: Indicates who the registration type is available to.
+    EventRegistrationTypeEditParams:
+      type: object
+      required:
+      - EventId
+      properties:
+        Id:
+          type: integer
+          description: Unique event identifier. This field should be provided only when updating existing event registration type
+        EventId:
+          type: integer
+          description: Identifier of event related to the registration type.
+        Name:
+          type: string
+          description: 'Registraton type title. This field should be provided only when creating new registration type
+
+            '
+        IsEnabled:
+          type: boolean
+          description: Indicates whether this registration type is enabled
+        Description:
+          type: string
+          description: Plain text description for the event registration type.
+        BasePrice:
+          type: number
+          description: Base price registrant pays with this registration type.
+        GuestPrice:
+          type: number
+          description: Price for each additional guest.
+        UseTaxScopeSettings:
+          type: boolean
+          default: false
+          description: 'Indicates whether account tax scope settings should be used to calculate final price. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to default value
+
+            '
+        Availability:
+          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
+        RegistrationCode:
+          type: string
+          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
+        AvailableForMembershipLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
+        AvailableFrom:
+          type: string
+          format: datetime
+          description: 'This registration type is available starting from this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
+
+            '
+        AvailableThrough:
+          type: string
+          format: datetime
+          description: 'This registration type is available until this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
+
+            '
+        MaximumRegistrantsCount:
+          type: integer
+          description: Maximum number of registrants for this registration type.
+        GuestRegistrationPolicy:
+          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
+        UnavailabilityPolicy:
+          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
+        CancellationBehaviour:
+          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
+        CancellationDaysBeforeEvent:
+          type: integer
+          description: If CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field contains minimum number of days before the event that cancellations are allowed
+        IsWaitlistEnabled:
+          type: boolean
+          description: Indicated whether registrant should be placed on waitlist if registrations have reached their limit.
+    EventGuestRegistrationPolicy:
+      type: string
+      enum:
+      - Disabled
+      - NumberOfGuests
+      - CollectContactDetails
+      - CollectFullInfo
+      description: 'Describes how guests are registered. Allowed values are
+
+        - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

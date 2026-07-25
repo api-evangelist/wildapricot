@@ -1,0 +1,260 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Accounts
+  description: Account management operations
+paths:
+  /:
+    get:
+      operationId: GetApiResources
+      summary: WildApricot Base URL for Specific API Version.
+      description: base URL for specific API version. It provides a list of resources that can be directly accessible by URL without providing any additional information like account ID etc.
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Array of resources
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resource'
+      security:
+      - OAuth2:
+        - auto
+  /accounts:
+    get:
+      operationId: GetAccountsList
+      summary: WildApricot List of Available Accounts
+      description: 'List of accounts available with current oAuth token. Typicaly here would be only one record in an array
+
+        '
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: An array of accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}:
+    get:
+      operationId: GetAccount
+      summary: WildApricot Details for Specific Account
+      description: 'Details for specific account
+
+        '
+      tags:
+      - Accounts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    BillingPlan:
+      type: object
+      description: Current account billing plan.
+      properties:
+        Name:
+          type: string
+          description: Billing plan name
+        Price:
+          type: number
+          description: Monthly price
+    Resource:
+      type: object
+      required:
+      - Name
+      - Url
+      - AllowedOperations
+      properties:
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Name:
+          type: string
+          description: Name of resource
+        Description:
+          type: string
+          description: Text description of the resource
+        AllowedOperations:
+          type: array
+          items:
+            type: string
+          description: 'Collection of allowed operations for this resource. Possible values are
+
+            GET - Resource can be requested
+
+            POST - Resource can be created
+
+            PUT - Resource can be updated
+
+            DELETE - Resource can be deleted
+
+            '
+    Localization:
+      type: object
+      properties:
+        DateFormat:
+          type: string
+          description: Date format like "d MMM yyyy"
+        TimeFormat:
+          type: string
+          description: Time format like "h:mm tt"
+    Currency:
+      type: object
+      properties:
+        Code:
+          type: string
+          description: Currency code according to ISO4217
+        Name:
+          type: string
+          description: Human-readable currency name
+        Symbol:
+          type: string
+          description: Currency symbol like $ or â‚¬
+    PaymentSettings:
+      type: object
+      properties:
+        GeneralPaymentInstructions:
+          type: string
+          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
+        EventPaymentInstructions:
+          type: string
+          description: For event registrations (can be changed for each event)
+        MembershipPaymentInstructions:
+          type: string
+          description: For membership applications, renewals and level changes
+    TimeZone:
+      type: object
+      description: Details about account time zone
+      properties:
+        ZoneId:
+          type: string
+          description: Time zone id, i.e. "Arabic Standard Time"
+        Name:
+          type: string
+          description: Time zone name, i.e. "(UTC+03:00) Baghdad"
+        UtcOffset:
+          type: integer
+          description: Offcet from UTC Time in minutes, i.e. "180"
+    SquareRegisterSettings:
+      type: object
+      required:
+      - IntegrationEnabled
+      description: Settings for Square Register integration, used for mobile app
+      properties:
+        IntegrationEnabled:
+          type: boolean
+          description: Is integration enabled in admin UI.
+        ClientId:
+          type: string
+          description: (optional) Square client Id
+    ContactLimitInfo:
+      type: object
+      description: Details about limits on the number of contacts.
+      properties:
+        CurrentContactsCount:
+          type: integer
+          description: Number of contacts currently in database (archived excluded)
+        BillingPlanContactsLimit:
+          type: integer
+          description: Maximum number of contacts allowed by billing plan.
+    Account:
+      type: object
+      description: Information about Wild Apricot account
+      required:
+      - Id
+      - Name
+      - PrimaryDomainName
+      - ContactLimitInfo
+      - Currency
+      - Localization
+      - SquareRegisterSettings
+      properties:
+        Id:
+          type: integer
+          description: Account unique identifier.
+        Name:
+          type: string
+          description: The account name. This corresponds to the organization name as it appears on the Organization details screen.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        PrimaryDomainName:
+          type: string
+          description: The primary domain name for the account.
+        IsFreeAccount:
+          type: boolean
+        Resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+          description: Collection of account-related resources.
+        ContactLimitInfo:
+          $ref: '#/components/schemas/ContactLimitInfo'
+        TimeZone:
+          $ref: '#/components/schemas/TimeZone'
+        Currency:
+          $ref: '#/components/schemas/Currency'
+        Localization:
+          $ref: '#/components/schemas/Localization'
+        SquareRegisterSettings:
+          $ref: '#/components/schemas/SquareRegisterSettings'
+        PaymentSettings:
+          $ref: '#/components/schemas/PaymentSettings'
+        BillingPlan:
+          $ref: '#/components/schemas/BillingPlan'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

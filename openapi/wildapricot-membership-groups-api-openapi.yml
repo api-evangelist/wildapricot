@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Membership.Groups API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Membership.Groups
+paths:
+  /accounts/{accountId}/membergroups:
+    get:
+      operationId: GetMembershipGroups
+      summary: WildApricot List of Ad Hoc Member Groups.
+      description: ''
+      tags:
+      - Membership.Groups
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of member group descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MembershipGroupListItem'
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/membergroups/{memberGroupId}:
+    get:
+      operationId: GetMembershipGroupDetails
+      summary: WildApricot Ad Hoc Member Group.
+      description: ''
+      tags:
+      - Membership.Groups
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: memberGroupId
+        in: path
+        required: true
+        description: member group identifier
+        schema:
+          type: integer
+      - name: includeArchivedMembers
+        in: query
+        required: false
+        description: include archived contacts in ContactIds list. Default - true.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: member group description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipGroup'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    MembershipGroupListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique group identifier
+        Name:
+          type: string
+          description: group name
+        Description:
+          type: string
+          description: group description
+    MembershipGroup:
+      allOf:
+      - $ref: '#/components/schemas/MembershipGroupListItem'
+      - type: object
+        properties:
+          ContactsCount:
+            type: integer
+            description: Total count of group participants
+          ContactIds:
+            type: array
+            items:
+              type: integer
+              description: Contact IDs of group participants.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Membership.Levels API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Membership.Levels
+paths:
+  /accounts/{accountId}/membershiplevels:
+    get:
+      operationId: GetMembershipLevelsList
+      summary: WildApricot Get List of All Membership Levels.
+      description: ''
+      tags:
+      - Membership.Levels
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of membership levels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MembershipLevel'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/membershiplevels/{levelId}:
+    get:
+      operationId: GetMembershipLevelDetails
+      summary: WildApricot Retrieve Information About Specific Membership Level
+      description: ''
+      tags:
+      - Membership.Levels
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: levelId
+        in: path
+        required: true
+        description: Unique membership level identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: information about specific membership level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipLevel'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    MembershipRenewalPeriod:
+      type: object
+      description: Describes membership renewal period.
+      properties:
+        Kind:
+          type: string
+          enum:
+          - Never
+          - Monthly
+          - Quarterly
+          - TwiceAYear
+          - EveryNYears
+          description: Period of renewal.
+        StartFromJoinDate:
+          type: boolean
+          description: Indicates if renewal period starts from join date. Otherwise, starts from dates specified in Dates field.
+        Dates:
+          type: array
+          description: Collection of renewal dates during a year.
+          items:
+            type: object
+            properties:
+              Month:
+                type: integer
+                description: Month of a year, 1-12
+                minimum: 1
+                maximum: 12
+              Day:
+                type: integer
+                description: Day of a month
+                minimum: 1
+                maximum: 31
+        AutomaticRecurringPayments:
+          type: boolean
+          description: Indicates if recurring payments will be charged automatically.
+        ApplicationReview:
+          type: object
+          description: Application approval policy
+          properties:
+            PrepayRequired:
+              type: boolean
+              description: If true, membership fee should be received in full before application is activated. Else, approved memberships activate immediately, regardless of payment status.
+            AdminApprovalRequired:
+              type: boolean
+              description: '
+
+                Indicates that account administrator should approve membership application.
+
+                False means that all applications are considered approved when they are submitted.'
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    MembershipLevel:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique membership level identifier
+        Name:
+          type: string
+          description: level name
+        Description:
+          type: string
+          description: level description
+        PublicCanApply:
+          type: boolean
+          description: Indicates if non-member can apply for membership with this level.
+        Type:
+          type: string
+          enum:
+          - Individual
+          - Bundle
+          description: Indicates if membership level is individual or bundle.
+        BundleMembersLimit:
+          type: integer
+          description: Maximum number of bundle members. Empty for individuals.
+        MembershipFee:
+          type: number
+          description: Price of being a member with this level of membership. Price is for RenewalPeriod.
+        MemberCanChangeToLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: Member can switch from current level to one of levels from this list.
+        RenewalPeriod:
+          $ref: '#/components/schemas/MembershipRenewalPeriod'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

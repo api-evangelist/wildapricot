@@ -1,0 +1,277 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Emailing.Drafts API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Emailing.Drafts
+paths:
+  /accounts/{accountId}/EmailDrafts:
+    get:
+      operationId: GetEmailDraftsList
+      summary: WildApricot Email Drafts
+      description: Email drafts
+      tags:
+      - Emailing.Drafts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: idsOnly
+        in: query
+        required: false
+        description: 'Should be set to true in order to get only a list of email identifiers as a result of search request.
+
+          '
+        schema:
+          type: boolean
+      - name: $filter
+        in: query
+        required: false
+        description: "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A wrapper object, which contains a list of sent emails. also contains EmailDraftIdentifiersResult if idsOnly parameter is true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDraftListResult'
+        '401':
+          description: ''
+        '428':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/EmailDrafts/{draftId}:
+    get:
+      operationId: GetEmailDraft
+      summary: WildApricot Email Draft Details
+      description: Email draft details
+      tags:
+      - Emailing.Drafts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: draftId
+        in: path
+        required: true
+        description: Email draft Id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Email draft
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDraft'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteEmailDraft
+      summary: WildApricot Delete Email Draft
+      description: Delete email draft
+      tags:
+      - Emailing.Drafts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: draftId
+        in: path
+        required: true
+        description: Email draft Id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
+    EmailDraft:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique email draft identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        CreatedDate:
+          type: string
+          format: datetime
+          description: Date and time when the draft was created.
+        Type:
+          $ref: '#/components/schemas/EmailDraftType'
+        Subject:
+          type: string
+          description: 'Value for email subject. It may contain macros, which will be replaced before delivery.
+
+            '
+        Body:
+          type: string
+          description: 'Value for email body. Usually it is HTML content with macros, which will be replaced before delivery.
+
+            '
+        ReplyToName:
+          type: string
+          description: Display name for reply to
+        ReplyToAddress:
+          type: string
+          description: Email address to use as reply to.
+        EventId:
+          type: integer
+          description: Event identifier for which the draft has been started (if any).
+        Creator:
+          $ref: '#/components/schemas/ShortContact'
+        IsLinkTrackingAllowed:
+          type: boolean
+          description: Indicates if email tracking is enabled for this email.
+        Recipients:
+          $ref: '#/components/schemas/EmailRecipients'
+        LastChangedDate:
+          type: string
+          format: datetime
+          description: Date and time when the draft was last modified.
+        Modifier:
+          $ref: '#/components/schemas/ShortContact'
+        IsScheduled:
+          type: boolean
+          description: Indicates if draft delivery is scheduled for a particular date. See ScheduledDate value.
+        ScheduledDate:
+          type: string
+          format: datetime
+          description: Date and time when the draft will be sent.
+    EmailDraftType:
+      type: string
+      enum:
+      - Unknown
+      - ContactBlast
+      - EventAttendees
+      - EventWaitlistPersons
+    ShortContact:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique contact identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        FirstName:
+          type: string
+          description: Contact first name
+        LastName:
+          type: string
+          description: Contact last name
+    EmailRecipient:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: 'If email was sent to individual recipient, this field contains contact identifier.
+
+            If email was sent to all recipients from some saved search, this field contains saved search identifier.
+
+            '
+        Type:
+          type: integer
+          description: Recipient group type.
+          enum:
+          - IndividualContactRecipient
+          - IndividualEventRegistrationRecipient
+          - EventAttendees_CheckedIn
+          - EventAttendees_NotCheckedIn
+          - EventAttendees_Paid
+          - EventAttendees_NotPaid
+          - EventAttendees_All
+          - EventAttendees_Selected
+          - Contacts_All
+          - Contacts_Selected
+          - Contacts_SavedSearch
+          - Members_All
+          - Members_SavedSearch
+          - SentEmailRecipient
+          - EventWaitlist_All
+          - EventWaitlist_Selected
+        Name:
+          type: string
+          description: Display name of recipient or name of saved search.
+        Email:
+          type: string
+          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailDraftListResult:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDraft'
+          description: Collection of email drafts.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

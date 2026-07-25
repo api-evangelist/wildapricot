@@ -1,0 +1,715 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Contacts API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Contacts
+  description: Contact/member management
+paths:
+  /accounts/{accountId}/contacts:
+    get:
+      operationId: GetContactsList
+      summary: WildApricot Contacts List
+      description: "\nContacts search can be executed in synchronous and asynchronous manner. It depends on $async query string parameters.\n  # Synchronous call\n  When API call is processing synchronously, then response is just an array of contacts.\n  To make a synchronous contacts search, client application should make a request with query string parameter **$async=false**.\n\n  `GET https://api.wildapricot.org/v2/accounts/{account_id}/contacts?$async=false&OTHER_QUERY_PARAMS`\n\n  # Asynchronous call\n  Contacts search is processed asynchronously by default. So if client application specifies $async=true, or does not specify this parameter at all, the request is processed as described below. In this case contacts search is a two-step action.\n  - **Search request**. Client specifies search conditions and receives resultId. See $filter and $select parameters for filtering.\n  - **Retrieve result**. Client passes resultId and receives request processing status and contacts list if request is already processed\n\n![async contact search diagramm](http://localhost:8019/Content/swagger/WAFiles/ContactListAsyncCall.png)\n"
+      tags:
+      - Contacts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: $async
+        in: query
+        required: false
+        description: '
+
+          Controls whether the API call is perform asynchronously. Default value if true.
+
+          '
+        schema:
+          type: boolean
+      - name: resultId
+        in: query
+        required: false
+        description: '
+
+          This parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.
+
+          '
+        schema:
+          type: string
+      - name: $filter
+        in: query
+        required: false
+        description: '
+
+          Filters the results of the Contacts API call so that only those records that match the filter criteria are included.
+
+          See [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.
+
+          '
+        schema:
+          type: string
+      - name: $select
+        in: query
+        required: false
+        description: 'Controls which fields are returned in the Contacts API call.  The field names correspond to the fields returned by the [ContactFields API call](#/Contacts.CustomFields/GetContactFieldDefinitions), not the field names that appear in Wild Apricot. Multiple field names are separated by commas, and field names with spaces or special characters are enclosed in single quotation marks.
+
+          '
+        schema:
+          type: string
+      - name: $sort
+        in: query
+        required: false
+        description: '
+
+          Ordering expression. There are 2 sorting options - **Name** and  **MemberSince**. And also 2 direction modifiers - **asc** and **desc**.
+
+          ---
+
+          Example of valid expression - MemberSince asc
+
+          '
+        schema:
+          type: string
+      - name: simpleQuery
+        in: query
+        required: false
+        description: "\nsimpleQuery is a parameter which allows you to search for contacts by matching a substring in first name, last name, organization, email or phone. This is simpler than using $filter parameter. \n"
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: $count
+        in: query
+        required: false
+        description: '
+
+          Specifies that the result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.
+
+          '
+        schema:
+          type: boolean
+      - name: idsOnly
+        in: query
+        required: false
+        description: '
+
+          When idsOnly specified, the API returns only a list of identifiers matching criteria.
+
+          '
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A wrapper object, which contains a list of contacts, contact identifiers, contacts count or information about asynchronous search request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreateContact
+      summary: WildApricot Create a New Contact or Member Record
+      description: ''
+      tags:
+      - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns created contact record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contactExtendedMembershipInfo'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/contacts/me:
+    get:
+      operationId: GetCurrentContactInfo
+      summary: WildApricot Retrieve Information About Current Contact
+      description: ''
+      tags:
+      - Contacts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: information about current contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsMe'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/contacts/{contactId}:
+    get:
+      operationId: GetContactDetails
+      summary: WildApricot Retrieve Information About Specific Member or Contact
+      description: ''
+      tags:
+      - Contacts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: path
+        required: true
+        description: Unique contact identifier
+        schema:
+          type: integer
+      - name: getExtendedMembershipInfo
+        in: query
+        required: false
+        description: '
+
+          When GetExtendedMembershipInfo specified the API returns the information about membership order status, membership invoice and allowed actions for current member status.
+
+          '
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: information about specific member or contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contactExtendedMembershipInfo'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    put:
+      operationId: UpdateContactDetails
+      summary: WildApricot Update Information About Existing Member or Contact
+      description: 'In order to update contact details it is recommended to provide only the custom fields you want to modify. See POST .../contacts for more details.
+
+        '
+      tags:
+      - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: path
+        required: true
+        description: Unique contact identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: 'Updated version of contact information.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contactExtendedMembershipInfo'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteContact
+      summary: WildApricot Delete an Archived Contact
+      description: Delete an archived contact
+      tags:
+      - Contacts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: path
+        required: true
+        description: Unique contact identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /rpc/{accountId}/AcceptTermsOfUse:
+    post:
+      operationId: AcceptTermsOfUse
+      summary: WildApricot Accepts Terms of Use.
+      description: 'Accepts Wild Apricot Terms of Use for currently loged in user. Does nothing if accepted already.
+
+        '
+      tags:
+      - Contacts
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    FieldValue:
+      type: object
+      properties:
+        FieldName:
+          type: string
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
+          type: string
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    ContactIdsResponse:
+      type: object
+      properties:
+        ContactIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of contact identifiers that match request criteria. The field appears only if idsOnly parameter was passed in request.
+    ContactsCountResponse:
+      type: object
+      properties:
+        Count:
+          type: integer
+          description: Number of contacts that match request criteria. This field appears only if $count parameter was passed in request.
+    Contact:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique contact identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        FirstName:
+          type: string
+          description: Shortcut for custom field value with system code 'FirstName'
+        LastName:
+          type: string
+          description: Shortcut for custom field value with system code 'LastName'
+        Organization:
+          type: string
+          description: Shortcut for custom field value with system code 'Organization'
+        Email:
+          type: string
+          description: Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account.
+        DisplayName:
+          type: string
+          description: Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists.
+        ProfileLastUpdated:
+          type: string
+          format: date
+          description: Timestamp of last contact details modification. Complies with ISO8601 format. The date and time that common fields, membership fields, or member group participation were last updated for the contact.
+        MembershipLevel:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results.
+        MembershipEnabled:
+          type: boolean
+          description: Indicates whether the contact is a member. A value of false indicates that the contact is a not a member or is a suspended member.
+        Status:
+          type: string
+          enum:
+          - Active
+          - Lapsed
+          - PendingNew
+          - PendingRenewal
+          - PendingUpgrade
+          description: The status of the contact's membership. The status is only included in the results if the contact is a member.
+        IsAccountAdministrator:
+          type: boolean
+          description: Indicates if the contact is an account administrator.
+        TermsOfUseAccepted:
+          type: boolean
+          description: Indicates if the contact already accepted Wild Apricot's terms of use.
+        FieldValues:
+          type: array
+          description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this contact are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned. If a custom field is restricted to certain access levels, then CustomAccessLevel indicates the level to which the field is restricted. Possible values are AdminOnly, Member, and Public.
+          items:
+            $ref: '#/components/schemas/ContactFieldValue'
+    ContactFieldValue:
+      allOf:
+      - $ref: '#/components/schemas/FieldValue'
+      - type: object
+        properties:
+          CustomAccessLevel:
+            $ref: '#/components/schemas/ContactFieldAccessLevel'
+    ContactFieldAccessLevel:
+      type: string
+      enum:
+      - Public
+      - Members
+      - Nobody
+      description: '
+
+        Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
+
+        '
+    ContactsAsyncResponse:
+      type: object
+      properties:
+        ResultId:
+          type: string
+          description: Unique result identifier.
+        ResultUrl:
+          type: string
+          description: URL to check async result availability. We expect that client application will check this URL with some small delay (every 5 sec) until API returns a list of contacts or ProcessingState==Failed.
+        Requested:
+          type: string
+          format: datetime
+          description: Date and time when the request was queued for processing.
+        Processed:
+          type: string
+          format: datetime
+          description: Date and time when the request was processed.
+        ProcessingState:
+          type: string
+          enum:
+          - Waiting
+          - Processing
+          - Complete
+          - Failed
+          description: 'Asynchronous request state. It starts from Waiting, then server process it. Request may end in one of final states: Complete or Failed.'
+        InitialQuery:
+          type: object
+          properties:
+            ObjectType:
+              type: string
+              description: Object type which was requested. In this case it is always Contact.
+            FilterExpression:
+              type: string
+              description: Value of $filter parameter passed into API.
+            SelectExpression:
+              type: string
+              description: Value of $select parameter passed into API.
+            ReturnIds:
+              type: boolean
+              description: Indicates if client requested only a list of identifiers, instead of full list of contacts.
+        ErrorDetails:
+          type: string
+          description: In case of error, provides description of error occured.
+    ExtendedMembershipInfo:
+      type: object
+      description: 'Readonly object '
+      properties:
+        PendingMembershipOrderStatusType:
+          type: string
+          enum:
+          - Invisible
+          - PendingNoCorrespondingInvoice
+          - PendingNotPaidYet
+          - InvoicePaidManualApprovalRequired
+          - FreeOrderManualApprovalRequired
+          - InvoiceNotPaidButOperationApproved
+          - MultipleInvoiceNotPaidMemberActivated
+          - MultipleInvoiceNotPaidMemberPending
+        PendingMembershipInvoice:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to unpaid invoice, related to pending membership application.
+        AllowedActions:
+          type: array
+          description: List of allowed actions related to contact. Each action is described with title and URL, which should be used in POST request.
+          items:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    contactExtendedMembershipInfo:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique contact identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        FirstName:
+          type: string
+          description: Shortcut for custom field value with system code 'FirstName'
+        LastName:
+          type: string
+          description: Shortcut for custom field value with system code 'LastName'
+        Organization:
+          type: string
+          description: Shortcut for custom field value with system code 'Organization'
+        Email:
+          type: string
+          description: Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account.
+        DisplayName:
+          type: string
+          description: Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists.
+        ProfileLastUpdated:
+          type: string
+          format: date
+          description: Timestamp of last contact details modification. Complies with ISO8601 format. The date and time that common fields, membership fields, or member group participation were last updated for the contact.
+        MembershipLevel:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results.
+        MembershipEnabled:
+          type: boolean
+          description: Indicates whether the contact is a member. A value of false indicates that the contact is a not a member or is a suspended member.
+        Status:
+          type: string
+          enum:
+          - Active
+          - Lapsed
+          - PendingNew
+          - PendingRenewal
+          - PendingUpgrade
+          description: The status of the contact's membership. The status is only included in the results if the contact is a member.
+        ExtendedMembershipInfo:
+          $ref: '#/components/schemas/ExtendedMembershipInfo'
+        IsAccountAdministrator:
+          type: boolean
+          description: Indicates if the contact is an account administrator.
+        TermsOfUseAccepted:
+          type: boolean
+          description: Indicates if the contact already accepted Wild Apricot's terms of use.
+        FieldValues:
+          type: array
+          description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this contact are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned. If a custom field is restricted to certain access levels, then CustomAccessLevel indicates the level to which the field is restricted. Possible values are AdminOnly, Member, and Public.
+          items:
+            $ref: '#/components/schemas/ContactFieldValue'
+    ContactsListResponse:
+      type: object
+      properties:
+        Contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: List of contacts that match request criteria.
+    ContactsResponse:
+      allOf:
+      - $ref: '#/components/schemas/ContactsAsyncResponse'
+      - $ref: '#/components/schemas/ContactIdsResponse'
+      - $ref: '#/components/schemas/ContactsCountResponse'
+      - $ref: '#/components/schemas/ContactsListResponse'
+    UpdateContactParams:
+      allOf:
+      - $ref: '#/components/schemas/CreateContactParams'
+      - type: object
+        properties:
+          Id:
+            type: integer
+            description: Unique contact identifier.
+    ContactsMe:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Contact unique identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        DisplayName:
+          type: string
+          description: Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists.
+        FirstName:
+          type: string
+          description: Shortcut for custom field value with system code 'FirstName'
+        LastName:
+          type: string
+          description: Shortcut for custom field value with system code 'LastName'
+        Email:
+          type: string
+          description: Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account.
+        Organization:
+          type: string
+          description: Shortcut for custom field value with system code 'Organization'
+        Status:
+          type: string
+          enum:
+          - Active
+          - Lapsed
+          - PendingNew
+          - PendingRenewal
+          - PendingUpgrade
+          description: The status of the contact's membership. The status is only included in the results if the contact is a member.
+        MembershipLevel:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results.
+        IsAccountAdministrator:
+          type: boolean
+          description: Indicates if the contact is an account administrator.
+        TermsOfUseAccepted:
+          type: boolean
+          description: Indicates if the contact already accepted Wild Apricot's terms of use.
+    CreateContactParams:
+      type: object
+      properties:
+        FirstName:
+          type: string
+          description: Shortcut for custom field with system code 'FirstName'
+        LastName:
+          type: string
+          description: Shortcut for custom field with system code 'LastName'
+        Organization:
+          type: string
+          description: Shortcut for custom field with system code 'Organization'
+        Email:
+          type: string
+          description: Contact primary email, shortcut for custom field with system code 'Email'. Should be unique in account.
+        MembershipLevel:
+          type: object
+          properties:
+            Id:
+              type: integer
+              description: ID of membership level to assign.
+        MembershipEnabled:
+          type: boolean
+          description: Indicates whether the contact has membership. False means that the contact is a not a member or the membership is suspended.
+        Status:
+          type: string
+          enum:
+          - Active
+          - Lapsed
+          - PendingNew
+          - PendingRenewal
+          - PendingUpgrade
+          description: The status of the membership. The status is only included in the results if the contact is a member.
+        Password:
+          type: string
+          description: New password to assign. If you don't want to change password, just skip this field.
+        FieldValues:
+          type: array
+          description: An array of field values to assign to contact.
+          items:
+            $ref: '#/components/schemas/FieldValue'
+        RecreateInvoice:
+          type: boolean
+          description: Indicates whether to create invoice is required. Default value is **TRUE**
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

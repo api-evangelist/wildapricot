@@ -1,0 +1,621 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Finances.Payments API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Finances.Payments
+paths:
+  /accounts/{accountId}/payments:
+    get:
+      operationId: GetPaymentsList
+      summary: WildApricot Get List of Payments by Criteria.
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactId
+        in: query
+        required: false
+        description: Identifier of contact who made the payment.
+        schema:
+          type: integer
+      - name: eventId
+        in: query
+        required: false
+        description: Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.
+        schema:
+          type: integer
+      - name: idsOnly
+        in: query
+        required: false
+        description: When set to true, API returns only collection of identifiers instead of collection of payments.
+        schema:
+          type: boolean
+      - name: StartDate
+        in: query
+        required: false
+        description: Limits result to payments created since StartDate.
+        schema:
+          type: string
+      - name: EndDate
+        in: query
+        required: false
+        description: Limits result to payments created before EndDate.
+        schema:
+          type: string
+      - name: paimentType
+        in: query
+        required: false
+        description: Limits result to payment type.
+        schema:
+          type: string
+      - name: unsettledOnly
+        in: query
+        required: false
+        description: When set to true, API returns only unsettled payments.
+        schema:
+          type: boolean
+      - name: ids
+        in: query
+        required: false
+        description: You can filter the payments by specifying a set of payment IDs.
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of payments that match criteria.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentsResponse'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreatePayment
+      summary: WildApricot Creates a New Payment.
+      description: ''
+      tags:
+      - Finances.Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentModel'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{paymentId}:
+    get:
+      operationId: GetPaymentDetails
+      summary: WildApricot Retrieve Information About Specific Payment
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: Unique payment identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: information about specific payment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    put:
+      operationId: UpdatePayment
+      summary: WildApricot Update Existing Payment Information
+      description: ''
+      tags:
+      - Finances.Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns 200 on successful data update
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeletePayment
+      summary: WildApricot Delete Existing Payment
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns 200 on successful payment deletion
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{paymentId}/AllocateInvoice:
+    post:
+      operationId: AllocateInvoice
+      summary: WildApricot Allocate Invoice to Specific Payment
+      description: After this operation invoice will be marked as paid.
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: Unique payment identifier
+        schema:
+          type: integer
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{paymentId}/AllocateRefundToPayment:
+    post:
+      operationId: AllocateRefundToPayment
+      summary: WildApricot Allocate Refund to Specific Payment
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: Unique payment identifier
+        schema:
+          type: integer
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{donationId}/AllocateRefundToDonation:
+    post:
+      operationId: AllocateRefundToDonation
+      summary: WildApricot Allocate Refund to Specific Donation
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: donationId
+        in: path
+        required: true
+        description: Unique donation identifier
+        schema:
+          type: integer
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{paymentId}/UnallocateFromPayment:
+    post:
+      operationId: UnallocateFinanceDocumentFromPayment
+      summary: WildApricot Unallocate Finance Document from Specific Payment
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: paymentId
+        in: path
+        required: true
+        description: Unique payment identifier
+        schema:
+          type: integer
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/payments/{donationId}/UnallocateFromDonation:
+    post:
+      operationId: UnallocateFinanceDocumentFromDonation
+      summary: WildApricot Unallocate Finance Document from Specific Donation
+      description: ''
+      tags:
+      - Finances.Payments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: donationId
+        in: path
+        required: true
+        description: Unique donation identifier
+        schema:
+          type: integer
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    FieldValue:
+      type: object
+      properties:
+        FieldName:
+          type: string
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
+          type: string
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    PaymentType:
+      type: string
+      enum:
+      - Unknown
+      - InvoicePayment
+      - DonationPayment
+      description: Payment type.
+    FinanceDocument:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique document identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Value:
+          type: number
+          format: float
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Contact:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Link to contact who is assigned to the financial document.
+        CreatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was created.
+        CreatedBy:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who created the document. Could be null.
+        UpdatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was last modified.  Could be null.
+        UpdatedBy:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who modified the document. Could be null.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    PaymentsResponse:
+      allOf:
+      - $ref: '#/components/schemas/PaymentIdsResponse'
+      - $ref: '#/components/schemas/PaymentListResponse'
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    UpdatePaymentParams:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on payment. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on payment. Visible to both administrators and payors.
+          AllocatedValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (invoices or refunds).
+          Type:
+            $ref: '#/components/schemas/PaymentType'
+    CreatePaymentModel:
+      type: object
+      properties:
+        Value:
+          type: number
+          format: float
+          description: Payment amount.
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: If not null or empty then invoices with these IDs will be settled to new payment.
+        Contact:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who made the payment.
+        Tender:
+          $ref: '#/components/schemas/LinkedResource'
+        Comment:
+          type: string
+          description: Internal note on payment. Visible to administrators only.
+        PublicComment:
+          type: string
+          description: Comment to payor. Visible to both administrators and payor.
+        PaymentType:
+          $ref: '#/components/schemas/PaymentType'
+    Payment:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on payment. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on payment. Visible to both administrators and payors.
+          AllocatedValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (invoices or refunds).
+          RefundedAmount:
+            type: number
+            format: decimal
+            description: Amount of a refund assigned to the payment.
+          Type:
+            $ref: '#/components/schemas/PaymentType'
+          DonationId:
+            type: integer
+            description: Identifyer of Donation for payment of type DonationPayment.
+          FieldValues:
+            type: array
+            description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
+            items:
+              $ref: '#/components/schemas/FieldValue'
+    PaymentIdsResponse:
+      type: object
+      properties:
+        PaymentIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of payment identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    PaymentListResponse:
+      type: object
+      properties:
+        Payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+          description: List of payments that match request criteria.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

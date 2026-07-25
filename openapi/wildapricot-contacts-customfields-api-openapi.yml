@@ -1,0 +1,475 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Contacts.CustomFields API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Contacts.CustomFields
+paths:
+  /accounts/{accountId}/contactfields:
+    get:
+      operationId: GetContactFieldDefinitions
+      summary: WildApricot List of Custom Fields Related to Contacts and Members.
+      description: "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and cannot be removed.\n - Custom fields can be defined by administrator to store some data specific to your account.\n"
+      tags:
+      - Contacts.CustomFields
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: showSectionDividers
+        in: query
+        required: false
+        description: Default value is false. Specifies whether section dividers also should be included in the response.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: An array of contact field descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactFieldDescription'
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    post:
+      operationId: CreateContactFieldDefinition
+      summary: WildApricot Creates a New Contact / Membership Field
+      description: ''
+      tags:
+      - Contacts.CustomFields
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactFieldParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: created field identifier
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/contactfields/{contactFieldId}:
+    put:
+      operationId: UpdateContactFieldDefinition
+      summary: WildApricot Updates an Existing Contact / Membership Field
+      description: 'Limitations: field type cannot be changed; contact field cannot be transformed to membership field or vice versa'
+      tags:
+      - Contacts.CustomFields
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactFieldParams'
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactFieldId
+        in: path
+        required: true
+        description: contact field identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: return true if field was updated successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+    delete:
+      operationId: DeleteContactFieldDefinition
+      summary: WildApricot Removes Existing Field by Id
+      description: removes existing field by id
+      tags:
+      - Contacts.CustomFields
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: contactFieldId
+        in: path
+        required: true
+        description: contact field identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: return true if field was removed successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    EntityFieldDescription:
+      type: object
+      required:
+      - FieldName
+      - Description
+      - AdminOnly
+      properties:
+        FieldName:
+          type: string
+          description: Field name title, could be displayed in user interface. Field name could be changed by account administrator.
+        SystemCode:
+          type: string
+          description: System-defined code associated with field. It does not change even if FieldName is edited in admin backend.
+        DisplayType:
+          type: string
+          description: Optional hint, which tells how to display and edit field. It appears for String and Choice fields.
+        IsSystem:
+          type: boolean
+          description: Field is system-defined and could not be deleted. However, field name could be changed by account administrator.
+        Description:
+          type: string
+          description: System-defined description of the field. Empty for custom fields.
+        FieldInstructions:
+          type: string
+          description: Admin-defined comment for the field. Shown as a tip when members or visitors fill in forms.
+        AllowedValues:
+          type: array
+          description: If field value is limited to set of predefined values, this contains list of allowed values. Normally, AllowedValues appear for MultipleChoice and Choice fields.
+          items:
+            $ref: '#/components/schemas/OptionsListItem'
+        Order:
+          type: integer
+          description: Sorting order to display the field in UI
+        RulesAndTermsInfo:
+          $ref: '#/components/schemas/RulesAndTermsInfo'
+    RulesAndTermsInfo:
+      type: object
+      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      properties:
+        Text:
+          type: string
+          description: Terms of use label.
+        Link:
+          type: string
+          description: Url of the rules and terms document.
+    OptionsListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Item identifier unique in the list
+        Label:
+          type: string
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
+          type: boolean
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
+    EditContactFieldParams:
+      type: object
+      required:
+      - FieldType
+      - FieldName
+      properties:
+        FieldName:
+          type: string
+          description: New field name. Must be unique.
+        IsRequired:
+          type: boolean
+          description: Indicates whether a field has to be filled before the form is submitted. This limitation affects member-facing functionality only, admin always can submit form even without required fields.
+        AdminOnly:
+          type: boolean
+          default: false
+          description: Indicates that the field is accessible only by administrators.
+        Access:
+          $ref: '#/components/schemas/ContactFieldAccessLevel'
+        FieldInstructions:
+          type: string
+          description: Shown as a tip when members or visitors fill in forms. Max length is 250 characters.
+        Order:
+          type: integer
+          description: Sorting order to display the field in UI.
+        AllowedValues:
+          type: array
+          description: List of allowed values for this field. This data is used for Choice and MultipleChoice fields, otherwise it will be ignored.
+          items:
+            $ref: '#/components/schemas/OptionsListItem'
+        RulesAndTermsInfo:
+          $ref: '#/components/schemas/RulesAndTermsInfo'
+        ExistsInLevels:
+          type: array
+          description: Collection of membership levels where the field exists. If empty collection provided, it means the field would be available for all levels.
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: Id of membership level
+        MemberAccess:
+          $ref: '#/components/schemas/MemberFieldAccess'
+        RenewalPolicy:
+          $ref: '#/components/schemas/RenewalPolicy'
+        ProrateInApplication:
+          type: boolean
+          description: Whether the cost should be prorated over a partial period of time. Used only by fields with an associated cost.
+        ExtraCharge:
+          $ref: '#/components/schemas/ExtraCharge'
+    ExtraCharge:
+      type: object
+      title: ExtraChargeOptions
+      description: This property appears for CalculatedExtraCharge fields only.
+      required:
+      - MultiplierType
+      - Multiplier
+      properties:
+        MultiplierType:
+          type: string
+          description: "Indicates the type of multiplier field.\n  ItemPrice multiplier specifies a price for each requested item.\n  Percentage multiplier specifies a percent of field value to use as extra charge.\n"
+          enum:
+          - ItemPrice
+          - Percentage
+        Multiplier:
+          type: number
+          format: decimal
+          description: value of multiplier for extra charge calculation
+        MinAmount:
+          type: integer
+          description: Minimal amount of items to request (minimal field value). For ItemPrice multiplier type only.
+        MaxAmount:
+          type: integer
+          description: Maximum amount of items to request (maximum field value). For ItemPrice multiplier type only.
+        MinCharge:
+          type: number
+          format: decimal
+          description: Minimal extra charge. (minimal field value). For Percentage multiplier type only.
+        MaxCharge:
+          type: number
+          format: decimal
+          description: Maximum extra charge. (maximum field value). For Percentage multiplier type only.
+    UpdateContactFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EditContactFieldParams'
+      - type: object
+        properties:
+          Id:
+            type: integer
+            description: Unique identifier of existing field.
+    CreateContactFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EditContactFieldParams'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            type: string
+            enum:
+            - Text
+            - MultilineText
+            - MultipleChoice
+            - MultipleChoiceWithExtraCharge
+            - RadioButtons
+            - RadioButtonsWithExtraCharge
+            - Dropdown
+            - Picture
+            - RulesAndTerms
+            - Date
+            - ExtraChargeCalculation
+            - SectionDivider
+            description: Field data type.
+          MemberOnly:
+            type: boolean
+            description: Indicates whether a field is available only to members.
+    ContactFieldDescription:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescriptionWithExtraCharge'
+      - type: object
+      - required:
+        - Id
+        - Type
+        - Access
+        - AdminOnly
+        - MemberOnly
+      - properties:
+          Id:
+            type: integer
+            description: Unique field identifier.
+          Access:
+            $ref: '#/components/schemas/ContactFieldAccessLevel'
+          AdminOnly:
+            type: boolean
+            description: Indicates that the field is accessible only by administrators.
+          ExistsInLevels:
+            type: array
+            description: If field is defined for specific levels only, this contains list of membership levels.
+            items:
+              $ref: '#/components/schemas/LinkedResource'
+          MemberAccess:
+            $ref: '#/components/schemas/MemberFieldAccess'
+          MemberOnly:
+            type: boolean
+            description: Indicates whether the field is a membership field.
+          IsBuiltIn:
+            type: boolean
+            description: The field is a built-in system field, it cannot be edited or deleted.
+          SupportSearch:
+            type: boolean
+            description: Indicates that this field can be used in $filter expression in contact search.
+          IsEditable:
+            type: boolean
+            description: Indicates that the field's value can be changed with create/update requests. Otherwise value canâ€™t be edited through API. If non-editable field value is provided in create/update contact request, the value is ignored by API.
+          RulesAndTermsInfo:
+            $ref: '#/components/schemas/RulesAndTermsInfo'
+          RenewalPolicy:
+            $ref: '#/components/schemas/RenewalPolicy'
+          ProrateInApplication:
+            type: boolean
+            description: If the field has associated cost, this indicates if the cost should be prorated over a partial period of time.
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    RenewalPolicy:
+      type: object
+      properties:
+        IncludeInRenewals:
+          type: boolean
+          description: Indicates if the field should be shown in renewal form.
+        AllowedToChangeInRenewal:
+          type: boolean
+          description: Indicates whether field value can be changed during renual process. Can be set to TRUE only if IncludeInRenewals is set to TRUE.
+      description: Defines how system manages field during renewal process. Used only by multichoice fields with an associated cost.
+    ContactFieldAccessLevel:
+      type: string
+      enum:
+      - Public
+      - Members
+      - Nobody
+      description: '
+
+        Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
+
+        '
+    EditEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    MemberFieldAccess:
+      type: string
+      title: MemberAccess
+      enum:
+      - EditInProfileAndInApplicationForm
+      - EditInProfile
+      - EditInApplicationForm
+      - ViewOnly
+      - Nobody
+      description: Controls whether the member is allowed to view or modify this field. Only for member fields.
+    EntityFieldDescriptionWithExtraCharge:
+      allOf:
+      - $ref: '#/components/schemas/EditEntityFieldParams'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          ExtraCharge:
+            $ref: '#/components/schemas/ExtraCharge'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access

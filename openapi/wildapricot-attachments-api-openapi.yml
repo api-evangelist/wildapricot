@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: WildApricot Admin Accounts Attachments API
+  description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
+  version: 7.24.0
+  contact:
+    name: WildApricot Support
+    url: https://gethelp.wildapricot.com/
+  license:
+    name: Proprietary
+  x-generated-from: documentation
+servers:
+- url: https://api.wildapricot.org/v2.2
+  description: WildApricot Admin API v2.2
+tags:
+- name: Attachments
+paths:
+  /accounts/{accountId}/attachments/{attachmentId}:
+    get:
+      operationId: GetAttachmentContent
+      summary: WildApricot Download Attachment
+      description: Attachment, available for specific account.
+      tags:
+      - Attachments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        description: Attachment identifier
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: asBase64
+        in: query
+        required: false
+        description: Base64 encoded image will be returned.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Response is common HttpResponseMessage with content set to attachment binary data.
+          content:
+            application/json:
+              schema:
+                type: file
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/attachments/GetInfos:
+    get:
+      operationId: GetAttachmentInfos
+      summary: WildApricot Get Attachments Infos
+      description: Attachment infos, available for specific account.
+      tags:
+      - Attachments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: attachmentIds
+        in: query
+        required: true
+        description: list of comma separated Attachment identifiers
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of attachment descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileInfo'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+  /accounts/{accountId}/attachments/Upload:
+    post:
+      operationId: UploadAttachments
+      summary: WildApricot Upload Attachments
+      description: 'Upload attachments data and get their identifiers to use for contact values.  Attachment not used for any Contact field value will be deleted in 30 minutes.
+
+        '
+      tags:
+      - Attachments
+      parameters:
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      - name: ''
+        in: query
+        required: false
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of attachment descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileInfo'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '429':
+          description: ''
+      security:
+      - OAuth2:
+        - auto
+components:
+  schemas:
+    FileInfo:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique attachment identifier
+        Name:
+          type: string
+          description: attachment name
+        ContentType:
+          type: string
+          description: http ContentType (MIME type)
+        Size:
+          type: integer
+          description: File size
+        CreatedDate:
+          type: string
+          format: datetime
+          description: Date and time when the file has been uploaded.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 authentication for WildApricot API
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.wildapricot.org/auth/token
+          scopes:
+            auto: Full API access
