@@ -7,9 +7,22 @@ description: >-
   membership levels, invoices, payments, donations, email campaigns, and store orders via a REST API secured with
   OAuth2.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wildapricot.png
 tags:
   - Membership Management
   - Associations
@@ -21,38 +34,597 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: wildapricot:wildapricot-admin-api
-    name: WildApricot Admin API
-    description: >-
-      The WildApricot Admin API provides programmatic access to membership management features including contacts,
-      events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders.
-      Secured with OAuth2 client credentials or authorization code flow.
-    humanURL: https://app.wildapricot.com/interfaces/api
-    baseURL: https://api.wildapricot.org/v2.2
-    tags:
-      - Membership Management
-      - Associations
-      - Nonprofit
-      - Contacts
-      - Events
-      - Payments
-    properties:
-      - type: Documentation
-        url: https://app.wildapricot.com/interfaces/api
-      - type: APIReference
-        url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/openapi/wildapricot-admin-api-openapi.yml
-      - type: Authentication
-        url: https://gethelp.wildapricot.com/en/articles/484
-      - type: SDKs
-        url: https://github.com/WildApricot/ApiSamples
-        title: API Samples (.NET)
-      - type: SDKs
-        url: https://github.com/douglasdeodato/wildapricot-python-api
-        title: Python SDK (Community)
+- aid: wildapricot:wildapricot-accounts-api
+  name: WildApricot Accounts API
+  description: Account management operations
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-attachments-api
+  name: WildApricot Attachments API
+  description: The Attachments API from WildApricot — 3 operation(s) for attachments.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-contacts-api
+  name: WildApricot Contacts API
+  description: Contact/member management
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-contacts-customfields-api
+  name: WildApricot Contacts.CustomFields API
+  description: >-
+    The Contacts.CustomFields API from WildApricot — 2 operation(s) for contacts.customfields.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Contacts.CustomFields
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-contacts-customfields-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-contacts-savedsearch-api
+  name: WildApricot Contacts.SavedSearch API
+  description: The Contacts.SavedSearch API from WildApricot — 2 operation(s) for contacts.savedsearch.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Contacts.SavedSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-contacts-savedsearch-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-donation-customfields-api
+  name: WildApricot Donation.CustomFields API
+  description: >-
+    The Donation.CustomFields API from WildApricot — 2 operation(s) for donation.customfields.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Donation.CustomFields
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-donation-customfields-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-emailing-drafts-api
+  name: WildApricot Emailing.Drafts API
+  description: The Emailing.Drafts API from WildApricot — 2 operation(s) for emailing.drafts.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Emailing.Drafts
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-emailing-drafts-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-emailing-operations-api
+  name: WildApricot Emailing.Operations API
+  description: The Emailing.Operations API from WildApricot — 8 operation(s) for emailing.operations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Emailing.Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-emailing-operations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-emailing-sentemailrecipients-api
+  name: WildApricot Emailing.SentEmailRecipients API
+  description: >-
+    The Emailing.SentEmailRecipients API from WildApricot — 1 operation(s) for emailing.sentemailrecipients.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Emailing.SentEmailRecipients
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-emailing-sentemailrecipients-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-emailing-sentemails-api
+  name: WildApricot Emailing.SentEmails API
+  description: The Emailing.SentEmails API from WildApricot — 2 operation(s) for emailing.sentemails.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Emailing.SentEmails
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-emailing-sentemails-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-events-api
+  name: WildApricot Events API
+  description: Event and registration management
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-events-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-events-eventregistrations-api
+  name: WildApricot Events.EventRegistrations API
+  description: >-
+    The Events.EventRegistrations API from WildApricot — 4 operation(s) for events.eventregistrations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Events.EventRegistrations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-events-eventregistrations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-events-eventregistrationtypes-api
+  name: WildApricot Events.EventRegistrationTypes API
+  description: >-
+    The Events.EventRegistrationTypes API from WildApricot — 2 operation(s) for events.eventregistrationtypes.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Events.EventRegistrationTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-events-eventregistrationtypes-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-auditlog-api
+  name: WildApricot Finances.AuditLog API
+  description: The Finances.AuditLog API from WildApricot — 2 operation(s) for finances.auditlog.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.AuditLog
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-auditlog-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-donations-api
+  name: WildApricot Finances.Donations API
+  description: The Finances.Donations API from WildApricot — 2 operation(s) for finances.donations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.Donations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-donations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-invoices-api
+  name: WildApricot Finances.Invoices API
+  description: The Finances.Invoices API from WildApricot — 4 operation(s) for finances.invoices.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-paymentallocations-api
+  name: WildApricot Finances.PaymentAllocations API
+  description: >-
+    The Finances.PaymentAllocations API from WildApricot — 1 operation(s) for finances.paymentallocations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.PaymentAllocations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-paymentallocations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-payments-api
+  name: WildApricot Finances.Payments API
+  description: The Finances.Payments API from WildApricot — 7 operation(s) for finances.payments.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-payments-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-refunds-api
+  name: WildApricot Finances.Refunds API
+  description: The Finances.Refunds API from WildApricot — 2 operation(s) for finances.refunds.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-finances-tenders-api
+  name: WildApricot Finances.Tenders API
+  description: The Finances.Tenders API from WildApricot — 2 operation(s) for finances.tenders.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Finances.Tenders
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-finances-tenders-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-internal-features-api
+  name: WildApricot Internal.Features API
+  description: The Internal.Features API from WildApricot — 1 operation(s) for internal.features.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Internal.Features
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-internal-features-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-membership-bundles-api
+  name: WildApricot Membership.Bundles API
+  description: The Membership.Bundles API from WildApricot — 2 operation(s) for membership.bundles.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Membership.Bundles
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-membership-bundles-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-membership-groups-api
+  name: WildApricot Membership.Groups API
+  description: The Membership.Groups API from WildApricot — 2 operation(s) for membership.groups.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Membership.Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-membership-groups-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-membership-levels-api
+  name: WildApricot Membership.Levels API
+  description: The Membership.Levels API from WildApricot — 2 operation(s) for membership.levels.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Membership.Levels
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-membership-levels-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-membership-operations-api
+  name: WildApricot Membership.Operations API
+  description: >-
+    The Membership.Operations API from WildApricot — 3 operation(s) for membership.operations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Membership.Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-membership-operations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-onlinestore-orders-api
+  name: WildApricot OnlineStore.Orders API
+  description: The OnlineStore.Orders API from WildApricot — 2 operation(s) for onlinestore.orders.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - OnlineStore.Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-onlinestore-orders-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-onlinestore-orders-operations-api
+  name: WildApricot OnlineStore.Orders.Operations API
+  description: >-
+    The OnlineStore.Orders.Operations API from WildApricot — 1 operation(s) for onlinestore.orders.operations.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - OnlineStore.Orders.Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-onlinestore-orders-operations-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-onlinestore-products-api
+  name: WildApricot OnlineStore.Products API
+  description: The OnlineStore.Products API from WildApricot — 2 operation(s) for onlinestore.products.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - OnlineStore.Products
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-onlinestore-products-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-pictures-api
+  name: WildApricot Pictures API
+  description: The Pictures API from WildApricot — 2 operation(s) for pictures.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Pictures
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-pictures-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/wildapricot/overview
   - type: AgenticAccess
     url: agentic-access/wildapricot-agentic-access.yml
   - type: DomainSecurity
