@@ -1,0 +1,1311 @@
+{
+  "info": {
+    "_postman_id": "63989900-83fe-444f-b482-b153726624bd",
+    "name": "WildApricot Admin Accounts Donation.CustomFields API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:18.000Z",
+    "updatedAt": "2026-07-28T03:30:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-63989900-83fe-444f-b482-b153726624bd"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "donationfields",
+              "item": [
+                {
+                  "name": "{donationFieldId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Updates an Existing Donation Field",
+                      "id": "f9223c4a-421e-4ad7-a979-dcf79f66a6a8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields",
+                            ":donationFieldId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "000aa3c2-724e-4187-97ed-b486a1d6c2af",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "123f6257-0445-4f1a-8364-277c9d441ea5",
+                              "key": "donationFieldId",
+                              "value": "<integer>",
+                              "description": "(Required) donation field identifier"
+                            }
+                          ]
+                        },
+                        "description": "Limitations: field type can not be changed"
+                      },
+                      "response": [
+                        {
+                          "id": "6d628e69-a4a1-40f3-b804-8a527fbd8b45",
+                          "name": "return true if field was updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<boolean>",
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-6d628e69-a4a1-40f3-b804-8a527fbd8b45"
+                        },
+                        {
+                          "id": "1b4af97c-e978-429f-a0b5-179088e0e11a",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-1b4af97c-e978-429f-a0b5-179088e0e11a"
+                        },
+                        {
+                          "id": "2fa9c599-9e8f-40ed-b1d1-0387efd7872f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-2fa9c599-9e8f-40ed-b1d1-0387efd7872f"
+                        },
+                        {
+                          "id": "5f5894fd-3589-47af-8500-ad2841b55d65",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-5f5894fd-3589-47af-8500-ad2841b55d65"
+                        },
+                        {
+                          "id": "9832b56c-0d68-4a47-b632-735e10af0e47",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-9832b56c-0d68-4a47-b632-735e10af0e47"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-f9223c4a-421e-4ad7-a979-dcf79f66a6a8"
+                    },
+                    {
+                      "name": "WildApricot Removes Existing Field by Id",
+                      "id": "da2c7bd0-cdd9-42e7-aefe-0ca8ec64ab02",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields",
+                            ":donationFieldId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "95ea2f47-c3ca-4fee-8102-0a9c945e622f",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "fec32463-834b-44e9-b6b2-74c5252be4c0",
+                              "key": "donationFieldId",
+                              "value": "<integer>",
+                              "description": "(Required) donation field identifier"
+                            }
+                          ]
+                        },
+                        "description": "removes existing field by id"
+                      },
+                      "response": [
+                        {
+                          "id": "8b6fe294-ca01-40be-8a67-e82140679c57",
+                          "name": "return true if field was removed successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<boolean>",
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-8b6fe294-ca01-40be-8a67-e82140679c57"
+                        },
+                        {
+                          "id": "947a7d26-4df0-4df1-a576-7ea98c827bb4",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-947a7d26-4df0-4df1-a576-7ea98c827bb4"
+                        },
+                        {
+                          "id": "31e7ab22-2220-4dda-9c03-377c3343f164",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-31e7ab22-2220-4dda-9c03-377c3343f164"
+                        },
+                        {
+                          "id": "688b1b07-7acf-4b41-bc66-3e3c24330052",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donationfields/:donationFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donationfields",
+                                ":donationFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:18.000Z",
+                          "updatedAt": "2026-07-28T03:30:18.000Z",
+                          "uid": "35240-688b1b07-7acf-4b41-bc66-3e3c24330052"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-da2c7bd0-cdd9-42e7-aefe-0ca8ec64ab02"
+                    }
+                  ],
+                  "id": "e75cae3c-9f49-47c0-b192-aee2f1bbf145",
+                  "createdAt": "2026-07-28T03:30:18.000Z",
+                  "updatedAt": "2026-07-28T03:30:18.000Z",
+                  "uid": "35240-e75cae3c-9f49-47c0-b192-aee2f1bbf145"
+                },
+                {
+                  "name": "WildApricot List of Custom Fields Related to Donations.",
+                  "id": "8a10408d-e9f1-49db-9e5a-c9bd738b648c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>&showSectionDividers=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "donationfields"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Default value is false. Specifies whether section dividers also should be presented in the response.",
+                          "key": "showSectionDividers",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "55a7f8c1-588a-4b69-87c2-20a752c10d2a",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and could not be removed.\n - Custom fields could be defined by administrator to store some data specific to your account.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e925d3f4-1c0d-4da8-902c-66dfb0f2cae0",
+                      "name": "An array of donation field descriptions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be presented in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"FieldName\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"SystemCode\": \"<string>\",\n    \"DisplayType\": \"<string>\",\n    \"IsSystem\": \"<boolean>\",\n    \"FieldInstructions\": \"<string>\",\n    \"AllowedValues\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      }\n    ],\n    \"Order\": \"<integer>\",\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"<string>\",\n      \"Link\": \"<string>\"\n    }\n  },\n  {\n    \"FieldName\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"SystemCode\": \"<string>\",\n    \"DisplayType\": \"<string>\",\n    \"IsSystem\": \"<boolean>\",\n    \"FieldInstructions\": \"<string>\",\n    \"AllowedValues\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      }\n    ],\n    \"Order\": \"<integer>\",\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"<string>\",\n      \"Link\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-e925d3f4-1c0d-4da8-902c-66dfb0f2cae0"
+                    },
+                    {
+                      "id": "c39d1fc2-153f-412b-9514-5cedc9b4ac82",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be presented in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-c39d1fc2-153f-412b-9514-5cedc9b4ac82"
+                    },
+                    {
+                      "id": "a77c5bc5-7f89-4286-b4b8-0af4348495fd",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be presented in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-a77c5bc5-7f89-4286-b4b8-0af4348495fd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:18.000Z",
+                  "updatedAt": "2026-07-28T03:30:18.000Z",
+                  "uid": "35240-8a10408d-e9f1-49db-9e5a-c9bd738b648c"
+                },
+                {
+                  "name": "WildApricot Creates a New Donation Field",
+                  "id": "9a84dbcd-a8a8-4660-8b6a-55dd48686475",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "donationfields"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "5cc8f31c-16c0-4b4c-9ee1-4f057ee1be48",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5beb0fc0-64dd-49c2-838c-b1766c549e24",
+                      "name": "created field identifier",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<integer>",
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-5beb0fc0-64dd-49c2-838c-b1766c549e24"
+                    },
+                    {
+                      "id": "5cb06de6-c058-4b95-a208-589b41524764",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-5cb06de6-c058-4b95-a208-589b41524764"
+                    },
+                    {
+                      "id": "8391b02f-124a-46ab-86a9-aea01b3954ed",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-8391b02f-124a-46ab-86a9-aea01b3954ed"
+                    },
+                    {
+                      "id": "5daa9246-0a80-4d14-bd81-15540f14b17b",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Description\": \"<string>\",\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"MultipleChoice\",\n  \"SystemCode\": \"<string>\",\n  \"DisplayType\": \"<string>\",\n  \"IsSystem\": \"<boolean>\",\n  \"FieldInstructions\": \"<string>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"Order\": \"<integer>\",\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donationfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donationfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:18.000Z",
+                      "updatedAt": "2026-07-28T03:30:18.000Z",
+                      "uid": "35240-5daa9246-0a80-4d14-bd81-15540f14b17b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:18.000Z",
+                  "updatedAt": "2026-07-28T03:30:18.000Z",
+                  "uid": "35240-9a84dbcd-a8a8-4660-8b6a-55dd48686475"
+                }
+              ],
+              "id": "233cc642-7356-4e2a-a895-d24860144272",
+              "createdAt": "2026-07-28T03:30:18.000Z",
+              "updatedAt": "2026-07-28T03:30:18.000Z",
+              "uid": "35240-233cc642-7356-4e2a-a895-d24860144272"
+            }
+          ],
+          "id": "7204eeb2-7e71-4c70-a90f-2ac756f302f7",
+          "createdAt": "2026-07-28T03:30:18.000Z",
+          "updatedAt": "2026-07-28T03:30:18.000Z",
+          "uid": "35240-7204eeb2-7e71-4c70-a90f-2ac756f302f7"
+        }
+      ],
+      "id": "9dfe2c73-1d95-415a-bd29-e6b24cabbc79",
+      "createdAt": "2026-07-28T03:30:18.000Z",
+      "updatedAt": "2026-07-28T03:30:18.000Z",
+      "uid": "35240-9dfe2c73-1d95-415a-bd29-e6b24cabbc79"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

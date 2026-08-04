@@ -1,0 +1,668 @@
+{
+  "info": {
+    "_postman_id": "c4f1a97e-a299-4ec2-989c-eadf227c557d",
+    "name": "WildApricot Admin Accounts Membership.Bundles API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:36.000Z",
+    "updatedAt": "2026-07-28T03:30:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c4f1a97e-a299-4ec2-989c-eadf227c557d"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "bundles",
+              "item": [
+                {
+                  "name": "{bundleId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Membership Bundle Details.",
+                      "id": "327535b7-b5f1-4d82-b546-f7d58d91d133",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "bundles",
+                            ":bundleId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "853307d9-296c-4bc3-b030-005536e029db",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "afe184a4-d2af-48d8-a49d-a935862d510b",
+                              "key": "bundleId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique bundle identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "23fa544b-afc0-4433-a8da-b9409dd0a6d5",
+                          "name": "Bundle description.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "bundles",
+                                ":bundleId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "bundleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"ParticipantsCount\": \"<integer>\",\n  \"Administrator\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"SpacesLeft\": \"<integer>\",\n  \"Members\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:30:36.000Z",
+                          "updatedAt": "2026-07-28T03:30:36.000Z",
+                          "uid": "35240-23fa544b-afc0-4433-a8da-b9409dd0a6d5"
+                        },
+                        {
+                          "id": "6cd52940-2460-459b-babf-e7191eecda05",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "bundles",
+                                ":bundleId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "bundleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:36.000Z",
+                          "updatedAt": "2026-07-28T03:30:36.000Z",
+                          "uid": "35240-6cd52940-2460-459b-babf-e7191eecda05"
+                        },
+                        {
+                          "id": "8e6b3783-885b-4f28-bbb4-b428c8163c78",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "bundles",
+                                ":bundleId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "bundleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:36.000Z",
+                          "updatedAt": "2026-07-28T03:30:36.000Z",
+                          "uid": "35240-8e6b3783-885b-4f28-bbb4-b428c8163c78"
+                        },
+                        {
+                          "id": "07a62a24-4002-44e6-909b-5eee3f567098",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "bundles",
+                                ":bundleId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "bundleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:36.000Z",
+                          "updatedAt": "2026-07-28T03:30:36.000Z",
+                          "uid": "35240-07a62a24-4002-44e6-909b-5eee3f567098"
+                        },
+                        {
+                          "id": "6a30b93b-d542-4fca-9c5a-9a1d78c52ee3",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/bundles/:bundleId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "bundles",
+                                ":bundleId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "bundleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:36.000Z",
+                          "updatedAt": "2026-07-28T03:30:36.000Z",
+                          "uid": "35240-6a30b93b-d542-4fca-9c5a-9a1d78c52ee3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:36.000Z",
+                      "updatedAt": "2026-07-28T03:30:36.000Z",
+                      "uid": "35240-327535b7-b5f1-4d82-b546-f7d58d91d133"
+                    }
+                  ],
+                  "id": "8d0cad52-9b08-4baf-af32-8bdd39a87154",
+                  "createdAt": "2026-07-28T03:30:36.000Z",
+                  "updatedAt": "2026-07-28T03:30:36.000Z",
+                  "uid": "35240-8d0cad52-9b08-4baf-af32-8bdd39a87154"
+                },
+                {
+                  "name": "WildApricot Get List of Membership Bundles.",
+                  "id": "f2181ce3-2fe2-43b6-9f36-fe1c4927a16c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/bundles?=<string>&levelId=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "bundles"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Provide this parameter to get only bundles related to specific membership level.",
+                          "key": "levelId",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7981237e-8d51-4e6a-ab1f-9893f4c54f14",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c262230f-d416-4582-b401-0b0fc305c8b0",
+                      "name": "List of bundles matching query parameters.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/bundles?=<string>&levelId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "bundles"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Provide this parameter to get only bundles related to specific membership level.",
+                              "key": "levelId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Email\": \"<string>\",\n    \"ParticipantsCount\": \"<integer>\",\n    \"Administrator\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"MembershipLevel\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"SpacesLeft\": \"<integer>\",\n    \"Members\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Email\": \"<string>\",\n    \"ParticipantsCount\": \"<integer>\",\n    \"Administrator\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"MembershipLevel\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"SpacesLeft\": \"<integer>\",\n    \"Members\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:36.000Z",
+                      "updatedAt": "2026-07-28T03:30:36.000Z",
+                      "uid": "35240-c262230f-d416-4582-b401-0b0fc305c8b0"
+                    },
+                    {
+                      "id": "23ec1e12-168b-49d8-aae1-8b3152ccfaa2",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/bundles?=<string>&levelId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "bundles"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Provide this parameter to get only bundles related to specific membership level.",
+                              "key": "levelId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:36.000Z",
+                      "updatedAt": "2026-07-28T03:30:36.000Z",
+                      "uid": "35240-23ec1e12-168b-49d8-aae1-8b3152ccfaa2"
+                    },
+                    {
+                      "id": "3da9f59e-58c4-4502-8b4b-ac7f1dc14796",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/bundles?=<string>&levelId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "bundles"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Provide this parameter to get only bundles related to specific membership level.",
+                              "key": "levelId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:36.000Z",
+                      "updatedAt": "2026-07-28T03:30:36.000Z",
+                      "uid": "35240-3da9f59e-58c4-4502-8b4b-ac7f1dc14796"
+                    },
+                    {
+                      "id": "6cb7827a-eae3-44af-b7a5-2b7f34e89544",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/bundles?=<string>&levelId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "bundles"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Provide this parameter to get only bundles related to specific membership level.",
+                              "key": "levelId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:36.000Z",
+                      "updatedAt": "2026-07-28T03:30:36.000Z",
+                      "uid": "35240-6cb7827a-eae3-44af-b7a5-2b7f34e89544"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:36.000Z",
+                  "updatedAt": "2026-07-28T03:30:36.000Z",
+                  "uid": "35240-f2181ce3-2fe2-43b6-9f36-fe1c4927a16c"
+                }
+              ],
+              "id": "7d5f36e4-a578-47a2-b2c7-9a38d35c5650",
+              "createdAt": "2026-07-28T03:30:36.000Z",
+              "updatedAt": "2026-07-28T03:30:36.000Z",
+              "uid": "35240-7d5f36e4-a578-47a2-b2c7-9a38d35c5650"
+            }
+          ],
+          "id": "e2789f69-0ca5-48f0-a5b2-f33f3e2b05a7",
+          "createdAt": "2026-07-28T03:30:36.000Z",
+          "updatedAt": "2026-07-28T03:30:36.000Z",
+          "uid": "35240-e2789f69-0ca5-48f0-a5b2-f33f3e2b05a7"
+        }
+      ],
+      "id": "e9557d84-0f56-45bb-a8ab-f7f02cb6be1c",
+      "createdAt": "2026-07-28T03:30:36.000Z",
+      "updatedAt": "2026-07-28T03:30:36.000Z",
+      "uid": "35240-e9557d84-0f56-45bb-a8ab-f7f02cb6be1c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

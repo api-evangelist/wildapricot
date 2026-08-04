@@ -1,0 +1,597 @@
+{
+  "info": {
+    "_postman_id": "bf355aad-8427-4a7d-bda5-d7af5423dcd7",
+    "name": "WildApricot Admin Accounts Contacts.SavedSearch API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:16.000Z",
+    "updatedAt": "2026-07-28T03:30:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bf355aad-8427-4a7d-bda5-d7af5423dcd7"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "savedsearches",
+              "item": [
+                {
+                  "name": "{savedSearchId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Saved Search and Found Contacts.",
+                      "id": "0e067974-49f1-4c23-a563-f1a247891fcc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/savedsearches/:savedSearchId?=<string>&excludeArchived=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "savedsearches",
+                            ":savedSearchId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "exclude archived contacts from found ContactIDs.",
+                              "key": "excludeArchived",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "2125d6d5-a6e8-4dfc-aca0-ff259de72c71",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "59715635-369c-4712-8927-3b086c4ac306",
+                              "key": "savedSearchId",
+                              "value": "<integer>",
+                              "description": "(Required) Saved Search identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "9fa8a9bf-2b77-4949-b868-4652829a0af6",
+                          "name": "Saved Search description and found contact IDs",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/savedsearches/:savedSearchId?=<string>&excludeArchived=<boolean>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "savedsearches",
+                                ":savedSearchId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "exclude archived contacts from found ContactIDs.",
+                                  "key": "excludeArchived",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "savedSearchId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"ContactIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T03:30:17.000Z",
+                          "updatedAt": "2026-07-28T03:30:17.000Z",
+                          "uid": "35240-9fa8a9bf-2b77-4949-b868-4652829a0af6"
+                        },
+                        {
+                          "id": "af93f650-e08d-4ee2-9c1e-d22947e08127",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/savedsearches/:savedSearchId?=<string>&excludeArchived=<boolean>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "savedsearches",
+                                ":savedSearchId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "exclude archived contacts from found ContactIDs.",
+                                  "key": "excludeArchived",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "savedSearchId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:17.000Z",
+                          "updatedAt": "2026-07-28T03:30:17.000Z",
+                          "uid": "35240-af93f650-e08d-4ee2-9c1e-d22947e08127"
+                        },
+                        {
+                          "id": "1066f0cd-376f-4966-8f13-284035630464",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/savedsearches/:savedSearchId?=<string>&excludeArchived=<boolean>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "savedsearches",
+                                ":savedSearchId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "exclude archived contacts from found ContactIDs.",
+                                  "key": "excludeArchived",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "savedSearchId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:17.000Z",
+                          "updatedAt": "2026-07-28T03:30:17.000Z",
+                          "uid": "35240-1066f0cd-376f-4966-8f13-284035630464"
+                        },
+                        {
+                          "id": "92de9321-b68e-4d6e-9b1f-b997196fe44c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/savedsearches/:savedSearchId?=<string>&excludeArchived=<boolean>&$filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "savedsearches",
+                                ":savedSearchId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "exclude archived contacts from found ContactIDs.",
+                                  "key": "excludeArchived",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "savedSearchId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:17.000Z",
+                          "updatedAt": "2026-07-28T03:30:17.000Z",
+                          "uid": "35240-92de9321-b68e-4d6e-9b1f-b997196fe44c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:17.000Z",
+                      "updatedAt": "2026-07-28T03:30:17.000Z",
+                      "uid": "35240-0e067974-49f1-4c23-a563-f1a247891fcc"
+                    }
+                  ],
+                  "id": "434fe76c-02c5-46d8-9b67-a9962f0e9e97",
+                  "createdAt": "2026-07-28T03:30:17.000Z",
+                  "updatedAt": "2026-07-28T03:30:17.000Z",
+                  "uid": "35240-434fe76c-02c5-46d8-9b67-a9962f0e9e97"
+                },
+                {
+                  "name": "WildApricot List of Saved Searches.",
+                  "id": "13f4f962-e3c4-4dc2-9e8b-0d0f3fac4c01",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/savedsearches?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "savedsearches"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "02e357ed-6aec-4839-825c-0f68802f2d17",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9db7b118-39e5-4565-bc48-48c2abbb66f5",
+                      "name": "An array of saved search descriptions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/savedsearches?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "savedsearches"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:17.000Z",
+                      "updatedAt": "2026-07-28T03:30:17.000Z",
+                      "uid": "35240-9db7b118-39e5-4565-bc48-48c2abbb66f5"
+                    },
+                    {
+                      "id": "4ed985ed-484b-4dd9-896f-45279553c2db",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/savedsearches?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "savedsearches"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:17.000Z",
+                      "updatedAt": "2026-07-28T03:30:17.000Z",
+                      "uid": "35240-4ed985ed-484b-4dd9-896f-45279553c2db"
+                    },
+                    {
+                      "id": "5cd0b7e3-e395-4607-aea9-0aaad4192ea5",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/savedsearches?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "savedsearches"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:17.000Z",
+                      "updatedAt": "2026-07-28T03:30:17.000Z",
+                      "uid": "35240-5cd0b7e3-e395-4607-aea9-0aaad4192ea5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:17.000Z",
+                  "updatedAt": "2026-07-28T03:30:17.000Z",
+                  "uid": "35240-13f4f962-e3c4-4dc2-9e8b-0d0f3fac4c01"
+                }
+              ],
+              "id": "ea2d3ea9-4b23-41f8-a639-379784665340",
+              "createdAt": "2026-07-28T03:30:17.000Z",
+              "updatedAt": "2026-07-28T03:30:17.000Z",
+              "uid": "35240-ea2d3ea9-4b23-41f8-a639-379784665340"
+            }
+          ],
+          "id": "a5e74a01-d456-44c9-b3bf-5a21f82b6e72",
+          "createdAt": "2026-07-28T03:30:17.000Z",
+          "updatedAt": "2026-07-28T03:30:17.000Z",
+          "uid": "35240-a5e74a01-d456-44c9-b3bf-5a21f82b6e72"
+        }
+      ],
+      "id": "98ac8bde-8293-4b6a-8127-4548aaf67371",
+      "createdAt": "2026-07-28T03:30:17.000Z",
+      "updatedAt": "2026-07-28T03:30:17.000Z",
+      "uid": "35240-98ac8bde-8293-4b6a-8127-4548aaf67371"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

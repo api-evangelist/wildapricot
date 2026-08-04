@@ -1,0 +1,1738 @@
+{
+  "info": {
+    "_postman_id": "f0ed1314-f595-481c-99aa-8611855de341",
+    "name": "WildApricot Admin Accounts Finances.Refunds API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:32.000Z",
+    "updatedAt": "2026-07-28T03:30:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f0ed1314-f595-481c-99aa-8611855de341"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "refunds",
+              "item": [
+                {
+                  "name": "{refundId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Refund",
+                      "id": "fd47ee8e-4fec-4144-abea-41108d76298a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "52bc45dd-f767-48b5-a2f8-d36d3acb319e",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "39751f8c-c4ca-41b2-bf18-8548247caf45",
+                              "key": "refundId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique refund identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4cc09d8d-77b5-4bba-b308-68356d35ea75",
+                          "name": "information about specific refund",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-4cc09d8d-77b5-4bba-b308-68356d35ea75"
+                        },
+                        {
+                          "id": "0211d52d-1c91-4853-83cb-23372c7a16ea",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-0211d52d-1c91-4853-83cb-23372c7a16ea"
+                        },
+                        {
+                          "id": "373f0292-9ca9-4531-93fd-22248e692b81",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-373f0292-9ca9-4531-93fd-22248e692b81"
+                        },
+                        {
+                          "id": "fb132ad9-a225-479d-9f38-e91e8afefc59",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-fb132ad9-a225-479d-9f38-e91e8afefc59"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:32.000Z",
+                      "updatedAt": "2026-07-28T03:30:32.000Z",
+                      "uid": "35240-fd47ee8e-4fec-4144-abea-41108d76298a"
+                    },
+                    {
+                      "name": "WildApricot Update Existing Refund Information",
+                      "id": "87733581-8c92-43af-9332-8591a7d61363",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "178199a1-9d3b-43e6-94dd-36c0eec78416",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "faef88c2-a64f-4abc-b534-9dd10d760013",
+                              "key": "refundId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "8c60c62d-adaa-4d78-9bea-4cb3ed6ce00c",
+                          "name": "Returns 200 on successful data update",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-8c60c62d-adaa-4d78-9bea-4cb3ed6ce00c"
+                        },
+                        {
+                          "id": "77ad5366-cb1d-4db3-a686-d7413d960362",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-77ad5366-cb1d-4db3-a686-d7413d960362"
+                        },
+                        {
+                          "id": "e06b1b04-9efd-48fb-b8c7-40faecc92e91",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-e06b1b04-9efd-48fb-b8c7-40faecc92e91"
+                        },
+                        {
+                          "id": "2097fdb6-a19a-4837-a36b-02708a6b5e1e",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-2097fdb6-a19a-4837-a36b-02708a6b5e1e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:32.000Z",
+                      "updatedAt": "2026-07-28T03:30:32.000Z",
+                      "uid": "35240-87733581-8c92-43af-9332-8591a7d61363"
+                    },
+                    {
+                      "name": "WildApricot Delete Existing Refund",
+                      "id": "e9728bab-c0ab-47ae-a432-6b4a85c0b9e6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "c57b8cde-9d00-434c-83dc-03461d368d6f",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "1be51089-9b45-4c5a-9f0b-c19b860ed865",
+                              "key": "refundId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e30f3efd-f8ca-450c-9bba-3e73bd488118",
+                          "name": "Returns 200 on successful refund deletion",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-e30f3efd-f8ca-450c-9bba-3e73bd488118"
+                        },
+                        {
+                          "id": "f75ba4d9-3784-4abc-811a-abd16d44740e",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-f75ba4d9-3784-4abc-811a-abd16d44740e"
+                        },
+                        {
+                          "id": "41498031-1f5b-4a14-8b57-ddf44175ffa5",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-41498031-1f5b-4a14-8b57-ddf44175ffa5"
+                        },
+                        {
+                          "id": "797f2263-58d5-4fc0-85da-86efb2032c02",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/refunds/:refundId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "refunds",
+                                ":refundId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "refundId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:33.000Z",
+                          "updatedAt": "2026-07-28T03:30:33.000Z",
+                          "uid": "35240-797f2263-58d5-4fc0-85da-86efb2032c02"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:32.000Z",
+                      "updatedAt": "2026-07-28T03:30:32.000Z",
+                      "uid": "35240-e9728bab-c0ab-47ae-a432-6b4a85c0b9e6"
+                    }
+                  ],
+                  "id": "af6fbc4c-a055-419f-a14e-2c50e400d052",
+                  "createdAt": "2026-07-28T03:30:32.000Z",
+                  "updatedAt": "2026-07-28T03:30:32.000Z",
+                  "uid": "35240-af6fbc4c-a055-419f-a14e-2c50e400d052"
+                },
+                {
+                  "name": "WildApricot Get List of Refunds by Criteria.",
+                  "id": "f5343aee-7d22-4562-87e0-7a96de1869e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "refunds"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Identifier of contact to whom the refund was made.",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event.",
+                          "key": "eventId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, API returns only collection of identifiers instead of collection of refunds.",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Limits result to refunds created since StartDate.",
+                          "key": "StartDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to refunds created before EndDate.",
+                          "key": "EndDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, API returns only unsettled refunds.",
+                          "key": "unsettledOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "You can filter the refunds by specifying a set of refund IDs.",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "bcbf89a7-717b-4cee-99b6-b038f9412cdd",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3583ab7d-3695-4422-ad6a-9f97a1ca215e",
+                      "name": "Collection of refunds that match criteria.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the refund was made.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of refunds.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to refunds created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to refunds created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled refunds.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the refunds by specifying a set of refund IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RefundIdentifiers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"Refunds\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Tender\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"SettledValue\": \"<float>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Tender\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"SettledValue\": \"<float>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-3583ab7d-3695-4422-ad6a-9f97a1ca215e"
+                    },
+                    {
+                      "id": "b248e91b-8473-44a3-8661-927ada67bbb6",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the refund was made.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of refunds.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to refunds created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to refunds created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled refunds.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the refunds by specifying a set of refund IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-b248e91b-8473-44a3-8661-927ada67bbb6"
+                    },
+                    {
+                      "id": "916a5d81-65a9-44ce-9b8d-b4143baeb2e2",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the refund was made.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of refunds.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to refunds created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to refunds created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled refunds.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the refunds by specifying a set of refund IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-916a5d81-65a9-44ce-9b8d-b4143baeb2e2"
+                    },
+                    {
+                      "id": "ca548a21-df23-44c6-9518-e2c877781738",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the refund was made.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of refunds.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to refunds created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to refunds created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled refunds.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the refunds by specifying a set of refund IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-ca548a21-df23-44c6-9518-e2c877781738"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:32.000Z",
+                  "updatedAt": "2026-07-28T03:30:32.000Z",
+                  "uid": "35240-f5343aee-7d22-4562-87e0-7a96de1869e3"
+                },
+                {
+                  "name": "WildApricot Creates a New Refund.",
+                  "id": "48b7a992-96e5-4a83-be2a-729091946ad6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "refunds"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cf448bd1-1b44-41c7-a32e-caeaba99d09b",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "bfd4d898-a9cc-4276-8d70-eac44b6ac76b",
+                      "name": "Refund created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-bfd4d898-a9cc-4276-8d70-eac44b6ac76b"
+                    },
+                    {
+                      "id": "3ddf8c0c-c852-48fd-ae0c-205edf6a72ae",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-3ddf8c0c-c852-48fd-ae0c-205edf6a72ae"
+                    },
+                    {
+                      "id": "3607587a-b750-4400-af94-63192518cf03",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-3607587a-b750-4400-af94-63192518cf03"
+                    },
+                    {
+                      "id": "5326bb72-5dc5-4bc0-be95-d3ae8170f7a5",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"SettledValue\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/refunds?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:33.000Z",
+                      "updatedAt": "2026-07-28T03:30:33.000Z",
+                      "uid": "35240-5326bb72-5dc5-4bc0-be95-d3ae8170f7a5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:32.000Z",
+                  "updatedAt": "2026-07-28T03:30:32.000Z",
+                  "uid": "35240-48b7a992-96e5-4a83-be2a-729091946ad6"
+                }
+              ],
+              "id": "1e89f6ab-5704-4b83-b19e-54cd54fba457",
+              "createdAt": "2026-07-28T03:30:32.000Z",
+              "updatedAt": "2026-07-28T03:30:32.000Z",
+              "uid": "35240-1e89f6ab-5704-4b83-b19e-54cd54fba457"
+            }
+          ],
+          "id": "c1baca94-7a6f-4c03-b9b7-6159177b72dc",
+          "createdAt": "2026-07-28T03:30:32.000Z",
+          "updatedAt": "2026-07-28T03:30:32.000Z",
+          "uid": "35240-c1baca94-7a6f-4c03-b9b7-6159177b72dc"
+        }
+      ],
+      "id": "492a5302-993f-4d4e-b8f5-7c68eabe4aa9",
+      "createdAt": "2026-07-28T03:30:32.000Z",
+      "updatedAt": "2026-07-28T03:30:32.000Z",
+      "uid": "35240-492a5302-993f-4d4e-b8f5-7c68eabe4aa9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

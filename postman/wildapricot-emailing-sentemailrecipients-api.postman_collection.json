@@ -1,0 +1,371 @@
+{
+  "info": {
+    "_postman_id": "d7fdfa9c-14cc-4ccd-bfb1-ac44078a12cd",
+    "name": "WildApricot Admin Accounts Emailing.SentEmailRecipients API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:21.000Z",
+    "updatedAt": "2026-07-28T03:30:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d7fdfa9c-14cc-4ccd-bfb1-ac44078a12cd"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "SentEmailRecipients",
+              "item": [
+                {
+                  "name": "WildApricot Sent Email Recipients",
+                  "id": "7efe5540-ba79-4d3b-85ec-6514229628aa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/SentEmailRecipients?=<string>&=<string>&=<string>&emailId=<integer>&LoadLinks=<boolean>&Delivered=<boolean>&Opened=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "SentEmailRecipients"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) sent email Id (from email Log)",
+                          "key": "emailId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "load clicked links information",
+                          "key": "LoadLinks",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "load delivered or not delivered only",
+                          "key": "Delivered",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "load opened or not opened only",
+                          "key": "Opened",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "937a1758-604a-4959-ba03-aba1e3d636e8",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "Sent email recipients"
+                  },
+                  "response": [
+                    {
+                      "id": "cb82dd0c-c295-4e8c-acc6-5cf61f3c83d3",
+                      "name": "Contains a list of sent email recipients.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmailRecipients?=<string>&=<string>&=<string>&emailId=<integer>&LoadLinks=<boolean>&Delivered=<boolean>&Opened=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmailRecipients"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) sent email Id (from email Log)",
+                              "key": "emailId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "load clicked links information",
+                              "key": "LoadLinks",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load delivered or not delivered only",
+                              "key": "Delivered",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load opened or not opened only",
+                              "key": "Opened",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Recipients\": [\n    {\n      \"ContactId\": \"<integer>\",\n      \"EventRegistrationId\": \"<integer>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"RecipientName\": \"<string>\",\n      \"IsDelivered\": \"<boolean>\",\n      \"IsOpened\": \"<boolean>\",\n      \"ClickedLinks\": [\n        {\n          \"Url\": \"<string>\",\n          \"Clicked\": \"<boolean>\",\n          \"ClicksCount\": \"<integer>\"\n        },\n        {\n          \"Url\": \"<string>\",\n          \"Clicked\": \"<boolean>\",\n          \"ClicksCount\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"ContactId\": \"<integer>\",\n      \"EventRegistrationId\": \"<integer>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"RecipientName\": \"<string>\",\n      \"IsDelivered\": \"<boolean>\",\n      \"IsOpened\": \"<boolean>\",\n      \"ClickedLinks\": [\n        {\n          \"Url\": \"<string>\",\n          \"Clicked\": \"<boolean>\",\n          \"ClicksCount\": \"<integer>\"\n        },\n        {\n          \"Url\": \"<string>\",\n          \"Clicked\": \"<boolean>\",\n          \"ClicksCount\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:22.000Z",
+                      "updatedAt": "2026-07-28T03:30:22.000Z",
+                      "uid": "35240-cb82dd0c-c295-4e8c-acc6-5cf61f3c83d3"
+                    },
+                    {
+                      "id": "7d112198-bf18-4f57-be05-09ae7ea35206",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmailRecipients?=<string>&=<string>&=<string>&emailId=<integer>&LoadLinks=<boolean>&Delivered=<boolean>&Opened=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmailRecipients"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) sent email Id (from email Log)",
+                              "key": "emailId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "load clicked links information",
+                              "key": "LoadLinks",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load delivered or not delivered only",
+                              "key": "Delivered",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load opened or not opened only",
+                              "key": "Opened",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:22.000Z",
+                      "updatedAt": "2026-07-28T03:30:22.000Z",
+                      "uid": "35240-7d112198-bf18-4f57-be05-09ae7ea35206"
+                    },
+                    {
+                      "id": "97eb21b8-e540-488c-adcc-cb87b31d6a0d",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmailRecipients?=<string>&=<string>&=<string>&emailId=<integer>&LoadLinks=<boolean>&Delivered=<boolean>&Opened=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmailRecipients"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) sent email Id (from email Log)",
+                              "key": "emailId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "load clicked links information",
+                              "key": "LoadLinks",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load delivered or not delivered only",
+                              "key": "Delivered",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "load opened or not opened only",
+                              "key": "Opened",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:22.000Z",
+                      "updatedAt": "2026-07-28T03:30:22.000Z",
+                      "uid": "35240-97eb21b8-e540-488c-adcc-cb87b31d6a0d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:22.000Z",
+                  "updatedAt": "2026-07-28T03:30:22.000Z",
+                  "uid": "35240-7efe5540-ba79-4d3b-85ec-6514229628aa"
+                }
+              ],
+              "id": "6ceac25c-3a36-4f89-8a47-f0ee9d808752",
+              "createdAt": "2026-07-28T03:30:22.000Z",
+              "updatedAt": "2026-07-28T03:30:22.000Z",
+              "uid": "35240-6ceac25c-3a36-4f89-8a47-f0ee9d808752"
+            }
+          ],
+          "id": "baa617c3-d31c-4f67-bfa6-010315980c66",
+          "createdAt": "2026-07-28T03:30:22.000Z",
+          "updatedAt": "2026-07-28T03:30:22.000Z",
+          "uid": "35240-baa617c3-d31c-4f67-bfa6-010315980c66"
+        }
+      ],
+      "id": "be6574b4-d5e9-4c4d-bb5f-77ce7bfe41f8",
+      "createdAt": "2026-07-28T03:30:22.000Z",
+      "updatedAt": "2026-07-28T03:30:22.000Z",
+      "uid": "35240-be6574b4-d5e9-4c4d-bb5f-77ce7bfe41f8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

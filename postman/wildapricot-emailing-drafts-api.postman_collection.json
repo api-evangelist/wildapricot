@@ -1,0 +1,952 @@
+{
+  "info": {
+    "_postman_id": "301ab5eb-a65a-4502-8338-6a70225dbda5",
+    "name": "WildApricot Admin Accounts Emailing.Drafts API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:19.000Z",
+    "updatedAt": "2026-07-28T03:30:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-301ab5eb-a65a-4502-8338-6a70225dbda5"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "EmailDrafts",
+              "item": [
+                {
+                  "name": "{draftId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Email Draft Details",
+                      "id": "30e45b4f-cf9f-44d6-b95e-de5f4794f892",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts",
+                            ":draftId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f67cc049-915c-49d7-aedc-10f24309d4c1",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "f4b6bcfe-05c3-4aa6-8376-87fbb63e0756",
+                              "key": "draftId",
+                              "value": "<integer>",
+                              "description": "(Required) Email draft Id"
+                            }
+                          ]
+                        },
+                        "description": "Email draft details"
+                      },
+                      "response": [
+                        {
+                          "id": "812b66e2-d9fd-40c6-84fc-85a6613ab38d",
+                          "name": "Email draft",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"CreatedDate\": \"<string>\",\n  \"Type\": \"Unknown\",\n  \"Subject\": \"<string>\",\n  \"Body\": \"<string>\",\n  \"ReplyToName\": \"<string>\",\n  \"ReplyToAddress\": \"<string>\",\n  \"EventId\": \"<integer>\",\n  \"Creator\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\"\n  },\n  \"IsLinkTrackingAllowed\": \"<boolean>\",\n  \"Recipients\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": null,\n      \"Name\": \"<string>\",\n      \"Email\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Type\": null,\n      \"Name\": \"<string>\",\n      \"Email\": \"<string>\"\n    }\n  ],\n  \"LastChangedDate\": \"<string>\",\n  \"Modifier\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\"\n  },\n  \"IsScheduled\": \"<boolean>\",\n  \"ScheduledDate\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-812b66e2-d9fd-40c6-84fc-85a6613ab38d"
+                        },
+                        {
+                          "id": "4ccae624-d28e-45a0-9f3d-5c353841991c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-4ccae624-d28e-45a0-9f3d-5c353841991c"
+                        },
+                        {
+                          "id": "ec3f5d3d-116e-45a9-8466-29ff5e6e32a8",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-ec3f5d3d-116e-45a9-8466-29ff5e6e32a8"
+                        },
+                        {
+                          "id": "9dddf96f-a49b-462d-9230-a6db3a1f33f6",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-9dddf96f-a49b-462d-9230-a6db3a1f33f6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-30e45b4f-cf9f-44d6-b95e-de5f4794f892"
+                    },
+                    {
+                      "name": "WildApricot Delete Email Draft",
+                      "id": "2990532e-031f-4957-91e9-678e10e237f0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts",
+                            ":draftId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "88cdc084-15dd-408a-9a1d-9202019781a3",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "4d64be00-1a63-49f6-9ed1-6a921e55e6a1",
+                              "key": "draftId",
+                              "value": "<integer>",
+                              "description": "(Required) Email draft Id"
+                            }
+                          ]
+                        },
+                        "description": "Delete email draft"
+                      },
+                      "response": [
+                        {
+                          "id": "2b7db57c-3ffe-4712-9f7d-2f37009704af",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-2b7db57c-3ffe-4712-9f7d-2f37009704af"
+                        },
+                        {
+                          "id": "21270152-306f-426e-9d7d-95fa399311f5",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-21270152-306f-426e-9d7d-95fa399311f5"
+                        },
+                        {
+                          "id": "b7f3e753-2716-4eb9-b474-bd04c1aa074b",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-b7f3e753-2716-4eb9-b474-bd04c1aa074b"
+                        },
+                        {
+                          "id": "6d6547d0-aed3-49cb-be54-5ecd65aac34c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts/:draftId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "EmailDrafts",
+                                ":draftId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "draftId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:19.000Z",
+                          "updatedAt": "2026-07-28T03:30:19.000Z",
+                          "uid": "35240-6d6547d0-aed3-49cb-be54-5ecd65aac34c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-2990532e-031f-4957-91e9-678e10e237f0"
+                    }
+                  ],
+                  "id": "6989918d-9bf4-4ff0-88a9-41612dd79899",
+                  "createdAt": "2026-07-28T03:30:19.000Z",
+                  "updatedAt": "2026-07-28T03:30:19.000Z",
+                  "uid": "35240-6989918d-9bf4-4ff0-88a9-41612dd79899"
+                },
+                {
+                  "name": "WildApricot Email Drafts",
+                  "id": "6f052712-d95b-4ea8-9642-a6b7e683d9c2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "EmailDrafts"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "07fa8d89-3ac7-4fd7-a9ea-f9b67141cae1",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "Email drafts"
+                  },
+                  "response": [
+                    {
+                      "id": "83e3d219-eb90-4dd3-9702-1d0b5c84b7ab",
+                      "name": "A wrapper object, which contains a list of sent emails. also contains EmailDraftIdentifiersResult if idsOnly parameter is true",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Emails\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"CreatedDate\": \"<string>\",\n      \"Type\": \"Unknown\",\n      \"Subject\": \"<string>\",\n      \"Body\": \"<string>\",\n      \"ReplyToName\": \"<string>\",\n      \"ReplyToAddress\": \"<string>\",\n      \"EventId\": \"<integer>\",\n      \"Creator\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\"\n      },\n      \"IsLinkTrackingAllowed\": \"<boolean>\",\n      \"Recipients\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Type\": null,\n          \"Name\": \"<string>\",\n          \"Email\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Type\": null,\n          \"Name\": \"<string>\",\n          \"Email\": \"<string>\"\n        }\n      ],\n      \"LastChangedDate\": \"<string>\",\n      \"Modifier\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\"\n      },\n      \"IsScheduled\": \"<boolean>\",\n      \"ScheduledDate\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"CreatedDate\": \"<string>\",\n      \"Type\": \"ContactBlast\",\n      \"Subject\": \"<string>\",\n      \"Body\": \"<string>\",\n      \"ReplyToName\": \"<string>\",\n      \"ReplyToAddress\": \"<string>\",\n      \"EventId\": \"<integer>\",\n      \"Creator\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\"\n      },\n      \"IsLinkTrackingAllowed\": \"<boolean>\",\n      \"Recipients\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Type\": null,\n          \"Name\": \"<string>\",\n          \"Email\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Type\": null,\n          \"Name\": \"<string>\",\n          \"Email\": \"<string>\"\n        }\n      ],\n      \"LastChangedDate\": \"<string>\",\n      \"Modifier\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\"\n      },\n      \"IsScheduled\": \"<boolean>\",\n      \"ScheduledDate\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-83e3d219-eb90-4dd3-9702-1d0b5c84b7ab"
+                    },
+                    {
+                      "id": "7bbf8313-2caf-4d09-a5e5-f89bc6891429",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-7bbf8313-2caf-4d09-a5e5-f89bc6891429"
+                    },
+                    {
+                      "id": "0a5e648d-7270-461f-9d61-377b89c29374",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Precondition Required",
+                      "code": 428,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-0a5e648d-7270-461f-9d61-377b89c29374"
+                    },
+                    {
+                      "id": "f2c3330f-b2dc-4f56-ae42-2954c2d41495",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/EmailDrafts?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "EmailDrafts"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:19.000Z",
+                      "updatedAt": "2026-07-28T03:30:19.000Z",
+                      "uid": "35240-f2c3330f-b2dc-4f56-ae42-2954c2d41495"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:19.000Z",
+                  "updatedAt": "2026-07-28T03:30:19.000Z",
+                  "uid": "35240-6f052712-d95b-4ea8-9642-a6b7e683d9c2"
+                }
+              ],
+              "id": "aa0af276-612c-4f79-b520-1f24ac570244",
+              "createdAt": "2026-07-28T03:30:19.000Z",
+              "updatedAt": "2026-07-28T03:30:19.000Z",
+              "uid": "35240-aa0af276-612c-4f79-b520-1f24ac570244"
+            }
+          ],
+          "id": "4671695c-8e12-4c31-8139-87c88fdb5afc",
+          "createdAt": "2026-07-28T03:30:19.000Z",
+          "updatedAt": "2026-07-28T03:30:19.000Z",
+          "uid": "35240-4671695c-8e12-4c31-8139-87c88fdb5afc"
+        }
+      ],
+      "id": "572d24e9-6e76-4bac-9c7c-f70740385b29",
+      "createdAt": "2026-07-28T03:30:19.000Z",
+      "updatedAt": "2026-07-28T03:30:19.000Z",
+      "uid": "35240-572d24e9-6e76-4bac-9c7c-f70740385b29"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

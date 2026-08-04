@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "6824164f-6338-48e3-b4f0-a79ca10980f7",
+    "name": "WildApricot Admin Accounts Internal.Features API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:34.000Z",
+    "updatedAt": "2026-07-28T03:30:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6824164f-6338-48e3-b4f0-a79ca10980f7"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "features",
+              "item": [
+                {
+                  "name": "{featureId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Information About Feature Availability for Specific Account.",
+                      "id": "47a93081-c1f0-4f0a-8004-71a09039a009",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/features/:featureId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "features",
+                            ":featureId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ee97e26d-10bd-45bb-b9a4-a477bb92ec1b",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "b8af711e-50c9-407a-9fcf-083888d1f21e",
+                              "key": "featureId",
+                              "value": "<integer>",
+                              "description": "(Required) feature identifier"
+                            }
+                          ]
+                        },
+                        "description": "\nThere is no way to get full list of features, so api client should know feature identifier. For any invalid featureId API will return {\"Allowed\":true}.\nThis method is reserved **_for internal use only_** and not expected to be used by third party client applications.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "480b3c87-1327-4245-990c-1f0ef3a1273a",
+                          "name": "Feature availability status.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/features/:featureId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "features",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<string>\",\n  \"Allowed\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T03:30:35.000Z",
+                          "updatedAt": "2026-07-28T03:30:35.000Z",
+                          "uid": "35240-480b3c87-1327-4245-990c-1f0ef3a1273a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:35.000Z",
+                      "updatedAt": "2026-07-28T03:30:35.000Z",
+                      "uid": "35240-47a93081-c1f0-4f0a-8004-71a09039a009"
+                    }
+                  ],
+                  "id": "eab66470-d82e-47e4-8283-bfabcb61e9b2",
+                  "createdAt": "2026-07-28T03:30:35.000Z",
+                  "updatedAt": "2026-07-28T03:30:35.000Z",
+                  "uid": "35240-eab66470-d82e-47e4-8283-bfabcb61e9b2"
+                }
+              ],
+              "id": "3cfbec61-abdb-4ee9-8008-6e2fd507f5fc",
+              "createdAt": "2026-07-28T03:30:35.000Z",
+              "updatedAt": "2026-07-28T03:30:35.000Z",
+              "uid": "35240-3cfbec61-abdb-4ee9-8008-6e2fd507f5fc"
+            }
+          ],
+          "id": "70e450a8-cfc3-48c3-a258-7e608807b0e2",
+          "createdAt": "2026-07-28T03:30:35.000Z",
+          "updatedAt": "2026-07-28T03:30:35.000Z",
+          "uid": "35240-70e450a8-cfc3-48c3-a258-7e608807b0e2"
+        }
+      ],
+      "id": "d0219de5-55ec-4d8a-ba93-75fde76d1d68",
+      "createdAt": "2026-07-28T03:30:35.000Z",
+      "updatedAt": "2026-07-28T03:30:35.000Z",
+      "uid": "35240-d0219de5-55ec-4d8a-ba93-75fde76d1d68"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

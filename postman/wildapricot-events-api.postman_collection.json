@@ -1,0 +1,1940 @@
+{
+  "info": {
+    "_postman_id": "f6249f12-11dc-4a4d-a26e-cee247623f09",
+    "name": "WildApricot Admin Accounts Events API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:24.000Z",
+    "updatedAt": "2026-07-28T03:30:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f6249f12-11dc-4a4d-a26e-cee247623f09"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "events",
+              "item": [
+                {
+                  "name": "{eventId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Event",
+                      "id": "f0f085ea-04c9-4487-8746-5262e1e2d493",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events",
+                            ":eventId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5d4014dc-9bfd-481f-bddf-3d9548c6c687",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "74e75d11-b867-4cb3-b642-58a6f1202edd",
+                              "key": "eventId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique event identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "6a215a3b-024b-445f-8cd4-35d9fc8b37b2",
+                          "name": "information about specific event",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"HasEnabledRegistrationTypes\": \"<boolean>\",\n  \"AccessLevel\": \"Public\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"RegistrationTypes\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"IsEnabled\": \"<boolean>\",\n        \"EventId\": \"<integer>\",\n        \"Name\": \"<string>\",\n        \"Description\": \"<string>\",\n        \"BasePrice\": \"<number>\",\n        \"GuestPrice\": \"<number>\",\n        \"UseTaxScopeSettings\": \"<boolean>\",\n        \"Availability\": \"CodeRequired\",\n        \"RegistrationCode\": \"<string>\",\n        \"AvailableForMembershipLevels\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\"\n          }\n        ],\n        \"AvailableFrom\": \"<string>\",\n        \"AvailableThrough\": \"<string>\",\n        \"MaximumRegistrantsCount\": \"<integer>\",\n        \"CurrentRegistrantsCount\": \"<integer>\",\n        \"GuestRegistrationPolicy\": \"NumberOfGuests\",\n        \"UnavailabilityPolicy\": \"ShowDisabled\",\n        \"CancellationBehaviour\": \"Allow\",\n        \"CancellationDaysBeforeEvent\": \"<integer>\",\n        \"IsWaitlistEnabled\": \"<boolean>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"IsEnabled\": \"<boolean>\",\n        \"EventId\": \"<integer>\",\n        \"Name\": \"<string>\",\n        \"Description\": \"<string>\",\n        \"BasePrice\": \"<number>\",\n        \"GuestPrice\": \"<number>\",\n        \"UseTaxScopeSettings\": \"<boolean>\",\n        \"Availability\": \"CodeRequired\",\n        \"RegistrationCode\": \"<string>\",\n        \"AvailableForMembershipLevels\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\"\n          }\n        ],\n        \"AvailableFrom\": \"<string>\",\n        \"AvailableThrough\": \"<string>\",\n        \"MaximumRegistrantsCount\": \"<integer>\",\n        \"CurrentRegistrantsCount\": \"<integer>\",\n        \"GuestRegistrationPolicy\": \"NumberOfGuests\",\n        \"UnavailabilityPolicy\": \"ShowDisabled\",\n        \"CancellationBehaviour\": \"AllowUpToPeriodBeforeEvent\",\n        \"CancellationDaysBeforeEvent\": \"<integer>\",\n        \"IsWaitlistEnabled\": \"<boolean>\"\n      }\n    ],\n    \"EventRegistrationFields\": [\n      {\n        \"Description\": \"<string>\",\n        \"FieldName\": \"<string>\",\n        \"FieldType\": \"Number\",\n        \"SystemCode\": \"<string>\",\n        \"DisplayType\": \"<string>\",\n        \"IsSystem\": \"<boolean>\",\n        \"FieldInstructions\": \"<string>\",\n        \"AllowedValues\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Label\": \"<string>\",\n            \"Position\": \"<integer>\",\n            \"SelectedByDefault\": \"<boolean>\",\n            \"ExtraCost\": \"<number>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Label\": \"<string>\",\n            \"Position\": \"<integer>\",\n            \"SelectedByDefault\": \"<boolean>\",\n            \"ExtraCost\": \"<number>\"\n          }\n        ],\n        \"Order\": \"<integer>\",\n        \"RulesAndTermsInfo\": {\n          \"Text\": \"<string>\",\n          \"Link\": \"<string>\"\n        },\n        \"ExtraCharge\": {\n          \"MultiplierType\": \"ItemPrice\",\n          \"Multiplier\": \"<number>\",\n          \"MinAmount\": \"<integer>\",\n          \"MaxAmount\": \"<integer>\",\n          \"MinCharge\": \"<number>\",\n          \"MaxCharge\": \"<number>\"\n        },\n        \"Kind\": \"Custom\"\n      },\n      {\n        \"Description\": \"<string>\",\n        \"FieldName\": \"<string>\",\n        \"FieldType\": \"Choice\",\n        \"SystemCode\": \"<string>\",\n        \"DisplayType\": \"<string>\",\n        \"IsSystem\": \"<boolean>\",\n        \"FieldInstructions\": \"<string>\",\n        \"AllowedValues\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Label\": \"<string>\",\n            \"Position\": \"<integer>\",\n            \"SelectedByDefault\": \"<boolean>\",\n            \"ExtraCost\": \"<number>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Label\": \"<string>\",\n            \"Position\": \"<integer>\",\n            \"SelectedByDefault\": \"<boolean>\",\n            \"ExtraCost\": \"<number>\"\n          }\n        ],\n        \"Order\": \"<integer>\",\n        \"RulesAndTermsInfo\": {\n          \"Text\": \"<string>\",\n          \"Link\": \"<string>\"\n        },\n        \"ExtraCharge\": {\n          \"MultiplierType\": \"Percentage\",\n          \"Multiplier\": \"<number>\",\n          \"MinAmount\": \"<integer>\",\n          \"MaxAmount\": \"<integer>\",\n          \"MinCharge\": \"<number>\",\n          \"MaxCharge\": \"<number>\"\n        },\n        \"Kind\": \"Common\"\n      }\n    ],\n    \"TotalPaid\": \"<number>\",\n    \"TotalDue\": \"<number>\",\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"CreateContactForGuestsWithEmail\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"PaymentMethod\": \"Undefined\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\",\n  \"InviteeStat\": {\n    \"NotResponded\": \"<integer>\",\n    \"NotAttended\": \"<integer>\",\n    \"Attended\": \"<integer>\",\n    \"MaybeAttended\": \"<integer>\"\n  },\n  \"PendingRegistrationsCount\": \"<integer>\",\n  \"ConfirmedRegistrationsCount\": \"<integer>\",\n  \"CheckedInAttendeesNumber\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-6a215a3b-024b-445f-8cd4-35d9fc8b37b2"
+                        },
+                        {
+                          "id": "0f2e09d9-cc77-4901-8cce-ddabfacaed29",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-0f2e09d9-cc77-4901-8cce-ddabfacaed29"
+                        },
+                        {
+                          "id": "b3bd4d64-747c-4901-a273-82db6a92c71c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-b3bd4d64-747c-4901-a273-82db6a92c71c"
+                        },
+                        {
+                          "id": "635caa01-c173-4b22-8238-3386540ea2ad",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-635caa01-c173-4b22-8238-3386540ea2ad"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-f0f085ea-04c9-4487-8746-5262e1e2d493"
+                    },
+                    {
+                      "name": "WildApricot Update Information About Existing Event",
+                      "id": "2df246a4-5539-463c-b2c7-6b98baa8a041",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events",
+                            ":eventId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "3ba03e29-334b-41f3-8afb-5cfaa343ba78",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "e1e7cb49-fa45-4505-a39e-fb5fbbea4688",
+                              "key": "eventId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique event identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "501a771d-4ab1-412b-a73d-c864a127b51f",
+                          "name": "Updated version of event information.\n",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference boolean not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-501a771d-4ab1-412b-a73d-c864a127b51f"
+                        },
+                        {
+                          "id": "afefd17c-ed1c-4798-ae2a-e619ae81541e",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-afefd17c-ed1c-4798-ae2a-e619ae81541e"
+                        },
+                        {
+                          "id": "b54a6d98-fe8f-4b83-b7c4-43f70965dc34",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-b54a6d98-fe8f-4b83-b7c4-43f70965dc34"
+                        },
+                        {
+                          "id": "e7c55271-62b9-425e-b951-a367b3d20141",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-e7c55271-62b9-425e-b951-a367b3d20141"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-2df246a4-5539-463c-b2c7-6b98baa8a041"
+                    },
+                    {
+                      "name": "WildApricot Completely Delete Event from System.",
+                      "id": "b1b2faf8-a96d-44b8-90ac-d5fed1cafdd5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events",
+                            ":eventId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "3c039bab-14ea-4557-86fe-245474b47bf4",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "e04f65c3-0d08-46cb-8195-6ccfe543fcab",
+                              "key": "eventId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique event identifier"
+                            }
+                          ]
+                        },
+                        "description": "Completely delete event from system."
+                      },
+                      "response": [
+                        {
+                          "id": "17378ee2-22ec-4359-b79a-94310b00acad",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-17378ee2-22ec-4359-b79a-94310b00acad"
+                        },
+                        {
+                          "id": "f1bdddca-c514-400c-88e5-e80f2cf44bb3",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-f1bdddca-c514-400c-88e5-e80f2cf44bb3"
+                        },
+                        {
+                          "id": "e5c550db-5b68-475c-b916-736699ab1901",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-e5c550db-5b68-475c-b916-736699ab1901"
+                        },
+                        {
+                          "id": "d2315a77-11b1-449a-8c96-58f460e8b43f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/events/:eventId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "events",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "eventId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:25.000Z",
+                          "updatedAt": "2026-07-28T03:30:25.000Z",
+                          "uid": "35240-d2315a77-11b1-449a-8c96-58f460e8b43f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-b1b2faf8-a96d-44b8-90ac-d5fed1cafdd5"
+                    }
+                  ],
+                  "id": "53fb1f9f-f140-47fe-b248-7bf43a608a6d",
+                  "createdAt": "2026-07-28T03:30:25.000Z",
+                  "updatedAt": "2026-07-28T03:30:25.000Z",
+                  "uid": "35240-53fb1f9f-f140-47fe-b248-7bf43a608a6d"
+                },
+                {
+                  "name": "WildApricot Events List",
+                  "id": "4d05d61c-67c7-4386-8797-28b6817a267f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>&$async=<boolean>&resultId=<string>&$filter=<string>&$sort=<string>&=<string>&=<string>&$count=<boolean>&idsOnly=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "events"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n",
+                          "key": "$async",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n",
+                          "key": "resultId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc",
+                          "key": "$sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n",
+                          "key": "$count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c8a6cc6d-4489-4cb1-8429-eafe3a7da453",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0a2b326f-20bc-4683-b101-aa04a9430cea",
+                      "name": "A wrapper object, which contains a list of events, event identifiers or events count.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>&$async=<boolean>&resultId=<string>&$filter=<string>&$sort=<string>&=<string>&=<string>&$count=<boolean>&idsOnly=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n",
+                              "key": "$async",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n",
+                              "key": "resultId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc",
+                              "key": "$sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"EventsIdentifiers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"Events\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"EventType\": \"Reqular\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\",\n      \"Location\": \"<string>\",\n      \"RegistrationEnabled\": \"<boolean>\",\n      \"HasEnabledRegistrationTypes\": \"<boolean>\",\n      \"AccessLevel\": \"AdminOnly\",\n      \"Tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Details\": {\n        \"DescriptionHtml\": \"<string>\",\n        \"PaymentInstructions\": \"<string>\",\n        \"TimeZone\": {\n          \"ZoneId\": \"<string>\",\n          \"Name\": \"<string>\",\n          \"UtcOffset\": \"<integer>\"\n        },\n        \"RegistrationTypes\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\",\n            \"IsEnabled\": \"<boolean>\",\n            \"EventId\": \"<integer>\",\n            \"Name\": \"<string>\",\n            \"Description\": \"<string>\",\n            \"BasePrice\": \"<number>\",\n            \"GuestPrice\": \"<number>\",\n            \"UseTaxScopeSettings\": \"<boolean>\",\n            \"Availability\": \"CodeRequired\",\n            \"RegistrationCode\": \"<string>\",\n            \"AvailableForMembershipLevels\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              }\n            ],\n            \"AvailableFrom\": \"<string>\",\n            \"AvailableThrough\": \"<string>\",\n            \"MaximumRegistrantsCount\": \"<integer>\",\n            \"CurrentRegistrantsCount\": \"<integer>\",\n            \"GuestRegistrationPolicy\": \"Disabled\",\n            \"UnavailabilityPolicy\": \"Hide\",\n            \"CancellationBehaviour\": \"AllowUpToPeriodBeforeEvent\",\n            \"CancellationDaysBeforeEvent\": \"<integer>\",\n            \"IsWaitlistEnabled\": \"<boolean>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\",\n            \"IsEnabled\": \"<boolean>\",\n            \"EventId\": \"<integer>\",\n            \"Name\": \"<string>\",\n            \"Description\": \"<string>\",\n            \"BasePrice\": \"<number>\",\n            \"GuestPrice\": \"<number>\",\n            \"UseTaxScopeSettings\": \"<boolean>\",\n            \"Availability\": \"CodeRequired\",\n            \"RegistrationCode\": \"<string>\",\n            \"AvailableForMembershipLevels\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              }\n            ],\n            \"AvailableFrom\": \"<string>\",\n            \"AvailableThrough\": \"<string>\",\n            \"MaximumRegistrantsCount\": \"<integer>\",\n            \"CurrentRegistrantsCount\": \"<integer>\",\n            \"GuestRegistrationPolicy\": \"CollectContactDetails\",\n            \"UnavailabilityPolicy\": \"ShowDisabled\",\n            \"CancellationBehaviour\": \"Allow\",\n            \"CancellationDaysBeforeEvent\": \"<integer>\",\n            \"IsWaitlistEnabled\": \"<boolean>\"\n          }\n        ],\n        \"EventRegistrationFields\": [\n          {\n            \"Description\": \"<string>\",\n            \"FieldName\": \"<string>\",\n            \"FieldType\": \"MultipleChoice\",\n            \"SystemCode\": \"<string>\",\n            \"DisplayType\": \"<string>\",\n            \"IsSystem\": \"<boolean>\",\n            \"FieldInstructions\": \"<string>\",\n            \"AllowedValues\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              }\n            ],\n            \"Order\": \"<integer>\",\n            \"RulesAndTermsInfo\": {\n              \"Text\": \"<string>\",\n              \"Link\": \"<string>\"\n            },\n            \"ExtraCharge\": {\n              \"MultiplierType\": \"ItemPrice\",\n              \"Multiplier\": \"<number>\",\n              \"MinAmount\": \"<integer>\",\n              \"MaxAmount\": \"<integer>\",\n              \"MinCharge\": \"<number>\",\n              \"MaxCharge\": \"<number>\"\n            },\n            \"Kind\": \"Custom\"\n          },\n          {\n            \"Description\": \"<string>\",\n            \"FieldName\": \"<string>\",\n            \"FieldType\": \"MultipleChoice\",\n            \"SystemCode\": \"<string>\",\n            \"DisplayType\": \"<string>\",\n            \"IsSystem\": \"<boolean>\",\n            \"FieldInstructions\": \"<string>\",\n            \"AllowedValues\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              }\n            ],\n            \"Order\": \"<integer>\",\n            \"RulesAndTermsInfo\": {\n              \"Text\": \"<string>\",\n              \"Link\": \"<string>\"\n            },\n            \"ExtraCharge\": {\n              \"MultiplierType\": \"ItemPrice\",\n              \"Multiplier\": \"<number>\",\n              \"MinAmount\": \"<integer>\",\n              \"MaxAmount\": \"<integer>\",\n              \"MinCharge\": \"<number>\",\n              \"MaxCharge\": \"<number>\"\n            },\n            \"Kind\": \"Common\"\n          }\n        ],\n        \"TotalPaid\": \"<number>\",\n        \"TotalDue\": \"<number>\",\n        \"AccessControl\": {\n          \"AccessLevel\": \"Public\",\n          \"AvailableForAnyLevel\": \"<boolean>\",\n          \"AvailableForLevels\": [\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            },\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            }\n          ],\n          \"AvailableForAnyGroup\": \"<boolean>\",\n          \"AvailableForGroups\": [\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            },\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            }\n          ]\n        },\n        \"GuestRegistrationSettings\": {\n          \"Enabled\": \"<boolean>\",\n          \"CreateContactMode\": \"CreateContactForAllGuests\"\n        },\n        \"Organizer\": {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        \"PaymentMethod\": \"OnlineAndOffline\",\n        \"RegistrationConfirmationExtraInfo\": \"<string>\",\n        \"RegistrationMessage\": \"<string>\",\n        \"SendEmailCopy\": \"<boolean>\",\n        \"IsWaitlistEnabled\": \"<boolean>\",\n        \"WaitlistSettings\": {\n          \"WaitlistType\": \"Auto\",\n          \"InformationToCollect\": \"None\"\n        },\n        \"MultipleRegistrationAllowed\": \"<boolean>\",\n        \"AttendeesDisplaySettings\": {\n          \"VisibleTo\": \"Members\",\n          \"ShowPendingAttendees\": \"<boolean>\"\n        }\n      },\n      \"Sessions\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Title\": \"<string>\",\n          \"StartDate\": \"<string>\",\n          \"StartTimeSpecified\": \"<boolean>\",\n          \"EndDate\": \"<string>\",\n          \"EndTimeSpecified\": \"<boolean>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Title\": \"<string>\",\n          \"StartDate\": \"<string>\",\n          \"StartTimeSpecified\": \"<boolean>\",\n          \"EndDate\": \"<string>\",\n          \"EndTimeSpecified\": \"<boolean>\"\n        }\n      ],\n      \"RegistrationsLimit\": \"<integer>\",\n      \"InviteeStat\": {\n        \"NotResponded\": \"<integer>\",\n        \"NotAttended\": \"<integer>\",\n        \"Attended\": \"<integer>\",\n        \"MaybeAttended\": \"<integer>\"\n      },\n      \"PendingRegistrationsCount\": \"<integer>\",\n      \"ConfirmedRegistrationsCount\": \"<integer>\",\n      \"CheckedInAttendeesNumber\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"EventType\": \"RSVP\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\",\n      \"Location\": \"<string>\",\n      \"RegistrationEnabled\": \"<boolean>\",\n      \"HasEnabledRegistrationTypes\": \"<boolean>\",\n      \"AccessLevel\": \"Public\",\n      \"Tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Details\": {\n        \"DescriptionHtml\": \"<string>\",\n        \"PaymentInstructions\": \"<string>\",\n        \"TimeZone\": {\n          \"ZoneId\": \"<string>\",\n          \"Name\": \"<string>\",\n          \"UtcOffset\": \"<integer>\"\n        },\n        \"RegistrationTypes\": [\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\",\n            \"IsEnabled\": \"<boolean>\",\n            \"EventId\": \"<integer>\",\n            \"Name\": \"<string>\",\n            \"Description\": \"<string>\",\n            \"BasePrice\": \"<number>\",\n            \"GuestPrice\": \"<number>\",\n            \"UseTaxScopeSettings\": \"<boolean>\",\n            \"Availability\": \"CodeRequired\",\n            \"RegistrationCode\": \"<string>\",\n            \"AvailableForMembershipLevels\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              }\n            ],\n            \"AvailableFrom\": \"<string>\",\n            \"AvailableThrough\": \"<string>\",\n            \"MaximumRegistrantsCount\": \"<integer>\",\n            \"CurrentRegistrantsCount\": \"<integer>\",\n            \"GuestRegistrationPolicy\": \"CollectContactDetails\",\n            \"UnavailabilityPolicy\": \"Hide\",\n            \"CancellationBehaviour\": \"DoNotAllow\",\n            \"CancellationDaysBeforeEvent\": \"<integer>\",\n            \"IsWaitlistEnabled\": \"<boolean>\"\n          },\n          {\n            \"Id\": \"<integer>\",\n            \"Url\": \"<string>\",\n            \"IsEnabled\": \"<boolean>\",\n            \"EventId\": \"<integer>\",\n            \"Name\": \"<string>\",\n            \"Description\": \"<string>\",\n            \"BasePrice\": \"<number>\",\n            \"GuestPrice\": \"<number>\",\n            \"UseTaxScopeSettings\": \"<boolean>\",\n            \"Availability\": \"MembersOnly\",\n            \"RegistrationCode\": \"<string>\",\n            \"AvailableForMembershipLevels\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Url\": \"<string>\"\n              }\n            ],\n            \"AvailableFrom\": \"<string>\",\n            \"AvailableThrough\": \"<string>\",\n            \"MaximumRegistrantsCount\": \"<integer>\",\n            \"CurrentRegistrantsCount\": \"<integer>\",\n            \"GuestRegistrationPolicy\": \"CollectFullInfo\",\n            \"UnavailabilityPolicy\": \"Hide\",\n            \"CancellationBehaviour\": \"Allow\",\n            \"CancellationDaysBeforeEvent\": \"<integer>\",\n            \"IsWaitlistEnabled\": \"<boolean>\"\n          }\n        ],\n        \"EventRegistrationFields\": [\n          {\n            \"Description\": \"<string>\",\n            \"FieldName\": \"<string>\",\n            \"FieldType\": \"SectionDivider\",\n            \"SystemCode\": \"<string>\",\n            \"DisplayType\": \"<string>\",\n            \"IsSystem\": \"<boolean>\",\n            \"FieldInstructions\": \"<string>\",\n            \"AllowedValues\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              }\n            ],\n            \"Order\": \"<integer>\",\n            \"RulesAndTermsInfo\": {\n              \"Text\": \"<string>\",\n              \"Link\": \"<string>\"\n            },\n            \"ExtraCharge\": {\n              \"MultiplierType\": \"ItemPrice\",\n              \"Multiplier\": \"<number>\",\n              \"MinAmount\": \"<integer>\",\n              \"MaxAmount\": \"<integer>\",\n              \"MinCharge\": \"<number>\",\n              \"MaxCharge\": \"<number>\"\n            },\n            \"Kind\": \"Custom\"\n          },\n          {\n            \"Description\": \"<string>\",\n            \"FieldName\": \"<string>\",\n            \"FieldType\": \"Boolean\",\n            \"SystemCode\": \"<string>\",\n            \"DisplayType\": \"<string>\",\n            \"IsSystem\": \"<boolean>\",\n            \"FieldInstructions\": \"<string>\",\n            \"AllowedValues\": [\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              },\n              {\n                \"Id\": \"<integer>\",\n                \"Label\": \"<string>\",\n                \"Position\": \"<integer>\",\n                \"SelectedByDefault\": \"<boolean>\",\n                \"ExtraCost\": \"<number>\"\n              }\n            ],\n            \"Order\": \"<integer>\",\n            \"RulesAndTermsInfo\": {\n              \"Text\": \"<string>\",\n              \"Link\": \"<string>\"\n            },\n            \"ExtraCharge\": {\n              \"MultiplierType\": \"Percentage\",\n              \"Multiplier\": \"<number>\",\n              \"MinAmount\": \"<integer>\",\n              \"MaxAmount\": \"<integer>\",\n              \"MinCharge\": \"<number>\",\n              \"MaxCharge\": \"<number>\"\n            },\n            \"Kind\": \"Custom\"\n          }\n        ],\n        \"TotalPaid\": \"<number>\",\n        \"TotalDue\": \"<number>\",\n        \"AccessControl\": {\n          \"AccessLevel\": \"Public\",\n          \"AvailableForAnyLevel\": \"<boolean>\",\n          \"AvailableForLevels\": [\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            },\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            }\n          ],\n          \"AvailableForAnyGroup\": \"<boolean>\",\n          \"AvailableForGroups\": [\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            },\n            {\n              \"Id\": \"<integer>\",\n              \"Url\": \"<string>\"\n            }\n          ]\n        },\n        \"GuestRegistrationSettings\": {\n          \"Enabled\": \"<boolean>\",\n          \"CreateContactMode\": \"NeverCreateContact\"\n        },\n        \"Organizer\": {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        \"PaymentMethod\": \"Undefined\",\n        \"RegistrationConfirmationExtraInfo\": \"<string>\",\n        \"RegistrationMessage\": \"<string>\",\n        \"SendEmailCopy\": \"<boolean>\",\n        \"IsWaitlistEnabled\": \"<boolean>\",\n        \"WaitlistSettings\": {\n          \"WaitlistType\": \"Auto\",\n          \"InformationToCollect\": \"RegistrationInformation\"\n        },\n        \"MultipleRegistrationAllowed\": \"<boolean>\",\n        \"AttendeesDisplaySettings\": {\n          \"VisibleTo\": \"Nobody\",\n          \"ShowPendingAttendees\": \"<boolean>\"\n        }\n      },\n      \"Sessions\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Title\": \"<string>\",\n          \"StartDate\": \"<string>\",\n          \"StartTimeSpecified\": \"<boolean>\",\n          \"EndDate\": \"<string>\",\n          \"EndTimeSpecified\": \"<boolean>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Title\": \"<string>\",\n          \"StartDate\": \"<string>\",\n          \"StartTimeSpecified\": \"<boolean>\",\n          \"EndDate\": \"<string>\",\n          \"EndTimeSpecified\": \"<boolean>\"\n        }\n      ],\n      \"RegistrationsLimit\": \"<integer>\",\n      \"InviteeStat\": {\n        \"NotResponded\": \"<integer>\",\n        \"NotAttended\": \"<integer>\",\n        \"Attended\": \"<integer>\",\n        \"MaybeAttended\": \"<integer>\"\n      },\n      \"PendingRegistrationsCount\": \"<integer>\",\n      \"ConfirmedRegistrationsCount\": \"<integer>\",\n      \"CheckedInAttendeesNumber\": \"<integer>\"\n    }\n  ],\n  \"Count\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-0a2b326f-20bc-4683-b101-aa04a9430cea"
+                    },
+                    {
+                      "id": "4ba3a109-8783-475f-8239-88cc6794022f",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>&$async=<boolean>&resultId=<string>&$filter=<string>&$sort=<string>&=<string>&=<string>&$count=<boolean>&idsOnly=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n",
+                              "key": "$async",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n",
+                              "key": "resultId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc",
+                              "key": "$sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-4ba3a109-8783-475f-8239-88cc6794022f"
+                    },
+                    {
+                      "id": "301b6f99-0a0c-4e30-9c03-0471cb98e3f3",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>&$async=<boolean>&resultId=<string>&$filter=<string>&$sort=<string>&=<string>&=<string>&$count=<boolean>&idsOnly=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n",
+                              "key": "$async",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n",
+                              "key": "resultId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc",
+                              "key": "$sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-301b6f99-0a0c-4e30-9c03-0471cb98e3f3"
+                    },
+                    {
+                      "id": "b49206e6-b182-4f16-bf70-b08f0dadcaf5",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>&$async=<boolean>&resultId=<string>&$filter=<string>&$sort=<string>&=<string>&=<string>&$count=<boolean>&idsOnly=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n",
+                              "key": "$async",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n",
+                              "key": "resultId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc",
+                              "key": "$sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-b49206e6-b182-4f16-bf70-b08f0dadcaf5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:25.000Z",
+                  "updatedAt": "2026-07-28T03:30:25.000Z",
+                  "uid": "35240-4d05d61c-67c7-4386-8797-28b6817a267f"
+                },
+                {
+                  "name": "WildApricot Create a New Event Record",
+                  "id": "33a1c86c-f9e7-4249-b068-cc5175e65955",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "events"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c5d31e64-0142-4aab-9a4d-17c40e8b4f76",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "adee6eea-953a-47d9-8d65-d5c8b3efa8b7",
+                      "name": "Returns created event record id",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<number>",
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-adee6eea-953a-47d9-8d65-d5c8b3efa8b7"
+                    },
+                    {
+                      "id": "183b3574-afd5-43b4-a91a-bd079d85b864",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-183b3574-afd5-43b4-a91a-bd079d85b864"
+                    },
+                    {
+                      "id": "3d46f186-561a-46ae-b6f8-75059d2c9400",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-3d46f186-561a-46ae-b6f8-75059d2c9400"
+                    },
+                    {
+                      "id": "072c032b-0c44-4c22-9503-19bf5c005f3a",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"EventType\": \"Reqular\",\n  \"StartDate\": \"<string>\",\n  \"Id\": \"<integer>\",\n  \"StartTimeSpecified\": \"<boolean>\",\n  \"EndDate\": \"<string>\",\n  \"EndTimeSpecified\": \"<boolean>\",\n  \"Location\": \"<string>\",\n  \"RegistrationEnabled\": \"<boolean>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Details\": {\n    \"DescriptionHtml\": \"<string>\",\n    \"PaymentInstructions\": \"<string>\",\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"AccessControl\": {\n      \"AccessLevel\": \"AdminOnly\",\n      \"AvailableForAnyLevel\": \"<boolean>\",\n      \"AvailableForLevels\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ],\n      \"AvailableForAnyGroup\": \"<boolean>\",\n      \"AvailableForGroups\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"GuestRegistrationSettings\": {\n      \"Enabled\": \"<boolean>\",\n      \"CreateContactMode\": \"NeverCreateContact\"\n    },\n    \"Organizer\": {\n      \"Id\": \"<integer>\"\n    },\n    \"PaymentMethod\": \"OnlineAndOffline\",\n    \"RegistrationConfirmationExtraInfo\": \"<string>\",\n    \"RegistrationMessage\": \"<string>\",\n    \"SendEmailCopy\": \"<boolean>\",\n    \"IsWaitlistEnabled\": \"<boolean>\",\n    \"WaitlistSettings\": {\n      \"WaitlistType\": \"Auto\",\n      \"InformationToCollect\": \"RegistrationInformation\"\n    },\n    \"MultipleRegistrationAllowed\": \"<boolean>\",\n    \"AttendeesDisplaySettings\": {\n      \"VisibleTo\": \"Public\",\n      \"ShowPendingAttendees\": \"<boolean>\"\n    }\n  },\n  \"Sessions\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Title\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"StartTimeSpecified\": \"<boolean>\",\n      \"EndDate\": \"<string>\",\n      \"EndTimeSpecified\": \"<boolean>\"\n    }\n  ],\n  \"RegistrationsLimit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/events?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-072c032b-0c44-4c22-9503-19bf5c005f3a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:25.000Z",
+                  "updatedAt": "2026-07-28T03:30:25.000Z",
+                  "uid": "35240-33a1c86c-f9e7-4249-b068-cc5175e65955"
+                }
+              ],
+              "id": "905aa282-5018-42ed-a7f6-b3ba9a38ac13",
+              "createdAt": "2026-07-28T03:30:25.000Z",
+              "updatedAt": "2026-07-28T03:30:25.000Z",
+              "uid": "35240-905aa282-5018-42ed-a7f6-b3ba9a38ac13"
+            }
+          ],
+          "id": "10e7ce18-f0b7-42b7-ad1b-aaf3b59d9b90",
+          "createdAt": "2026-07-28T03:30:25.000Z",
+          "updatedAt": "2026-07-28T03:30:25.000Z",
+          "uid": "35240-10e7ce18-f0b7-42b7-ad1b-aaf3b59d9b90"
+        }
+      ],
+      "id": "4ca9ea3a-0418-48a0-8248-9868c5ad65b8",
+      "createdAt": "2026-07-28T03:30:25.000Z",
+      "updatedAt": "2026-07-28T03:30:25.000Z",
+      "uid": "35240-4ca9ea3a-0418-48a0-8248-9868c5ad65b8"
+    },
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "CloneEvent",
+              "item": [
+                {
+                  "name": "WildApricot Clone Existed Event.",
+                  "id": "697afa0d-60f8-42a2-8f01-5db0d30e3317",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/CloneEvent?=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "CloneEvent"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "fbdc8685-b541-4dc2-aaee-c10117e9a9f7",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "e8db92d7-85f8-4461-b1f3-af427b6ad6ac",
+                      "name": "created event id",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CloneEvent?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CloneEvent"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<integer>",
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-e8db92d7-85f8-4461-b1f3-af427b6ad6ac"
+                    },
+                    {
+                      "id": "a2ec8ff7-3f3b-46f1-9780-5cbf91e3d491",
+                      "name": "Unexpected error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CloneEvent?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CloneEvent"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                      "createdAt": "2026-07-28T03:30:25.000Z",
+                      "updatedAt": "2026-07-28T03:30:25.000Z",
+                      "uid": "35240-a2ec8ff7-3f3b-46f1-9780-5cbf91e3d491"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:25.000Z",
+                  "updatedAt": "2026-07-28T03:30:25.000Z",
+                  "uid": "35240-697afa0d-60f8-42a2-8f01-5db0d30e3317"
+                }
+              ],
+              "id": "d7a8e774-25fb-4d59-a6b5-3e283e1135d1",
+              "createdAt": "2026-07-28T03:30:25.000Z",
+              "updatedAt": "2026-07-28T03:30:25.000Z",
+              "uid": "35240-d7a8e774-25fb-4d59-a6b5-3e283e1135d1"
+            }
+          ],
+          "id": "9745579f-98b6-4921-ac08-888fcffba855",
+          "createdAt": "2026-07-28T03:30:25.000Z",
+          "updatedAt": "2026-07-28T03:30:25.000Z",
+          "uid": "35240-9745579f-98b6-4921-ac08-888fcffba855"
+        }
+      ],
+      "id": "38153ec1-a75d-4a55-b965-38890705f3f8",
+      "createdAt": "2026-07-28T03:30:25.000Z",
+      "updatedAt": "2026-07-28T03:30:25.000Z",
+      "uid": "35240-38153ec1-a75d-4a55-b965-38890705f3f8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

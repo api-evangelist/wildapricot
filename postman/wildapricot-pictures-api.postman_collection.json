@@ -1,0 +1,705 @@
+{
+  "info": {
+    "_postman_id": "e47d8fa4-af3a-42bb-8118-f52653335b64",
+    "name": "WildApricot Admin Accounts Pictures API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:55.000Z",
+    "updatedAt": "2026-07-28T03:31:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e47d8fa4-af3a-42bb-8118-f52653335b64"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "pictures",
+              "item": [
+                {
+                  "name": "{pictureId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Download Picture",
+                      "id": "fabbcd93-6744-436d-b093-50ace44530cc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "pictures",
+                            ":pictureId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                              "key": "fullSize",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Base64 encoded image will be returned.",
+                              "key": "asBase64",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8523d3ab-689c-407d-9556-b324bff01ee7",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "c5600ee0-e4da-4215-98af-e4a29bbb3723",
+                              "key": "pictureId",
+                              "value": "<string>",
+                              "description": "(Required) Picture identifier"
+                            }
+                          ]
+                        },
+                        "description": "Picture available for specific account."
+                      },
+                      "response": [
+                        {
+                          "id": "1dc363b1-c5e7-4fe9-8b86-2521ce912730",
+                          "name": "Response is common HttpResponseMessage with content set to picture binary data.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "pictures",
+                                ":pictureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                                  "key": "fullSize",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "pictureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<file>",
+                          "createdAt": "2026-07-28T03:31:56.000Z",
+                          "updatedAt": "2026-07-28T03:31:56.000Z",
+                          "uid": "35240-1dc363b1-c5e7-4fe9-8b86-2521ce912730"
+                        },
+                        {
+                          "id": "9bd0bfff-2868-4ba9-8791-009b1a2f9b90",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "pictures",
+                                ":pictureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                                  "key": "fullSize",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "pictureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:56.000Z",
+                          "updatedAt": "2026-07-28T03:31:56.000Z",
+                          "uid": "35240-9bd0bfff-2868-4ba9-8791-009b1a2f9b90"
+                        },
+                        {
+                          "id": "f344b147-9e46-4113-8b99-bbf2c6ec8c04",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "pictures",
+                                ":pictureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                                  "key": "fullSize",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "pictureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:56.000Z",
+                          "updatedAt": "2026-07-28T03:31:56.000Z",
+                          "uid": "35240-f344b147-9e46-4113-8b99-bbf2c6ec8c04"
+                        },
+                        {
+                          "id": "4d8aec4a-4a72-4886-a2a0-19a6f01c33e3",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "pictures",
+                                ":pictureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                                  "key": "fullSize",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "pictureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:56.000Z",
+                          "updatedAt": "2026-07-28T03:31:56.000Z",
+                          "uid": "35240-4d8aec4a-4a72-4886-a2a0-19a6f01c33e3"
+                        },
+                        {
+                          "id": "d5d8924b-3d8d-49d9-903b-ae5d5cdc675a",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/pictures/:pictureId?=<string>&fullSize=<boolean>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "pictures",
+                                ":pictureId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned.",
+                                  "key": "fullSize",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "pictureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:56.000Z",
+                          "updatedAt": "2026-07-28T03:31:56.000Z",
+                          "uid": "35240-d5d8924b-3d8d-49d9-903b-ae5d5cdc675a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:31:56.000Z",
+                      "updatedAt": "2026-07-28T03:31:56.000Z",
+                      "uid": "35240-fabbcd93-6744-436d-b093-50ace44530cc"
+                    }
+                  ],
+                  "id": "44996947-8cc1-4dcf-aec7-3d9b292bba72",
+                  "createdAt": "2026-07-28T03:31:56.000Z",
+                  "updatedAt": "2026-07-28T03:31:56.000Z",
+                  "uid": "35240-44996947-8cc1-4dcf-aec7-3d9b292bba72"
+                },
+                {
+                  "name": "WildApricot Upload Pictures",
+                  "id": "8aa80986-4b72-4c7f-b67b-2785533fcfb1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/pictures?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "pictures"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2c0071aa-9dad-4508-a768-b4e8fa452bce",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "Picture can be uploaded using multipart/form-data POST request (contains Content-Type header set to 'multipart/form-data'). A multipart/form-data request contains a series of parts, each representing a picture. Each part is expected to contain a \"Content-Disposition\" header whose value is \"form-data\". One of its properties (Name, FileName) must be set and have unique value. In case of similar values, only one of those part will be used, others will be dropped. For example, you have uploaded 2 pictures with same Name set to \"name\". If they have different FileName set, it's ok, but if FileName properties are same as well, only one of those pictures will be saved and available for further processing. Keep this in mind.\nLimitations:\n  - Maximum size for one uploaded picture is 10mb.\n  - Maximum request length is 10mb. It means that you can upload one 10mb picture or 10 pictures 1mb each.\n  - Maximum dimensions for uploaded picture are not set, but each picture will be resized to 110px after uploading.\n  - Supported picture types are: png, jpeg, bmp. Bmp pictures will be converted to png format.\n  - Time period after uploading when picture would be available for use is 30 minutes.\n  - Each uploaded picture can be used only once. After first usage it will be removed permanently.\n  - Mime type must be 'image' and must correlate to picture type. If you upload the 'png' with 'image/bmp' mime type set, this picture will be dropped.\n  - In case of uploading several pictures in one request either 'Name' or 'FileName' property of Content-Disposition header must be set. Otherwise the picture will be dropped.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "c922f55b-98d0-4833-bb71-c731027d45f6",
+                      "name": "Response is simple json object which contains picture guids (see example)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/pictures?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "pictures"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"picture0\": \"<string>\",\n  \"picture1\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:31:56.000Z",
+                      "updatedAt": "2026-07-28T03:31:56.000Z",
+                      "uid": "35240-c922f55b-98d0-4833-bb71-c731027d45f6"
+                    },
+                    {
+                      "id": "d817f075-3ad2-431a-b328-9b93075782c6",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/pictures?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "pictures"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:56.000Z",
+                      "updatedAt": "2026-07-28T03:31:56.000Z",
+                      "uid": "35240-d817f075-3ad2-431a-b328-9b93075782c6"
+                    },
+                    {
+                      "id": "905d1984-fba5-42e4-9a1b-9d4d19aef6b4",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/pictures?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "pictures"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:56.000Z",
+                      "updatedAt": "2026-07-28T03:31:56.000Z",
+                      "uid": "35240-905d1984-fba5-42e4-9a1b-9d4d19aef6b4"
+                    },
+                    {
+                      "id": "05da73ff-170f-478e-b634-549b48986676",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/pictures?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "pictures"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:56.000Z",
+                      "updatedAt": "2026-07-28T03:31:56.000Z",
+                      "uid": "35240-05da73ff-170f-478e-b634-549b48986676"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:56.000Z",
+                  "updatedAt": "2026-07-28T03:31:56.000Z",
+                  "uid": "35240-8aa80986-4b72-4c7f-b67b-2785533fcfb1"
+                }
+              ],
+              "id": "2c77c07a-a6f8-4e3a-982d-25531a917dc1",
+              "createdAt": "2026-07-28T03:31:56.000Z",
+              "updatedAt": "2026-07-28T03:31:56.000Z",
+              "uid": "35240-2c77c07a-a6f8-4e3a-982d-25531a917dc1"
+            }
+          ],
+          "id": "d003019b-ae5c-4921-a319-532c2c054d94",
+          "createdAt": "2026-07-28T03:31:56.000Z",
+          "updatedAt": "2026-07-28T03:31:56.000Z",
+          "uid": "35240-d003019b-ae5c-4921-a319-532c2c054d94"
+        }
+      ],
+      "id": "35c8521e-8f1f-4e0a-8ecb-c4acbc3ff579",
+      "createdAt": "2026-07-28T03:31:56.000Z",
+      "updatedAt": "2026-07-28T03:31:56.000Z",
+      "uid": "35240-35c8521e-8f1f-4e0a-8ecb-c4acbc3ff579"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

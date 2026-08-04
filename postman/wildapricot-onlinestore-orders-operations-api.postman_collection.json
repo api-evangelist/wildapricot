@@ -1,0 +1,236 @@
+{
+  "info": {
+    "_postman_id": "28e719f2-c4ac-48f3-8bf4-0d0e1e1e9a58",
+    "name": "WildApricot Admin Accounts OnlineStore.Orders.Operations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:51.000Z",
+    "updatedAt": "2026-07-28T03:31:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-28e719f2-c4ac-48f3-8bf4-0d0e1e1e9a58"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "store",
+              "item": [
+                {
+                  "name": "orders",
+                  "item": [
+                    {
+                      "name": "{orderNumber}",
+                      "item": [
+                        {
+                          "name": "status",
+                          "item": [
+                            {
+                              "name": "WildApricot PUT /accounts/{accountId}/store/orders/{orderNumber}/status",
+                              "id": "9845ed9c-64cd-443d-b80b-b4f421586d2c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "scope",
+                                      "value": "auto",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://oauth.wildapricot.org/auth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"FULFILLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/store/orders/:orderNumber/status?=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "store",
+                                    "orders",
+                                    ":orderNumber",
+                                    "status"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2ed81962-446b-41a4-a978-3ce0790d6797",
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "id": "03053890-adf3-4cff-8e52-9a19b9a9906b",
+                                      "key": "orderNumber",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "a451c4ed-5cf5-4e8b-8f09-572798d646c7",
+                                  "name": "New Response",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"status\": \"FULFILLED\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/accounts/:accountId/store/orders/:orderNumber/status?=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "accounts",
+                                        ":accountId",
+                                        "store",
+                                        "orders",
+                                        ":orderNumber",
+                                        "status"
+                                      ],
+                                      "query": [
+                                        {
+                                          "key": "",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "accountId"
+                                        },
+                                        {
+                                          "key": "orderNumber"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"isCustomerNotified\": \"<boolean>\"\n}",
+                                  "createdAt": "2026-07-28T03:31:52.000Z",
+                                  "updatedAt": "2026-07-28T03:31:52.000Z",
+                                  "uid": "35240-a451c4ed-5cf5-4e8b-8f09-572798d646c7"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:31:52.000Z",
+                              "updatedAt": "2026-07-28T03:31:52.000Z",
+                              "uid": "35240-9845ed9c-64cd-443d-b80b-b4f421586d2c"
+                            }
+                          ],
+                          "id": "d784abd4-94c5-41ff-b91d-82dc3a72fdd4",
+                          "createdAt": "2026-07-28T03:31:52.000Z",
+                          "updatedAt": "2026-07-28T03:31:52.000Z",
+                          "uid": "35240-d784abd4-94c5-41ff-b91d-82dc3a72fdd4"
+                        }
+                      ],
+                      "id": "61bddf19-0796-4d04-99b6-df0886cd237a",
+                      "createdAt": "2026-07-28T03:31:52.000Z",
+                      "updatedAt": "2026-07-28T03:31:52.000Z",
+                      "uid": "35240-61bddf19-0796-4d04-99b6-df0886cd237a"
+                    }
+                  ],
+                  "id": "6816b80d-2cfc-4da1-93dd-9d46f80f3d4d",
+                  "createdAt": "2026-07-28T03:31:52.000Z",
+                  "updatedAt": "2026-07-28T03:31:52.000Z",
+                  "uid": "35240-6816b80d-2cfc-4da1-93dd-9d46f80f3d4d"
+                }
+              ],
+              "id": "5aaab221-76f9-403d-b1d5-eeb20c94a049",
+              "createdAt": "2026-07-28T03:31:52.000Z",
+              "updatedAt": "2026-07-28T03:31:52.000Z",
+              "uid": "35240-5aaab221-76f9-403d-b1d5-eeb20c94a049"
+            }
+          ],
+          "id": "fb1a1c42-a29f-44ac-bf05-326c65a14ccc",
+          "createdAt": "2026-07-28T03:31:52.000Z",
+          "updatedAt": "2026-07-28T03:31:52.000Z",
+          "uid": "35240-fb1a1c42-a29f-44ac-bf05-326c65a14ccc"
+        }
+      ],
+      "id": "1925439d-9a13-4478-9c74-94d35dd148c9",
+      "createdAt": "2026-07-28T03:31:52.000Z",
+      "updatedAt": "2026-07-28T03:31:52.000Z",
+      "uid": "35240-1925439d-9a13-4478-9c74-94d35dd148c9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

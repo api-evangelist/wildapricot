@@ -1,0 +1,621 @@
+{
+  "info": {
+    "_postman_id": "3cd3c99c-c375-4412-a76b-129942b0209c",
+    "name": "WildApricot Admin Accounts Emailing.SentEmails API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:22.000Z",
+    "updatedAt": "2026-07-28T03:30:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cd3c99c-c375-4412-a76b-129942b0209c"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "SentEmails",
+              "item": [
+                {
+                  "name": "{emailId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Sent Email Details",
+                      "id": "c531aaec-4632-4e53-bb40-eaac4ec0c99b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmails/:emailId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmails",
+                            ":emailId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "0216708a-c3ef-4c4c-ab87-53592bb57625",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "e8bf1397-3020-4dcb-9d19-10e479dfe191",
+                              "key": "emailId",
+                              "value": "<integer>",
+                              "description": "(Required) Email unique Id"
+                            }
+                          ]
+                        },
+                        "description": "Sent email details"
+                      },
+                      "response": [
+                        {
+                          "id": "d9ec5553-6df0-4050-a446-23f773fd17ab",
+                          "name": "Email details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/SentEmails/:emailId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "SentEmails",
+                                ":emailId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "emailId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"SentDate\": \"<string>\",\n  \"Subject\": \"<string>\",\n  \"Body\": \"<string>\",\n  \"ReplyToName\": \"<string>\",\n  \"ReplyToAddress\": \"<string>\",\n  \"Type\": \"MemberRenewal_AdvanceRenewalReminder2\",\n  \"IsTrackingAllowed\": \"<boolean>\",\n  \"IsCopySentToAdmins\": \"<boolean>\",\n  \"SenderId\": \"<integer>\",\n  \"SenderName\": \"<string>\",\n  \"SendingType\": \"Automatic\",\n  \"Origin\": {\n    \"OriginType\": \"Event\",\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\"\n  },\n  \"SubOriginId\": \"<integer>\",\n  \"RecipientCount\": \"<integer>\",\n  \"ReadCount\": \"<integer>\",\n  \"UniqueLinkClickCount\": \"<integer>\",\n  \"SuccessfullySentCount\": \"<integer>\",\n  \"RecipientsThatClickedAnyLinkCount\": \"<integer>\",\n  \"FailedCount\": \"<integer>\",\n  \"InProgress\": \"<boolean>\",\n  \"Recipient\": {\n    \"Id\": \"<integer>\",\n    \"Type\": null,\n    \"Name\": \"<string>\",\n    \"Email\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:30:23.000Z",
+                          "updatedAt": "2026-07-28T03:30:23.000Z",
+                          "uid": "35240-d9ec5553-6df0-4050-a446-23f773fd17ab"
+                        },
+                        {
+                          "id": "141ee755-4293-47aa-940e-ffa7f404db16",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/SentEmails/:emailId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "SentEmails",
+                                ":emailId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "emailId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:23.000Z",
+                          "updatedAt": "2026-07-28T03:30:23.000Z",
+                          "uid": "35240-141ee755-4293-47aa-940e-ffa7f404db16"
+                        },
+                        {
+                          "id": "5f41a5bc-5120-4aa8-83b8-e570593f2368",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/SentEmails/:emailId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "SentEmails",
+                                ":emailId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "emailId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:23.000Z",
+                          "updatedAt": "2026-07-28T03:30:23.000Z",
+                          "uid": "35240-5f41a5bc-5120-4aa8-83b8-e570593f2368"
+                        },
+                        {
+                          "id": "c1234fb6-4e93-4b6c-a498-05fbc6bdee3a",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/SentEmails/:emailId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "SentEmails",
+                                ":emailId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "emailId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:23.000Z",
+                          "updatedAt": "2026-07-28T03:30:23.000Z",
+                          "uid": "35240-c1234fb6-4e93-4b6c-a498-05fbc6bdee3a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:23.000Z",
+                      "updatedAt": "2026-07-28T03:30:23.000Z",
+                      "uid": "35240-c531aaec-4632-4e53-bb40-eaac4ec0c99b"
+                    }
+                  ],
+                  "id": "69c65c01-b2d8-4d90-bca5-d45547a294d1",
+                  "createdAt": "2026-07-28T03:30:23.000Z",
+                  "updatedAt": "2026-07-28T03:30:23.000Z",
+                  "uid": "35240-69c65c01-b2d8-4d90-bca5-d45547a294d1"
+                },
+                {
+                  "name": "WildApricot Sent Emails",
+                  "id": "e8f70b3c-aaf8-4416-a922-e65f46c273b5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/SentEmails?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "SentEmails"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "To get only a list of email identifiers as a result of search request.\n",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018",
+                          "key": "$filter",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6c0922e6-8509-4316-a53a-5a152f098ac4",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "Sent emails"
+                  },
+                  "response": [
+                    {
+                      "id": "5f455a3a-3472-4dbf-b149-e96c8c1d7333",
+                      "name": "Contains a list of sent emails or list of identifiers, depending on idsOnly parameter value.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmails?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmails"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "To get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Emails\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"SentDate\": \"<string>\",\n      \"Subject\": \"<string>\",\n      \"Body\": \"<string>\",\n      \"ReplyToName\": \"<string>\",\n      \"ReplyToAddress\": \"<string>\",\n      \"Type\": \"Poll_Announcement_Notification\",\n      \"IsTrackingAllowed\": \"<boolean>\",\n      \"IsCopySentToAdmins\": \"<boolean>\",\n      \"SenderId\": \"<integer>\",\n      \"SenderName\": \"<string>\",\n      \"SendingType\": \"Automatic\",\n      \"Origin\": {\n        \"OriginType\": \"Contact\",\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"SubOriginId\": \"<integer>\",\n      \"RecipientCount\": \"<integer>\",\n      \"ReadCount\": \"<integer>\",\n      \"UniqueLinkClickCount\": \"<integer>\",\n      \"SuccessfullySentCount\": \"<integer>\",\n      \"RecipientsThatClickedAnyLinkCount\": \"<integer>\",\n      \"FailedCount\": \"<integer>\",\n      \"InProgress\": \"<boolean>\",\n      \"Recipient\": {\n        \"Id\": \"<integer>\",\n        \"Type\": null,\n        \"Name\": \"<string>\",\n        \"Email\": \"<string>\"\n      }\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"SentDate\": \"<string>\",\n      \"Subject\": \"<string>\",\n      \"Body\": \"<string>\",\n      \"ReplyToName\": \"<string>\",\n      \"ReplyToAddress\": \"<string>\",\n      \"Type\": \"ForumNotification\",\n      \"IsTrackingAllowed\": \"<boolean>\",\n      \"IsCopySentToAdmins\": \"<boolean>\",\n      \"SenderId\": \"<integer>\",\n      \"SenderName\": \"<string>\",\n      \"SendingType\": \"Manual\",\n      \"Origin\": {\n        \"OriginType\": \"Donation\",\n        \"Id\": \"<integer>\",\n        \"Name\": \"<string>\"\n      },\n      \"SubOriginId\": \"<integer>\",\n      \"RecipientCount\": \"<integer>\",\n      \"ReadCount\": \"<integer>\",\n      \"UniqueLinkClickCount\": \"<integer>\",\n      \"SuccessfullySentCount\": \"<integer>\",\n      \"RecipientsThatClickedAnyLinkCount\": \"<integer>\",\n      \"FailedCount\": \"<integer>\",\n      \"InProgress\": \"<boolean>\",\n      \"Recipient\": {\n        \"Id\": \"<integer>\",\n        \"Type\": null,\n        \"Name\": \"<string>\",\n        \"Email\": \"<string>\"\n      }\n    }\n  ],\n  \"EmailsIdentifiers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:23.000Z",
+                      "updatedAt": "2026-07-28T03:30:23.000Z",
+                      "uid": "35240-5f455a3a-3472-4dbf-b149-e96c8c1d7333"
+                    },
+                    {
+                      "id": "fad40a8f-dbf9-4c2c-ab5c-8ff3d0e1a72c",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmails?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmails"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "To get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:23.000Z",
+                      "updatedAt": "2026-07-28T03:30:23.000Z",
+                      "uid": "35240-fad40a8f-dbf9-4c2c-ab5c-8ff3d0e1a72c"
+                    },
+                    {
+                      "id": "6032f032-ffa1-4319-89bf-c8d368dcc439",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/SentEmails?=<string>&=<string>&=<string>&idsOnly=<boolean>&$filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "SentEmails"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "To get only a list of email identifiers as a result of search request.\n",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018",
+                              "key": "$filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:23.000Z",
+                      "updatedAt": "2026-07-28T03:30:23.000Z",
+                      "uid": "35240-6032f032-ffa1-4319-89bf-c8d368dcc439"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:23.000Z",
+                  "updatedAt": "2026-07-28T03:30:23.000Z",
+                  "uid": "35240-e8f70b3c-aaf8-4416-a922-e65f46c273b5"
+                }
+              ],
+              "id": "190e3efe-d9b4-4dd8-8f3c-a39de112a27c",
+              "createdAt": "2026-07-28T03:30:23.000Z",
+              "updatedAt": "2026-07-28T03:30:23.000Z",
+              "uid": "35240-190e3efe-d9b4-4dd8-8f3c-a39de112a27c"
+            }
+          ],
+          "id": "f6bcf620-f3cb-4b3a-993c-fed3fc4e5d35",
+          "createdAt": "2026-07-28T03:30:23.000Z",
+          "updatedAt": "2026-07-28T03:30:23.000Z",
+          "uid": "35240-f6bcf620-f3cb-4b3a-993c-fed3fc4e5d35"
+        }
+      ],
+      "id": "f6e61fa2-a882-4b1a-87ea-8f3d495cf98a",
+      "createdAt": "2026-07-28T03:30:23.000Z",
+      "updatedAt": "2026-07-28T03:30:23.000Z",
+      "uid": "35240-f6e61fa2-a882-4b1a-87ea-8f3d495cf98a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

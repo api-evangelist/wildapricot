@@ -1,0 +1,897 @@
+{
+  "info": {
+    "_postman_id": "8dcf16c7-8e91-40a9-ab00-ae3d4fb6ccdd",
+    "name": "WildApricot Admin Accounts Membership.Operations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:49.000Z",
+    "updatedAt": "2026-07-28T03:31:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dcf16c7-8e91-40a9-ab00-ae3d4fb6ccdd"
+  },
+  "item": [
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "ApprovePendingMembership",
+              "item": [
+                {
+                  "name": "WildApricot Approve Pending Membership.",
+                  "id": "5285ea39-0803-42ab-b82b-b163d9ff1e84",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/ApprovePendingMembership?=<string>&contactId=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "ApprovePendingMembership"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Contact ID to approve membership",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "dacfd0d0-ebfd-4bca-8403-0f55b125aa61",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "0b041f89-5706-4b59-af90-ae0d08b2cefc",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/ApprovePendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "ApprovePendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to approve membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-0b041f89-5706-4b59-af90-ae0d08b2cefc"
+                    },
+                    {
+                      "id": "1088d5bf-4889-4832-9a73-7cafb7d4f4d8",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/ApprovePendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "ApprovePendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to approve membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-1088d5bf-4889-4832-9a73-7cafb7d4f4d8"
+                    },
+                    {
+                      "id": "b48b2d98-ee3c-433e-ab9e-b4b7b42b2dd7",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/ApprovePendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "ApprovePendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to approve membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-b48b2d98-ee3c-433e-ab9e-b4b7b42b2dd7"
+                    },
+                    {
+                      "id": "b151a7d0-f2b6-492e-8ab0-c971e3e8424b",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/ApprovePendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "ApprovePendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to approve membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-b151a7d0-f2b6-492e-8ab0-c971e3e8424b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:49.000Z",
+                  "updatedAt": "2026-07-28T03:31:49.000Z",
+                  "uid": "35240-5285ea39-0803-42ab-b82b-b163d9ff1e84"
+                }
+              ],
+              "id": "d2e58634-2916-4560-8f6c-d545ae5cb26b",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-d2e58634-2916-4560-8f6c-d545ae5cb26b"
+            },
+            {
+              "name": "RejectPendingMembership",
+              "item": [
+                {
+                  "name": "WildApricot Reject Pending Membership.",
+                  "id": "42d4c8a0-3daa-4ead-a6ca-d590f86421df",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/RejectPendingMembership?=<string>&contactId=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "RejectPendingMembership"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Contact ID to reject membership",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "76846032-84bf-4899-9b8d-4ed1269d3eb0",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "efa02b51-1fc8-4676-9432-c985fac436f9",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RejectPendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RejectPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to reject membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-efa02b51-1fc8-4676-9432-c985fac436f9"
+                    },
+                    {
+                      "id": "5f7195ec-c7c7-441b-b652-7fc1b484621e",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RejectPendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RejectPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to reject membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-5f7195ec-c7c7-441b-b652-7fc1b484621e"
+                    },
+                    {
+                      "id": "a0e04628-dea5-42fd-8147-dec29bc3d752",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RejectPendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RejectPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to reject membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-a0e04628-dea5-42fd-8147-dec29bc3d752"
+                    },
+                    {
+                      "id": "40ca20f2-e866-4d28-8664-f3dbd28c8157",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RejectPendingMembership?=<string>&contactId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RejectPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID to reject membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-40ca20f2-e866-4d28-8664-f3dbd28c8157"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:49.000Z",
+                  "updatedAt": "2026-07-28T03:31:49.000Z",
+                  "uid": "35240-42d4c8a0-3daa-4ead-a6ca-d590f86421df"
+                }
+              ],
+              "id": "10ce586c-1d51-430a-8e75-f55041358bb5",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-10ce586c-1d51-430a-8e75-f55041358bb5"
+            },
+            {
+              "name": "GenerateInvoiceForPendingMembership",
+              "item": [
+                {
+                  "name": "WildApricot Generate or Update Invoice for Pending Membership.",
+                  "id": "3a9d08e9-8353-4f88-8ad6-2a777c2243f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForPendingMembership?=<string>&contactId=<integer>&updateIfExists=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "GenerateInvoiceForPendingMembership"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Contact ID with pending membership",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "update the invoice items if already exists",
+                          "key": "updateIfExists",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8abe4c0d-b721-4fb0-ae6b-abe500e4ea08",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1bea020a-c5b5-4706-b703-577260cb5784",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForPendingMembership?=<string>&contactId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID with pending membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "update the invoice items if already exists",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-1bea020a-c5b5-4706-b703-577260cb5784"
+                    },
+                    {
+                      "id": "a13e116e-3522-4d71-8ff8-697b9ead58b6",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForPendingMembership?=<string>&contactId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID with pending membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "update the invoice items if already exists",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-a13e116e-3522-4d71-8ff8-697b9ead58b6"
+                    },
+                    {
+                      "id": "548011c4-af80-4693-9fc4-f59317d17ee9",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForPendingMembership?=<string>&contactId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID with pending membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "update the invoice items if already exists",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-548011c4-af80-4693-9fc4-f59317d17ee9"
+                    },
+                    {
+                      "id": "19bcd74c-d48a-4cf5-8803-b6d8901382c0",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForPendingMembership?=<string>&contactId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForPendingMembership"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Contact ID with pending membership",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "update the invoice items if already exists",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:31:49.000Z",
+                      "updatedAt": "2026-07-28T03:31:49.000Z",
+                      "uid": "35240-19bcd74c-d48a-4cf5-8803-b6d8901382c0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:49.000Z",
+                  "updatedAt": "2026-07-28T03:31:49.000Z",
+                  "uid": "35240-3a9d08e9-8353-4f88-8ad6-2a777c2243f6"
+                }
+              ],
+              "id": "9eb73213-41b8-4475-9ac2-55810ea6215e",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-9eb73213-41b8-4475-9ac2-55810ea6215e"
+            }
+          ],
+          "id": "697fbabb-688e-4492-a4c8-d39648b3cc41",
+          "createdAt": "2026-07-28T03:31:49.000Z",
+          "updatedAt": "2026-07-28T03:31:49.000Z",
+          "uid": "35240-697fbabb-688e-4492-a4c8-d39648b3cc41"
+        }
+      ],
+      "id": "62aafbd4-c81a-4682-8522-bf013f9c2486",
+      "createdAt": "2026-07-28T03:31:49.000Z",
+      "updatedAt": "2026-07-28T03:31:49.000Z",
+      "uid": "35240-62aafbd4-c81a-4682-8522-bf013f9c2486"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

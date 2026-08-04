@@ -1,0 +1,660 @@
+{
+  "info": {
+    "_postman_id": "07201ed0-0b36-4835-9801-946eafe2e3a0",
+    "name": "WildApricot Admin Accounts Finances.AuditLog API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:27.000Z",
+    "updatedAt": "2026-07-28T03:30:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-07201ed0-0b36-4835-9801-946eafe2e3a0"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "auditLogItems",
+              "item": [
+                {
+                  "name": "{itemId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Single Audit Log Item.",
+                      "id": "9f44e45f-5de9-4c16-a107-9cec0b3ca6b2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems/:itemId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "auditLogItems",
+                            ":itemId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "155bec31-d669-4a96-8955-0d7ebb84918f",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "4cf39684-3a46-45f4-870e-88a10e3fcc4b",
+                              "key": "itemId",
+                              "value": "<integer>",
+                              "description": "(Required) Audit log item identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "5fdc4832-569f-4bab-bfc0-f14afe561ab0",
+                          "name": "Audit log item description",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems/:itemId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "auditLogItems",
+                                ":itemId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "itemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Timestamp\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Message\": \"<string>\",\n  \"Severity\": \"Verbose\",\n  \"OrderType\": \"ChangeBillingPlan\",\n  \"Properties\": {},\n  \"Document\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DocumentType\": \"Invoice\",\n  \"DocumentAction\": \"Changed\"\n}",
+                          "createdAt": "2026-07-28T03:30:28.000Z",
+                          "updatedAt": "2026-07-28T03:30:28.000Z",
+                          "uid": "35240-5fdc4832-569f-4bab-bfc0-f14afe561ab0"
+                        },
+                        {
+                          "id": "a03ed978-6944-4476-a2f3-531cc1573bc2",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems/:itemId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "auditLogItems",
+                                ":itemId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "itemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:28.000Z",
+                          "updatedAt": "2026-07-28T03:30:28.000Z",
+                          "uid": "35240-a03ed978-6944-4476-a2f3-531cc1573bc2"
+                        },
+                        {
+                          "id": "63dc3e14-5e64-43f7-8476-b7a1998bfcb9",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems/:itemId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "auditLogItems",
+                                ":itemId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "itemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:28.000Z",
+                          "updatedAt": "2026-07-28T03:30:28.000Z",
+                          "uid": "35240-63dc3e14-5e64-43f7-8476-b7a1998bfcb9"
+                        },
+                        {
+                          "id": "abe2d124-8ec8-416b-b437-58edd9820b0c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems/:itemId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "auditLogItems",
+                                ":itemId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "itemId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:28.000Z",
+                          "updatedAt": "2026-07-28T03:30:28.000Z",
+                          "uid": "35240-abe2d124-8ec8-416b-b437-58edd9820b0c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:28.000Z",
+                      "updatedAt": "2026-07-28T03:30:28.000Z",
+                      "uid": "35240-9f44e45f-5de9-4c16-a107-9cec0b3ca6b2"
+                    }
+                  ],
+                  "id": "36df7b94-5060-44d6-8fc0-19046daadb08",
+                  "createdAt": "2026-07-28T03:30:28.000Z",
+                  "updatedAt": "2026-07-28T03:30:28.000Z",
+                  "uid": "35240-36df7b94-5060-44d6-8fc0-19046daadb08"
+                },
+                {
+                  "name": "WildApricot List of Audit Log Items.",
+                  "id": "b683846a-097b-4d93-825b-87a6ab9adae3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems?=<string>&filterObjectType=<string>&FilterObjectId=<integer>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "auditLogItems"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Kind of object for audit log filter",
+                          "key": "filterObjectType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unique identifyer of type filterObjectType",
+                          "key": "FilterObjectId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limits result to log items created since StartDate.",
+                          "key": "StartDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to log items created before EndDate.",
+                          "key": "EndDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8836d1c9-1426-454f-9fdb-202a028dab5e",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "List filter has limitations.\n - if filterObjectType is set then FilterObjectId must be set too.\n - empty filter not allowed (none of filterObjectType, FilterObjectId, StartDate and EndDate are set).\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9c46afed-6105-42c8-8b30-4f0319c9508e",
+                      "name": "An array of audit log item descriptions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems?=<string>&filterObjectType=<string>&FilterObjectId=<integer>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "auditLogItems"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Kind of object for audit log filter",
+                              "key": "filterObjectType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unique identifyer of type filterObjectType",
+                              "key": "FilterObjectId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limits result to log items created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to log items created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Items\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Timestamp\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"Message\": \"<string>\",\n      \"Severity\": \"Verbose\",\n      \"OrderType\": \"Donation\",\n      \"Properties\": {},\n      \"Document\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DocumentType\": \"Payment\",\n      \"DocumentAction\": \"Voided\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Timestamp\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"Message\": \"<string>\",\n      \"Severity\": \"Error\",\n      \"OrderType\": \"ChangeBillingInfo\",\n      \"Properties\": {},\n      \"Document\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DocumentType\": \"Refund\",\n      \"DocumentAction\": \"Deleted\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:28.000Z",
+                      "updatedAt": "2026-07-28T03:30:28.000Z",
+                      "uid": "35240-9c46afed-6105-42c8-8b30-4f0319c9508e"
+                    },
+                    {
+                      "id": "6722e637-c9aa-456e-8829-4fd8bd44f4bf",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems?=<string>&filterObjectType=<string>&FilterObjectId=<integer>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "auditLogItems"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Kind of object for audit log filter",
+                              "key": "filterObjectType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unique identifyer of type filterObjectType",
+                              "key": "FilterObjectId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limits result to log items created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to log items created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:28.000Z",
+                      "updatedAt": "2026-07-28T03:30:28.000Z",
+                      "uid": "35240-6722e637-c9aa-456e-8829-4fd8bd44f4bf"
+                    },
+                    {
+                      "id": "279c29b2-db98-4b4e-a4d3-1274909631f3",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/auditLogItems?=<string>&filterObjectType=<string>&FilterObjectId=<integer>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "auditLogItems"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Kind of object for audit log filter",
+                              "key": "filterObjectType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unique identifyer of type filterObjectType",
+                              "key": "FilterObjectId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limits result to log items created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to log items created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:28.000Z",
+                      "updatedAt": "2026-07-28T03:30:28.000Z",
+                      "uid": "35240-279c29b2-db98-4b4e-a4d3-1274909631f3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:28.000Z",
+                  "updatedAt": "2026-07-28T03:30:28.000Z",
+                  "uid": "35240-b683846a-097b-4d93-825b-87a6ab9adae3"
+                }
+              ],
+              "id": "4dd0df60-ad66-4af2-b278-0f0cf450e19d",
+              "createdAt": "2026-07-28T03:30:28.000Z",
+              "updatedAt": "2026-07-28T03:30:28.000Z",
+              "uid": "35240-4dd0df60-ad66-4af2-b278-0f0cf450e19d"
+            }
+          ],
+          "id": "2c683d83-7fab-41ed-8825-5eb65b259b7e",
+          "createdAt": "2026-07-28T03:30:28.000Z",
+          "updatedAt": "2026-07-28T03:30:28.000Z",
+          "uid": "35240-2c683d83-7fab-41ed-8825-5eb65b259b7e"
+        }
+      ],
+      "id": "3903a55e-d6ab-4659-9683-671f18cb6d5d",
+      "createdAt": "2026-07-28T03:30:28.000Z",
+      "updatedAt": "2026-07-28T03:30:28.000Z",
+      "uid": "35240-3903a55e-d6ab-4659-9683-671f18cb6d5d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

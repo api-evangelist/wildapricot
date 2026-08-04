@@ -1,0 +1,3273 @@
+{
+  "info": {
+    "_postman_id": "ea433cd1-a504-40a9-bdc4-f73c26a0d1e9",
+    "name": "WildApricot Admin Accounts Finances.Payments API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:31.000Z",
+    "updatedAt": "2026-07-28T03:30:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea433cd1-a504-40a9-bdc4-f73c26a0d1e9"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "payments",
+              "item": [
+                {
+                  "name": "{paymentId}",
+                  "item": [
+                    {
+                      "name": "AllocateInvoice",
+                      "item": [
+                        {
+                          "name": "WildApricot Allocate Invoice to Specific Payment",
+                          "id": "882c8f3e-9f0a-42c1-bb02-50d2d173342f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateInvoice?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId",
+                                "AllocateInvoice"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d80a86bf-4689-4d9f-b51e-e385caa87dcf",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "edba5d13-06b6-41e5-b410-a4eaf3558ac8",
+                                  "key": "paymentId",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique payment identifier"
+                                }
+                              ]
+                            },
+                            "description": "After this operation invoice will be marked as paid."
+                          },
+                          "response": [
+                            {
+                              "id": "99799601-4950-42e2-a97e-d867de876c9c",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateInvoice?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateInvoice"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-99799601-4950-42e2-a97e-d867de876c9c"
+                            },
+                            {
+                              "id": "6b9b3dda-448f-402c-8741-13d0c34f9192",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateInvoice?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateInvoice"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-6b9b3dda-448f-402c-8741-13d0c34f9192"
+                            },
+                            {
+                              "id": "30541834-ba90-416d-b30c-56c759451775",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateInvoice?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateInvoice"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-30541834-ba90-416d-b30c-56c759451775"
+                            },
+                            {
+                              "id": "28b0ac93-52b5-44ce-b2b6-8d2b01847cad",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateInvoice?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateInvoice"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-28b0ac93-52b5-44ce-b2b6-8d2b01847cad"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-882c8f3e-9f0a-42c1-bb02-50d2d173342f"
+                        }
+                      ],
+                      "id": "4f8ce76a-5c84-42a2-be9c-e92548cd1748",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-4f8ce76a-5c84-42a2-be9c-e92548cd1748"
+                    },
+                    {
+                      "name": "AllocateRefundToPayment",
+                      "item": [
+                        {
+                          "name": "WildApricot Allocate Refund to Specific Payment",
+                          "id": "dea50809-d207-4694-91d4-e3dd9e0a66f6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId",
+                                "AllocateRefundToPayment"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fcbe92b3-7af3-4fee-a580-522fd5dffdf0",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "07718192-1ec9-4806-95c1-793854cce384",
+                                  "key": "paymentId",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique payment identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "cf12155c-7e71-4e50-bbc4-0ae1f5a40f7e",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateRefundToPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-cf12155c-7e71-4e50-bbc4-0ae1f5a40f7e"
+                            },
+                            {
+                              "id": "c540094f-a592-48b5-9f26-f984946f2932",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateRefundToPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-c540094f-a592-48b5-9f26-f984946f2932"
+                            },
+                            {
+                              "id": "3c68960d-e2b5-4977-b02b-ab4ccb3b3c12",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateRefundToPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-3c68960d-e2b5-4977-b02b-ab4ccb3b3c12"
+                            },
+                            {
+                              "id": "85b65816-594d-48f4-812d-8c0c44e2be17",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/AllocateRefundToPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "AllocateRefundToPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-85b65816-594d-48f4-812d-8c0c44e2be17"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-dea50809-d207-4694-91d4-e3dd9e0a66f6"
+                        }
+                      ],
+                      "id": "0e30057e-2f2b-4fd5-8e16-8e74c7f3bc27",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-0e30057e-2f2b-4fd5-8e16-8e74c7f3bc27"
+                    },
+                    {
+                      "name": "UnallocateFromPayment",
+                      "item": [
+                        {
+                          "name": "WildApricot Unallocate Finance Document from Specific Payment",
+                          "id": "ad61cc5c-7f4e-42c7-bd51-19e607d3eb59",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/UnallocateFromPayment?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId",
+                                "UnallocateFromPayment"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "06666fa1-0ec2-4a46-9251-7cc9caf01b03",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "2b6b6598-0647-44d7-8ab1-8829709e9578",
+                                  "key": "paymentId",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique payment identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "ff003f24-1481-4f95-bfab-910b4ace25db",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/UnallocateFromPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "UnallocateFromPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-ff003f24-1481-4f95-bfab-910b4ace25db"
+                            },
+                            {
+                              "id": "874a5ff7-44bb-44a8-bf41-e84421e0359e",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/UnallocateFromPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "UnallocateFromPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-874a5ff7-44bb-44a8-bf41-e84421e0359e"
+                            },
+                            {
+                              "id": "95135051-a1ed-439f-8800-a84195e989ab",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/UnallocateFromPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "UnallocateFromPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-95135051-a1ed-439f-8800-a84195e989ab"
+                            },
+                            {
+                              "id": "fdc07824-8b20-40f3-b2c8-0575c6ed4524",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId/UnallocateFromPayment?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":paymentId",
+                                    "UnallocateFromPayment"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "paymentId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-fdc07824-8b20-40f3-b2c8-0575c6ed4524"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-ad61cc5c-7f4e-42c7-bd51-19e607d3eb59"
+                        }
+                      ],
+                      "id": "4c58871e-c0d2-461c-8495-fdc03cc6cf96",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-4c58871e-c0d2-461c-8495-fdc03cc6cf96"
+                    },
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Payment",
+                      "id": "46cdaa2f-0081-458a-bec1-883d50e18c4c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments",
+                            ":paymentId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d032cbf9-b3d7-449f-98b4-2c94cc952252",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "869ef676-8a60-4bb8-8dbb-684564fd4ed9",
+                              "key": "paymentId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique payment identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "597b6fe8-9a7d-4f70-8ff4-726df1b9c3c3",
+                          "name": "information about specific payment",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"RefundedAmount\": \"<number>\",\n  \"Type\": \"DonationPayment\",\n  \"DonationId\": \"<integer>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-597b6fe8-9a7d-4f70-8ff4-726df1b9c3c3"
+                        },
+                        {
+                          "id": "0943336c-039e-4492-aba8-b45a51110c02",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-0943336c-039e-4492-aba8-b45a51110c02"
+                        },
+                        {
+                          "id": "b6e040eb-cc4e-407b-8035-3c7fccbe26cd",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-b6e040eb-cc4e-407b-8035-3c7fccbe26cd"
+                        },
+                        {
+                          "id": "7429b82d-e3ec-498b-9c5a-6ae12002f4b4",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-7429b82d-e3ec-498b-9c5a-6ae12002f4b4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-46cdaa2f-0081-458a-bec1-883d50e18c4c"
+                    },
+                    {
+                      "name": "WildApricot Update Existing Payment Information",
+                      "id": "a7b6393c-548c-460d-a0c0-6f7d196527ec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"Type\": \"DonationPayment\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments",
+                            ":paymentId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "6077a901-b852-408f-984f-6ebdc1ce3dea",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "995ab7e2-aca1-40bd-a73d-9238695a5937",
+                              "key": "paymentId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e3268c7f-82cb-47f1-8fe4-a73d265651a5",
+                          "name": "Returns 200 on successful data update",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"Type\": \"DonationPayment\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-e3268c7f-82cb-47f1-8fe4-a73d265651a5"
+                        },
+                        {
+                          "id": "fbf468ab-df6f-4585-b719-21608815ad31",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"Type\": \"DonationPayment\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-fbf468ab-df6f-4585-b719-21608815ad31"
+                        },
+                        {
+                          "id": "24b8a1b5-1576-46aa-9ab8-b4f8f7f8c34f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"Type\": \"DonationPayment\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-24b8a1b5-1576-46aa-9ab8-b4f8f7f8c34f"
+                        },
+                        {
+                          "id": "219c09c9-50b4-4458-b88e-33ca5154acb8",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"Type\": \"DonationPayment\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-219c09c9-50b4-4458-b88e-33ca5154acb8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-a7b6393c-548c-460d-a0c0-6f7d196527ec"
+                    },
+                    {
+                      "name": "WildApricot Delete Existing Payment",
+                      "id": "5521426f-ab7f-4aeb-9d38-aaa6b733f875",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments",
+                            ":paymentId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "3b7fc666-950d-452f-bc44-7e7e4a40afd0",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "328c8c8e-513f-4d2f-9286-9185541e1262",
+                              "key": "paymentId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "00c3d577-6f25-47d5-a999-f292f58d7845",
+                          "name": "Returns 200 on successful payment deletion",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-00c3d577-6f25-47d5-a999-f292f58d7845"
+                        },
+                        {
+                          "id": "101c2e47-73bc-4d13-88cb-288fa1d28160",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-101c2e47-73bc-4d13-88cb-288fa1d28160"
+                        },
+                        {
+                          "id": "08a08194-11fa-4566-9854-82cb2c67deb2",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-08a08194-11fa-4566-9854-82cb2c67deb2"
+                        },
+                        {
+                          "id": "ef0640ed-3106-45a0-bf0e-7984a88ff866",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:paymentId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":paymentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "paymentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-ef0640ed-3106-45a0-bf0e-7984a88ff866"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-5521426f-ab7f-4aeb-9d38-aaa6b733f875"
+                    }
+                  ],
+                  "id": "4f46c608-0f34-40fe-ba07-2673f4a1cbbc",
+                  "createdAt": "2026-07-28T03:30:31.000Z",
+                  "updatedAt": "2026-07-28T03:30:31.000Z",
+                  "uid": "35240-4f46c608-0f34-40fe-ba07-2673f4a1cbbc"
+                },
+                {
+                  "name": "{donationId}",
+                  "item": [
+                    {
+                      "name": "AllocateRefundToDonation",
+                      "item": [
+                        {
+                          "name": "WildApricot Allocate Refund to Specific Donation",
+                          "id": "ea3708a3-600d-4d4a-b885-4077d4ff468b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/AllocateRefundToDonation?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":donationId",
+                                "AllocateRefundToDonation"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "92c5e5d1-58b1-415b-9366-3bcd4aaf817a",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "09d1dc28-53e8-448e-9c19-6c37554be5c6",
+                                  "key": "donationId",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique donation identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "87b8215f-db38-4ba7-8896-e7171934f26e",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/AllocateRefundToDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "AllocateRefundToDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-87b8215f-db38-4ba7-8896-e7171934f26e"
+                            },
+                            {
+                              "id": "0bc04ac9-3230-4cfe-8a3a-cdc66c774b09",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/AllocateRefundToDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "AllocateRefundToDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-0bc04ac9-3230-4cfe-8a3a-cdc66c774b09"
+                            },
+                            {
+                              "id": "46298688-11ca-4bef-b9b5-3aed9f6e58db",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/AllocateRefundToDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "AllocateRefundToDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-46298688-11ca-4bef-b9b5-3aed9f6e58db"
+                            },
+                            {
+                              "id": "b2da3d94-c02f-405b-891f-d1f75179d5a9",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/AllocateRefundToDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "AllocateRefundToDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-b2da3d94-c02f-405b-891f-d1f75179d5a9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-ea3708a3-600d-4d4a-b885-4077d4ff468b"
+                        }
+                      ],
+                      "id": "ec3bcf78-c313-4ffa-b595-2ec52ac97461",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-ec3bcf78-c313-4ffa-b595-2ec52ac97461"
+                    },
+                    {
+                      "name": "UnallocateFromDonation",
+                      "item": [
+                        {
+                          "name": "WildApricot Unallocate Finance Document from Specific Donation",
+                          "id": "b42e829c-b4b2-4fc9-ac28-870827d8bb5b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/UnallocateFromDonation?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "payments",
+                                ":donationId",
+                                "UnallocateFromDonation"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "31377e50-b072-4e5a-bb2b-f50f74ef599d",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "a5fea2ad-f017-448e-afd7-005937a35ab3",
+                                  "key": "donationId",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique donation identifier"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "afb993b4-a97e-4c2d-a6ba-eefdbcd383fe",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/UnallocateFromDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "UnallocateFromDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-afb993b4-a97e-4c2d-a6ba-eefdbcd383fe"
+                            },
+                            {
+                              "id": "bc8cc361-8031-40b8-aa8b-a83f3be3294f",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/UnallocateFromDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "UnallocateFromDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-bc8cc361-8031-40b8-aa8b-a83f3be3294f"
+                            },
+                            {
+                              "id": "e56271e7-cf88-427a-8d63-b5209e7248c0",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/UnallocateFromDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "UnallocateFromDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-e56271e7-cf88-427a-8d63-b5209e7248c0"
+                            },
+                            {
+                              "id": "a4c4feae-0375-4a74-ba8d-fd6db0f98da0",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/payments/:donationId/UnallocateFromDonation?=<string>&=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "payments",
+                                    ":donationId",
+                                    "UnallocateFromDonation"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "donationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:30:31.000Z",
+                              "updatedAt": "2026-07-28T03:30:31.000Z",
+                              "uid": "35240-a4c4feae-0375-4a74-ba8d-fd6db0f98da0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:30:31.000Z",
+                          "updatedAt": "2026-07-28T03:30:31.000Z",
+                          "uid": "35240-b42e829c-b4b2-4fc9-ac28-870827d8bb5b"
+                        }
+                      ],
+                      "id": "c424ce4e-826a-49cc-b31f-f384bad4c24a",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-c424ce4e-826a-49cc-b31f-f384bad4c24a"
+                    }
+                  ],
+                  "id": "dc6c1fa0-7387-48a5-bdcf-e0e2de006285",
+                  "createdAt": "2026-07-28T03:30:31.000Z",
+                  "updatedAt": "2026-07-28T03:30:31.000Z",
+                  "uid": "35240-dc6c1fa0-7387-48a5-bdcf-e0e2de006285"
+                },
+                {
+                  "name": "WildApricot Get List of Payments by Criteria.",
+                  "id": "0935e745-a30c-4dba-beb1-ce16186c5fdc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&paimentType=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Identifier of contact who made the payment.",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.",
+                          "key": "eventId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, API returns only collection of identifiers instead of collection of payments.",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Limits result to payments created since StartDate.",
+                          "key": "StartDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to payments created before EndDate.",
+                          "key": "EndDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to payment type.",
+                          "key": "paimentType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "When set to true, API returns only unsettled payments.",
+                          "key": "unsettledOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "You can filter the payments by specifying a set of payment IDs.",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c08eebdc-8213-4133-9e08-b32a55130ef6",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "e773b4a0-e045-4129-9007-bf1840fdf08f",
+                      "name": "Collection of payments that match criteria.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&paimentType=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact who made the payment.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of payments.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to payments created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payments created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payment type.",
+                              "key": "paimentType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled payments.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the payments by specifying a set of payment IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"PaymentIdentifiers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"Payments\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Tender\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"AllocatedValue\": \"<float>\",\n      \"RefundedAmount\": \"<number>\",\n      \"Type\": \"Unknown\",\n      \"DonationId\": \"<integer>\",\n      \"FieldValues\": [\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        },\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        }\n      ]\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Tender\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"AllocatedValue\": \"<float>\",\n      \"RefundedAmount\": \"<number>\",\n      \"Type\": \"InvoicePayment\",\n      \"DonationId\": \"<integer>\",\n      \"FieldValues\": [\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        },\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-e773b4a0-e045-4129-9007-bf1840fdf08f"
+                    },
+                    {
+                      "id": "c511251b-8c01-4c23-8c49-70e27367a3c6",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&paimentType=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact who made the payment.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of payments.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to payments created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payments created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payment type.",
+                              "key": "paimentType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled payments.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the payments by specifying a set of payment IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-c511251b-8c01-4c23-8c49-70e27367a3c6"
+                    },
+                    {
+                      "id": "16aa371e-874c-4ee6-b4b5-8fb7ab26b534",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&paimentType=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact who made the payment.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of payments.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to payments created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payments created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payment type.",
+                              "key": "paimentType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled payments.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the payments by specifying a set of payment IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-16aa371e-874c-4ee6-b4b5-8fb7ab26b534"
+                    },
+                    {
+                      "id": "368c83f6-b67b-4b71-bbe2-c5eaefd11308",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>&contactId=<integer>&eventId=<integer>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&paimentType=<string>&unsettledOnly=<boolean>&ids=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact who made the payment.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of payments settled to invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of payments.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to payments created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payments created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to payment type.",
+                              "key": "paimentType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unsettled payments.",
+                              "key": "unsettledOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "You can filter the payments by specifying a set of payment IDs.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-368c83f6-b67b-4b71-bbe2-c5eaefd11308"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:31.000Z",
+                  "updatedAt": "2026-07-28T03:30:31.000Z",
+                  "uid": "35240-0935e745-a30c-4dba-beb1-ce16186c5fdc"
+                },
+                {
+                  "name": "WildApricot Creates a New Payment.",
+                  "id": "4a385a25-294d-4530-b3f3-44ebce4afa57",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"PaymentType\": \"InvoicePayment\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8b0d1571-9e0b-467e-bea1-224abaec7c0f",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4488b4cf-173b-4634-8e41-bb5ef65a5b5a",
+                      "name": "Payment created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"PaymentType\": \"InvoicePayment\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"AllocatedValue\": \"<float>\",\n  \"RefundedAmount\": \"<number>\",\n  \"Type\": \"DonationPayment\",\n  \"DonationId\": \"<integer>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-4488b4cf-173b-4634-8e41-bb5ef65a5b5a"
+                    },
+                    {
+                      "id": "336fe457-6050-468c-b1c0-7f6a3c523567",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"PaymentType\": \"InvoicePayment\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-336fe457-6050-468c-b1c0-7f6a3c523567"
+                    },
+                    {
+                      "id": "74adf2a4-deeb-4ca5-9d0e-505f7bc97262",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"PaymentType\": \"InvoicePayment\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-74adf2a4-deeb-4ca5-9d0e-505f7bc97262"
+                    },
+                    {
+                      "id": "54c64132-414c-4340-b51f-6681db113a86",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Tender\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"PaymentType\": \"InvoicePayment\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/payments?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:31.000Z",
+                      "updatedAt": "2026-07-28T03:30:31.000Z",
+                      "uid": "35240-54c64132-414c-4340-b51f-6681db113a86"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:31.000Z",
+                  "updatedAt": "2026-07-28T03:30:31.000Z",
+                  "uid": "35240-4a385a25-294d-4530-b3f3-44ebce4afa57"
+                }
+              ],
+              "id": "a93d45c2-8767-426b-a63d-b27465581c0e",
+              "createdAt": "2026-07-28T03:30:31.000Z",
+              "updatedAt": "2026-07-28T03:30:31.000Z",
+              "uid": "35240-a93d45c2-8767-426b-a63d-b27465581c0e"
+            }
+          ],
+          "id": "370c9fab-5361-4542-bad7-63da785cb6b1",
+          "createdAt": "2026-07-28T03:30:31.000Z",
+          "updatedAt": "2026-07-28T03:30:31.000Z",
+          "uid": "35240-370c9fab-5361-4542-bad7-63da785cb6b1"
+        }
+      ],
+      "id": "e15a43b4-8bb6-4a85-a1e8-c9f782523f73",
+      "createdAt": "2026-07-28T03:30:31.000Z",
+      "updatedAt": "2026-07-28T03:30:31.000Z",
+      "uid": "35240-e15a43b4-8bb6-4a85-a1e8-c9f782523f73"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

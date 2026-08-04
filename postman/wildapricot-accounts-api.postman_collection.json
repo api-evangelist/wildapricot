@@ -1,0 +1,552 @@
+{
+  "info": {
+    "_postman_id": "0c02b8ab-0141-45e4-9a1c-8a3d29da3d39",
+    "name": "WildApricot Admin Accounts API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:53.000Z",
+    "updatedAt": "2026-07-28T03:29:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0c02b8ab-0141-45e4-9a1c-8a3d29da3d39"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "WildApricot Base URL for Specific API Version.",
+          "id": "e1626221-aa58-4386-a2c7-34bb999ffce3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "base URL for specific API version. It provides a list of resources that can be directly accessible by URL without providing any additional information like account ID etc."
+          },
+          "response": [
+            {
+              "id": "bfb5325f-7af7-45c2-be08-44636920000c",
+              "name": "Array of resources",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"Name\": \"<string>\",\n    \"Url\": \"<string>\",\n    \"AllowedOperations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Description\": \"<string>\"\n  },\n  {\n    \"Name\": \"<string>\",\n    \"Url\": \"<string>\",\n    \"AllowedOperations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:29:53.000Z",
+              "updatedAt": "2026-07-28T03:29:53.000Z",
+              "uid": "35240-bfb5325f-7af7-45c2-be08-44636920000c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:29:53.000Z",
+          "updatedAt": "2026-07-28T03:29:53.000Z",
+          "uid": "35240-e1626221-aa58-4386-a2c7-34bb999ffce3"
+        }
+      ],
+      "id": "21822e7e-2815-4351-9982-7e3e240e5419",
+      "createdAt": "2026-07-28T03:29:53.000Z",
+      "updatedAt": "2026-07-28T03:29:53.000Z",
+      "uid": "35240-21822e7e-2815-4351-9982-7e3e240e5419"
+    },
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "WildApricot Details for Specific Account",
+              "id": "33d9868d-2b39-41c9-86f6-b8c07b7f8d82",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "auto",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://oauth.wildapricot.org/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId?=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "7f8e6949-2454-4265-901c-e0e7f18a873f",
+                      "key": "accountId"
+                    }
+                  ]
+                },
+                "description": "Details for specific account\n"
+              },
+              "response": [
+                {
+                  "id": "190cfa4c-075b-44af-bc7d-ba919ab112b2",
+                  "name": "Account details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"PrimaryDomainName\": \"<string>\",\n  \"ContactLimitInfo\": {\n    \"CurrentContactsCount\": \"<integer>\",\n    \"BillingPlanContactsLimit\": \"<integer>\"\n  },\n  \"Currency\": {\n    \"Code\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Symbol\": \"<string>\"\n  },\n  \"Localization\": {\n    \"DateFormat\": \"<string>\",\n    \"TimeFormat\": \"<string>\"\n  },\n  \"SquareRegisterSettings\": {\n    \"IntegrationEnabled\": \"<boolean>\",\n    \"ClientId\": \"<string>\"\n  },\n  \"Url\": \"<string>\",\n  \"IsFreeAccount\": \"<boolean>\",\n  \"Resources\": [\n    {\n      \"Name\": \"<string>\",\n      \"Url\": \"<string>\",\n      \"AllowedOperations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Description\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Url\": \"<string>\",\n      \"AllowedOperations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Description\": \"<string>\"\n    }\n  ],\n  \"TimeZone\": {\n    \"ZoneId\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"UtcOffset\": \"<integer>\"\n  },\n  \"PaymentSettings\": {\n    \"GeneralPaymentInstructions\": \"<string>\",\n    \"EventPaymentInstructions\": \"<string>\",\n    \"MembershipPaymentInstructions\": \"<string>\"\n  },\n  \"BillingPlan\": {\n    \"Name\": \"<string>\",\n    \"Price\": \"<number>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:29:53.000Z",
+                  "updatedAt": "2026-07-28T03:29:53.000Z",
+                  "uid": "35240-190cfa4c-075b-44af-bc7d-ba919ab112b2"
+                },
+                {
+                  "id": "28e12fcb-9655-4132-8792-75a558b4bb0d",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:29:53.000Z",
+                  "updatedAt": "2026-07-28T03:29:53.000Z",
+                  "uid": "35240-28e12fcb-9655-4132-8792-75a558b4bb0d"
+                },
+                {
+                  "id": "836b6218-843a-4f8c-9648-0a1764a8bfe2",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:29:53.000Z",
+                  "updatedAt": "2026-07-28T03:29:53.000Z",
+                  "uid": "35240-836b6218-843a-4f8c-9648-0a1764a8bfe2"
+                },
+                {
+                  "id": "7d1a2008-a09b-40f4-8915-1ffdc8850394",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:29:53.000Z",
+                  "updatedAt": "2026-07-28T03:29:53.000Z",
+                  "uid": "35240-7d1a2008-a09b-40f4-8915-1ffdc8850394"
+                }
+              ],
+              "createdAt": "2026-07-28T03:29:53.000Z",
+              "updatedAt": "2026-07-28T03:29:53.000Z",
+              "uid": "35240-33d9868d-2b39-41c9-86f6-b8c07b7f8d82"
+            }
+          ],
+          "id": "f7a747b0-ecbb-4956-a4fe-96f45a15a9cb",
+          "createdAt": "2026-07-28T03:29:53.000Z",
+          "updatedAt": "2026-07-28T03:29:53.000Z",
+          "uid": "35240-f7a747b0-ecbb-4956-a4fe-96f45a15a9cb"
+        },
+        {
+          "name": "WildApricot List of Available Accounts",
+          "id": "6c9dec1c-d7f2-4ed3-95d8-79e018696e0e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ]
+            },
+            "description": "List of accounts available with current oAuth token. Typicaly here would be only one record in an array\n"
+          },
+          "response": [
+            {
+              "id": "37644de6-9f78-4124-bcf8-e6c77ac12d05",
+              "name": "An array of accounts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"PrimaryDomainName\": \"<string>\",\n    \"ContactLimitInfo\": {\n      \"CurrentContactsCount\": \"<integer>\",\n      \"BillingPlanContactsLimit\": \"<integer>\"\n    },\n    \"Currency\": {\n      \"Code\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Symbol\": \"<string>\"\n    },\n    \"Localization\": {\n      \"DateFormat\": \"<string>\",\n      \"TimeFormat\": \"<string>\"\n    },\n    \"SquareRegisterSettings\": {\n      \"IntegrationEnabled\": \"<boolean>\",\n      \"ClientId\": \"<string>\"\n    },\n    \"Url\": \"<string>\",\n    \"IsFreeAccount\": \"<boolean>\",\n    \"Resources\": [\n      {\n        \"Name\": \"<string>\",\n        \"Url\": \"<string>\",\n        \"AllowedOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"Description\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Url\": \"<string>\",\n        \"AllowedOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"Description\": \"<string>\"\n      }\n    ],\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"PaymentSettings\": {\n      \"GeneralPaymentInstructions\": \"<string>\",\n      \"EventPaymentInstructions\": \"<string>\",\n      \"MembershipPaymentInstructions\": \"<string>\"\n    },\n    \"BillingPlan\": {\n      \"Name\": \"<string>\",\n      \"Price\": \"<number>\"\n    }\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"PrimaryDomainName\": \"<string>\",\n    \"ContactLimitInfo\": {\n      \"CurrentContactsCount\": \"<integer>\",\n      \"BillingPlanContactsLimit\": \"<integer>\"\n    },\n    \"Currency\": {\n      \"Code\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Symbol\": \"<string>\"\n    },\n    \"Localization\": {\n      \"DateFormat\": \"<string>\",\n      \"TimeFormat\": \"<string>\"\n    },\n    \"SquareRegisterSettings\": {\n      \"IntegrationEnabled\": \"<boolean>\",\n      \"ClientId\": \"<string>\"\n    },\n    \"Url\": \"<string>\",\n    \"IsFreeAccount\": \"<boolean>\",\n    \"Resources\": [\n      {\n        \"Name\": \"<string>\",\n        \"Url\": \"<string>\",\n        \"AllowedOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"Description\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Url\": \"<string>\",\n        \"AllowedOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"Description\": \"<string>\"\n      }\n    ],\n    \"TimeZone\": {\n      \"ZoneId\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"UtcOffset\": \"<integer>\"\n    },\n    \"PaymentSettings\": {\n      \"GeneralPaymentInstructions\": \"<string>\",\n      \"EventPaymentInstructions\": \"<string>\",\n      \"MembershipPaymentInstructions\": \"<string>\"\n    },\n    \"BillingPlan\": {\n      \"Name\": \"<string>\",\n      \"Price\": \"<number>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T03:29:53.000Z",
+              "updatedAt": "2026-07-28T03:29:53.000Z",
+              "uid": "35240-37644de6-9f78-4124-bcf8-e6c77ac12d05"
+            },
+            {
+              "id": "c7609b6f-7ed5-453d-8bfc-6a2de09cef56",
+              "name": "New Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:29:53.000Z",
+              "updatedAt": "2026-07-28T03:29:53.000Z",
+              "uid": "35240-c7609b6f-7ed5-453d-8bfc-6a2de09cef56"
+            },
+            {
+              "id": "d3fd591c-1a1b-4a55-b4e7-937aaa39b126",
+              "name": "New Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:29:53.000Z",
+              "updatedAt": "2026-07-28T03:29:53.000Z",
+              "uid": "35240-d3fd591c-1a1b-4a55-b4e7-937aaa39b126"
+            }
+          ],
+          "createdAt": "2026-07-28T03:29:53.000Z",
+          "updatedAt": "2026-07-28T03:29:53.000Z",
+          "uid": "35240-6c9dec1c-d7f2-4ed3-95d8-79e018696e0e"
+        }
+      ],
+      "id": "d0ef870e-a8e9-4024-a2fe-ddc28621b5ce",
+      "createdAt": "2026-07-28T03:29:53.000Z",
+      "updatedAt": "2026-07-28T03:29:53.000Z",
+      "uid": "35240-d0ef870e-a8e9-4024-a2fe-ddc28621b5ce"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

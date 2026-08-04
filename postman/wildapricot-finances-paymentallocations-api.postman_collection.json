@@ -1,0 +1,380 @@
+{
+  "info": {
+    "_postman_id": "a5429390-e13b-4c16-9537-69de8f4f466f",
+    "name": "WildApricot Admin Accounts Finances.PaymentAllocations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:30.000Z",
+    "updatedAt": "2026-07-28T03:30:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a5429390-e13b-4c16-9537-69de8f4f466f"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "paymentAllocations",
+              "item": [
+                {
+                  "name": "WildApricot Get List Describing How Payments Are Allocated Among Invoices.",
+                  "id": "1a5a79c7-c2f3-4a99-a165-aafba4a03f2d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/paymentAllocations?=<string>&InvoiceId=<integer>&PaymentId=<integer>&RefundId=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "paymentAllocations"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Identifier of invoice.",
+                          "key": "InvoiceId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of payment.",
+                          "key": "PaymentId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of refund.",
+                          "key": "RefundId",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1658d712-4f3a-48a1-a936-fd41d2254477",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "At least one parameter InvoiceId or PaymentId or RefundId should be specified."
+                  },
+                  "response": [
+                    {
+                      "id": "e0675858-85a9-4b05-bea2-5c95c7e4be40",
+                      "name": "Collection of allocations.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/paymentAllocations?=<string>&InvoiceId=<integer>&PaymentId=<integer>&RefundId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "paymentAllocations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of invoice.",
+                              "key": "InvoiceId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of payment.",
+                              "key": "PaymentId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of refund.",
+                              "key": "RefundId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Value\": \"<number>\",\n  \"Invoice\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"InvoiceDate\": \"<date>\",\n  \"InvoiceNumber\": \"<string>\",\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"PaymentDate\": \"<date>\",\n  \"PaymentType\": \"InvoicePayment\",\n  \"Refund\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"RefundDate\": \"<date>\"\n}",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-e0675858-85a9-4b05-bea2-5c95c7e4be40"
+                    },
+                    {
+                      "id": "d10565b3-bb17-44f2-8506-4129e1606a09",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/paymentAllocations?=<string>&InvoiceId=<integer>&PaymentId=<integer>&RefundId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "paymentAllocations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of invoice.",
+                              "key": "InvoiceId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of payment.",
+                              "key": "PaymentId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of refund.",
+                              "key": "RefundId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-d10565b3-bb17-44f2-8506-4129e1606a09"
+                    },
+                    {
+                      "id": "ed2f0f96-fd03-413c-91b4-239e808910ec",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/paymentAllocations?=<string>&InvoiceId=<integer>&PaymentId=<integer>&RefundId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "paymentAllocations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of invoice.",
+                              "key": "InvoiceId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of payment.",
+                              "key": "PaymentId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of refund.",
+                              "key": "RefundId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-ed2f0f96-fd03-413c-91b4-239e808910ec"
+                    },
+                    {
+                      "id": "52efd0dc-0ca5-4133-9c50-ac0ffa0eef59",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/paymentAllocations?=<string>&InvoiceId=<integer>&PaymentId=<integer>&RefundId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "paymentAllocations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of invoice.",
+                              "key": "InvoiceId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of payment.",
+                              "key": "PaymentId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of refund.",
+                              "key": "RefundId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-52efd0dc-0ca5-4133-9c50-ac0ffa0eef59"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:30.000Z",
+                  "updatedAt": "2026-07-28T03:30:30.000Z",
+                  "uid": "35240-1a5a79c7-c2f3-4a99-a165-aafba4a03f2d"
+                }
+              ],
+              "id": "fb8fc3dc-2a7b-4947-bbf8-462668f2d2c5",
+              "createdAt": "2026-07-28T03:30:30.000Z",
+              "updatedAt": "2026-07-28T03:30:30.000Z",
+              "uid": "35240-fb8fc3dc-2a7b-4947-bbf8-462668f2d2c5"
+            }
+          ],
+          "id": "84c03868-d494-46e5-bd75-7241f865e1ec",
+          "createdAt": "2026-07-28T03:30:30.000Z",
+          "updatedAt": "2026-07-28T03:30:30.000Z",
+          "uid": "35240-84c03868-d494-46e5-bd75-7241f865e1ec"
+        }
+      ],
+      "id": "7fd5e97f-8995-48a3-b95c-6875aa766992",
+      "createdAt": "2026-07-28T03:30:30.000Z",
+      "updatedAt": "2026-07-28T03:30:30.000Z",
+      "uid": "35240-7fd5e97f-8995-48a3-b95c-6875aa766992"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

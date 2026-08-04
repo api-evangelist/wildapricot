@@ -1,0 +1,1082 @@
+{
+  "info": {
+    "_postman_id": "9c1026c7-8723-4f6f-ad92-6ffe3694c487",
+    "name": "WildApricot Admin Accounts Attachments API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:54.000Z",
+    "updatedAt": "2026-07-28T03:29:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c1026c7-8723-4f6f-ad92-6ffe3694c487"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "attachments",
+              "item": [
+                {
+                  "name": "{attachmentId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Download Attachment",
+                      "id": "27f50466-6dfe-4cff-98ce-0a2f89bd5b72",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "attachments",
+                            ":attachmentId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Base64 encoded image will be returned.",
+                              "key": "asBase64",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "468fffdc-4899-4264-b30d-24922beec059",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "74b9c0a6-0d9d-41fe-8a0a-7ce9ad7cffd6",
+                              "key": "attachmentId",
+                              "value": "<string>",
+                              "description": "(Required) Attachment identifier"
+                            }
+                          ]
+                        },
+                        "description": "Attachment, available for specific account."
+                      },
+                      "response": [
+                        {
+                          "id": "908a05c0-fd00-45f3-bc9f-91f094924701",
+                          "name": "Response is common HttpResponseMessage with content set to attachment binary data.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                ":attachmentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "attachmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<file>",
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-908a05c0-fd00-45f3-bc9f-91f094924701"
+                        },
+                        {
+                          "id": "8629e758-52d3-43bb-8f86-a321996ad80e",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                ":attachmentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "attachmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-8629e758-52d3-43bb-8f86-a321996ad80e"
+                        },
+                        {
+                          "id": "29058ef1-0ab6-4e73-976d-27998a5646c1",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                ":attachmentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "attachmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-29058ef1-0ab6-4e73-976d-27998a5646c1"
+                        },
+                        {
+                          "id": "30d7d6cf-0aa2-4fb9-8183-8f56ca9c5ba7",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                ":attachmentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "attachmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-30d7d6cf-0aa2-4fb9-8183-8f56ca9c5ba7"
+                        },
+                        {
+                          "id": "86ee9dc8-24f6-457a-bb0c-728c9ffab843",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/:attachmentId?=<string>&=<string>&asBase64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                ":attachmentId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Base64 encoded image will be returned.",
+                                  "key": "asBase64",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "attachmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-86ee9dc8-24f6-457a-bb0c-728c9ffab843"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:54.000Z",
+                      "updatedAt": "2026-07-28T03:29:54.000Z",
+                      "uid": "35240-27f50466-6dfe-4cff-98ce-0a2f89bd5b72"
+                    }
+                  ],
+                  "id": "d96c7b8b-33f9-4c4f-886a-5c376a9ac384",
+                  "createdAt": "2026-07-28T03:29:54.000Z",
+                  "updatedAt": "2026-07-28T03:29:54.000Z",
+                  "uid": "35240-d96c7b8b-33f9-4c4f-886a-5c376a9ac384"
+                },
+                {
+                  "name": "GetInfos",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Attachments Infos",
+                      "id": "3dff1163-0ff3-4775-aeb2-be48e7550f2d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "attachments",
+                            "GetInfos"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) list of comma separated Attachment identifiers",
+                              "key": "attachmentIds",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5429099e-0401-4bcc-b1f3-e67b7e8e118d",
+                              "key": "accountId"
+                            }
+                          ]
+                        },
+                        "description": "Attachment infos, available for specific account."
+                      },
+                      "response": [
+                        {
+                          "id": "25c2127f-ccae-4b4f-8bf9-eaa073bf7788",
+                          "name": "An array of attachment descriptions",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "GetInfos"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) list of comma separated Attachment identifiers",
+                                  "key": "attachmentIds",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ContentType\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDate\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ContentType\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDate\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-25c2127f-ccae-4b4f-8bf9-eaa073bf7788"
+                        },
+                        {
+                          "id": "10fe16c5-18df-4356-97be-633b5d674b77",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "GetInfos"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) list of comma separated Attachment identifiers",
+                                  "key": "attachmentIds",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-10fe16c5-18df-4356-97be-633b5d674b77"
+                        },
+                        {
+                          "id": "b34ecd17-7750-499b-b63b-2ef2b01dfbf6",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "GetInfos"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) list of comma separated Attachment identifiers",
+                                  "key": "attachmentIds",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-b34ecd17-7750-499b-b63b-2ef2b01dfbf6"
+                        },
+                        {
+                          "id": "c8714e91-f77b-42e3-88ea-a76756db8bb1",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "GetInfos"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) list of comma separated Attachment identifiers",
+                                  "key": "attachmentIds",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-c8714e91-f77b-42e3-88ea-a76756db8bb1"
+                        },
+                        {
+                          "id": "56c21dbc-d588-4d36-9aba-6c85f22581a7",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/GetInfos?=<string>&attachmentIds=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "GetInfos"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) list of comma separated Attachment identifiers",
+                                  "key": "attachmentIds",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-56c21dbc-d588-4d36-9aba-6c85f22581a7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:54.000Z",
+                      "updatedAt": "2026-07-28T03:29:54.000Z",
+                      "uid": "35240-3dff1163-0ff3-4775-aeb2-be48e7550f2d"
+                    }
+                  ],
+                  "id": "a069cd11-e09f-4fa9-980d-b2a07c46620e",
+                  "createdAt": "2026-07-28T03:29:54.000Z",
+                  "updatedAt": "2026-07-28T03:29:54.000Z",
+                  "uid": "35240-a069cd11-e09f-4fa9-980d-b2a07c46620e"
+                },
+                {
+                  "name": "Upload",
+                  "item": [
+                    {
+                      "name": "WildApricot Upload Attachments",
+                      "id": "a2ef1d67-7159-4bfb-b6ce-7f505129f9ce",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/attachments/Upload?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "attachments",
+                            "Upload"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "dda9105f-6303-4f3f-b6de-ad135968dd9c",
+                              "key": "accountId"
+                            }
+                          ]
+                        },
+                        "description": "Upload attachments data and get their identifiers to use for contact values.  Attachment not used for any Contact field value will be deleted in 30 minutes.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "07057806-0756-4215-9907-08b17eb4248a",
+                          "name": "An array of attachment descriptions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/Upload?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "Upload"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ContentType\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDate\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ContentType\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDate\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-07057806-0756-4215-9907-08b17eb4248a"
+                        },
+                        {
+                          "id": "d5fc4f97-e783-4a56-9d99-e6a7db991985",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/Upload?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "Upload"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-d5fc4f97-e783-4a56-9d99-e6a7db991985"
+                        },
+                        {
+                          "id": "c5dc9cab-9419-40c0-806d-10c6661a782f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/Upload?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "Upload"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-c5dc9cab-9419-40c0-806d-10c6661a782f"
+                        },
+                        {
+                          "id": "12fd465e-b572-420a-be5c-93cb33731b4e",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/attachments/Upload?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "attachments",
+                                "Upload"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:54.000Z",
+                          "updatedAt": "2026-07-28T03:29:54.000Z",
+                          "uid": "35240-12fd465e-b572-420a-be5c-93cb33731b4e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:54.000Z",
+                      "updatedAt": "2026-07-28T03:29:54.000Z",
+                      "uid": "35240-a2ef1d67-7159-4bfb-b6ce-7f505129f9ce"
+                    }
+                  ],
+                  "id": "e9ecc972-5ff2-41b1-8c93-cc3c0429c058",
+                  "createdAt": "2026-07-28T03:29:54.000Z",
+                  "updatedAt": "2026-07-28T03:29:54.000Z",
+                  "uid": "35240-e9ecc972-5ff2-41b1-8c93-cc3c0429c058"
+                }
+              ],
+              "id": "c38a4560-ae15-4d08-8a44-89d811beae6c",
+              "createdAt": "2026-07-28T03:29:54.000Z",
+              "updatedAt": "2026-07-28T03:29:54.000Z",
+              "uid": "35240-c38a4560-ae15-4d08-8a44-89d811beae6c"
+            }
+          ],
+          "id": "6c7c5507-5daa-4cfc-82f5-cf75eb98202b",
+          "createdAt": "2026-07-28T03:29:54.000Z",
+          "updatedAt": "2026-07-28T03:29:54.000Z",
+          "uid": "35240-6c7c5507-5daa-4cfc-82f5-cf75eb98202b"
+        }
+      ],
+      "id": "215bbe89-3e16-4eeb-b5f8-d5db374f6990",
+      "createdAt": "2026-07-28T03:29:54.000Z",
+      "updatedAt": "2026-07-28T03:29:54.000Z",
+      "uid": "35240-215bbe89-3e16-4eeb-b5f8-d5db374f6990"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

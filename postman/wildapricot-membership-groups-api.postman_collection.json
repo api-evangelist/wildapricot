@@ -1,0 +1,572 @@
+{
+  "info": {
+    "_postman_id": "1f32e4af-d2f7-4b7a-bb2e-5802910b645f",
+    "name": "WildApricot Admin Accounts Membership.Groups API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:47.000Z",
+    "updatedAt": "2026-07-28T03:30:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1f32e4af-d2f7-4b7a-bb2e-5802910b645f"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "membergroups",
+              "item": [
+                {
+                  "name": "{memberGroupId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Ad Hoc Member Group.",
+                      "id": "ff36e6b1-7728-4c6b-86c7-f13761d3fcac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membergroups/:memberGroupId?=<string>&includeArchivedMembers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membergroups",
+                            ":memberGroupId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "include archived contacts in ContactIds list. Default - true.",
+                              "key": "includeArchivedMembers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "9733fa8c-2727-4afc-ada1-cd2b41d551ce",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "18895807-07e6-4f56-ad8e-eca2665603e1",
+                              "key": "memberGroupId",
+                              "value": "<integer>",
+                              "description": "(Required) member group identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "52c644b4-e3f3-4a44-bdda-6aec2e8f16ca",
+                          "name": "member group description",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membergroups/:memberGroupId?=<string>&includeArchivedMembers=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membergroups",
+                                ":memberGroupId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "include archived contacts in ContactIds list. Default - true.",
+                                  "key": "includeArchivedMembers",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "memberGroupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"ContactsCount\": \"<integer>\",\n  \"ContactIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T03:30:47.000Z",
+                          "updatedAt": "2026-07-28T03:30:47.000Z",
+                          "uid": "35240-52c644b4-e3f3-4a44-bdda-6aec2e8f16ca"
+                        },
+                        {
+                          "id": "9ce8e73f-f923-4bbb-9b94-b6a33bbd3226",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membergroups/:memberGroupId?=<string>&includeArchivedMembers=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membergroups",
+                                ":memberGroupId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "include archived contacts in ContactIds list. Default - true.",
+                                  "key": "includeArchivedMembers",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "memberGroupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:47.000Z",
+                          "updatedAt": "2026-07-28T03:30:47.000Z",
+                          "uid": "35240-9ce8e73f-f923-4bbb-9b94-b6a33bbd3226"
+                        },
+                        {
+                          "id": "9ef26c6b-1478-453e-bb61-1fb9bde6d44c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membergroups/:memberGroupId?=<string>&includeArchivedMembers=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membergroups",
+                                ":memberGroupId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "include archived contacts in ContactIds list. Default - true.",
+                                  "key": "includeArchivedMembers",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "memberGroupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:47.000Z",
+                          "updatedAt": "2026-07-28T03:30:47.000Z",
+                          "uid": "35240-9ef26c6b-1478-453e-bb61-1fb9bde6d44c"
+                        },
+                        {
+                          "id": "6edfe311-c8a7-447d-b166-a65f0f68403f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membergroups/:memberGroupId?=<string>&includeArchivedMembers=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membergroups",
+                                ":memberGroupId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "include archived contacts in ContactIds list. Default - true.",
+                                  "key": "includeArchivedMembers",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "memberGroupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:47.000Z",
+                          "updatedAt": "2026-07-28T03:30:47.000Z",
+                          "uid": "35240-6edfe311-c8a7-447d-b166-a65f0f68403f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:47.000Z",
+                      "updatedAt": "2026-07-28T03:30:47.000Z",
+                      "uid": "35240-ff36e6b1-7728-4c6b-86c7-f13761d3fcac"
+                    }
+                  ],
+                  "id": "bf3ea9c0-50b6-4ccd-b4ab-301b0ede7b94",
+                  "createdAt": "2026-07-28T03:30:47.000Z",
+                  "updatedAt": "2026-07-28T03:30:47.000Z",
+                  "uid": "35240-bf3ea9c0-50b6-4ccd-b4ab-301b0ede7b94"
+                },
+                {
+                  "name": "WildApricot List of Ad Hoc Member Groups.",
+                  "id": "9aa26890-d33a-4c83-88dd-43eaace08fd7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/membergroups?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "membergroups"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8197e236-e2b3-4de0-a17c-1cd03aa2c206",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3d0aae05-ec4c-4f47-a20c-bc4875bf7b9c",
+                      "name": "An array of member group descriptions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membergroups?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membergroups"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:47.000Z",
+                      "updatedAt": "2026-07-28T03:30:47.000Z",
+                      "uid": "35240-3d0aae05-ec4c-4f47-a20c-bc4875bf7b9c"
+                    },
+                    {
+                      "id": "58af7ff2-2a16-4606-a6dc-343ca751c7f8",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membergroups?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membergroups"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:47.000Z",
+                      "updatedAt": "2026-07-28T03:30:47.000Z",
+                      "uid": "35240-58af7ff2-2a16-4606-a6dc-343ca751c7f8"
+                    },
+                    {
+                      "id": "0ff79206-b2d5-4035-af53-4a9775e14722",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membergroups?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membergroups"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:47.000Z",
+                      "updatedAt": "2026-07-28T03:30:47.000Z",
+                      "uid": "35240-0ff79206-b2d5-4035-af53-4a9775e14722"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:47.000Z",
+                  "updatedAt": "2026-07-28T03:30:47.000Z",
+                  "uid": "35240-9aa26890-d33a-4c83-88dd-43eaace08fd7"
+                }
+              ],
+              "id": "19e295c1-6941-4c31-9db4-bd11117f9e8c",
+              "createdAt": "2026-07-28T03:30:47.000Z",
+              "updatedAt": "2026-07-28T03:30:47.000Z",
+              "uid": "35240-19e295c1-6941-4c31-9db4-bd11117f9e8c"
+            }
+          ],
+          "id": "fe741c10-c6a8-4f89-b9b3-f26e615a3828",
+          "createdAt": "2026-07-28T03:30:47.000Z",
+          "updatedAt": "2026-07-28T03:30:47.000Z",
+          "uid": "35240-fe741c10-c6a8-4f89-b9b3-f26e615a3828"
+        }
+      ],
+      "id": "c3dc4224-d1df-4729-926d-6c3b0a2663a8",
+      "createdAt": "2026-07-28T03:30:47.000Z",
+      "updatedAt": "2026-07-28T03:30:47.000Z",
+      "uid": "35240-c3dc4224-d1df-4729-926d-6c3b0a2663a8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

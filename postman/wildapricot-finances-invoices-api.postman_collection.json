@@ -1,0 +1,2210 @@
+{
+  "info": {
+    "_postman_id": "43c7a5d5-a165-42fe-89c4-e817363797db",
+    "name": "WildApricot Admin Accounts Finances.Invoices API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:29.000Z",
+    "updatedAt": "2026-07-28T03:30:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-43c7a5d5-a165-42fe-89c4-e817363797db"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "invoices",
+              "item": [
+                {
+                  "name": "{invoiceId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Invoice",
+                      "id": "0a5ee1c4-75fe-4fec-b7b6-ca5415230175",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices",
+                            ":invoiceId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "272f6e39-61fb-47bb-bba3-a074f571dc71",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "47f1f885-07d0-4255-bf52-5f94aecc8d3f",
+                              "key": "invoiceId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique invoice identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1ba057a1-6525-48ea-8ae9-32e28205ef1d",
+                          "name": "information about specific invoice",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"IsPaid\": \"<boolean>\",\n  \"PaidAmount\": \"<number>\",\n  \"OrderType\": \"MembershipRenewal\",\n  \"EventRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Donation\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Unspecified\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"VoidedDate\": \"<date>\"\n}",
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-1ba057a1-6525-48ea-8ae9-32e28205ef1d"
+                        },
+                        {
+                          "id": "dff50e03-977d-4c16-84d6-c27f705e4134",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-dff50e03-977d-4c16-84d6-c27f705e4134"
+                        },
+                        {
+                          "id": "61383395-d4c3-4106-8f8b-2f282c9a5f65",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-61383395-d4c3-4106-8f8b-2f282c9a5f65"
+                        },
+                        {
+                          "id": "96dbb627-6a5e-4b45-8c65-af60d95ca6fb",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-96dbb627-6a5e-4b45-8c65-af60d95ca6fb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-0a5ee1c4-75fe-4fec-b7b6-ca5415230175"
+                    },
+                    {
+                      "name": "WildApricot Update Existing Invoice Information",
+                      "id": "2b3d84a6-3c24-44da-9238-58181bf34fe8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"OnlineStore\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Discount\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"EventRegistration\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices",
+                            ":invoiceId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5ab7eb9c-944c-4e0e-ab05-ac751717f1e0",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "cfa19367-01a6-4c7d-85f9-3c496eccd004",
+                              "key": "invoiceId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4565de69-bca5-49ea-b30b-8af41e67087a",
+                          "name": "Returns 200 on successful data update",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"OnlineStore\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Discount\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"EventRegistration\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-4565de69-bca5-49ea-b30b-8af41e67087a"
+                        },
+                        {
+                          "id": "7d50e7e7-8e5d-4150-9195-96264242bfd2",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"OnlineStore\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Discount\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"EventRegistration\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-7d50e7e7-8e5d-4150-9195-96264242bfd2"
+                        },
+                        {
+                          "id": "9097aeef-837d-4347-a9b3-20d70d01b64c",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"OnlineStore\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Discount\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"EventRegistration\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-9097aeef-837d-4347-a9b3-20d70d01b64c"
+                        },
+                        {
+                          "id": "8e29454e-9934-4d91-ad83-ae4470de82cb",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"OnlineStore\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Discount\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"EventRegistration\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-8e29454e-9934-4d91-ad83-ae4470de82cb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-2b3d84a6-3c24-44da-9238-58181bf34fe8"
+                    },
+                    {
+                      "name": "WildApricot Delete Existing Invoice",
+                      "id": "37c68603-b540-4476-9ab6-e0837ba83d59",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices",
+                            ":invoiceId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "c91e2ee2-ef8c-4add-8fc9-9d0c91bf8000",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "dea09e80-5405-4ca6-9ee1-f675aa5d4f37",
+                              "key": "invoiceId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e5e02aee-888f-4bda-b13b-f2a1644708bf",
+                          "name": "Returns 200 on successful invoice deletion",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-e5e02aee-888f-4bda-b13b-f2a1644708bf"
+                        },
+                        {
+                          "id": "8193b0e6-d513-44a1-ac66-775d9bbddb92",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-8193b0e6-d513-44a1-ac66-775d9bbddb92"
+                        },
+                        {
+                          "id": "1eca2846-8887-4b5b-8070-544ae73076ff",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-1eca2846-8887-4b5b-8070-544ae73076ff"
+                        },
+                        {
+                          "id": "cba0797b-97ab-4ff3-b6be-5f014256f928",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/invoices/:invoiceId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "invoices",
+                                ":invoiceId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "invoiceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:30.000Z",
+                          "updatedAt": "2026-07-28T03:30:30.000Z",
+                          "uid": "35240-cba0797b-97ab-4ff3-b6be-5f014256f928"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-37c68603-b540-4476-9ab6-e0837ba83d59"
+                    }
+                  ],
+                  "id": "f900fe43-13f4-48cc-827e-5c89d0239d6e",
+                  "createdAt": "2026-07-28T03:30:29.000Z",
+                  "updatedAt": "2026-07-28T03:30:29.000Z",
+                  "uid": "35240-f900fe43-13f4-48cc-827e-5c89d0239d6e"
+                },
+                {
+                  "name": "WildApricot Get List of Invoices by Criteria.",
+                  "id": "b0937a57-e464-4cf1-a407-2088890a836f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>&contactId=<integer>&eventId=<integer>&eventRegistrationId=<integer>&unpaidOnly=<boolean>&paidOnly=<boolean>&includeVoided=<boolean>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "invoices"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Identifier of contact to whom the invoice is assigned.",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.",
+                          "key": "eventId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.",
+                          "key": "eventRegistrationId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "When set to true, API returns only unpaid invoices.",
+                          "key": "unpaidOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "When set to true, API returns only paid invoices.",
+                          "key": "paidOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "When set to true, API also returns voided invoices.",
+                          "key": "includeVoided",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "When set to true, API returns only collection of identifiers instead of collection of invoices.",
+                          "key": "idsOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Limits result to invoices created since StartDate.",
+                          "key": "StartDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to invoices created before EndDate.",
+                          "key": "EndDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3f7d97c7-a424-4289-8d61-efdeff141b5d",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\n\u00e2\u0161\u00a0 There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId and eventRegistrationId exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter invoices.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "c6719ca8-2c69-4fcf-bde2-6476d34f7bcb",
+                      "name": "Collection of invoices that match criteria.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>&contactId=<integer>&eventId=<integer>&eventRegistrationId=<integer>&unpaidOnly=<boolean>&paidOnly=<boolean>&includeVoided=<boolean>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the invoice is assigned.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unpaid invoices.",
+                              "key": "unpaidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only paid invoices.",
+                              "key": "paidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API also returns voided invoices.",
+                              "key": "includeVoided",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of invoices.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to invoices created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to invoices created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"InvoiceIdentifiers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"Invoices\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DocumentNumber\": \"<string>\",\n      \"IsPaid\": \"<boolean>\",\n      \"PaidAmount\": \"<number>\",\n      \"OrderType\": \"EventRegistration\",\n      \"EventRegistration\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"OrderDetails\": [\n        {\n          \"Value\": \"<float>\",\n          \"OrderDetailType\": \"EventRegistration\",\n          \"Notes\": \"<string>\",\n          \"Taxes\": {\n            \"Amount\": \"<number>\",\n            \"CalculatedTax1\": \"<number>\",\n            \"CalculatedTax2\": \"<number>\",\n            \"NetAmount\": \"<number>\",\n            \"RoundedAmount\": \"<number>\",\n            \"Tax1\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            },\n            \"Tax2\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            }\n          }\n        },\n        {\n          \"Value\": \"<float>\",\n          \"OrderDetailType\": \"Discount\",\n          \"Notes\": \"<string>\",\n          \"Taxes\": {\n            \"Amount\": \"<number>\",\n            \"CalculatedTax1\": \"<number>\",\n            \"CalculatedTax2\": \"<number>\",\n            \"NetAmount\": \"<number>\",\n            \"RoundedAmount\": \"<number>\",\n            \"Tax1\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            },\n            \"Tax2\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            }\n          }\n        }\n      ],\n      \"Memo\": \"<string>\",\n      \"PublicMemo\": \"<string>\",\n      \"VoidedDate\": \"<date>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"DocumentDate\": \"<date>\",\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\",\n        \"Name\": \"<string>\"\n      },\n      \"CreatedDate\": \"<date>\",\n      \"CreatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"UpdatedDate\": \"<date>\",\n      \"UpdatedBy\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DocumentNumber\": \"<string>\",\n      \"IsPaid\": \"<boolean>\",\n      \"PaidAmount\": \"<number>\",\n      \"OrderType\": \"Donation\",\n      \"EventRegistration\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"OrderDetails\": [\n        {\n          \"Value\": \"<float>\",\n          \"OrderDetailType\": \"ExtraCost\",\n          \"Notes\": \"<string>\",\n          \"Taxes\": {\n            \"Amount\": \"<number>\",\n            \"CalculatedTax1\": \"<number>\",\n            \"CalculatedTax2\": \"<number>\",\n            \"NetAmount\": \"<number>\",\n            \"RoundedAmount\": \"<number>\",\n            \"Tax1\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            },\n            \"Tax2\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            }\n          }\n        },\n        {\n          \"Value\": \"<float>\",\n          \"OrderDetailType\": \"OnlineStoreProduct\",\n          \"Notes\": \"<string>\",\n          \"Taxes\": {\n            \"Amount\": \"<number>\",\n            \"CalculatedTax1\": \"<number>\",\n            \"CalculatedTax2\": \"<number>\",\n            \"NetAmount\": \"<number>\",\n            \"RoundedAmount\": \"<number>\",\n            \"Tax1\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            },\n            \"Tax2\": {\n              \"Name\": \"<string>\",\n              \"PublicId\": \"<string>\",\n              \"Rate\": \"<number>\"\n            }\n          }\n        }\n      ],\n      \"Memo\": \"<string>\",\n      \"PublicMemo\": \"<string>\",\n      \"VoidedDate\": \"<date>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-c6719ca8-2c69-4fcf-bde2-6476d34f7bcb"
+                    },
+                    {
+                      "id": "a5322f76-1226-421d-8a58-201245c1ae58",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>&contactId=<integer>&eventId=<integer>&eventRegistrationId=<integer>&unpaidOnly=<boolean>&paidOnly=<boolean>&includeVoided=<boolean>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the invoice is assigned.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unpaid invoices.",
+                              "key": "unpaidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only paid invoices.",
+                              "key": "paidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API also returns voided invoices.",
+                              "key": "includeVoided",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of invoices.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to invoices created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to invoices created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-a5322f76-1226-421d-8a58-201245c1ae58"
+                    },
+                    {
+                      "id": "b5911b84-42c5-4526-ae25-4af54ff19601",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>&contactId=<integer>&eventId=<integer>&eventRegistrationId=<integer>&unpaidOnly=<boolean>&paidOnly=<boolean>&includeVoided=<boolean>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the invoice is assigned.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unpaid invoices.",
+                              "key": "unpaidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only paid invoices.",
+                              "key": "paidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API also returns voided invoices.",
+                              "key": "includeVoided",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of invoices.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to invoices created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to invoices created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-b5911b84-42c5-4526-ae25-4af54ff19601"
+                    },
+                    {
+                      "id": "414a438e-94d9-4f94-9026-bf9c61b8e0f2",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>&contactId=<integer>&eventId=<integer>&eventRegistrationId=<integer>&unpaidOnly=<boolean>&paidOnly=<boolean>&includeVoided=<boolean>&idsOnly=<boolean>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Identifier of contact to whom the invoice is assigned.",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event.",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice.",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When set to true, API returns only unpaid invoices.",
+                              "key": "unpaidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only paid invoices.",
+                              "key": "paidOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API also returns voided invoices.",
+                              "key": "includeVoided",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "When set to true, API returns only collection of identifiers instead of collection of invoices.",
+                              "key": "idsOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Limits result to invoices created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to invoices created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-414a438e-94d9-4f94-9026-bf9c61b8e0f2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:30.000Z",
+                  "updatedAt": "2026-07-28T03:30:30.000Z",
+                  "uid": "35240-b0937a57-e464-4cf1-a407-2088890a836f"
+                },
+                {
+                  "name": "WildApricot Creates a New Invoice.",
+                  "id": "739915f3-a429-4c5e-a041-6959dcb8808f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"MembershipApplication\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Prorate\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"MemberLevel\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "invoices"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1fb481d1-1efe-43aa-8e4d-f351eb5a2313",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f7253dae-e956-427a-a20a-0e213c66ee6a",
+                      "name": "Created invoice ID",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"MembershipApplication\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Prorate\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"MemberLevel\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<integer>",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-f7253dae-e956-427a-a20a-0e213c66ee6a"
+                    },
+                    {
+                      "id": "b6e3b3a0-e5e1-480d-afd7-a51fecae7147",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"MembershipApplication\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Prorate\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"MemberLevel\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-b6e3b3a0-e5e1-480d-afd7-a51fecae7147"
+                    },
+                    {
+                      "id": "6681fff1-7c61-4860-b344-bb50e1762ee7",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"MembershipApplication\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Prorate\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"MemberLevel\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-6681fff1-7c61-4860-b344-bb50e1762ee7"
+                    },
+                    {
+                      "id": "dc398858-9214-418e-a038-18d3e2273787",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"MembershipApplication\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Prorate\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"MemberLevel\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/invoices?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "invoices"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-dc398858-9214-418e-a038-18d3e2273787"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:30.000Z",
+                  "updatedAt": "2026-07-28T03:30:30.000Z",
+                  "uid": "35240-739915f3-a429-4c5e-a041-6959dcb8808f"
+                }
+              ],
+              "id": "ede0f1c0-9cf8-4523-a937-87bff5cb5957",
+              "createdAt": "2026-07-28T03:30:29.000Z",
+              "updatedAt": "2026-07-28T03:30:29.000Z",
+              "uid": "35240-ede0f1c0-9cf8-4523-a937-87bff5cb5957"
+            }
+          ],
+          "id": "b68e2259-682e-4b6a-8f16-d77e26f090a2",
+          "createdAt": "2026-07-28T03:30:29.000Z",
+          "updatedAt": "2026-07-28T03:30:29.000Z",
+          "uid": "35240-b68e2259-682e-4b6a-8f16-d77e26f090a2"
+        }
+      ],
+      "id": "d791e358-2fbb-44a8-ab23-89c1de5475f2",
+      "createdAt": "2026-07-28T03:30:29.000Z",
+      "updatedAt": "2026-07-28T03:30:29.000Z",
+      "uid": "35240-d791e358-2fbb-44a8-ab23-89c1de5475f2"
+    },
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "GenerateInvoiceForEventRegistration",
+              "item": [
+                {
+                  "name": "WildApricot Generate or Update Invoice for Existing Event Registration.",
+                  "id": "74f30ae6-6556-4ed3-badb-3bb377895608",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForEventRegistration?=<string>&eventRegistrationId=<integer>&updateIfExists=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "GenerateInvoiceForEventRegistration"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Event registration ID with pending membership",
+                          "key": "eventRegistrationId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If set to true and invoice already exists, API will update the invoice items.",
+                          "key": "updateIfExists",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "154a27fd-dbf4-440a-99c2-ac83d8708a93",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "63d7d2ea-8ba5-4a5e-8721-0251a97d53d8",
+                      "name": "created or updated invoice",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForEventRegistration?=<string>&eventRegistrationId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForEventRegistration"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Event registration ID with pending membership",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If set to true and invoice already exists, API will update the invoice items.",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"CreatedDate\": \"<date>\",\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"IsPaid\": \"<boolean>\",\n  \"PaidAmount\": \"<number>\",\n  \"OrderType\": \"MembershipRenewal\",\n  \"EventRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Donation\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"Unspecified\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        },\n        \"Tax2\": {\n          \"Name\": \"<string>\",\n          \"PublicId\": \"<string>\",\n          \"Rate\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"VoidedDate\": \"<date>\"\n}",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-63d7d2ea-8ba5-4a5e-8721-0251a97d53d8"
+                    },
+                    {
+                      "id": "169b3d0d-98b9-46b0-b264-49c720074f4e",
+                      "name": "Unexpected error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/GenerateInvoiceForEventRegistration?=<string>&eventRegistrationId=<integer>&updateIfExists=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "GenerateInvoiceForEventRegistration"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Event registration ID with pending membership",
+                              "key": "eventRegistrationId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If set to true and invoice already exists, API will update the invoice items.",
+                              "key": "updateIfExists",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-169b3d0d-98b9-46b0-b264-49c720074f4e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:30.000Z",
+                  "updatedAt": "2026-07-28T03:30:30.000Z",
+                  "uid": "35240-74f30ae6-6556-4ed3-badb-3bb377895608"
+                }
+              ],
+              "id": "87d84432-580b-4774-8ac9-063d7fe20371",
+              "createdAt": "2026-07-28T03:30:29.000Z",
+              "updatedAt": "2026-07-28T03:30:29.000Z",
+              "uid": "35240-87d84432-580b-4774-8ac9-063d7fe20371"
+            },
+            {
+              "name": "VoidInvoice",
+              "item": [
+                {
+                  "name": "WildApricot Void Active Invoice.",
+                  "id": "42affd0f-b88c-435f-9808-6aad5d8ff2ea",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/VoidInvoice?=<string>&invoiceId=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "VoidInvoice"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) invoiceId ID to void",
+                          "key": "invoiceId",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "52d67d76-20f7-4406-ba0b-a231596d309f",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "See https://gethelp.wildapricot.com/en/articles/76#voiding for details on invoice voiding"
+                  },
+                  "response": [
+                    {
+                      "id": "afecdf61-5b30-4dc7-ad0c-3ed43248ba63",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/VoidInvoice?=<string>&invoiceId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "VoidInvoice"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) invoiceId ID to void",
+                              "key": "invoiceId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-afecdf61-5b30-4dc7-ad0c-3ed43248ba63"
+                    },
+                    {
+                      "id": "6632f32a-4e28-4481-b2ce-d4d2cefb52c4",
+                      "name": "Unexpected error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/VoidInvoice?=<string>&invoiceId=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "VoidInvoice"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) invoiceId ID to void",
+                              "key": "invoiceId",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                      "createdAt": "2026-07-28T03:30:30.000Z",
+                      "updatedAt": "2026-07-28T03:30:30.000Z",
+                      "uid": "35240-6632f32a-4e28-4481-b2ce-d4d2cefb52c4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:30.000Z",
+                  "updatedAt": "2026-07-28T03:30:30.000Z",
+                  "uid": "35240-42affd0f-b88c-435f-9808-6aad5d8ff2ea"
+                }
+              ],
+              "id": "ee104620-699c-4805-ad9e-ef4d9145e9c8",
+              "createdAt": "2026-07-28T03:30:29.000Z",
+              "updatedAt": "2026-07-28T03:30:29.000Z",
+              "uid": "35240-ee104620-699c-4805-ad9e-ef4d9145e9c8"
+            }
+          ],
+          "id": "55a0e72c-fa32-465f-a614-01fc8e00e39f",
+          "createdAt": "2026-07-28T03:30:29.000Z",
+          "updatedAt": "2026-07-28T03:30:29.000Z",
+          "uid": "35240-55a0e72c-fa32-465f-a614-01fc8e00e39f"
+        }
+      ],
+      "id": "bd79000e-10d4-4209-b01a-57ccb5818a60",
+      "createdAt": "2026-07-28T03:30:29.000Z",
+      "updatedAt": "2026-07-28T03:30:29.000Z",
+      "uid": "35240-bd79000e-10d4-4209-b01a-57ccb5818a60"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

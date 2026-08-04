@@ -1,0 +1,1622 @@
+{
+  "info": {
+    "_postman_id": "a7e8d1f1-93bf-4bd6-9554-3401dda8ceac",
+    "name": "WildApricot Admin Accounts Emailing.Operations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:21.000Z",
+    "updatedAt": "2026-07-28T03:30:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a7e8d1f1-93bf-4bd6-9554-3401dda8ceac"
+  },
+  "item": [
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "email",
+              "item": [
+                {
+                  "name": "SetEmailDraftSchedule",
+                  "item": [
+                    {
+                      "name": "WildApricot Pause or Resume Scheduled Draft.",
+                      "id": "bfd3b937-5161-48f0-84c7-0209224df497",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/SetEmailDraftSchedule?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "SetEmailDraftSchedule"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "0015d69a-0068-4482-a5c1-cc4fa3460953",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c3d2b385-1205-48f2-a7ed-02c450292f2d",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SetEmailDraftSchedule?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SetEmailDraftSchedule"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-c3d2b385-1205-48f2-a7ed-02c450292f2d"
+                        },
+                        {
+                          "id": "59bd145f-bae2-4749-a016-f6c9a8973632",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SetEmailDraftSchedule?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SetEmailDraftSchedule"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-59bd145f-bae2-4749-a016-f6c9a8973632"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-bfd3b937-5161-48f0-84c7-0209224df497"
+                    }
+                  ],
+                  "id": "b794ba3b-7911-4a7d-8e77-f5119fabf566",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-b794ba3b-7911-4a7d-8e77-f5119fabf566"
+                },
+                {
+                  "name": "GetEmailDraftPreview",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Preview Version of Email.",
+                      "id": "20a32575-4de9-4559-a8b4-ae47d3db21ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/GetEmailDraftPreview?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "GetEmailDraftPreview"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f9ce646e-b02e-43bf-8bad-890fc6b2df1a",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a6cb9e29-423a-4b10-9f66-65385c8c77c4",
+                          "name": "email preview subject and body",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetEmailDraftPreview?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetEmailDraftPreview"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Subject\": \"<string>\",\n  \"Body\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-a6cb9e29-423a-4b10-9f66-65385c8c77c4"
+                        },
+                        {
+                          "id": "59b9162a-237d-4d54-8566-7f868d3d99ae",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetEmailDraftPreview?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetEmailDraftPreview"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-59b9162a-237d-4d54-8566-7f868d3d99ae"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-20a32575-4de9-4559-a8b4-ae47d3db21ac"
+                    }
+                  ],
+                  "id": "b6908f2d-ee5d-491e-98a6-fab63ca46371",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-b6908f2d-ee5d-491e-98a6-fab63ca46371"
+                },
+                {
+                  "name": "SendEmailDraft",
+                  "item": [
+                    {
+                      "name": "WildApricot Send Draft.",
+                      "id": "4253b238-1d05-4cb0-9c6c-6b411657ba90",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmailDraft?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "SendEmailDraft"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5bbbe878-e664-40e0-aac5-41505f957dcd",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "b66d45e4-382e-45e4-9089-bb9c12e4c512",
+                          "name": "created sent email id",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SendEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<integer>",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-b66d45e4-382e-45e4-9089-bb9c12e4c512"
+                        },
+                        {
+                          "id": "c496ba62-b40d-4acc-afd6-057e4ccf3d41",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SendEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-c496ba62-b40d-4acc-afd6-057e4ccf3d41"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-4253b238-1d05-4cb0-9c6c-6b411657ba90"
+                    }
+                  ],
+                  "id": "991d30db-f06e-43d4-8e32-38786cb069f4",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-991d30db-f06e-43d4-8e32-38786cb069f4"
+                },
+                {
+                  "name": "SendEmail",
+                  "item": [
+                    {
+                      "name": "WildApricot Send Draft.",
+                      "id": "8b592942-d2b2-49db-9761-8fe93a600d3e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmail?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "SendEmail"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7ccde981-ed92-47fc-9ba1-31ddda5e2231",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ebf9306f-fae4-44e0-ad5f-7b826bb7b50f",
+                          "name": "created sent email id",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmail?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SendEmail"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<integer>",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-ebf9306f-fae4-44e0-ad5f-7b826bb7b50f"
+                        },
+                        {
+                          "id": "95c3d373-4220-43a3-b4d5-c725df24d008",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/SendEmail?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "SendEmail"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-95c3d373-4220-43a3-b4d5-c725df24d008"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-8b592942-d2b2-49db-9761-8fe93a600d3e"
+                    }
+                  ],
+                  "id": "ff21e016-68e7-4cc7-ab09-780a1b79f85f",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-ff21e016-68e7-4cc7-ab09-780a1b79f85f"
+                },
+                {
+                  "name": "CountUniqueAddressesForEmailRecipients",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Count of Real Email Recipients (unique Addresses).",
+                      "id": "a82bf952-a519-4174-9f96-f857669de46d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "CountUniqueAddressesForEmailRecipients"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "84172470-7327-46f8-bbb8-837d0ea8309b",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "8f269a6e-498c-4c23-9407-59f05c26d7ff",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "CountUniqueAddressesForEmailRecipients"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<integer>",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-8f269a6e-498c-4c23-9407-59f05c26d7ff"
+                        },
+                        {
+                          "id": "d28d4618-e0e1-4817-bb99-a961882d0770",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "CountUniqueAddressesForEmailRecipients"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-d28d4618-e0e1-4817-bb99-a961882d0770"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-a82bf952-a519-4174-9f96-f857669de46d"
+                    }
+                  ],
+                  "id": "76a71cb5-7aa6-45d7-b12b-a50ca764838a",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-76a71cb5-7aa6-45d7-b12b-a50ca764838a"
+                },
+                {
+                  "name": "CountUniqueAddressesForEmailDraft",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Count of Real Email Recipients (unique Addresses).",
+                      "id": "a68fce1d-0596-44ca-aab4-a273a179c652",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailDraft?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "CountUniqueAddressesForEmailDraft"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e7622747-c290-4885-9ba5-5b132505d542",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d49d2a07-7f00-4f18-a71d-dcbbb70e6e34",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "CountUniqueAddressesForEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<integer>",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-d49d2a07-7f00-4f18-a71d-dcbbb70e6e34"
+                        },
+                        {
+                          "id": "23791aef-3b38-4117-a6a2-c9067438f8b4",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/CountUniqueAddressesForEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "CountUniqueAddressesForEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-23791aef-3b38-4117-a6a2-c9067438f8b4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-a68fce1d-0596-44ca-aab4-a273a179c652"
+                    }
+                  ],
+                  "id": "d95568be-44e8-4944-a4a8-345337dc7582",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-d95568be-44e8-4944-a4a8-345337dc7582"
+                },
+                {
+                  "name": "GetUniqueAddressesForEmailRecipients",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Unique Addresses of Real Email Recipients.",
+                      "id": "bb1fcad7-ab99-4ba8-9fd1-601f485b5040",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "GetUniqueAddressesForEmailRecipients"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "724a6b21-6662-4f08-836a-8c6d1e680f34",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "0bdc0565-0c2b-415e-a997-f7b6aea59f48",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetUniqueAddressesForEmailRecipients"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Type\": null,\n    \"Name\": \"<string>\",\n    \"Email\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Type\": null,\n    \"Name\": \"<string>\",\n    \"Email\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-0bdc0565-0c2b-415e-a997-f7b6aea59f48"
+                        },
+                        {
+                          "id": "c27313d9-5c21-4c8c-9e7d-b09fbc05d100",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailRecipients?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetUniqueAddressesForEmailRecipients"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-c27313d9-5c21-4c8c-9e7d-b09fbc05d100"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-bb1fcad7-ab99-4ba8-9fd1-601f485b5040"
+                    }
+                  ],
+                  "id": "76d2acde-0a2b-44d8-88e4-bc231682888c",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-76d2acde-0a2b-44d8-88e4-bc231682888c"
+                },
+                {
+                  "name": "GetUniqueAddressesForEmailDraft",
+                  "item": [
+                    {
+                      "name": "WildApricot Get Unique Addresses of Real Email Recipients.",
+                      "id": "5e178a2e-88b1-4076-9595-87f2432c0f92",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailDraft?=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "email",
+                            "GetUniqueAddressesForEmailDraft"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "1ec88273-9125-49dd-b3d2-e9d5c94f2731",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "00a71e01-4a31-4ce6-9885-aad7cd39dd67",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetUniqueAddressesForEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Type\": null,\n    \"Name\": \"<string>\",\n    \"Email\": \"<string>\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Type\": null,\n    \"Name\": \"<string>\",\n    \"Email\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-00a71e01-4a31-4ce6-9885-aad7cd39dd67"
+                        },
+                        {
+                          "id": "1263ddb8-6e2d-4f1a-b36d-de0e14405a85",
+                          "name": "Unexpected error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rpc/:accountId/email/GetUniqueAddressesForEmailDraft?=<string>&=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rpc",
+                                ":accountId",
+                                "email",
+                                "GetUniqueAddressesForEmailDraft"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": {}\n}",
+                          "createdAt": "2026-07-28T03:30:21.000Z",
+                          "updatedAt": "2026-07-28T03:30:21.000Z",
+                          "uid": "35240-1263ddb8-6e2d-4f1a-b36d-de0e14405a85"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:21.000Z",
+                      "updatedAt": "2026-07-28T03:30:21.000Z",
+                      "uid": "35240-5e178a2e-88b1-4076-9595-87f2432c0f92"
+                    }
+                  ],
+                  "id": "b443aa5c-a37d-4a74-a812-3248255a150d",
+                  "createdAt": "2026-07-28T03:30:21.000Z",
+                  "updatedAt": "2026-07-28T03:30:21.000Z",
+                  "uid": "35240-b443aa5c-a37d-4a74-a812-3248255a150d"
+                }
+              ],
+              "id": "a95fc37c-b2f5-4916-aae9-a6f56a08e99f",
+              "createdAt": "2026-07-28T03:30:21.000Z",
+              "updatedAt": "2026-07-28T03:30:21.000Z",
+              "uid": "35240-a95fc37c-b2f5-4916-aae9-a6f56a08e99f"
+            }
+          ],
+          "id": "62a86a15-a7ba-46ae-b7b5-182f7b21b93f",
+          "createdAt": "2026-07-28T03:30:21.000Z",
+          "updatedAt": "2026-07-28T03:30:21.000Z",
+          "uid": "35240-62a86a15-a7ba-46ae-b7b5-182f7b21b93f"
+        }
+      ],
+      "id": "718e974b-9e57-4c05-9d4e-c0280323853f",
+      "createdAt": "2026-07-28T03:30:21.000Z",
+      "updatedAt": "2026-07-28T03:30:21.000Z",
+      "uid": "35240-718e974b-9e57-4c05-9d4e-c0280323853f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

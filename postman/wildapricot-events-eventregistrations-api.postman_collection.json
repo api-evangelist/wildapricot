@@ -1,0 +1,2339 @@
+{
+  "info": {
+    "_postman_id": "4f40ee17-0eb1-4b47-a940-d4e73c6b9474",
+    "name": "WildApricot Admin Accounts Events.EventRegistrations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:25.000Z",
+    "updatedAt": "2026-07-28T03:30:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f40ee17-0eb1-4b47-a940-d4e73c6b9474"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "eventregistrations",
+              "item": [
+                {
+                  "name": "{event_registration_id}",
+                  "item": [
+                    {
+                      "name": "WildApricot Event Registration Details",
+                      "id": "255b1c6b-4efc-4885-834d-b18f6238140a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations",
+                            ":event_registration_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "9bfed0d1-f2f0-40cb-b253-7d04105f079a",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "e22f7edf-e4ca-487e-9688-03a61542bd43",
+                              "key": "event_registration_id",
+                              "value": "<number>",
+                              "description": "(Required) event registration identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "38dba7b4-267c-4e5f-a1f5-0ec08143437a",
+                          "name": "List of Event Registrations",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Event\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"StartDate\": \"<string>\",\n    \"EndDate\": \"<string>\",\n    \"Location\": \"<string>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationType\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"DisplayName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"IsCheckedIn\": false,\n  \"RegistrationFee\": \"<number>\",\n  \"PaidSum\": \"<number>\",\n  \"IsPaid\": false,\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"IsGuestRegistration\": false,\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"OnWaitlist\": false,\n  \"RecreateInvoice\": false,\n  \"ParentRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Status\": \"Canceled\"\n}",
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-38dba7b4-267c-4e5f-a1f5-0ec08143437a"
+                        },
+                        {
+                          "id": "e4bf29ae-5287-4f9d-a5f9-8b668066e742",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-e4bf29ae-5287-4f9d-a5f9-8b668066e742"
+                        },
+                        {
+                          "id": "e631c1cb-203b-434e-92d5-953fb8339305",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-e631c1cb-203b-434e-92d5-953fb8339305"
+                        },
+                        {
+                          "id": "51a2ba9e-81ba-485d-b5a1-3196f9e8fc99",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-51a2ba9e-81ba-485d-b5a1-3196f9e8fc99"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-255b1c6b-4efc-4885-834d-b18f6238140a"
+                    },
+                    {
+                      "name": "WildApricot Event Registration",
+                      "id": "b5185ee1-cdfa-48f2-a736-c1809f0a6cb3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations",
+                            ":event_registration_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d6dd8cef-b5b2-4cb7-8b3e-7ea4de25ac58",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "3a696ad8-5348-4ae7-9f54-b3bf5a71f4a4",
+                              "key": "event_registration_id",
+                              "value": "<number>",
+                              "description": "(Required) event registration identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4e797e7d-8f71-4e5a-8e68-aeb70fefee0d",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-4e797e7d-8f71-4e5a-8e68-aeb70fefee0d"
+                        },
+                        {
+                          "id": "54307d30-aa3c-43c5-a02b-937437e7faaa",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-54307d30-aa3c-43c5-a02b-937437e7faaa"
+                        },
+                        {
+                          "id": "4a1a4ba3-d66b-4a4b-bcea-4adde6668334",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-4a1a4ba3-d66b-4a4b-bcea-4adde6668334"
+                        },
+                        {
+                          "id": "ec680c0c-c5e4-4dd6-a5fe-d7ed463b5fd8",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-ec680c0c-c5e4-4dd6-a5fe-d7ed463b5fd8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-b5185ee1-cdfa-48f2-a736-c1809f0a6cb3"
+                    },
+                    {
+                      "name": "WildApricot Update Event Registration.",
+                      "id": "022a6bff-c4e7-403b-80d8-ede52cd692f8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Id\": \"<integer>\",\n  \"RegistrationTypeId\": \"<integer>\",\n  \"IsCheckedIn\": \"<boolean>\",\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": \"<boolean>\",\n  \"Memo\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations",
+                            ":event_registration_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "47448f4a-7755-4fe0-a551-02be9f7e2fbb",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "fbb8ce6d-1c10-45e9-9177-dea386488b18",
+                              "key": "event_registration_id",
+                              "value": "<number>",
+                              "description": "(Required) event registration identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4aaa52ca-b484-4cba-8e7a-044da06665db",
+                          "name": "Event registration created",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"RegistrationTypeId\": \"<integer>\",\n  \"IsCheckedIn\": \"<boolean>\",\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": \"<boolean>\",\n  \"Memo\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Event\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"StartDate\": \"<string>\",\n    \"EndDate\": \"<string>\",\n    \"Location\": \"<string>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationType\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"DisplayName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"IsCheckedIn\": false,\n  \"RegistrationFee\": \"<number>\",\n  \"PaidSum\": \"<number>\",\n  \"IsPaid\": false,\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"IsGuestRegistration\": false,\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"OnWaitlist\": false,\n  \"RecreateInvoice\": false,\n  \"ParentRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Status\": \"Canceled\"\n}",
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-4aaa52ca-b484-4cba-8e7a-044da06665db"
+                        },
+                        {
+                          "id": "1b391ae5-be5f-4653-8c21-2be92eeb94f6",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"RegistrationTypeId\": \"<integer>\",\n  \"IsCheckedIn\": \"<boolean>\",\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": \"<boolean>\",\n  \"Memo\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-1b391ae5-be5f-4653-8c21-2be92eeb94f6"
+                        },
+                        {
+                          "id": "2a239fd7-2021-4a9a-9715-6df864c28a53",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"RegistrationTypeId\": \"<integer>\",\n  \"IsCheckedIn\": \"<boolean>\",\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": \"<boolean>\",\n  \"Memo\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-2a239fd7-2021-4a9a-9715-6df864c28a53"
+                        },
+                        {
+                          "id": "16f26b04-627a-46c4-8f7b-5d3000e4e4ea",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Id\": \"<integer>\",\n  \"RegistrationTypeId\": \"<integer>\",\n  \"IsCheckedIn\": \"<boolean>\",\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": \"<boolean>\",\n  \"Memo\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations/:event_registration_id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "eventregistrations",
+                                ":event_registration_id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "event_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:26.000Z",
+                          "updatedAt": "2026-07-28T03:30:26.000Z",
+                          "uid": "35240-16f26b04-627a-46c4-8f7b-5d3000e4e4ea"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-022a6bff-c4e7-403b-80d8-ede52cd692f8"
+                    }
+                  ],
+                  "id": "0c25a6a9-af2e-4b62-9aef-0afb2d328376",
+                  "createdAt": "2026-07-28T03:30:26.000Z",
+                  "updatedAt": "2026-07-28T03:30:26.000Z",
+                  "uid": "35240-0c25a6a9-af2e-4b62-9aef-0afb2d328376"
+                },
+                {
+                  "name": "WildApricot Event Registrations List",
+                  "id": "d04516a7-a0c3-4e38-aa08-230773d44409",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>&contactId=<integer>&eventId=<integer>&$filter=<string>&includeDetails=<boolean>&includeWaitlist=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "eventregistrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "contact identifier",
+                          "key": "contactId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "event identifier",
+                          "key": "eventId",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4\u00e2\u20ac\u00a6.]\n",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "If false, registration form data is not retrieved",
+                          "key": "includeDetails",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Defines if waitlist records should be included in result",
+                          "key": "includeWaitlist",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1541424f-fe5b-45e9-b2a5-af3342c31716",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\u00e2\u0161\u00a0 There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId, $filter or ids exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter event registrations. \u00e2\u0161\u00a0 Request parameter is required\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ffaf49be-3e0c-49b7-b0f5-6c7903567023",
+                      "name": "List of event registrations",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>&contactId=<integer>&eventId=<integer>&$filter=<string>&includeDetails=<boolean>&includeWaitlist=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "contact identifier",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "event identifier",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4\u00e2\u20ac\u00a6.]\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "If false, registration form data is not retrieved",
+                              "key": "includeDetails",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Defines if waitlist records should be included in result",
+                              "key": "includeWaitlist",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Event\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"Location\": \"<string>\"\n    },\n    \"Contact\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\"\n    },\n    \"RegistrationType\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\"\n    },\n    \"RegistrationTypeId\": \"<integer>\",\n    \"DisplayName\": \"<string>\",\n    \"Organization\": \"<string>\",\n    \"IsCheckedIn\": false,\n    \"RegistrationFee\": \"<number>\",\n    \"PaidSum\": \"<number>\",\n    \"IsPaid\": false,\n    \"ShowToPublic\": false,\n    \"RegistrationDate\": \"<string>\",\n    \"IsGuestRegistration\": false,\n    \"GuestRegistrationsSummary\": {\n      \"NumberOfGuests\": \"<integer>\",\n      \"NumberOfGuestsCheckedIn\": \"<integer>\",\n      \"GuestRegistrations\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"RegistrationFields\": [\n      {\n        \"FieldName\": \"<string>\",\n        \"SystemCode\": \"<string>\",\n        \"Value\": {}\n      },\n      {\n        \"FieldName\": \"<string>\",\n        \"SystemCode\": \"<string>\",\n        \"Value\": {}\n      }\n    ],\n    \"Memo\": \"<string>\",\n    \"OnWaitlist\": false,\n    \"RecreateInvoice\": false,\n    \"ParentRegistration\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"Status\": \"PartiallyPaid\"\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Event\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"StartDate\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"Location\": \"<string>\"\n    },\n    \"Contact\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\"\n    },\n    \"RegistrationType\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\",\n      \"Name\": \"<string>\"\n    },\n    \"RegistrationTypeId\": \"<integer>\",\n    \"DisplayName\": \"<string>\",\n    \"Organization\": \"<string>\",\n    \"IsCheckedIn\": false,\n    \"RegistrationFee\": \"<number>\",\n    \"PaidSum\": \"<number>\",\n    \"IsPaid\": false,\n    \"ShowToPublic\": false,\n    \"RegistrationDate\": \"<string>\",\n    \"IsGuestRegistration\": false,\n    \"GuestRegistrationsSummary\": {\n      \"NumberOfGuests\": \"<integer>\",\n      \"NumberOfGuestsCheckedIn\": \"<integer>\",\n      \"GuestRegistrations\": [\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        },\n        {\n          \"Id\": \"<integer>\",\n          \"Url\": \"<string>\"\n        }\n      ]\n    },\n    \"RegistrationFields\": [\n      {\n        \"FieldName\": \"<string>\",\n        \"SystemCode\": \"<string>\",\n        \"Value\": {}\n      },\n      {\n        \"FieldName\": \"<string>\",\n        \"SystemCode\": \"<string>\",\n        \"Value\": {}\n      }\n    ],\n    \"Memo\": \"<string>\",\n    \"OnWaitlist\": false,\n    \"RecreateInvoice\": false,\n    \"ParentRegistration\": {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    \"Status\": \"Canceled\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-ffaf49be-3e0c-49b7-b0f5-6c7903567023"
+                    },
+                    {
+                      "id": "0fe16829-0866-4b61-b58b-c060fbdf1fda",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>&contactId=<integer>&eventId=<integer>&$filter=<string>&includeDetails=<boolean>&includeWaitlist=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "contact identifier",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "event identifier",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4\u00e2\u20ac\u00a6.]\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "If false, registration form data is not retrieved",
+                              "key": "includeDetails",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Defines if waitlist records should be included in result",
+                              "key": "includeWaitlist",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-0fe16829-0866-4b61-b58b-c060fbdf1fda"
+                    },
+                    {
+                      "id": "eb866ac9-4c74-42eb-a10f-8f3b45a1e272",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>&contactId=<integer>&eventId=<integer>&$filter=<string>&includeDetails=<boolean>&includeWaitlist=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "contact identifier",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "event identifier",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4\u00e2\u20ac\u00a6.]\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "If false, registration form data is not retrieved",
+                              "key": "includeDetails",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Defines if waitlist records should be included in result",
+                              "key": "includeWaitlist",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-eb866ac9-4c74-42eb-a10f-8f3b45a1e272"
+                    },
+                    {
+                      "id": "4d3cb13e-b993-47c2-a4ba-4deac108a521",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>&contactId=<integer>&eventId=<integer>&$filter=<string>&includeDetails=<boolean>&includeWaitlist=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "contact identifier",
+                              "key": "contactId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "event identifier",
+                              "key": "eventId",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4\u00e2\u20ac\u00a6.]\n",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "If false, registration form data is not retrieved",
+                              "key": "includeDetails",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Defines if waitlist records should be included in result",
+                              "key": "includeWaitlist",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-4d3cb13e-b993-47c2-a4ba-4deac108a521"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:26.000Z",
+                  "updatedAt": "2026-07-28T03:30:26.000Z",
+                  "uid": "35240-d04516a7-a0c3-4e38-aa08-230773d44409"
+                },
+                {
+                  "name": "WildApricot Creates a New Event Registration.",
+                  "id": "681f1a8a-75f8-4dca-a87a-78e3ea031e36",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Event\": {\n    \"Id\": \"<integer>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"IsCheckedIn\": false,\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"Memo\": \"<string>\",\n  \"RecreateInvoice\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "eventregistrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "fb7e9603-aa19-4786-8f3a-c042553f2b70",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b60e4dd6-ea55-4e52-af2c-e029eed2450e",
+                      "name": "Event registration created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Event\": {\n    \"Id\": \"<integer>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"IsCheckedIn\": false,\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"Memo\": \"<string>\",\n  \"RecreateInvoice\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Event\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"StartDate\": \"<string>\",\n    \"EndDate\": \"<string>\",\n    \"Location\": \"<string>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationType\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"DisplayName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"IsCheckedIn\": false,\n  \"RegistrationFee\": \"<number>\",\n  \"PaidSum\": \"<number>\",\n  \"IsPaid\": false,\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"IsGuestRegistration\": false,\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"OnWaitlist\": false,\n  \"RecreateInvoice\": false,\n  \"ParentRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Status\": \"Canceled\"\n}",
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-b60e4dd6-ea55-4e52-af2c-e029eed2450e"
+                    },
+                    {
+                      "id": "9dc50d52-f56d-45ec-8bff-9a984b355590",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Event\": {\n    \"Id\": \"<integer>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"IsCheckedIn\": false,\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"Memo\": \"<string>\",\n  \"RecreateInvoice\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-9dc50d52-f56d-45ec-8bff-9a984b355590"
+                    },
+                    {
+                      "id": "5e7a2cb3-b11c-4c36-a9f6-5fbeb9495fde",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Event\": {\n    \"Id\": \"<integer>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"IsCheckedIn\": false,\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"Memo\": \"<string>\",\n  \"RecreateInvoice\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-5e7a2cb3-b11c-4c36-a9f6-5fbeb9495fde"
+                    },
+                    {
+                      "id": "778c19f7-2bdc-4dd6-89a7-e8ecade5dbfd",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Event\": {\n    \"Id\": \"<integer>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"IsCheckedIn\": false,\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"Memo\": \"<string>\",\n  \"RecreateInvoice\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/eventregistrations?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "eventregistrations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-778c19f7-2bdc-4dd6-89a7-e8ecade5dbfd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:26.000Z",
+                  "updatedAt": "2026-07-28T03:30:26.000Z",
+                  "uid": "35240-681f1a8a-75f8-4dca-a87a-78e3ea031e36"
+                }
+              ],
+              "id": "9d5132a8-3fe0-4a6c-8b09-bd1bfa0d1379",
+              "createdAt": "2026-07-28T03:30:26.000Z",
+              "updatedAt": "2026-07-28T03:30:26.000Z",
+              "uid": "35240-9d5132a8-3fe0-4a6c-8b09-bd1bfa0d1379"
+            }
+          ],
+          "id": "c39f370a-09c0-4f99-9841-cf7b4052b50e",
+          "createdAt": "2026-07-28T03:30:26.000Z",
+          "updatedAt": "2026-07-28T03:30:26.000Z",
+          "uid": "35240-c39f370a-09c0-4f99-9841-cf7b4052b50e"
+        }
+      ],
+      "id": "ba00a2dc-1e40-49f8-9ddf-60d327bbcff2",
+      "createdAt": "2026-07-28T03:30:26.000Z",
+      "updatedAt": "2026-07-28T03:30:26.000Z",
+      "uid": "35240-ba00a2dc-1e40-49f8-9ddf-60d327bbcff2"
+    },
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "CheckInEventAttendee",
+              "item": [
+                {
+                  "name": "WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag).",
+                  "id": "287ecf90-3fd2-4cae-baba-9a8f7800cc10",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"RegistrationId\": \"<integer>\",\n  \"CheckedIn\": \"<boolean>\",\n  \"CheckedInGuests\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/CheckInEventAttendee?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "CheckInEventAttendee"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2663dc5b-cd81-433a-80ba-8e22000bee93",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "47232691-56fb-4cfe-a9cc-9405de3872c5",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"RegistrationId\": \"<integer>\",\n  \"CheckedIn\": \"<boolean>\",\n  \"CheckedInGuests\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CheckInEventAttendee?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CheckInEventAttendee"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-47232691-56fb-4cfe-a9cc-9405de3872c5"
+                    },
+                    {
+                      "id": "bdcfbc7d-ff8b-46c7-9e97-fab21f9f7631",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"RegistrationId\": \"<integer>\",\n  \"CheckedIn\": \"<boolean>\",\n  \"CheckedInGuests\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CheckInEventAttendee?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CheckInEventAttendee"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-bdcfbc7d-ff8b-46c7-9e97-fab21f9f7631"
+                    },
+                    {
+                      "id": "d848f570-b7d7-4e26-8a07-a708926113c7",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"RegistrationId\": \"<integer>\",\n  \"CheckedIn\": \"<boolean>\",\n  \"CheckedInGuests\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CheckInEventAttendee?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CheckInEventAttendee"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-d848f570-b7d7-4e26-8a07-a708926113c7"
+                    },
+                    {
+                      "id": "e0046af8-2b28-4ff7-bb3c-c11083ab7c26",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"RegistrationId\": \"<integer>\",\n  \"CheckedIn\": \"<boolean>\",\n  \"CheckedInGuests\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/CheckInEventAttendee?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "CheckInEventAttendee"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-e0046af8-2b28-4ff7-bb3c-c11083ab7c26"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:26.000Z",
+                  "updatedAt": "2026-07-28T03:30:26.000Z",
+                  "uid": "35240-287ecf90-3fd2-4cae-baba-9a8f7800cc10"
+                }
+              ],
+              "id": "4ada90d6-51bb-4aed-b05f-8e38b6875529",
+              "createdAt": "2026-07-28T03:30:26.000Z",
+              "updatedAt": "2026-07-28T03:30:26.000Z",
+              "uid": "35240-4ada90d6-51bb-4aed-b05f-8e38b6875529"
+            },
+            {
+              "name": "RegisterFromWaitlist",
+              "item": [
+                {
+                  "name": "WildApricot Add Waitlisted Person as Event Attendee",
+                  "id": "e5d2f197-e066-4b8d-b218-c80247708099",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"WaitlistRegistrationId\": \"<integer>\",\n  \"EventId\": \"<integer>\",\n  \"GenerateInvoice\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/:accountId/RegisterFromWaitlist?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        ":accountId",
+                        "RegisterFromWaitlist"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d0ffeb82-9385-4bf8-9977-864b55872a8a",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b9e8b414-7948-4d18-acb3-ce85e6c68868",
+                      "name": "Event registration created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"WaitlistRegistrationId\": \"<integer>\",\n  \"EventId\": \"<integer>\",\n  \"GenerateInvoice\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RegisterFromWaitlist?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RegisterFromWaitlist"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<integer>\",\n  \"Url\": \"<string>\",\n  \"Event\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"StartDate\": \"<string>\",\n    \"EndDate\": \"<string>\",\n    \"Location\": \"<string>\"\n  },\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationType\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\",\n    \"Name\": \"<string>\"\n  },\n  \"RegistrationTypeId\": \"<integer>\",\n  \"DisplayName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"IsCheckedIn\": false,\n  \"RegistrationFee\": \"<number>\",\n  \"PaidSum\": \"<number>\",\n  \"IsPaid\": false,\n  \"ShowToPublic\": false,\n  \"RegistrationDate\": \"<string>\",\n  \"IsGuestRegistration\": false,\n  \"GuestRegistrationsSummary\": {\n    \"NumberOfGuests\": \"<integer>\",\n    \"NumberOfGuestsCheckedIn\": \"<integer>\",\n    \"GuestRegistrations\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ]\n  },\n  \"RegistrationFields\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"OnWaitlist\": false,\n  \"RecreateInvoice\": false,\n  \"ParentRegistration\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Status\": \"Canceled\"\n}",
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-b9e8b414-7948-4d18-acb3-ce85e6c68868"
+                    },
+                    {
+                      "id": "b9779a44-df67-4be8-a0a4-625b90af6ef4",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"WaitlistRegistrationId\": \"<integer>\",\n  \"EventId\": \"<integer>\",\n  \"GenerateInvoice\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RegisterFromWaitlist?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RegisterFromWaitlist"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-b9779a44-df67-4be8-a0a4-625b90af6ef4"
+                    },
+                    {
+                      "id": "8c300bad-06e7-4fe7-b1bd-91d46aa353a5",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"WaitlistRegistrationId\": \"<integer>\",\n  \"EventId\": \"<integer>\",\n  \"GenerateInvoice\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RegisterFromWaitlist?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RegisterFromWaitlist"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-8c300bad-06e7-4fe7-b1bd-91d46aa353a5"
+                    },
+                    {
+                      "id": "643d7a22-d56a-4775-bfcb-4a3ef2e4d6d3",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"WaitlistRegistrationId\": \"<integer>\",\n  \"EventId\": \"<integer>\",\n  \"GenerateInvoice\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rpc/:accountId/RegisterFromWaitlist?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rpc",
+                            ":accountId",
+                            "RegisterFromWaitlist"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:26.000Z",
+                      "updatedAt": "2026-07-28T03:30:26.000Z",
+                      "uid": "35240-643d7a22-d56a-4775-bfcb-4a3ef2e4d6d3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:26.000Z",
+                  "updatedAt": "2026-07-28T03:30:26.000Z",
+                  "uid": "35240-e5d2f197-e066-4b8d-b218-c80247708099"
+                }
+              ],
+              "id": "96decbde-e983-465b-a268-42fa05db45e0",
+              "createdAt": "2026-07-28T03:30:26.000Z",
+              "updatedAt": "2026-07-28T03:30:26.000Z",
+              "uid": "35240-96decbde-e983-465b-a268-42fa05db45e0"
+            }
+          ],
+          "id": "9cbd36f2-f8ea-4152-89ad-1851394c00df",
+          "createdAt": "2026-07-28T03:30:26.000Z",
+          "updatedAt": "2026-07-28T03:30:26.000Z",
+          "uid": "35240-9cbd36f2-f8ea-4152-89ad-1851394c00df"
+        }
+      ],
+      "id": "799145d6-4ac4-4ef1-aba7-ae4cb009c9d7",
+      "createdAt": "2026-07-28T03:30:26.000Z",
+      "updatedAt": "2026-07-28T03:30:26.000Z",
+      "uid": "35240-799145d6-4ac4-4ef1-aba7-ae4cb009c9d7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

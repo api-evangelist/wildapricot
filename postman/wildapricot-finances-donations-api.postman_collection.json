@@ -1,0 +1,1020 @@
+{
+  "info": {
+    "_postman_id": "06eea602-5980-4bea-898f-72409119681e",
+    "name": "WildApricot Admin Accounts Finances.Donations API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:28.000Z",
+    "updatedAt": "2026-07-28T03:30:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-06eea602-5980-4bea-898f-72409119681e"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "donations",
+              "item": [
+                {
+                  "name": "{donationId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Donation",
+                      "id": "27118da9-7646-446b-9943-46ddf0e88cde",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations",
+                            ":donationId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "10bee53b-1f6d-47a1-9873-c4e7803d585b",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "61796dab-9929-40bd-a4b9-d8a79003c1e8",
+                              "key": "donationId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique donation identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "cae2fe0a-58bb-4857-89f8-b0035cad7a94",
+                          "name": "information about specific donation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-cae2fe0a-58bb-4857-89f8-b0035cad7a94"
+                        },
+                        {
+                          "id": "4c314848-4c75-4e82-a78d-dd2c51f035b7",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-4c314848-4c75-4e82-a78d-dd2c51f035b7"
+                        },
+                        {
+                          "id": "031e3ff5-1077-49a6-aa52-28c0efbf2e18",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-031e3ff5-1077-49a6-aa52-28c0efbf2e18"
+                        },
+                        {
+                          "id": "6bd6b617-14ea-4709-9538-0a35331ccf03",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-6bd6b617-14ea-4709-9538-0a35331ccf03"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-27118da9-7646-446b-9943-46ddf0e88cde"
+                    },
+                    {
+                      "name": "WildApricot Update Existing Donation Information",
+                      "id": "fb873946-ef1e-4116-a293-a2f6212ba645",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations",
+                            ":donationId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "212686d9-a292-45dc-86c3-4dc38f7fba6c",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "a627a20d-bffb-49ac-8368-f9deab2328ce",
+                              "key": "donationId",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1f2a7594-3790-4430-9670-cc46f106048d",
+                          "name": "Returns 200 on successful data update",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-1f2a7594-3790-4430-9670-cc46f106048d"
+                        },
+                        {
+                          "id": "7e03a0be-54ce-4bef-a87d-f30b03a29c2f",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-7e03a0be-54ce-4bef-a87d-f30b03a29c2f"
+                        },
+                        {
+                          "id": "7901a893-24bb-458e-89a0-6e7537b58ca9",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-7901a893-24bb-458e-89a0-6e7537b58ca9"
+                        },
+                        {
+                          "id": "d93da3b2-9e19-4aff-b92d-28ad5deb1a57",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Contact\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"Payment\": {\n    \"Id\": \"<integer>\",\n    \"Url\": \"<string>\"\n  },\n  \"DonationDate\": \"<date>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"Comment\": \"<string>\",\n  \"PublicComment\": \"<string>\",\n  \"Value\": \"<float>\",\n  \"Type\": \"Online\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": {}\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/donations/:donationId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "donations",
+                                ":donationId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "donationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:29.000Z",
+                          "updatedAt": "2026-07-28T03:30:29.000Z",
+                          "uid": "35240-d93da3b2-9e19-4aff-b92d-28ad5deb1a57"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-fb873946-ef1e-4116-a293-a2f6212ba645"
+                    }
+                  ],
+                  "id": "12de83ff-6575-4cf0-9246-478e04128a91",
+                  "createdAt": "2026-07-28T03:30:28.000Z",
+                  "updatedAt": "2026-07-28T03:30:28.000Z",
+                  "uid": "35240-12de83ff-6575-4cf0-9246-478e04128a91"
+                },
+                {
+                  "name": "WildApricot Get List of Donations by Criteria.",
+                  "id": "18962a08-f00d-470a-a965-759fccf8210f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/donations?=<string>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "donations"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to donations created since StartDate.",
+                          "key": "StartDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limits result to donations created before EndDate.",
+                          "key": "EndDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "06a6a97e-b326-464b-bb03-ce2be5ad241d",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9f6afe74-2353-49e7-99f1-101c8cda221e",
+                      "name": "Collection of donations that match criteria.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations?=<string>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Payments\": [\n    {\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Payment\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DonationDate\": \"<date>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"Type\": \"Online\",\n      \"FieldValues\": [\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        },\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        }\n      ]\n    },\n    {\n      \"Contact\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"Payment\": {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      \"DonationDate\": \"<date>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Email\": \"<string>\",\n      \"Organization\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Comment\": \"<string>\",\n      \"PublicComment\": \"<string>\",\n      \"Value\": \"<float>\",\n      \"Type\": \"Online\",\n      \"FieldValues\": [\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        },\n        {\n          \"FieldName\": \"<string>\",\n          \"SystemCode\": \"<string>\",\n          \"Value\": {}\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-9f6afe74-2353-49e7-99f1-101c8cda221e"
+                    },
+                    {
+                      "id": "5c57b6ed-1852-40ae-83b8-392250f2f37c",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations?=<string>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-5c57b6ed-1852-40ae-83b8-392250f2f37c"
+                    },
+                    {
+                      "id": "7ab033a4-013c-4d5d-ac98-4147d059bcd1",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations?=<string>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-7ab033a4-013c-4d5d-ac98-4147d059bcd1"
+                    },
+                    {
+                      "id": "87543bf6-05cb-4db8-b8d1-b6bd6cb73ffc",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/donations?=<string>&StartDate=<string>&EndDate=<string>&=<string>&=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "donations"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created since StartDate.",
+                              "key": "StartDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits result to donations created before EndDate.",
+                              "key": "EndDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:29.000Z",
+                      "updatedAt": "2026-07-28T03:30:29.000Z",
+                      "uid": "35240-87543bf6-05cb-4db8-b8d1-b6bd6cb73ffc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:29.000Z",
+                  "updatedAt": "2026-07-28T03:30:29.000Z",
+                  "uid": "35240-18962a08-f00d-470a-a965-759fccf8210f"
+                }
+              ],
+              "id": "2658e810-b57f-4815-962e-319a572293da",
+              "createdAt": "2026-07-28T03:30:28.000Z",
+              "updatedAt": "2026-07-28T03:30:28.000Z",
+              "uid": "35240-2658e810-b57f-4815-962e-319a572293da"
+            }
+          ],
+          "id": "77ec8e19-7fad-4bd5-893d-64cd3f87ad3a",
+          "createdAt": "2026-07-28T03:30:28.000Z",
+          "updatedAt": "2026-07-28T03:30:28.000Z",
+          "uid": "35240-77ec8e19-7fad-4bd5-893d-64cd3f87ad3a"
+        }
+      ],
+      "id": "f9769848-a61a-43c5-977d-6f383950b0c7",
+      "createdAt": "2026-07-28T03:30:28.000Z",
+      "updatedAt": "2026-07-28T03:30:28.000Z",
+      "uid": "35240-f9769848-a61a-43c5-977d-6f383950b0c7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

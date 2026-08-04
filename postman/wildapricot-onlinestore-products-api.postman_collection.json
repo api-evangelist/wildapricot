@@ -1,0 +1,652 @@
+{
+  "info": {
+    "_postman_id": "c0a8bd5f-77e7-4793-8611-becf13875d0a",
+    "name": "WildApricot Admin Accounts OnlineStore.Products API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:54.000Z",
+    "updatedAt": "2026-07-28T03:31:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c0a8bd5f-77e7-4793-8611-becf13875d0a"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "store",
+              "item": [
+                {
+                  "name": "products",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "WildApricot GET /accounts/{accountId}/store/products/{id}",
+                          "id": "d95c3abd-071e-4fd6-8a20-9a07eed4c2eb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "auto",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://oauth.wildapricot.org/auth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/store/products/:id?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "store",
+                                "products",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "735ecf21-2618-492f-8ba6-8cfd20a801b1",
+                                  "key": "accountId"
+                                },
+                                {
+                                  "id": "633dcea8-3773-4eea-acfc-8762836d4a99",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "21e06811-fe61-476e-bbb1-34fd24a2d693",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/store/products/:id?=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "store",
+                                    "products",
+                                    ":id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<integer>\",\n  \"status\": \"PUBLIC\",\n  \"type\": \"DIGITAL\",\n  \"trackInventory\": \"<boolean>\",\n  \"stock\": \"<integer>\",\n  \"outOfStock\": \"<boolean>\",\n  \"totalStock\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": {\n    \"regular\": \"<number>\",\n    \"members\": \"<number>\"\n  },\n  \"pictures\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"productOptions\": [\n    {\n      \"title\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"title\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"productVariants\": [\n    {\n      \"id\": \"<integer>\",\n      \"stock\": \"<integer>\",\n      \"outOfStock\": \"<boolean>\",\n      \"trackInventory\": \"<boolean>\",\n      \"productVariantOptionValues\": [\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"stock\": \"<integer>\",\n      \"outOfStock\": \"<boolean>\",\n      \"trackInventory\": \"<boolean>\",\n      \"productVariantOptionValues\": [\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"digitalProduct\": {\n    \"type\": \"FILE\",\n    \"productFile\": {\n      \"name\": \"<string>\"\n    },\n    \"productLink\": {\n      \"url\": \"<string>\",\n      \"code\": \"<string>\"\n    },\n    \"emailNote\": \"<string>\"\n  },\n  \"created\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T03:31:55.000Z",
+                              "updatedAt": "2026-07-28T03:31:55.000Z",
+                              "uid": "35240-21e06811-fe61-476e-bbb1-34fd24a2d693"
+                            },
+                            {
+                              "id": "68e173e1-6d4e-4a29-8691-c449ad4b6ba5",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/store/products/:id?=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "store",
+                                    "products",
+                                    ":id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:31:55.000Z",
+                              "updatedAt": "2026-07-28T03:31:55.000Z",
+                              "uid": "35240-68e173e1-6d4e-4a29-8691-c449ad4b6ba5"
+                            },
+                            {
+                              "id": "d3c1cdde-f755-4674-877b-ed59b3d90f3a",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/store/products/:id?=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "store",
+                                    "products",
+                                    ":id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:31:55.000Z",
+                              "updatedAt": "2026-07-28T03:31:55.000Z",
+                              "uid": "35240-d3c1cdde-f755-4674-877b-ed59b3d90f3a"
+                            },
+                            {
+                              "id": "e94dd6ed-0670-4e43-9c4d-f5d5e8c8d173",
+                              "name": "New Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountId/store/products/:id?=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountId",
+                                    "store",
+                                    "products",
+                                    ":id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:31:55.000Z",
+                              "updatedAt": "2026-07-28T03:31:55.000Z",
+                              "uid": "35240-e94dd6ed-0670-4e43-9c4d-f5d5e8c8d173"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:31:55.000Z",
+                          "updatedAt": "2026-07-28T03:31:55.000Z",
+                          "uid": "35240-d95c3abd-071e-4fd6-8a20-9a07eed4c2eb"
+                        }
+                      ],
+                      "id": "0f914127-fd88-4825-a056-ffac9aa677c0",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-0f914127-fd88-4825-a056-ffac9aa677c0"
+                    },
+                    {
+                      "name": "WildApricot GET /accounts/{accountId}/store/products",
+                      "id": "d2f95219-7105-469e-8c21-318fd6d1e926",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/store/products?=<string>&$skip=<integer>&$top=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "store",
+                            "products"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "$top",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e3b3229e-f470-4602-803d-e600d758edd0",
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "9919006d-df8d-4108-8838-e689622ed7c2",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/store/products?=<string>&$skip=<integer>&$top=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "store",
+                                "products"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"status\": \"PUBLIC\",\n    \"type\": \"PHYSICAL\",\n    \"trackInventory\": \"<boolean>\",\n    \"stock\": \"<integer>\",\n    \"outOfStock\": \"<boolean>\",\n    \"totalStock\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": {\n      \"regular\": \"<number>\",\n      \"members\": \"<number>\"\n    },\n    \"pictures\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"productOptions\": [\n      {\n        \"title\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"title\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"productVariants\": [\n      {\n        \"id\": \"<integer>\",\n        \"stock\": \"<integer>\",\n        \"outOfStock\": \"<boolean>\",\n        \"trackInventory\": \"<boolean>\",\n        \"productVariantOptionValues\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<integer>\",\n        \"stock\": \"<integer>\",\n        \"outOfStock\": \"<boolean>\",\n        \"trackInventory\": \"<boolean>\",\n        \"productVariantOptionValues\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"digitalProduct\": {\n      \"type\": \"FILE\",\n      \"productFile\": {\n        \"name\": \"<string>\"\n      },\n      \"productLink\": {\n        \"url\": \"<string>\",\n        \"code\": \"<string>\"\n      },\n      \"emailNote\": \"<string>\"\n    },\n    \"created\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"status\": \"ADMINONLY\",\n    \"type\": \"PHYSICAL\",\n    \"trackInventory\": \"<boolean>\",\n    \"stock\": \"<integer>\",\n    \"outOfStock\": \"<boolean>\",\n    \"totalStock\": \"<integer>\",\n    \"url\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": {\n      \"regular\": \"<number>\",\n      \"members\": \"<number>\"\n    },\n    \"pictures\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"productOptions\": [\n      {\n        \"title\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"title\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"productVariants\": [\n      {\n        \"id\": \"<integer>\",\n        \"stock\": \"<integer>\",\n        \"outOfStock\": \"<boolean>\",\n        \"trackInventory\": \"<boolean>\",\n        \"productVariantOptionValues\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<integer>\",\n        \"stock\": \"<integer>\",\n        \"outOfStock\": \"<boolean>\",\n        \"trackInventory\": \"<boolean>\",\n        \"productVariantOptionValues\": [\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"title\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"digitalProduct\": {\n      \"type\": \"FILE\",\n      \"productFile\": {\n        \"name\": \"<string>\"\n      },\n      \"productLink\": {\n        \"url\": \"<string>\",\n        \"code\": \"<string>\"\n      },\n      \"emailNote\": \"<string>\"\n    },\n    \"created\": \"<dateTime>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:31:55.000Z",
+                          "updatedAt": "2026-07-28T03:31:55.000Z",
+                          "uid": "35240-9919006d-df8d-4108-8838-e689622ed7c2"
+                        },
+                        {
+                          "id": "c1158f10-7fca-4ea4-831f-48d632b28efa",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/store/products?=<string>&$skip=<integer>&$top=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "store",
+                                "products"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:55.000Z",
+                          "updatedAt": "2026-07-28T03:31:55.000Z",
+                          "uid": "35240-c1158f10-7fca-4ea4-831f-48d632b28efa"
+                        },
+                        {
+                          "id": "defdcbd6-73ca-44c1-bee4-abd303f3f2c3",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/store/products?=<string>&$skip=<integer>&$top=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "store",
+                                "products"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:55.000Z",
+                          "updatedAt": "2026-07-28T03:31:55.000Z",
+                          "uid": "35240-defdcbd6-73ca-44c1-bee4-abd303f3f2c3"
+                        },
+                        {
+                          "id": "64661c55-5eed-454d-aeb0-a95e8794cc98",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/store/products?=<string>&$skip=<integer>&$top=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "store",
+                                "products"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:31:55.000Z",
+                          "updatedAt": "2026-07-28T03:31:55.000Z",
+                          "uid": "35240-64661c55-5eed-454d-aeb0-a95e8794cc98"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-d2f95219-7105-469e-8c21-318fd6d1e926"
+                    }
+                  ],
+                  "id": "4ef26f80-6264-4f53-b114-be6b1b8fd891",
+                  "createdAt": "2026-07-28T03:31:55.000Z",
+                  "updatedAt": "2026-07-28T03:31:55.000Z",
+                  "uid": "35240-4ef26f80-6264-4f53-b114-be6b1b8fd891"
+                }
+              ],
+              "id": "2c915955-b2e7-4d1c-bbba-c9ea64fff6a3",
+              "createdAt": "2026-07-28T03:31:55.000Z",
+              "updatedAt": "2026-07-28T03:31:55.000Z",
+              "uid": "35240-2c915955-b2e7-4d1c-bbba-c9ea64fff6a3"
+            }
+          ],
+          "id": "e751e65c-8c95-4bbd-aad2-9c1324646eca",
+          "createdAt": "2026-07-28T03:31:55.000Z",
+          "updatedAt": "2026-07-28T03:31:55.000Z",
+          "uid": "35240-e751e65c-8c95-4bbd-aad2-9c1324646eca"
+        }
+      ],
+      "id": "3ed85e59-4406-4f56-b33e-f95d80404133",
+      "createdAt": "2026-07-28T03:31:55.000Z",
+      "updatedAt": "2026-07-28T03:31:55.000Z",
+      "uid": "35240-3ed85e59-4406-4f56-b33e-f95d80404133"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

@@ -1,0 +1,1311 @@
+{
+  "info": {
+    "_postman_id": "f04b5f65-d702-4339-a14e-45cbe1de655f",
+    "name": "WildApricot Admin Accounts Contacts.CustomFields API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:29:56.000Z",
+    "updatedAt": "2026-07-28T03:29:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f04b5f65-d702-4339-a14e-45cbe1de655f"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "contactfields",
+              "item": [
+                {
+                  "name": "{contactFieldId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Updates an Existing Contact / Membership Field",
+                      "id": "883314e3-b8e9-49e9-8ae0-d7a7a7fd1718",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields",
+                            ":contactFieldId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "40eaf4d8-f4c0-4239-9da0-a49e29c249be",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "be8695cc-ad39-497e-b236-f32aa468ceea",
+                              "key": "contactFieldId",
+                              "value": "<integer>",
+                              "description": "(Required) contact field identifier"
+                            }
+                          ]
+                        },
+                        "description": "Limitations: field type cannot be changed; contact field cannot be transformed to membership field or vice versa"
+                      },
+                      "response": [
+                        {
+                          "id": "05a4d89d-70ab-418d-9de8-918d2b280080",
+                          "name": "return true if field was updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<boolean>",
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-05a4d89d-70ab-418d-9de8-918d2b280080"
+                        },
+                        {
+                          "id": "ce11b93c-8c48-4e23-8d93-01d5af6adf66",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-ce11b93c-8c48-4e23-8d93-01d5af6adf66"
+                        },
+                        {
+                          "id": "f54bea06-4572-4775-b8a7-145a570ebe77",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-f54bea06-4572-4775-b8a7-145a570ebe77"
+                        },
+                        {
+                          "id": "6cfe7b2f-7b24-4342-970a-11a93acb18df",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-6cfe7b2f-7b24-4342-970a-11a93acb18df"
+                        },
+                        {
+                          "id": "5e41fb98-e747-41d5-9715-9b23e13e96f0",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Members\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"EditInProfile\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-5e41fb98-e747-41d5-9715-9b23e13e96f0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-883314e3-b8e9-49e9-8ae0-d7a7a7fd1718"
+                    },
+                    {
+                      "name": "WildApricot Removes Existing Field by Id",
+                      "id": "87e76f51-ad68-47ca-b2bb-d0cbe5e0a61c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields",
+                            ":contactFieldId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d04f76fb-9f8f-41f5-b2c6-72cb6b89a058",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "b0f96f23-5eb7-4c18-974a-5e4e7829e1e0",
+                              "key": "contactFieldId",
+                              "value": "<integer>",
+                              "description": "(Required) contact field identifier"
+                            }
+                          ]
+                        },
+                        "description": "removes existing field by id"
+                      },
+                      "response": [
+                        {
+                          "id": "57e35f76-3ff4-4127-8832-f1a59c2b07b1",
+                          "name": "return true if field was removed successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<boolean>",
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-57e35f76-3ff4-4127-8832-f1a59c2b07b1"
+                        },
+                        {
+                          "id": "154e5c8f-9ce0-4be3-8ae9-16eff8aed329",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-154e5c8f-9ce0-4be3-8ae9-16eff8aed329"
+                        },
+                        {
+                          "id": "d8862bc9-56fa-48b6-98b2-768c2221a741",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-d8862bc9-56fa-48b6-98b2-768c2221a741"
+                        },
+                        {
+                          "id": "cac374d5-2ce0-4254-a048-b2d6cae2b3c6",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/contactfields/:contactFieldId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "contactfields",
+                                ":contactFieldId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "contactFieldId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:29:57.000Z",
+                          "updatedAt": "2026-07-28T03:29:57.000Z",
+                          "uid": "35240-cac374d5-2ce0-4254-a048-b2d6cae2b3c6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-87e76f51-ad68-47ca-b2bb-d0cbe5e0a61c"
+                    }
+                  ],
+                  "id": "79130b26-ae4a-4473-ad9c-32fbf1ebe85e",
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-79130b26-ae4a-4473-ad9c-32fbf1ebe85e"
+                },
+                {
+                  "name": "WildApricot List of Custom Fields Related to Contacts and Members.",
+                  "id": "2180dc73-67b8-4ccc-8d2e-437b23728e98",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>&showSectionDividers=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "contactfields"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Default value is false. Specifies whether section dividers also should be included in the response.",
+                          "key": "showSectionDividers",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6688ecbf-0b4c-4cc7-bc5c-6cd6d8026116",
+                          "key": "accountId"
+                        }
+                      ]
+                    },
+                    "description": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and cannot be removed.\n - Custom fields can be defined by administrator to store some data specific to your account.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "74e190ba-d02d-4bbd-8b8c-39c3b7c63d97",
+                      "name": "An array of contact field descriptions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be included in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Access\": \"Members\",\n    \"AdminOnly\": \"<boolean>\",\n    \"Description\": \"<string>\",\n    \"FieldName\": \"<string>\",\n    \"FieldType\": \"Choice\",\n    \"Id\": \"<integer>\",\n    \"MemberOnly\": \"<boolean>\",\n    \"SystemCode\": \"<string>\",\n    \"DisplayType\": \"<string>\",\n    \"IsSystem\": \"<boolean>\",\n    \"FieldInstructions\": \"<string>\",\n    \"AllowedValues\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      }\n    ],\n    \"Order\": \"<integer>\",\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"<string>\",\n      \"Link\": \"<string>\"\n    },\n    \"ExtraCharge\": {\n      \"MultiplierType\": \"Percentage\",\n      \"Multiplier\": \"<number>\",\n      \"MinAmount\": \"<integer>\",\n      \"MaxAmount\": \"<integer>\",\n      \"MinCharge\": \"<number>\",\n      \"MaxCharge\": \"<number>\"\n    },\n    \"ExistsInLevels\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ],\n    \"MemberAccess\": \"EditInApplicationForm\",\n    \"IsBuiltIn\": \"<boolean>\",\n    \"SupportSearch\": \"<boolean>\",\n    \"IsEditable\": \"<boolean>\",\n    \"RenewalPolicy\": {\n      \"IncludeInRenewals\": \"<boolean>\",\n      \"AllowedToChangeInRenewal\": \"<boolean>\"\n    },\n    \"ProrateInApplication\": \"<boolean>\"\n  },\n  {\n    \"Access\": \"Nobody\",\n    \"AdminOnly\": \"<boolean>\",\n    \"Description\": \"<string>\",\n    \"FieldName\": \"<string>\",\n    \"FieldType\": \"Choice\",\n    \"Id\": \"<integer>\",\n    \"MemberOnly\": \"<boolean>\",\n    \"SystemCode\": \"<string>\",\n    \"DisplayType\": \"<string>\",\n    \"IsSystem\": \"<boolean>\",\n    \"FieldInstructions\": \"<string>\",\n    \"AllowedValues\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Label\": \"<string>\",\n        \"Position\": \"<integer>\",\n        \"SelectedByDefault\": \"<boolean>\",\n        \"ExtraCost\": \"<number>\"\n      }\n    ],\n    \"Order\": \"<integer>\",\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"<string>\",\n      \"Link\": \"<string>\"\n    },\n    \"ExtraCharge\": {\n      \"MultiplierType\": \"Percentage\",\n      \"Multiplier\": \"<number>\",\n      \"MinAmount\": \"<integer>\",\n      \"MaxAmount\": \"<integer>\",\n      \"MinCharge\": \"<number>\",\n      \"MaxCharge\": \"<number>\"\n    },\n    \"ExistsInLevels\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ],\n    \"MemberAccess\": \"EditInProfile\",\n    \"IsBuiltIn\": \"<boolean>\",\n    \"SupportSearch\": \"<boolean>\",\n    \"IsEditable\": \"<boolean>\",\n    \"RenewalPolicy\": {\n      \"IncludeInRenewals\": \"<boolean>\",\n      \"AllowedToChangeInRenewal\": \"<boolean>\"\n    },\n    \"ProrateInApplication\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-74e190ba-d02d-4bbd-8b8c-39c3b7c63d97"
+                    },
+                    {
+                      "id": "94de2416-056b-4ad0-8a81-991d93d365eb",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be included in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-94de2416-056b-4ad0-8a81-991d93d365eb"
+                    },
+                    {
+                      "id": "2171ff09-5730-4fb5-ab30-44deac13c915",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>&showSectionDividers=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Default value is false. Specifies whether section dividers also should be included in the response.",
+                              "key": "showSectionDividers",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-2171ff09-5730-4fb5-ab30-44deac13c915"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-2180dc73-67b8-4ccc-8d2e-437b23728e98"
+                },
+                {
+                  "name": "WildApricot Creates a New Contact / Membership Field",
+                  "id": "af0e55e0-fc5a-4b6f-bf1f-375c4e58e8b6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"RulesAndTerms\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Public\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"Nobody\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "contactfields"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6d8c98fc-1072-46d1-ba7d-f386d2248eae",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "bc592e3c-2627-4015-8612-04c32df84b4f",
+                      "name": "created field identifier",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"RulesAndTerms\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Public\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"Nobody\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<integer>",
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-bc592e3c-2627-4015-8612-04c32df84b4f"
+                    },
+                    {
+                      "id": "eb91d730-04ac-4093-8497-a75c7f361bcb",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"RulesAndTerms\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Public\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"Nobody\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-eb91d730-04ac-4093-8497-a75c7f361bcb"
+                    },
+                    {
+                      "id": "c3c79292-c456-4f91-b9ae-b931679f9a97",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"RulesAndTerms\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Public\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"Nobody\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-c3c79292-c456-4f91-b9ae-b931679f9a97"
+                    },
+                    {
+                      "id": "c8e5f6b5-1485-4471-bdbe-f14ee9b42d82",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"RulesAndTerms\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"Public\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<number>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"Nobody\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"ItemPrice\",\n    \"Multiplier\": \"<number>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<number>\",\n    \"MaxCharge\": \"<number>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/contactfields?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "contactfields"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:29:57.000Z",
+                      "updatedAt": "2026-07-28T03:29:57.000Z",
+                      "uid": "35240-c8e5f6b5-1485-4471-bdbe-f14ee9b42d82"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:29:57.000Z",
+                  "updatedAt": "2026-07-28T03:29:57.000Z",
+                  "uid": "35240-af0e55e0-fc5a-4b6f-bf1f-375c4e58e8b6"
+                }
+              ],
+              "id": "4c0051fd-1d8f-4f43-a2cf-4f3022626a06",
+              "createdAt": "2026-07-28T03:29:57.000Z",
+              "updatedAt": "2026-07-28T03:29:57.000Z",
+              "uid": "35240-4c0051fd-1d8f-4f43-a2cf-4f3022626a06"
+            }
+          ],
+          "id": "88d3de39-cd13-4105-9ebf-d1217ccd3476",
+          "createdAt": "2026-07-28T03:29:57.000Z",
+          "updatedAt": "2026-07-28T03:29:57.000Z",
+          "uid": "35240-88d3de39-cd13-4105-9ebf-d1217ccd3476"
+        }
+      ],
+      "id": "c2d64be1-0697-4d85-a0aa-6fe4824e77db",
+      "createdAt": "2026-07-28T03:29:57.000Z",
+      "updatedAt": "2026-07-28T03:29:57.000Z",
+      "uid": "35240-c2d64be1-0697-4d85-a0aa-6fe4824e77db"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}

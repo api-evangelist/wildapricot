@@ -1,0 +1,593 @@
+{
+  "info": {
+    "_postman_id": "9e4ea3c3-9556-46a9-bff7-33d9a767a876",
+    "name": "WildApricot Admin Accounts Membership.Levels API",
+    "description": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:30:48.000Z",
+    "updatedAt": "2026-07-28T03:30:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9e4ea3c3-9556-46a9-bff7-33d9a767a876"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "membershiplevels",
+              "item": [
+                {
+                  "name": "{levelId}",
+                  "item": [
+                    {
+                      "name": "WildApricot Retrieve Information About Specific Membership Level",
+                      "id": "52af8107-70c9-4ebb-8d7b-c449acb8d24e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "auto",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://oauth.wildapricot.org/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels/:levelId?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membershiplevels",
+                            ":levelId"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5e757016-3b3a-4438-bfb6-58579b364759",
+                              "key": "accountId"
+                            },
+                            {
+                              "id": "da1f6af0-c8f3-4026-b791-beb7a02006d0",
+                              "key": "levelId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique membership level identifier"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "fdf8b0b4-136e-4549-b6b0-00cf71115047",
+                          "name": "information about specific membership level",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels/:levelId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membershiplevels",
+                                ":levelId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "levelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"Id\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"PublicCanApply\": \"<boolean>\",\n  \"Type\": \"Individual\",\n  \"BundleMembersLimit\": \"<integer>\",\n  \"MembershipFee\": \"<number>\",\n  \"MemberCanChangeToLevels\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Url\": \"<string>\"\n    }\n  ],\n  \"RenewalPeriod\": {\n    \"Kind\": \"Monthly\",\n    \"StartFromJoinDate\": \"<boolean>\",\n    \"Dates\": [\n      {\n        \"Month\": \"<integer>\",\n        \"Day\": \"<integer>\"\n      },\n      {\n        \"Month\": \"<integer>\",\n        \"Day\": \"<integer>\"\n      }\n    ],\n    \"AutomaticRecurringPayments\": \"<boolean>\",\n    \"ApplicationReview\": {\n      \"PrepayRequired\": \"<boolean>\",\n      \"AdminApprovalRequired\": \"<boolean>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T03:30:48.000Z",
+                          "updatedAt": "2026-07-28T03:30:48.000Z",
+                          "uid": "35240-fdf8b0b4-136e-4549-b6b0-00cf71115047"
+                        },
+                        {
+                          "id": "b0d33ea9-f405-4981-a943-16e27fc6c4c4",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels/:levelId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membershiplevels",
+                                ":levelId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "levelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:48.000Z",
+                          "updatedAt": "2026-07-28T03:30:48.000Z",
+                          "uid": "35240-b0d33ea9-f405-4981-a943-16e27fc6c4c4"
+                        },
+                        {
+                          "id": "10a670a0-3222-4017-9953-acc22cfdf8bf",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels/:levelId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membershiplevels",
+                                ":levelId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "levelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:48.000Z",
+                          "updatedAt": "2026-07-28T03:30:48.000Z",
+                          "uid": "35240-10a670a0-3222-4017-9953-acc22cfdf8bf"
+                        },
+                        {
+                          "id": "f87b9965-b0d6-4cd4-81ef-9840562a3407",
+                          "name": "New Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels/:levelId?=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "membershiplevels",
+                                ":levelId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "levelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:30:48.000Z",
+                          "updatedAt": "2026-07-28T03:30:48.000Z",
+                          "uid": "35240-f87b9965-b0d6-4cd4-81ef-9840562a3407"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:30:48.000Z",
+                      "updatedAt": "2026-07-28T03:30:48.000Z",
+                      "uid": "35240-52af8107-70c9-4ebb-8d7b-c449acb8d24e"
+                    }
+                  ],
+                  "id": "9d9f2afb-0bcd-47ca-bd2c-d1ebffde6314",
+                  "createdAt": "2026-07-28T03:30:48.000Z",
+                  "updatedAt": "2026-07-28T03:30:48.000Z",
+                  "uid": "35240-9d9f2afb-0bcd-47ca-bd2c-d1ebffde6314"
+                },
+                {
+                  "name": "WildApricot Get List of All Membership Levels.",
+                  "id": "0d6ad352-7388-4a14-ad9f-e7d352ed8407",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "auto",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://oauth.wildapricot.org/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels?=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "membershiplevels"
+                      ],
+                      "query": [
+                        {
+                          "key": "",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7601e88c-e324-4bde-a370-13165c7810de",
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "56910e74-18f8-4c51-93bc-066e923ab813",
+                      "name": "Collection of membership levels.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membershiplevels"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"PublicCanApply\": \"<boolean>\",\n    \"Type\": \"Individual\",\n    \"BundleMembersLimit\": \"<integer>\",\n    \"MembershipFee\": \"<number>\",\n    \"MemberCanChangeToLevels\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ],\n    \"RenewalPeriod\": {\n      \"Kind\": \"TwiceAYear\",\n      \"StartFromJoinDate\": \"<boolean>\",\n      \"Dates\": [\n        {\n          \"Month\": \"<integer>\",\n          \"Day\": \"<integer>\"\n        },\n        {\n          \"Month\": \"<integer>\",\n          \"Day\": \"<integer>\"\n        }\n      ],\n      \"AutomaticRecurringPayments\": \"<boolean>\",\n      \"ApplicationReview\": {\n        \"PrepayRequired\": \"<boolean>\",\n        \"AdminApprovalRequired\": \"<boolean>\"\n      }\n    }\n  },\n  {\n    \"Id\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"PublicCanApply\": \"<boolean>\",\n    \"Type\": \"Bundle\",\n    \"BundleMembersLimit\": \"<integer>\",\n    \"MembershipFee\": \"<number>\",\n    \"MemberCanChangeToLevels\": [\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      },\n      {\n        \"Id\": \"<integer>\",\n        \"Url\": \"<string>\"\n      }\n    ],\n    \"RenewalPeriod\": {\n      \"Kind\": \"EveryNYears\",\n      \"StartFromJoinDate\": \"<boolean>\",\n      \"Dates\": [\n        {\n          \"Month\": \"<integer>\",\n          \"Day\": \"<integer>\"\n        },\n        {\n          \"Month\": \"<integer>\",\n          \"Day\": \"<integer>\"\n        }\n      ],\n      \"AutomaticRecurringPayments\": \"<boolean>\",\n      \"ApplicationReview\": {\n        \"PrepayRequired\": \"<boolean>\",\n        \"AdminApprovalRequired\": \"<boolean>\"\n      }\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:30:48.000Z",
+                      "updatedAt": "2026-07-28T03:30:48.000Z",
+                      "uid": "35240-56910e74-18f8-4c51-93bc-066e923ab813"
+                    },
+                    {
+                      "id": "15fbe879-cfc7-47a6-8426-f1e933626d67",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membershiplevels"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:48.000Z",
+                      "updatedAt": "2026-07-28T03:30:48.000Z",
+                      "uid": "35240-15fbe879-cfc7-47a6-8426-f1e933626d67"
+                    },
+                    {
+                      "id": "fe654a1b-873c-43b5-90cb-aa54dcbd9b5d",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membershiplevels"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:48.000Z",
+                      "updatedAt": "2026-07-28T03:30:48.000Z",
+                      "uid": "35240-fe654a1b-873c-43b5-90cb-aa54dcbd9b5d"
+                    },
+                    {
+                      "id": "bc26dda5-5d39-4f19-a07a-3f4212235ef4",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/membershiplevels?=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "membershiplevels"
+                          ],
+                          "query": [
+                            {
+                              "key": "",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:30:48.000Z",
+                      "updatedAt": "2026-07-28T03:30:48.000Z",
+                      "uid": "35240-bc26dda5-5d39-4f19-a07a-3f4212235ef4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:30:48.000Z",
+                  "updatedAt": "2026-07-28T03:30:48.000Z",
+                  "uid": "35240-0d6ad352-7388-4a14-ad9f-e7d352ed8407"
+                }
+              ],
+              "id": "3e0120b7-c610-44fd-9556-117b45174ede",
+              "createdAt": "2026-07-28T03:30:48.000Z",
+              "updatedAt": "2026-07-28T03:30:48.000Z",
+              "uid": "35240-3e0120b7-c610-44fd-9556-117b45174ede"
+            }
+          ],
+          "id": "834714e7-5e08-46e2-9908-23c21eda34df",
+          "createdAt": "2026-07-28T03:30:48.000Z",
+          "updatedAt": "2026-07-28T03:30:48.000Z",
+          "uid": "35240-834714e7-5e08-46e2-9908-23c21eda34df"
+        }
+      ],
+      "id": "bd1f80d3-e2c3-4cc6-a2f3-591e340fce8f",
+      "createdAt": "2026-07-28T03:30:48.000Z",
+      "updatedAt": "2026-07-28T03:30:48.000Z",
+      "uid": "35240-bd1f80d3-e2c3-4cc6-a2f3-591e340fce8f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wildapricot.org/v2.2"
+    }
+  ]
+}
