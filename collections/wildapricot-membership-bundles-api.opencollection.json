@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Membership.Bundles API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Membership.Bundles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Membership Bundles.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/bundles",
+            "params": [
+              {
+                "name": "levelId",
+                "value": "",
+                "type": "query",
+                "description": "Provide this parameter to get only bundles related to specific membership level."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Membership Bundles."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Membership Bundle Details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/bundles/:bundleId",
+            "params": [
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique bundle identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get Membership Bundle Details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

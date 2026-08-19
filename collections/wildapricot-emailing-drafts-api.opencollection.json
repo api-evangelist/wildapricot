@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Emailing.Drafts API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emailing.Drafts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Email Drafts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts",
+            "params": [
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "Should be set to true in order to get only a list of email identifiers as a result of search request.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Allowed filter fields (**allowed operations**):\n  - *LastChangedDate* (**ge**, **le**),\n  - *CreatorId* (**eq**),\n  - *IsScheduled* (**eq**),\n  - *EventId* (**eq**)\n\n  only AND boolean operator supported\n  - ...&$filter=LastChangedDate ge 2018-05-01 - will return records updated on or after May 1st, 2018\n  - ...&$filter=LastChangedDate ge 2010-05-01 AND CreatorId eq 123456 - will return records updated on or after May 1st, 2010 and create by a user with Contact ID 123456      \n  - ...&$filter=IsScheduled eq true - will return scheduled drafts only"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Email drafts"
+        },
+        {
+          "info": {
+            "name": "WildApricot Email Draft Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts/:draftId",
+            "params": [
+              {
+                "name": "draftId",
+                "value": "",
+                "type": "path",
+                "description": "Email draft Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Email draft details"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Email Draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/EmailDrafts/:draftId",
+            "params": [
+              {
+                "name": "draftId",
+                "value": "",
+                "type": "path",
+                "description": "Email draft Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete email draft"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

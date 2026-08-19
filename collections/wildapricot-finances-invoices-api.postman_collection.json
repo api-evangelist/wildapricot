@@ -1,0 +1,2055 @@
+{
+  "item": [
+    {
+      "id": "402e2501-88b8-4f54-8394-f503704e8f55",
+      "name": "Finances.Invoices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0ea895a-c143-4a06-9561-471955466a7a",
+          "name": "WildApricot Get List of Invoices by Criteria.",
+          "request": {
+            "name": "WildApricot Get List of Invoices by Criteria.",
+            "description": {
+              "content": "\nâš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId and eventRegistrationId exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter invoices.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contactId",
+                  "value": "<integer>",
+                  "description": "Identifier of contact to whom the invoice is assigned."
+                },
+                {
+                  "disabled": false,
+                  "key": "eventId",
+                  "value": "<integer>",
+                  "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event."
+                },
+                {
+                  "disabled": false,
+                  "key": "eventRegistrationId",
+                  "value": "<integer>",
+                  "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice."
+                },
+                {
+                  "disabled": false,
+                  "key": "unpaidOnly",
+                  "value": "<boolean>",
+                  "description": "When set to true, API returns only unpaid invoices."
+                },
+                {
+                  "disabled": false,
+                  "key": "paidOnly",
+                  "value": "<boolean>",
+                  "description": "When set to true, API returns only paid invoices."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeVoided",
+                  "value": "<boolean>",
+                  "description": "When set to true, API also returns voided invoices."
+                },
+                {
+                  "disabled": false,
+                  "key": "idsOnly",
+                  "value": "<boolean>",
+                  "description": "When set to true, API returns only collection of identifiers instead of collection of invoices."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartDate",
+                  "value": "<string>",
+                  "description": "Limits result to invoices created since StartDate."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndDate",
+                  "value": "<string>",
+                  "description": "Limits result to invoices created before EndDate."
+                },
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3e918632-54a7-45ac-a22e-3589a0fe6c59",
+              "name": "Collection of invoices that match criteria.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contactId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "unpaidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "paidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeVoided",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "StartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "EndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"InvoiceIdentifiers\": [\n    9898,\n    321\n  ],\n  \"Invoices\": [\n    {\n      \"Id\": 1149,\n      \"Url\": \"string\",\n      \"Value\": 3756.9805376014488,\n      \"DocumentDate\": \"2009-10-27\",\n      \"Contact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who is assigned to the financial document.\"\n      },\n      \"CreatedDate\": \"1957-04-25\",\n      \"CreatedBy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who created the document. Could be null.\"\n      },\n      \"UpdatedDate\": \"2017-10-26\",\n      \"UpdatedBy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who modified the document. Could be null.\"\n      },\n      \"DocumentNumber\": \"string\",\n      \"IsPaid\": false,\n      \"PaidAmount\": 4881.768597015172,\n      \"OrderType\": \"MembershipRenewal\",\n      \"EventRegistration\": {\n        \"Id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"Url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"OrderDetails\": [\n        {\n          \"Value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"OrderDetailType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Notes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Taxes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"Value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"OrderDetailType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Notes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Taxes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"Memo\": \"string\",\n      \"PublicMemo\": \"string\",\n      \"VoidedDate\": \"1995-06-27\"\n    },\n    {\n      \"Id\": 4009,\n      \"Url\": \"string\",\n      \"Value\": 3829.335454968322,\n      \"DocumentDate\": \"1977-04-20\",\n      \"Contact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who is assigned to the financial document.\"\n      },\n      \"CreatedDate\": \"1967-11-23\",\n      \"CreatedBy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who created the document. Could be null.\"\n      },\n      \"UpdatedDate\": \"2019-09-14\",\n      \"UpdatedBy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n        \"description\": \"Link to contact who modified the document. Could be null.\"\n      },\n      \"DocumentNumber\": \"string\",\n      \"IsPaid\": true,\n      \"PaidAmount\": 8310.505452701982,\n      \"OrderType\": \"MembershipRenewal\",\n      \"EventRegistration\": {\n        \"Id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"Url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"OrderDetails\": [\n        {\n          \"Value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"OrderDetailType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Notes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Taxes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"Value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"OrderDetailType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Notes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Taxes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"Memo\": \"string\",\n      \"PublicMemo\": \"string\",\n      \"VoidedDate\": \"2011-08-14\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62f123f7-1804-42d1-b917-dbe575df9895",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contactId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "unpaidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "paidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeVoided",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "StartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "EndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe6525d0-95dc-4599-b7f4-9b5fe7412fd8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contactId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "unpaidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "paidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeVoided",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "StartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "EndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d1c56c8-4412-4e8d-9ce0-92087ed66a6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contactId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "unpaidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "paidOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeVoided",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "StartDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "EndDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c44787bd-ea54-4c88-a066-6ef3a67ac7d0",
+          "name": "WildApricot Creates a New Invoice.",
+          "request": {
+            "name": "WildApricot Creates a New Invoice.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92c6ae16-4df8-4746-9711-b0425f2eee11",
+              "name": "Created invoice ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "7205",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b200dc6-6d60-4f60-ba89-52b704378667",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41037cc5-3f85-4d6b-95b0-04c4682b663f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bcaeee3-1647-4f55-881f-ad7aee399a4e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50885d69-0722-4f26-a9be-0103e05ac6b0",
+          "name": "WildApricot Retrieve Information About Specific Invoice",
+          "request": {
+            "name": "WildApricot Retrieve Information About Specific Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "invoiceId",
+                  "description": "(Required) Unique invoice identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e7945d5-c5aa-48d7-a349-31321139102c",
+              "name": "information about specific invoice",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 147,\n  \"Url\": \"string\",\n  \"Value\": 5598.503940368564,\n  \"DocumentDate\": \"2023-10-04\",\n  \"Contact\": {\n    \"Id\": 3684,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"CreatedDate\": \"1950-01-12\",\n  \"CreatedBy\": {\n    \"Id\": 1738,\n    \"Url\": \"string\"\n  },\n  \"UpdatedDate\": \"1955-02-13\",\n  \"UpdatedBy\": {\n    \"Id\": 8630,\n    \"Url\": \"string\"\n  },\n  \"DocumentNumber\": \"string\",\n  \"IsPaid\": true,\n  \"PaidAmount\": 9707.40986381901,\n  \"OrderType\": \"<string>\",\n  \"EventRegistration\": {\n    \"Id\": 4374,\n    \"Url\": \"string\"\n  },\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"Tax2\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"Tax2\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"Memo\": \"string\",\n  \"PublicMemo\": \"string\",\n  \"VoidedDate\": \"2005-10-30\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dd7c0a7-7826-4a9a-9bfa-960dc8105217",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f2a79d3-1380-4e84-83bb-e55532bb0bc8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db574372-d9e8-4bac-8806-4f29caee8262",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) Unique invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b8de01a-4fb4-4b35-a5cd-1fadcf8dd2df",
+          "name": "WildApricot Update Existing Invoice Information",
+          "request": {
+            "name": "WildApricot Update Existing Invoice Information",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "invoiceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0656dc38-b98e-457b-a5cc-30c2c1d38f0c",
+              "name": "Returns 200 on successful data update",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b9c2d37-a3f4-4a26-bf81-41de3259aa55",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "faee6e52-4074-4d55-880b-3fcd6da06da4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53726140-a6dc-41d1-9bd8-babe7b3373e1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Value\": \"<float>\",\n  \"DocumentDate\": \"<date>\",\n  \"Contact\": {\n    \"Id\": \"<integer>\"\n  },\n  \"CreatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"UpdatedDate\": \"<date>\",\n  \"UpdatedBy\": {\n    \"Id\": \"<integer>\"\n  },\n  \"DocumentNumber\": \"<string>\",\n  \"OrderType\": \"<string>\",\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 1 description\"\n        },\n        \"Tax2\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\",\n          \"description\": \"applied Tax 2 description\"\n        }\n      }\n    }\n  ],\n  \"Memo\": \"<string>\",\n  \"PublicMemo\": \"<string>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eeb87525-89af-4fa6-864f-1f7826f0ae48",
+          "name": "WildApricot Delete Existing Invoice",
+          "request": {
+            "name": "WildApricot Delete Existing Invoice",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "invoiceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb6b46e4-a844-49d2-a926-c2fd190cddd5",
+              "name": "Returns 200 on successful invoice deletion",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67179b05-f1e5-4ecc-bbe1-08eeaee007b2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0523b534-b42e-4c94-abf9-4402b9650f01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73632fd6-086f-4a6e-ab92-241efc4e1e71",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48eb7c9e-b83d-45f4-8b69-170a02b8875e",
+          "name": "WildApricot Generate or Update Invoice for Existing Event Registration.",
+          "request": {
+            "name": "WildApricot Generate or Update Invoice for Existing Event Registration.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rpc",
+                ":accountId",
+                "GenerateInvoiceForEventRegistration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventRegistrationId",
+                  "value": "<integer>",
+                  "description": "(Required) Event registration ID with pending membership"
+                },
+                {
+                  "disabled": false,
+                  "key": "updateIfExists",
+                  "value": "<boolean>",
+                  "description": "If set to true and invoice already exists, API will update the invoice items."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f0f92ad-e910-4b85-afd7-e6ee8e11da98",
+              "name": "created or updated invoice",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "GenerateInvoiceForEventRegistration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updateIfExists",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 147,\n  \"Url\": \"string\",\n  \"Value\": 5598.503940368564,\n  \"DocumentDate\": \"2023-10-04\",\n  \"Contact\": {\n    \"Id\": 3684,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"CreatedDate\": \"1950-01-12\",\n  \"CreatedBy\": {\n    \"Id\": 1738,\n    \"Url\": \"string\"\n  },\n  \"UpdatedDate\": \"1955-02-13\",\n  \"UpdatedBy\": {\n    \"Id\": 8630,\n    \"Url\": \"string\"\n  },\n  \"DocumentNumber\": \"string\",\n  \"IsPaid\": true,\n  \"PaidAmount\": 9707.40986381901,\n  \"OrderType\": \"<string>\",\n  \"EventRegistration\": {\n    \"Id\": 4374,\n    \"Url\": \"string\"\n  },\n  \"OrderDetails\": [\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"Tax2\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"Value\": \"<float>\",\n      \"OrderDetailType\": \"<string>\",\n      \"Notes\": \"<string>\",\n      \"Taxes\": {\n        \"Amount\": \"<number>\",\n        \"CalculatedTax1\": \"<number>\",\n        \"CalculatedTax2\": \"<number>\",\n        \"NetAmount\": \"<number>\",\n        \"RoundedAmount\": \"<number>\",\n        \"Tax1\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"Tax2\": {\n          \"Name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"PublicId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"Rate\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"Memo\": \"string\",\n  \"PublicMemo\": \"string\",\n  \"VoidedDate\": \"2005-10-30\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e388bc8-6a31-453a-8637-45ced25ad17a",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "GenerateInvoiceForEventRegistration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventRegistrationId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updateIfExists",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "983054b8-ae2c-4e0d-9422-37d62d4af143",
+          "name": "WildApricot Void Active Invoice.",
+          "request": {
+            "name": "WildApricot Void Active Invoice.",
+            "description": {
+              "content": "See https://gethelp.wildapricot.com/en/articles/76#voiding for details on invoice voiding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rpc",
+                ":accountId",
+                "VoidInvoice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoiceId",
+                  "value": "<integer>",
+                  "description": "(Required) invoiceId ID to void"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "548517dc-eb80-4795-a6cf-579c61342dc8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "VoidInvoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "358d23ad-fff0-4442-a1c0-0604fb136587",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "VoidInvoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wildapricot.org/v2.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "974283e5-3b56-4d69-a4a2-7e7030bce108",
+    "name": "WildApricot Admin Accounts Finances.Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+      "type": "text/plain"
+    }
+  }
+}

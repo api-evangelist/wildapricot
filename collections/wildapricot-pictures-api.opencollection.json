@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Pictures API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pictures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Download Picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/pictures/:pictureId",
+            "params": [
+              {
+                "name": "pictureId",
+                "value": "",
+                "type": "path",
+                "description": "Picture identifier"
+              },
+              {
+                "name": "fullSize",
+                "value": "",
+                "type": "query",
+                "description": "Full size picture will be returned. If full size picture does not exist, thumbnail will be returned."
+              },
+              {
+                "name": "asBase64",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded image will be returned."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Picture available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Upload Pictures",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/pictures",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Picture can be uploaded using multipart/form-data POST request (contains Content-Type header set to 'multipart/form-data'). A multipart/form-data request contains a series of parts, each representing a picture. Each part is expected to contain a \"Content-Disposition\" header whose value is \"form-data\". One of its properties (Name, FileName) must be set and have unique value. In case of similar values, only one of those part will be used, others will be dropped. For example, you have uploaded 2 pi"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

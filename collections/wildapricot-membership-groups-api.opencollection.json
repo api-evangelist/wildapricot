@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Membership.Groups API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Membership.Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Ad Hoc Member Groups.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membergroups",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot List of Ad Hoc Member Groups."
+        },
+        {
+          "info": {
+            "name": "WildApricot Ad Hoc Member Group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/membergroups/:memberGroupId",
+            "params": [
+              {
+                "name": "memberGroupId",
+                "value": "",
+                "type": "path",
+                "description": "member group identifier"
+              },
+              {
+                "name": "includeArchivedMembers",
+                "value": "",
+                "type": "query",
+                "description": "include archived contacts in ContactIds list. Default - true."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Ad Hoc Member Group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

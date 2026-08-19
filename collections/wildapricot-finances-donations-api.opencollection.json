@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Finances.Donations API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Finances.Donations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Donations by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations",
+            "params": [
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to donations created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to donations created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Donations by Criteria."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Donation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations/:donationId",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique donation identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Donation"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Donation Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donations/:donationId",
+            "params": [
+              {
+                "name": "donationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Donation Information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

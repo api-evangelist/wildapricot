@@ -1,0 +1,230 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Events.EventRegistrations API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events.EventRegistrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Event Registrations List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "contact identifier"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "event identifier"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters the results of the Events API call so that only those records that match the filter criteria are included. The following filter criterias are supported:\n  - Id, Supported operations: in.\n    example: ?$filter=id in [1,2,3,4â€¦.]\n"
+              },
+              {
+                "name": "includeDetails",
+                "value": "",
+                "type": "query",
+                "description": "If false, registration form data is not retrieved"
+              },
+              {
+                "name": "includeWaitlist",
+                "value": "",
+                "type": "query",
+                "description": "Defines if waitlist records should be included in result"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "âš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId, $filter or ids exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter event registrations. âš  Request parameter is required\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Event Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration Details"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Event Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/eventregistrations/:event_registration_id",
+            "params": [
+              {
+                "name": "event_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "event registration identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Event Registration"
+        },
+        {
+          "info": {
+            "name": "WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/CheckInEventAttendee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Mark Event Attendee as Checked-in (or Remove Check-in Flag)."
+        },
+        {
+          "info": {
+            "name": "WildApricot Add Waitlisted Person as Event Attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/RegisterFromWaitlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Add Waitlisted Person as Event Attendee"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

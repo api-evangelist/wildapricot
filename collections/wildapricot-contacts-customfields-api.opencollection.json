@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Contacts.CustomFields API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts.CustomFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Custom Fields Related to Contacts and Members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields",
+            "params": [
+              {
+                "name": "showSectionDividers",
+                "value": "",
+                "type": "query",
+                "description": "Default value is false. Specifies whether section dividers also should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and cannot be removed.\n - Custom fields can be defined by administrator to store some data specific to your account.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Contact / Membership Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Contact / Membership Field"
+        },
+        {
+          "info": {
+            "name": "WildApricot Updates an Existing Contact / Membership Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields/:contactFieldId",
+            "params": [
+              {
+                "name": "contactFieldId",
+                "value": "",
+                "type": "path",
+                "description": "contact field identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Limitations: field type cannot be changed; contact field cannot be transformed to membership field or vice versa"
+        },
+        {
+          "info": {
+            "name": "WildApricot Removes Existing Field by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contactfields/:contactFieldId",
+            "params": [
+              {
+                "name": "contactFieldId",
+                "value": "",
+                "type": "path",
+                "description": "contact field identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "removes existing field by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1223 @@
+{
+  "item": [
+    {
+      "id": "4165f2b5-5b26-4caf-b7c3-4532b4ed06a5",
+      "name": "Contacts.CustomFields",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba1ca329-f7eb-4a97-9c73-fbd549b2ff07",
+          "name": "WildApricot List of Custom Fields Related to Contacts and Members.",
+          "request": {
+            "name": "WildApricot List of Custom Fields Related to Contacts and Members.",
+            "description": {
+              "content": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and cannot be removed.\n - Custom fields can be defined by administrator to store some data specific to your account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contactfields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "showSectionDividers",
+                  "value": "<boolean>",
+                  "description": "Default value is false. Specifies whether section dividers also should be included in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77779b3c-782a-4841-911e-ff1f65117796",
+              "name": "An array of contact field descriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showSectionDividers",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Access\": \"Public\",\n    \"AdminOnly\": false,\n    \"Description\": \"string\",\n    \"FieldName\": \"string\",\n    \"FieldType\": \"SectionDivider\",\n    \"Id\": 9670,\n    \"MemberOnly\": false,\n    \"SystemCode\": \"string\",\n    \"DisplayType\": \"string\",\n    \"IsSystem\": false,\n    \"FieldInstructions\": \"string\",\n    \"AllowedValues\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"Order\": 3097,\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"string\",\n      \"Link\": \"string\"\n    },\n    \"ExtraCharge\": {\n      \"MultiplierType\": \"Percentage\",\n      \"Multiplier\": 8358.977840199652,\n      \"MinAmount\": 2348,\n      \"MaxAmount\": 1281,\n      \"MinCharge\": 3832.0698255173725,\n      \"MaxCharge\": 9254.820706226465\n    },\n    \"ExistsInLevels\": [\n      {\n        \"Id\": 9109,\n        \"Url\": \"string\"\n      },\n      {\n        \"Id\": 1488,\n        \"Url\": \"string\"\n      }\n    ],\n    \"MemberAccess\": \"EditInProfile\",\n    \"IsBuiltIn\": false,\n    \"SupportSearch\": true,\n    \"IsEditable\": false,\n    \"RenewalPolicy\": {\n      \"IncludeInRenewals\": true,\n      \"AllowedToChangeInRenewal\": true\n    },\n    \"ProrateInApplication\": false\n  },\n  {\n    \"Access\": \"Nobody\",\n    \"AdminOnly\": false,\n    \"Description\": \"string\",\n    \"FieldName\": \"string\",\n    \"FieldType\": \"Choice\",\n    \"Id\": 499,\n    \"MemberOnly\": false,\n    \"SystemCode\": \"string\",\n    \"DisplayType\": \"string\",\n    \"IsSystem\": false,\n    \"FieldInstructions\": \"string\",\n    \"AllowedValues\": [\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    ],\n    \"Order\": 7612,\n    \"RulesAndTermsInfo\": {\n      \"Text\": \"string\",\n      \"Link\": \"string\"\n    },\n    \"ExtraCharge\": {\n      \"MultiplierType\": \"Percentage\",\n      \"Multiplier\": 5507.95784570853,\n      \"MinAmount\": 4339,\n      \"MaxAmount\": 719,\n      \"MinCharge\": 1881.2842758063887,\n      \"MaxCharge\": 3242.184833922187\n    },\n    \"ExistsInLevels\": [\n      {\n        \"Id\": 1894,\n        \"Url\": \"string\"\n      },\n      {\n        \"Id\": 318,\n        \"Url\": \"string\"\n      }\n    ],\n    \"MemberAccess\": \"EditInProfile\",\n    \"IsBuiltIn\": true,\n    \"SupportSearch\": false,\n    \"IsEditable\": false,\n    \"RenewalPolicy\": {\n      \"IncludeInRenewals\": false,\n      \"AllowedToChangeInRenewal\": false\n    },\n    \"ProrateInApplication\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50cc3950-5f85-472c-bc2e-e1acdfdd1dac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showSectionDividers",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "34be5643-55f3-4784-a350-77ee07e25194",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showSectionDividers",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5a923fa-0c98-4c42-91ac-3ebefdae3a91",
+          "name": "WildApricot Creates a New Contact / Membership Field",
+          "request": {
+            "name": "WildApricot Creates a New Contact / Membership Field",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contactfields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61c445df-a517-469f-8e6b-f50705b36412",
+              "name": "created field identifier",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "7894",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32447b4e-2719-4ea0-9a65-af18611f0e19",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f5131d4-be2f-4593-a554-c8009621d32a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ad87b7c-88f8-459a-94ef-6e5f9700e7fd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"FieldType\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"MemberOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "448c9202-a3ce-482b-ad69-3ff997f9265d",
+          "name": "WildApricot Updates an Existing Contact / Membership Field",
+          "request": {
+            "name": "WildApricot Updates an Existing Contact / Membership Field",
+            "description": {
+              "content": "Limitations: field type cannot be changed; contact field cannot be transformed to membership field or vice versa",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contactfields",
+                ":contactFieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "contactFieldId",
+                  "description": "(Required) contact field identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28238a4d-1c42-4d30-b1c4-a2c49a90e815",
+              "name": "return true if field was updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "true",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27958127-fd7d-4aad-a87b-50cffef02c4e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b6eeeb9-9dec-4e54-bcae-ba95e9e3c602",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84afcab4-5830-4659-8d4d-e10e70df384f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c96f29d-66cc-4b38-9868-f7aeeeac3193",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FieldName\": \"<string>\",\n  \"IsRequired\": \"<boolean>\",\n  \"AdminOnly\": false,\n  \"Access\": \"<string>\",\n  \"FieldInstructions\": \"<string>\",\n  \"Order\": \"<integer>\",\n  \"AllowedValues\": [\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    },\n    {\n      \"Id\": \"<integer>\",\n      \"Label\": \"<string>\",\n      \"Position\": \"<integer>\",\n      \"SelectedByDefault\": \"<boolean>\",\n      \"ExtraCost\": \"<decimal>\"\n    }\n  ],\n  \"RulesAndTermsInfo\": {\n    \"Text\": \"<string>\",\n    \"Link\": \"<string>\"\n  },\n  \"ExistsInLevels\": [\n    {\n      \"Id\": \"<integer>\"\n    },\n    {\n      \"Id\": \"<integer>\"\n    }\n  ],\n  \"MemberAccess\": \"<string>\",\n  \"RenewalPolicy\": {\n    \"IncludeInRenewals\": \"<boolean>\",\n    \"AllowedToChangeInRenewal\": \"<boolean>\"\n  },\n  \"ProrateInApplication\": \"<boolean>\",\n  \"ExtraCharge\": {\n    \"MultiplierType\": \"<string>\",\n    \"Multiplier\": \"<decimal>\",\n    \"MinAmount\": \"<integer>\",\n    \"MaxAmount\": \"<integer>\",\n    \"MinCharge\": \"<decimal>\",\n    \"MaxCharge\": \"<decimal>\"\n  },\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d437f97c-1188-4fe5-8525-0a2b6e67fb03",
+          "name": "WildApricot Removes Existing Field by Id",
+          "request": {
+            "name": "WildApricot Removes Existing Field by Id",
+            "description": {
+              "content": "removes existing field by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contactfields",
+                ":contactFieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "contactFieldId",
+                  "description": "(Required) contact field identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9940dec2-e66e-4513-84d1-23f55ce0afb5",
+              "name": "return true if field was removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "true",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97da2f0e-4926-433e-8584-500e41cd5f6f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78989459-31fc-47af-9793-0f082fc3c8e3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72342aec-2554-469e-81cd-2b75f04aea50",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contactfields",
+                    ":contactFieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactFieldId",
+                      "description": "(Required) contact field identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wildapricot.org/v2.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d73b8a69-fdcb-4d7b-9f24-598bc27e1f60",
+    "name": "WildApricot Admin Accounts Contacts.CustomFields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+      "type": "text/plain"
+    }
+  }
+}

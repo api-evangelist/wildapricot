@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Contacts API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Contacts List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts",
+            "params": [
+              {
+                "name": "$async",
+                "value": "",
+                "type": "query",
+                "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n"
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Controls which fields are returned in the Contacts API call.  The field names correspond to the fields returned by the [ContactFields API call](#/Contacts.CustomFields/GetContactFieldDefinitions), not the field names that appear in Wild Apricot. Multiple field names are separated by commas, and field names with spaces or special characters are enclosed in single quotation marks.\n"
+              },
+              {
+                "name": "$sort",
+                "value": "",
+                "type": "query",
+                "description": "\nOrdering expression. There are 2 sorting options - **Name** and  **MemberSince**. And also 2 direction modifiers - **asc** and **desc**.\n---\nExample of valid expression - MemberSince asc\n"
+              },
+              {
+                "name": "simpleQuery",
+                "value": "",
+                "type": "query",
+                "description": "\nsimpleQuery is a parameter which allows you to search for contacts by matching a substring in first name, last name, organization, email or phone. This is simpler than using $filter parameter. \n"
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "\nSpecifies that the result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n"
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nContacts search can be executed in synchronous and asynchronous manner. It depends on $async query string parameters.\n  # Synchronous call\n  When API call is processing synchronously, then response is just an array of contacts.\n  To make a synchronous contacts search, client application should make a request with query string parameter **$async=false**.\n\n  `GET https://api.wildapricot.org/v2/accounts/{account_id}/contacts?$async=false&OTHER_QUERY_PARAMS`\n\n  # Asynchronous call\n  Contacts search"
+        },
+        {
+          "info": {
+            "name": "WildApricot Create a New Contact or Member Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Create a New Contact or Member Record"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Current Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/me",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Current Contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Member or Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              },
+              {
+                "name": "getExtendedMembershipInfo",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen GetExtendedMembershipInfo specified the API returns the information about membership order status, membership invoice and allowed actions for current member status.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Member or Contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Information About Existing Member or Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "In order to update contact details it is recommended to provide only the custom fields you want to modify. See POST .../contacts for more details.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete an Archived Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique contact identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an archived contact"
+        },
+        {
+          "info": {
+            "name": "WildApricot Accepts Terms of Use.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/AcceptTermsOfUse",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Accepts Wild Apricot Terms of Use for currently loged in user. Does nothing if accepted already.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

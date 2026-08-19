@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Finances.Invoices API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Finances.Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Invoices by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of contact to whom the invoice is assigned."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event. When specified API returns collection of invoices associated with event registrations for the event."
+              },
+              {
+                "name": "eventRegistrationId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event registration. When specified API returns invoice related to the registration. Usually a single invoice."
+              },
+              {
+                "name": "unpaidOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only unpaid invoices."
+              },
+              {
+                "name": "paidOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only paid invoices."
+              },
+              {
+                "name": "includeVoided",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API also returns voided invoices."
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only collection of identifiers instead of collection of invoices."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to invoices created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to invoices created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nâš  There are 3 parameters, which cannot be used simultaneously. API uses only one parameter of contactId, eventId and eventRegistrationId exactly in this order. For example if request contains both contactId and eventId, then API uses only contactId to filter invoices.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Invoice."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique invoice identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Invoice"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Invoice Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Invoice Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Invoice"
+        },
+        {
+          "info": {
+            "name": "WildApricot Generate or Update Invoice for Existing Event Registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/GenerateInvoiceForEventRegistration",
+            "params": [
+              {
+                "name": "eventRegistrationId",
+                "value": "",
+                "type": "query",
+                "description": "Event registration ID with pending membership"
+              },
+              {
+                "name": "updateIfExists",
+                "value": "",
+                "type": "query",
+                "description": "If set to true and invoice already exists, API will update the invoice items."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Generate or Update Invoice for Existing Event Registration."
+        },
+        {
+          "info": {
+            "name": "WildApricot Void Active Invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/VoidInvoice",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "query",
+                "description": "invoiceId ID to void"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "See https://gethelp.wildapricot.com/en/articles/76#voiding for details on invoice voiding"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

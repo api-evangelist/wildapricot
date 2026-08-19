@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Events API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Events List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events",
+            "params": [
+              {
+                "name": "$async",
+                "value": "",
+                "type": "query",
+                "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n"
+              },
+              {
+                "name": "resultId",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "\nFilters the results of the Events API call so that only those records that match the filter criteria are included.\nThe following filter criterias are supported:\n\n  - Id, Supported operations: in.\n  - RegistrationEnabled, Supported operations: eq, ne.\n  - IsUpcoming, Supported operations: eq, ne.\n  - Tags, Supported operations: in.\n  - StartDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - EndDate, Supported operations: eq, ne, gt, ge, lt, le.\n  - Name, Supported operations: eq, ne, substringof.\n  - TextIndex, Supported operations: substringof.\n"
+              },
+              {
+                "name": "$sort",
+                "value": "",
+                "type": "query",
+                "description": "\nThis parameter can be used to sort list of IDs or list of events. Possible values are\n\n  - ByStartDate asc - sort events by their Start date. Ascending order.\n  - ByStartDate desc - sort events by their Start date. Descending order.\n  - ByStartSession asc - sort events by start of their sessions (if exists). All past events ignored\n\n  Example: $sort=ByStartDate asc"
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "\nSpecifies that result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n"
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Events List"
+        },
+        {
+          "info": {
+            "name": "WildApricot Create a New Event Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Create a New Event Record"
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Event"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Information About Existing Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Information About Existing Event"
+        },
+        {
+          "info": {
+            "name": "WildApricot Completely Delete Event from System.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Unique event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Completely delete event from system."
+        },
+        {
+          "info": {
+            "name": "WildApricot Clone Existed Event.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/CloneEvent",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Clone Existed Event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

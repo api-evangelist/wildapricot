@@ -1,0 +1,2199 @@
+{
+  "item": [
+    {
+      "id": "df942fc8-e704-48ab-9e15-6211406507e3",
+      "name": "Contacts",
+      "description": {
+        "content": "Contact/member management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63e44620-05b4-4d3c-8911-1c3d374cea49",
+          "name": "WildApricot Contacts List",
+          "request": {
+            "name": "WildApricot Contacts List",
+            "description": {
+              "content": "\nContacts search can be executed in synchronous and asynchronous manner. It depends on $async query string parameters.\n  # Synchronous call\n  When API call is processing synchronously, then response is just an array of contacts.\n  To make a synchronous contacts search, client application should make a request with query string parameter **$async=false**.\n\n  `GET https://api.wildapricot.org/v2/accounts/{account_id}/contacts?$async=false&OTHER_QUERY_PARAMS`\n\n  # Asynchronous call\n  Contacts search is processed asynchronously by default. So if client application specifies $async=true, or does not specify this parameter at all, the request is processed as described below. In this case contacts search is a two-step action.\n  - **Search request**. Client specifies search conditions and receives resultId. See $filter and $select parameters for filtering.\n  - **Retrieve result**. Client passes resultId and receives request processing status and contacts list if request is already processed\n\n![async contact search diagramm](http://localhost:8019/Content/swagger/WAFiles/ContactListAsyncCall.png)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$async",
+                  "value": "<boolean>",
+                  "description": "\nControls whether the API call is perform asynchronously. Default value if true.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "resultId",
+                  "value": "<string>",
+                  "description": "\nThis parameter is used on a second step of asynchronous search. It should equal to the value of ResultId in response to the first step of asynchronous search.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "\nFilters the results of the Contacts API call so that only those records that match the filter criteria are included.\nSee [Filtering the results](http://gethelp.wildapricot.com/en/articles/502#filtering) for details.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Controls which fields are returned in the Contacts API call.  The field names correspond to the fields returned by the [ContactFields API call](#/Contacts.CustomFields/GetContactFieldDefinitions), not the field names that appear in Wild Apricot. Multiple field names are separated by commas, and field names with spaces or special characters are enclosed in single quotation marks.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "$sort",
+                  "value": "<string>",
+                  "description": "\nOrdering expression. There are 2 sorting options - **Name** and  **MemberSince**. And also 2 direction modifiers - **asc** and **desc**.\n---\nExample of valid expression - MemberSince asc\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "simpleQuery",
+                  "value": "<string>",
+                  "description": "\nsimpleQuery is a parameter which allows you to search for contacts by matching a substring in first name, last name, organization, email or phone. This is simpler than using $filter parameter. \n"
+                },
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "\nSpecifies that the result should contain only a total number of records matching criteria. Requests with specified $count parameter are always processed as synchronous.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "idsOnly",
+                  "value": "<boolean>",
+                  "description": "\nWhen idsOnly specified, the API returns only a list of identifiers matching criteria.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "beb6a5de-dc09-4a7c-bc89-4c87b2d91318",
+              "name": "A wrapper object, which contains a list of contacts, contact identifiers, contacts count or information about asynchronous search request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$async",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "resultId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "simpleQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ResultId\": \"string\",\n  \"ResultUrl\": \"string\",\n  \"Requested\": \"string\",\n  \"Processed\": \"string\",\n  \"ProcessingState\": \"Waiting\",\n  \"InitialQuery\": {\n    \"ObjectType\": \"string\",\n    \"FilterExpression\": \"string\",\n    \"SelectExpression\": \"string\",\n    \"ReturnIds\": true\n  },\n  \"ErrorDetails\": \"string\",\n  \"ContactIdentifiers\": [\n    3070,\n    6409\n  ],\n  \"Count\": 5801,\n  \"Contacts\": [\n    {\n      \"Id\": 870,\n      \"Url\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Organization\": \"string\",\n      \"Email\": \"string\",\n      \"DisplayName\": \"string\",\n      \"ProfileLastUpdated\": \"1951-04-11\",\n      \"MembershipLevel\": {\n        \"Name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"MembershipEnabled\": false,\n      \"Status\": \"Lapsed\",\n      \"IsAccountAdministrator\": true,\n      \"TermsOfUseAccepted\": true,\n      \"FieldValues\": [\n        {\n          \"CustomAccessLevel\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"CustomAccessLevel\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    {\n      \"Id\": 9598,\n      \"Url\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Organization\": \"string\",\n      \"Email\": \"string\",\n      \"DisplayName\": \"string\",\n      \"ProfileLastUpdated\": \"1962-01-22\",\n      \"MembershipLevel\": {\n        \"Name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"MembershipEnabled\": false,\n      \"Status\": \"PendingRenewal\",\n      \"IsAccountAdministrator\": true,\n      \"TermsOfUseAccepted\": true,\n      \"FieldValues\": [\n        {\n          \"CustomAccessLevel\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"CustomAccessLevel\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5d33474-ed60-456d-a072-011c425481d7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$async",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "resultId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "simpleQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d8abb15-b2c6-4b6a-80d4-4eb1cc814266",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$async",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "resultId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "simpleQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb44cd1a-37b6-45e6-ba7c-c0067c075722",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$async",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "resultId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "simpleQuery",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "idsOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67220e8a-01e4-450c-82ce-a42ed5e27cbe",
+          "name": "WildApricot Create a New Contact or Member Record",
+          "request": {
+            "name": "WildApricot Create a New Contact or Member Record",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "391e7595-29dd-4229-8b44-193a8bba7ec4",
+              "name": "Returns created contact record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 9982,\n  \"Url\": \"string\",\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Organization\": \"string\",\n  \"Email\": \"string\",\n  \"DisplayName\": \"string\",\n  \"ProfileLastUpdated\": \"1998-03-20\",\n  \"MembershipLevel\": {\n    \"Id\": 7297,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"MembershipEnabled\": true,\n  \"Status\": \"PendingNew\",\n  \"ExtendedMembershipInfo\": {\n    \"PendingMembershipOrderStatusType\": \"MultipleInvoiceNotPaidMemberPending\",\n    \"PendingMembershipInvoice\": {\n      \"Id\": 9454,\n      \"Url\": \"string\"\n    },\n    \"AllowedActions\": [\n      {\n        \"Id\": 398,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      },\n      {\n        \"Id\": 9226,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      }\n    ]\n  },\n  \"IsAccountAdministrator\": false,\n  \"TermsOfUseAccepted\": true,\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Nobody\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Public\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebc6de09-1939-4fb4-a35e-aa1a2205867c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18c43df8-f468-4bef-92ea-c9ef6a76b42f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b495bb3-6967-4355-90eb-db2ef67c2b13",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "865c33ef-f95b-42e8-94f7-d41a3fff30c8",
+          "name": "WildApricot Retrieve Information About Current Contact",
+          "request": {
+            "name": "WildApricot Retrieve Information About Current Contact",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1aee5d35-2938-4676-b9f5-7fda8df245b2",
+              "name": "information about current contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 3150,\n  \"Url\": \"string\",\n  \"DisplayName\": \"string\",\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Email\": \"string\",\n  \"Organization\": \"string\",\n  \"Status\": \"PendingNew\",\n  \"MembershipLevel\": {\n    \"Id\": 6922,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"IsAccountAdministrator\": false,\n  \"TermsOfUseAccepted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20dc98aa-cff1-4a65-8c87-4ae8fb81d999",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c4017c8-756a-47fb-8b56-b36b47f193ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "471c203b-fe1d-4fc0-846d-bdbf85e5c559",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "478d1679-8fd3-4754-a94e-8fe78a8b5347",
+          "name": "WildApricot Retrieve Information About Specific Member or Contact",
+          "request": {
+            "name": "WildApricot Retrieve Information About Specific Member or Contact",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "getExtendedMembershipInfo",
+                  "value": "<boolean>",
+                  "description": "\nWhen GetExtendedMembershipInfo specified the API returns the information about membership order status, membership invoice and allowed actions for current member status.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "contactId",
+                  "description": "(Required) Unique contact identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6cc3d39-51d6-43c7-bf67-ad4bd67167cd",
+              "name": "information about specific member or contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "getExtendedMembershipInfo",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 2132,\n  \"Url\": \"string\",\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Organization\": \"string\",\n  \"Email\": \"string\",\n  \"DisplayName\": \"string\",\n  \"ProfileLastUpdated\": \"2009-02-18\",\n  \"MembershipLevel\": {\n    \"Id\": 3437,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"MembershipEnabled\": false,\n  \"Status\": \"PendingUpgrade\",\n  \"ExtendedMembershipInfo\": {\n    \"PendingMembershipOrderStatusType\": \"PendingNoCorrespondingInvoice\",\n    \"PendingMembershipInvoice\": {\n      \"Id\": 8866,\n      \"Url\": \"string\"\n    },\n    \"AllowedActions\": [\n      {\n        \"Id\": 7516,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      },\n      {\n        \"Id\": 9449,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      }\n    ]\n  },\n  \"IsAccountAdministrator\": false,\n  \"TermsOfUseAccepted\": true,\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Public\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Public\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6359d9c-9e38-4b9d-9cf5-1e1086c17e6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "getExtendedMembershipInfo",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "704c37e2-4e7d-4f22-831c-21c84e046173",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "getExtendedMembershipInfo",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c15e49e-ea6d-411e-831d-7040a38880a0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "getExtendedMembershipInfo",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "870ba25d-5651-458e-83e6-ecf67dfe0f91",
+          "name": "WildApricot Update Information About Existing Member or Contact",
+          "request": {
+            "name": "WildApricot Update Information About Existing Member or Contact",
+            "description": {
+              "content": "In order to update contact details it is recommended to provide only the custom fields you want to modify. See POST .../contacts for more details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "contactId",
+                  "description": "(Required) Unique contact identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\",\n  \"Id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b75a9a66-7efc-4b32-ab80-80074bcafb4e",
+              "name": "Updated version of contact information.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 2132,\n  \"Url\": \"string\",\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Organization\": \"string\",\n  \"Email\": \"string\",\n  \"DisplayName\": \"string\",\n  \"ProfileLastUpdated\": \"2009-02-18\",\n  \"MembershipLevel\": {\n    \"Id\": 3437,\n    \"Url\": \"string\",\n    \"Name\": \"string\"\n  },\n  \"MembershipEnabled\": false,\n  \"Status\": \"PendingUpgrade\",\n  \"ExtendedMembershipInfo\": {\n    \"PendingMembershipOrderStatusType\": \"PendingNoCorrespondingInvoice\",\n    \"PendingMembershipInvoice\": {\n      \"Id\": 8866,\n      \"Url\": \"string\"\n    },\n    \"AllowedActions\": [\n      {\n        \"Id\": 7516,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      },\n      {\n        \"Id\": 9449,\n        \"Url\": \"string\",\n        \"Name\": \"string\"\n      }\n    ]\n  },\n  \"IsAccountAdministrator\": false,\n  \"TermsOfUseAccepted\": true,\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Public\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\",\n      \"CustomAccessLevel\": \"Public\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d6a2d5e-610f-4182-a316-5d4b422aaa0c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e34e0093-b0f1-4369-b1bc-bd26022aa1a8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68a8a911-177d-4199-9fe5-8dd8a74ce1b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Organization\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"MembershipLevel\": {\n    \"Id\": \"<integer>\"\n  },\n  \"MembershipEnabled\": \"<boolean>\",\n  \"Status\": \"<string>\",\n  \"Password\": \"<string>\",\n  \"FieldValues\": [\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    },\n    {\n      \"FieldName\": \"<string>\",\n      \"SystemCode\": \"<string>\",\n      \"Value\": \"<object>\"\n    }\n  ],\n  \"RecreateInvoice\": \"<boolean>\",\n  \"Id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f97818b-db67-4f0e-8d9a-4fdc7ea7736c",
+          "name": "WildApricot Delete an Archived Contact",
+          "request": {
+            "name": "WildApricot Delete an Archived Contact",
+            "description": {
+              "content": "Delete an archived contact",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "contactId",
+                  "description": "(Required) Unique contact identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b10c5b7c-e78d-498f-b110-958176cb9bff",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45752516-fa71-4bdb-bc89-87e6f6e174b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e3b134a3-0599-40e4-965f-6a91864c9bc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "debcddc2-04e0-4e27-a74d-0c5db75c1dcc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8d4cc3e-abd4-42ea-a367-aed6e4256868",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "contactId",
+                      "description": "(Required) Unique contact identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a0d959f-b4cd-456a-860f-f09265494191",
+          "name": "WildApricot Accepts Terms of Use.",
+          "request": {
+            "name": "WildApricot Accepts Terms of Use.",
+            "description": {
+              "content": "Accepts Wild Apricot Terms of Use for currently loged in user. Does nothing if accepted already.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rpc",
+                ":accountId",
+                "AcceptTermsOfUse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4afc1c6c-ba94-482b-8467-f4b720e5cff7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "AcceptTermsOfUse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d15428c0-03fd-4142-b166-63a5844a51a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "AcceptTermsOfUse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac307383-a15b-401e-8b0c-a4fd00cab0ca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rpc",
+                    ":accountId",
+                    "AcceptTermsOfUse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wildapricot.org/v2.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a59605b8-594b-4566-808a-233b941b651d",
+    "name": "WildApricot Admin Accounts Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+      "type": "text/plain"
+    }
+  }
+}

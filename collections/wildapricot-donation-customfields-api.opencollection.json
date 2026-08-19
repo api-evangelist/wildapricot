@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Donation.CustomFields API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Donation.CustomFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Custom Fields Related to Donations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields",
+            "params": [
+              {
+                "name": "showSectionDividers",
+                "value": "",
+                "type": "query",
+                "description": "Default value is false. Specifies whether section dividers also should be presented in the response."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and could not be removed.\n - Custom fields could be defined by administrator to store some data specific to your account.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Donation Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Donation Field"
+        },
+        {
+          "info": {
+            "name": "WildApricot Updates an Existing Donation Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields/:donationFieldId",
+            "params": [
+              {
+                "name": "donationFieldId",
+                "value": "",
+                "type": "path",
+                "description": "donation field identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Limitations: field type can not be changed"
+        },
+        {
+          "info": {
+            "name": "WildApricot Removes Existing Field by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/donationfields/:donationFieldId",
+            "params": [
+              {
+                "name": "donationFieldId",
+                "value": "",
+                "type": "path",
+                "description": "donation field identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "removes existing field by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,342 @@
+{
+  "item": [
+    {
+      "id": "b7cdfd22-030e-4cf2-8df6-3e7c7b4f0fd5",
+      "name": "Finances.PaymentAllocations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07ec1b49-8afe-47b9-8251-a72d0877f4f4",
+          "name": "WildApricot Get List Describing How Payments Are Allocated Among Invoices.",
+          "request": {
+            "name": "WildApricot Get List Describing How Payments Are Allocated Among Invoices.",
+            "description": {
+              "content": "At least one parameter InvoiceId or PaymentId or RefundId should be specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "paymentAllocations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "InvoiceId",
+                  "value": "<integer>",
+                  "description": "Identifier of invoice."
+                },
+                {
+                  "disabled": false,
+                  "key": "PaymentId",
+                  "value": "<integer>",
+                  "description": "Identifier of payment."
+                },
+                {
+                  "disabled": false,
+                  "key": "RefundId",
+                  "value": "<integer>",
+                  "description": "Identifier of refund."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "auto"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth.wildapricot.org/auth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "318b1354-ad11-4a42-b6fb-32409e644f97",
+              "name": "Collection of allocations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "paymentAllocations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InvoiceId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PaymentId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "RefundId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": 1802,\n  \"Value\": 1859.4743489629461,\n  \"Invoice\": {\n    \"Id\": 3148,\n    \"Url\": \"string\"\n  },\n  \"InvoiceDate\": \"2022-09-10\",\n  \"InvoiceNumber\": \"string\",\n  \"Payment\": {\n    \"Id\": 7893,\n    \"Url\": \"string\"\n  },\n  \"PaymentDate\": \"1988-04-22\",\n  \"PaymentType\": \"Unknown\",\n  \"Refund\": {\n    \"Id\": 9485,\n    \"Url\": \"string\"\n  },\n  \"RefundDate\": \"2021-04-03\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc74a367-ccee-40ec-90b9-7258dd8636c3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "paymentAllocations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InvoiceId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PaymentId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "RefundId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c8fb411-aa24-44d5-af38-e2bdfa70978e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "paymentAllocations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InvoiceId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PaymentId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "RefundId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cae0988d-424a-49ea-a79a-5e327df4fb2d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "paymentAllocations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InvoiceId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PaymentId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "RefundId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wildapricot.org/v2.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "82837835-5beb-4a4d-a489-44992f035891",
+    "name": "WildApricot Admin Accounts Finances.PaymentAllocations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.\n\nContact Support:\n Name: WildApricot Support",
+      "type": "text/plain"
+    }
+  }
+}

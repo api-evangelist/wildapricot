@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Finances.Refunds API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Finances.Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Get List of Refunds by Criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of contact to whom the refund was made."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of event. When specified API returns collection of refunds settled to invoices associated with event registrations for the event."
+              },
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only collection of identifiers instead of collection of refunds."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to refunds created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to refunds created before EndDate."
+              },
+              {
+                "name": "unsettledOnly",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, API returns only unsettled refunds."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "You can filter the refunds by specifying a set of refund IDs."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Get List of Refunds by Criteria."
+        },
+        {
+          "info": {
+            "name": "WildApricot Creates a New Refund.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Creates a New Refund."
+        },
+        {
+          "info": {
+            "name": "WildApricot Retrieve Information About Specific Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path",
+                "description": "Unique refund identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Retrieve Information About Specific Refund"
+        },
+        {
+          "info": {
+            "name": "WildApricot Update Existing Refund Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Update Existing Refund Information"
+        },
+        {
+          "info": {
+            "name": "WildApricot Delete Existing Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/refunds/:refundId",
+            "params": [
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Delete Existing Refund"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

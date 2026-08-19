@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Emailing.SentEmails API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emailing.SentEmails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Sent Emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/SentEmails",
+            "params": [
+              {
+                "name": "idsOnly",
+                "value": "",
+                "type": "query",
+                "description": "To get only a list of email identifiers as a result of search request.\n"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "Allowed filter fields (**allowed operations**):\n  - *SentDate* (**ge**, **le**),\n  - *SenderId* (**eq**) - ID of sender,\n  - *OriginType* (**eq**) - see SentEmail.Origin.OriginType,\n  - *SendingType* (**eq**) -SentEmail.SendingType (Automatic or Manual)\n\n  only AND boolean operator supported\n  - ...&$filter=SentDate ge 2018-05-01 - will return records sent on or after May 1st, 2018"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Sent emails"
+        },
+        {
+          "info": {
+            "name": "WildApricot Sent Email Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/SentEmails/:emailId",
+            "params": [
+              {
+                "name": "emailId",
+                "value": "",
+                "type": "path",
+                "description": "Email unique Id"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Sent email details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Membership.Operations API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Membership.Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Approve Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/ApprovePendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID to approve membership"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Reject Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/RejectPendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID to reject membership"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Generate or Update Invoice for Pending Membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/rpc/:accountId/GenerateInvoiceForPendingMembership",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Contact ID with pending membership"
+              },
+              {
+                "name": "updateIfExists",
+                "value": "",
+                "type": "query",
+                "description": "update the invoice items if already exists"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "\nAvailability of this action depends on contact's state. In order to prevent failures it is recommended to get contact details with parameter getExtendedMembershipInfo=true and use list of allowed actions from Contact.ExtendedMembershipInfo.AllowedActions. If this action is not allowed but client calls it, then API returns HTTP 400, Bad request.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

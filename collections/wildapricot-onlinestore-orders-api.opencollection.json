@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts OnlineStore.Orders API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OnlineStore.Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/orders/{orderNumber}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/orders/:orderNumber",
+            "params": [
+              {
+                "name": "orderNumber",
+                "value": "",
+                "type": "path",
+                "description": "Order number"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/orders/{orderNumber}"
+        },
+        {
+          "info": {
+            "name": "WildApricot GET /accounts/{accountId}/store/orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/store/orders",
+            "params": [
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "'Specifies the number of records to skip (not include in a result set). For example if you expect about 300 records in result set and want to get them in small portions, you could make do so with 3 calls:'\n- ...&$top=100 - will return records from 0 to 99 - ...?$skip=100&top=100' - will return records from 100 to 199 - ...?$skip=200' - will return records from 199 to the end\n"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "this parameter specifies the maximum number of entries to be returned"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "paymentStatus",
+                "value": "",
+                "type": "query",
+                "description": "Invoice status"
+              },
+              {
+                "name": "From",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range"
+              },
+              {
+                "name": "To",
+                "value": "",
+                "type": "query",
+                "description": "End of the range"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot GET /accounts/{accountId}/store/orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Attachments API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot Download Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/:attachmentId",
+            "params": [
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "Attachment identifier"
+              },
+              {
+                "name": "asBase64",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded image will be returned."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Attachment, available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Get Attachments Infos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/GetInfos",
+            "params": [
+              {
+                "name": "attachmentIds",
+                "value": "",
+                "type": "query",
+                "description": "list of comma separated Attachment identifiers"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Attachment infos, available for specific account."
+        },
+        {
+          "info": {
+            "name": "WildApricot Upload Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/attachments/Upload",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Upload attachments data and get their identifiers to use for contact values.  Attachment not used for any Contact field value will be deleted in 30 minutes.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WildApricot Admin Accounts Finances.AuditLog API",
+    "version": "7.24.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Finances.AuditLog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WildApricot List of Audit Log Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/auditLogItems",
+            "params": [
+              {
+                "name": "filterObjectType",
+                "value": "",
+                "type": "query",
+                "description": "Kind of object for audit log filter"
+              },
+              {
+                "name": "FilterObjectId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifyer of type filterObjectType"
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to log items created since StartDate."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "Limits result to log items created before EndDate."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List filter has limitations.\n - if filterObjectType is set then FilterObjectId must be set too.\n - empty filter not allowed (none of filterObjectType, FilterObjectId, StartDate and EndDate are set).\n"
+        },
+        {
+          "info": {
+            "name": "WildApricot Single Audit Log Item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wildapricot.org/v2.2/accounts/:accountId/auditLogItems/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Audit log item identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://oauth.wildapricot.org/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "WildApricot Single Audit Log Item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
