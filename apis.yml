@@ -32,7 +32,7 @@ tags:
 created: '2025-02-17'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/wildapricot/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: wildapricot:wildapricot-accounts-api
   name: WildApricot Accounts API
