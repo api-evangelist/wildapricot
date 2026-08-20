@@ -26,6 +26,12 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wildaprico
 tags:
   - Membership Management
   - Associations
+  - Non-Profit
+  - Event
+  - Payments
+tags_raw:
+  - Membership Management
+  - Associations
   - Nonprofit
   - Events
   - Payments
@@ -40,6 +46,8 @@ apis:
   humanURL: https://app.wildapricot.com/interfaces/api
   baseURL: https://api.wildapricot.org/v2.2
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -101,6 +109,8 @@ apis:
   humanURL: https://app.wildapricot.com/interfaces/api
   baseURL: https://api.wildapricot.org/v2.2
   tags:
+  - Contacts Custom Fields
+  tags_raw:
   - Contacts.CustomFields
   properties:
   - type: OpenAPI
@@ -243,6 +253,8 @@ apis:
   humanURL: https://app.wildapricot.com/interfaces/api
   baseURL: https://api.wildapricot.org/v2.2
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
