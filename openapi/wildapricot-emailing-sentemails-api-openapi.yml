@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Emailing.SentEmails API
+  title: WildApricot Admin Accounts Emailing.Sent Emails API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -107,44 +107,56 @@ paths:
         - auto
 components:
   schemas:
-    EmailLogRecords:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailLogRecord'
-          description: 'Collection of email log records.
-
-            '
-    EmailOriginType:
+    EmailType:
       type: string
       enum:
-      - System
-      - Contact
-      - MembershipLevel
-      - Event
-      - Donation
-      - WebPage
-      - ForumTopicSubscription
-      - FinancialDocument
-      - NewPasswordEmail
-      - OnlineStoreOrder
-      - PollStartAnnouncement
-      description: Email origin type.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    InitializationSourceType:
-      type: string
-      enum:
-      - Automatic
-      - Manual
-      description: Email initialization source type.
-    EmailLog:
-      allOf:
-      - $ref: '#/components/schemas/EmailLogRecords'
-      - $ref: '#/components/schemas/EmailLogIdentifiers'
+      - Unknown
+      - MemberApplication_ActivationEmail
+      - MemberApplication_InitiationEmail
+      - MemberApplication_BundleMember_ActivationEmail
+      - MemberApplication_BundleAdmin_ActivationEmail
+      - MemberRenewal_FreeRenewal
+      - MemberRenewal_RenewalPending
+      - MemberRenewal_RenewalConfirmed
+      - MemberRenewal_RenewalCanceledByMember
+      - MemberRenewal_MemberRenewal_RecurringRenewalFailed
+      - MemberRenewal_Online_PaymentSuccessfull
+      - MemberRenewal_AdvanceRenewalReminder1
+      - MemberRenewal_AdvanceRenewalReminder2
+      - MemberRenewal_RenewalDateNotice
+      - MemberRenewal_GracePeriod
+      - MemberRenewal_Lapsed
+      - MemberLevelChange_InitiationEmail
+      - MemberLevelChange_ActivationEmail
+      - Donation_Confirmation
+      - EventRegistration_OfflinePayment_FreeLevelConfirmationEmail
+      - EventRegistration_OfflinePayment_PaidLevelConfirmationEmail
+      - EventRegistration_OfflinePayment_PaidLevelPendingEmail
+      - EventRegistration_NewWaitlistEntryEmail
+      - EventRegistration_CanceledEmail
+      - EventRegistration_OnlinePayment_PaidLevelConfirmationEmail
+      - EventRegistration_Reminder1
+      - EventRegistration_Reminder2
+      - EventRegistration_Reminder3
+      - EventRegistration_Announcement1
+      - EventRegistration_Announcement2
+      - EventRegistration_Announcement3
+      - EmailBlast_Members
+      - EmailBlast_Registrations
+      - EmailBlast_WaitlistPersons
+      - Finances_Invoice
+      - Finances_PaymentReceipt
+      - Finances_DonationReceipt
+      - Finances_RefundNote
+      - Contact_Password
+      - SubscriptionForm_Confirmation
+      - Public_MemberToMemberEmail
+      - Poll_Announcement_Notification
+      - ForgottenPasswordRequest
+      - ForumNotification
+      - ForumTopicNotification
+      - OnlineStore_Order
+      description: The reason why the email was sent.
     EmailLogRecord:
       type: object
       properties:
@@ -209,15 +221,12 @@ components:
           description: Unique origin identifier.
         Name:
           type: string
-    EmailLogIdentifiers:
-      type: object
-      properties:
-        EmailsIdentifiers:
-          type: array
-          items:
-            type: integer
-            description: Unique email identifier.
-          description: A collection of email log record identifiers.
+    InitializationSourceType:
+      type: string
+      enum:
+      - Automatic
+      - Manual
+      description: Email initialization source type.
     EmailRecipient:
       type: object
       properties:
@@ -254,56 +263,47 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    EmailType:
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    EmailLog:
+      allOf:
+      - $ref: '#/components/schemas/EmailLogRecords'
+      - $ref: '#/components/schemas/EmailLogIdentifiers'
+    EmailOriginType:
       type: string
       enum:
-      - Unknown
-      - MemberApplication_ActivationEmail
-      - MemberApplication_InitiationEmail
-      - MemberApplication_BundleMember_ActivationEmail
-      - MemberApplication_BundleAdmin_ActivationEmail
-      - MemberRenewal_FreeRenewal
-      - MemberRenewal_RenewalPending
-      - MemberRenewal_RenewalConfirmed
-      - MemberRenewal_RenewalCanceledByMember
-      - MemberRenewal_MemberRenewal_RecurringRenewalFailed
-      - MemberRenewal_Online_PaymentSuccessfull
-      - MemberRenewal_AdvanceRenewalReminder1
-      - MemberRenewal_AdvanceRenewalReminder2
-      - MemberRenewal_RenewalDateNotice
-      - MemberRenewal_GracePeriod
-      - MemberRenewal_Lapsed
-      - MemberLevelChange_InitiationEmail
-      - MemberLevelChange_ActivationEmail
-      - Donation_Confirmation
-      - EventRegistration_OfflinePayment_FreeLevelConfirmationEmail
-      - EventRegistration_OfflinePayment_PaidLevelConfirmationEmail
-      - EventRegistration_OfflinePayment_PaidLevelPendingEmail
-      - EventRegistration_NewWaitlistEntryEmail
-      - EventRegistration_CanceledEmail
-      - EventRegistration_OnlinePayment_PaidLevelConfirmationEmail
-      - EventRegistration_Reminder1
-      - EventRegistration_Reminder2
-      - EventRegistration_Reminder3
-      - EventRegistration_Announcement1
-      - EventRegistration_Announcement2
-      - EventRegistration_Announcement3
-      - EmailBlast_Members
-      - EmailBlast_Registrations
-      - EmailBlast_WaitlistPersons
-      - Finances_Invoice
-      - Finances_PaymentReceipt
-      - Finances_DonationReceipt
-      - Finances_RefundNote
-      - Contact_Password
-      - SubscriptionForm_Confirmation
-      - Public_MemberToMemberEmail
-      - Poll_Announcement_Notification
-      - ForgottenPasswordRequest
-      - ForumNotification
-      - ForumTopicNotification
-      - OnlineStore_Order
-      description: The reason why the email was sent.
+      - System
+      - Contact
+      - MembershipLevel
+      - Event
+      - Donation
+      - WebPage
+      - ForumTopicSubscription
+      - FinancialDocument
+      - NewPasswordEmail
+      - OnlineStoreOrder
+      - PollStartAnnouncement
+      description: Email origin type.
+    EmailLogIdentifiers:
+      type: object
+      properties:
+        EmailsIdentifiers:
+          type: array
+          items:
+            type: integer
+            description: Unique email identifier.
+          description: A collection of email log record identifiers.
+    EmailLogRecords:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailLogRecord'
+          description: 'Collection of email log records.
+
+            '
   securitySchemes:
     OAuth2:
       type: oauth2

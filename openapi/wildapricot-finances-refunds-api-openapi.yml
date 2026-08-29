@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: WildApricot Admin Accounts Finances.Refunds API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
@@ -240,10 +240,6 @@ paths:
         - auto
 components:
   schemas:
-    RefundsResponse:
-      allOf:
-      - $ref: '#/components/schemas/RefundIdsResponse'
-      - $ref: '#/components/schemas/RefundListResponse'
     CreateFinanceDocument:
       type: object
       properties:
@@ -268,23 +264,27 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who created the document. Could be null.
-    LinkedResourceWithName:
+    RefundsResponse:
       allOf:
-      - $ref: '#/components/schemas/LinkedResource'
+      - $ref: '#/components/schemas/RefundIdsResponse'
+      - $ref: '#/components/schemas/RefundListResponse'
+    UpdateRefundParams:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
       - type: object
         properties:
-          Name:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
             type: string
-            description: Resource name
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
+            description: Internal note on refund. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on refund. Visible to both administrators and person being refunded.
+          SettledValue:
+            type: number
+            format: float
+            description: The previously settled amount of the payment.
     FinanceDocument:
       type: object
       properties:
@@ -320,31 +320,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who modified the document. Could be null.
-    Refund:
+    LinkedResourceWithName:
       allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
+      - $ref: '#/components/schemas/LinkedResource'
       - type: object
         properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
+          Name:
             type: string
-            description: Internal note on refund. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on refund. Visible to both administrators and person being refunded.
-          SettledValue:
-            type: number
-            format: float
-            description: Total amount allocated to another finance documents (payments or donations).
-    RefundIdsResponse:
-      type: object
-      properties:
-        RefundIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+            description: Resource name
     RefundListResponse:
       type: object
       properties:
@@ -353,6 +336,15 @@ components:
           items:
             $ref: '#/components/schemas/Refund'
           description: List of refunds that match request criteria.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     CreateRefundParams:
       allOf:
       - $ref: '#/components/schemas/CreateFinanceDocument'
@@ -370,7 +362,18 @@ components:
             type: number
             format: float
             description: The previously settled amount of the payment.
-    UpdateRefundParams:
+    RefundIdsResponse:
+      type: object
+      properties:
+        RefundIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    Refund:
       allOf:
       - $ref: '#/components/schemas/FinanceDocument'
       - type: object
@@ -386,10 +389,7 @@ components:
           SettledValue:
             type: number
             format: float
-            description: The previously settled amount of the payment.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
+            description: Total amount allocated to another finance documents (payments or donations).
   securitySchemes:
     OAuth2:
       type: oauth2

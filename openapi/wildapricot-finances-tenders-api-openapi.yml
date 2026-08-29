@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: WildApricot Admin Accounts Finances.Tenders API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
@@ -186,11 +186,6 @@ paths:
         - auto
 components:
   schemas:
-    TendersResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Tender'
-      description: Collection of tenders.
     LinkedResourceWithName:
       allOf:
       - $ref: '#/components/schemas/LinkedResource'
@@ -199,15 +194,6 @@ components:
           Name:
             type: string
             description: Resource name
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     Tender:
       allOf:
       - $ref: '#/components/schemas/LinkedResourceWithName'
@@ -219,6 +205,20 @@ components:
           IsCustom:
             type: boolean
             description: Indicates that this tender is created by account admin, otherwise the tender is built-in.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    TendersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tender'
+      description: Collection of tenders.
   securitySchemes:
     OAuth2:
       type: oauth2

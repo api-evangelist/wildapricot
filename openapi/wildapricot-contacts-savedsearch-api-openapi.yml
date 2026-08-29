@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Contacts.SavedSearch API
+  title: WildApricot Admin Accounts Contacts.Saved Search API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -101,16 +101,6 @@ paths:
         - auto
 components:
   schemas:
-    SavedSearch:
-      allOf:
-      - $ref: '#/components/schemas/SavedSearchListItem'
-      - type: object
-        properties:
-          ContactIds:
-            type: array
-            items:
-              type: integer
-              description: Contact IDs found by Saved Search.
     SavedSearchListItem:
       type: object
       properties:
@@ -123,6 +113,16 @@ components:
         Description:
           type: string
           description: Save search description
+    SavedSearch:
+      allOf:
+      - $ref: '#/components/schemas/SavedSearchListItem'
+      - type: object
+        properties:
+          ContactIds:
+            type: array
+            items:
+              type: integer
+              description: Contact IDs found by Saved Search.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: WildApricot Admin Accounts Emailing.Drafts API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
@@ -198,13 +198,6 @@ components:
           type: string
           format: datetime
           description: Date and time when the draft will be sent.
-    EmailDraftType:
-      type: string
-      enum:
-      - Unknown
-      - ContactBlast
-      - EventAttendees
-      - EventWaitlistPersons
     ShortContact:
       type: object
       properties:
@@ -255,6 +248,16 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    EmailDraftType:
+      type: string
+      enum:
+      - Unknown
+      - ContactBlast
+      - EventAttendees
+      - EventWaitlistPersons
     EmailDraftListResult:
       type: object
       properties:
@@ -263,9 +266,6 @@ components:
           items:
             $ref: '#/components/schemas/EmailDraft'
           description: Collection of email drafts.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
   securitySchemes:
     OAuth2:
       type: oauth2

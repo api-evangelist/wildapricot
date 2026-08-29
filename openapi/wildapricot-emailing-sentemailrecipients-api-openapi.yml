@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Emailing.SentEmailRecipients API
+  title: WildApricot Admin Accounts Emailing.Sent Email Recipients API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -81,6 +81,26 @@ paths:
         - auto
 components:
   schemas:
+    ClickedLink:
+      type: object
+      properties:
+        Url:
+          type: string
+          description: Link address.
+        Clicked:
+          type: boolean
+          description: the link is clicked at least once
+        ClicksCount:
+          type: integer
+          description: Total number of link clicks (by all recipients).
+    SentEmailRecipientsRecords:
+      type: object
+      properties:
+        Recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentEmailRecipient'
+          description: Collection of email recipients.
     SentEmailRecipient:
       type: object
       properties:
@@ -119,26 +139,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClickedLink'
-    ClickedLink:
-      type: object
-      properties:
-        Url:
-          type: string
-          description: Link address.
-        Clicked:
-          type: boolean
-          description: the link is clicked at least once
-        ClicksCount:
-          type: integer
-          description: Total number of link clicks (by all recipients).
-    SentEmailRecipientsRecords:
-      type: object
-      properties:
-        Recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/SentEmailRecipient'
-          description: Collection of email recipients.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: WildApricot Admin Accounts Emailing.Operations API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
@@ -301,11 +301,6 @@ paths:
         - auto
 components:
   schemas:
-    EmailRecipients:
-      type: array
-      description: Collection of recipients.
-      items:
-        $ref: '#/components/schemas/EmailRecipient'
     EmailRecipient:
       type: object
       properties:
@@ -342,6 +337,11 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
     Error:
       type: object
       required:

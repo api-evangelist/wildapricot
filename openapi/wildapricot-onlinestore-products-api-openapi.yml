@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts OnlineStore.Products API
+  title: WildApricot Admin Accounts Online Store.Products API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -119,6 +119,11 @@ components:
           type: boolean
         trackInventory:
           type: boolean
+    ProductFile:
+      type: object
+      properties:
+        name:
+          type: string
     ProductType:
       type: string
       description: ''
@@ -137,66 +142,12 @@ components:
       enum:
       - FILE
       - LINK
-    ProductStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - AdminOnly
-      - Public
-      enum:
-      - ADMINONLY
-      - PUBLIC
-    ProductFile:
-      type: object
-      properties:
-        name:
-          type: string
     ProductLink:
       type: object
       properties:
         url:
           type: string
         code:
-          type: string
-    ProductVariantOptionValue:
-      type: object
-      properties:
-        title:
-          type: string
-        value:
-          type: string
-    ProductOption:
-      type: object
-      properties:
-        title:
-          type: string
-        values:
-          type: array
-          items:
-            type: string
-    Price:
-      type: object
-      required:
-      - regular
-      properties:
-        regular:
-          type: number
-          format: decimal
-        members:
-          type: number
-          format: decimal
-    DigitalProduct:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          $ref: '#/components/schemas/DigitalProductType'
-        productFile:
-          $ref: '#/components/schemas/ProductFile'
-        productLink:
-          $ref: '#/components/schemas/ProductLink'
-        emailNote:
           type: string
     Product:
       type: object
@@ -255,6 +206,55 @@ components:
         created:
           type: string
           format: date-time
+    ProductStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - AdminOnly
+      - Public
+      enum:
+      - ADMINONLY
+      - PUBLIC
+    ProductVariantOptionValue:
+      type: object
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+    Price:
+      type: object
+      required:
+      - regular
+      properties:
+        regular:
+          type: number
+          format: decimal
+        members:
+          type: number
+          format: decimal
+    ProductOption:
+      type: object
+      properties:
+        title:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+    DigitalProduct:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/DigitalProductType'
+        productFile:
+          $ref: '#/components/schemas/ProductFile'
+        productLink:
+          $ref: '#/components/schemas/ProductLink'
+        emailNote:
+          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

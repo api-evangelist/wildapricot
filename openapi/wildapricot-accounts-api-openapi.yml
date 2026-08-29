@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: WildApricot Admin Accounts API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
@@ -104,45 +104,6 @@ components:
         Price:
           type: number
           description: Monthly price
-    Resource:
-      type: object
-      required:
-      - Name
-      - Url
-      - AllowedOperations
-      properties:
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        Name:
-          type: string
-          description: Name of resource
-        Description:
-          type: string
-          description: Text description of the resource
-        AllowedOperations:
-          type: array
-          items:
-            type: string
-          description: 'Collection of allowed operations for this resource. Possible values are
-
-            GET - Resource can be requested
-
-            POST - Resource can be created
-
-            PUT - Resource can be updated
-
-            DELETE - Resource can be deleted
-
-            '
-    Localization:
-      type: object
-      properties:
-        DateFormat:
-          type: string
-          description: Date format like "d MMM yyyy"
-        TimeFormat:
-          type: string
-          description: Time format like "h:mm tt"
     Currency:
       type: object
       properties:
@@ -155,18 +116,6 @@ components:
         Symbol:
           type: string
           description: Currency symbol like $ or â‚¬
-    PaymentSettings:
-      type: object
-      properties:
-        GeneralPaymentInstructions:
-          type: string
-          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
-        EventPaymentInstructions:
-          type: string
-          description: For event registrations (can be changed for each event)
-        MembershipPaymentInstructions:
-          type: string
-          description: For membership applications, renewals and level changes
     TimeZone:
       type: object
       description: Details about account time zone
@@ -180,28 +129,6 @@ components:
         UtcOffset:
           type: integer
           description: Offcet from UTC Time in minutes, i.e. "180"
-    SquareRegisterSettings:
-      type: object
-      required:
-      - IntegrationEnabled
-      description: Settings for Square Register integration, used for mobile app
-      properties:
-        IntegrationEnabled:
-          type: boolean
-          description: Is integration enabled in admin UI.
-        ClientId:
-          type: string
-          description: (optional) Square client Id
-    ContactLimitInfo:
-      type: object
-      description: Details about limits on the number of contacts.
-      properties:
-        CurrentContactsCount:
-          type: integer
-          description: Number of contacts currently in database (archived excluded)
-        BillingPlanContactsLimit:
-          type: integer
-          description: Maximum number of contacts allowed by billing plan.
     Account:
       type: object
       description: Information about Wild Apricot account
@@ -249,6 +176,79 @@ components:
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
+    PaymentSettings:
+      type: object
+      properties:
+        GeneralPaymentInstructions:
+          type: string
+          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
+        EventPaymentInstructions:
+          type: string
+          description: For event registrations (can be changed for each event)
+        MembershipPaymentInstructions:
+          type: string
+          description: For membership applications, renewals and level changes
+    Localization:
+      type: object
+      properties:
+        DateFormat:
+          type: string
+          description: Date format like "d MMM yyyy"
+        TimeFormat:
+          type: string
+          description: Time format like "h:mm tt"
+    ContactLimitInfo:
+      type: object
+      description: Details about limits on the number of contacts.
+      properties:
+        CurrentContactsCount:
+          type: integer
+          description: Number of contacts currently in database (archived excluded)
+        BillingPlanContactsLimit:
+          type: integer
+          description: Maximum number of contacts allowed by billing plan.
+    Resource:
+      type: object
+      required:
+      - Name
+      - Url
+      - AllowedOperations
+      properties:
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Name:
+          type: string
+          description: Name of resource
+        Description:
+          type: string
+          description: Text description of the resource
+        AllowedOperations:
+          type: array
+          items:
+            type: string
+          description: 'Collection of allowed operations for this resource. Possible values are
+
+            GET - Resource can be requested
+
+            POST - Resource can be created
+
+            PUT - Resource can be updated
+
+            DELETE - Resource can be deleted
+
+            '
+    SquareRegisterSettings:
+      type: object
+      required:
+      - IntegrationEnabled
+      description: Settings for Square Register integration, used for mobile app
+      properties:
+        IntegrationEnabled:
+          type: boolean
+          description: Is integration enabled in admin UI.
+        ClientId:
+          type: string
+          description: (optional) Square client Id
   securitySchemes:
     OAuth2:
       type: oauth2

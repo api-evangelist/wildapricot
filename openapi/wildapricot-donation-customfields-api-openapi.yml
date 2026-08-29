@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Donation.CustomFields API
+  title: WildApricot Admin Accounts Donation.Custom Fields API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -167,6 +167,28 @@ paths:
         - auto
 components:
   schemas:
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
+    EditEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
     EntityFieldDescription:
       type: object
       required:
@@ -202,6 +224,16 @@ components:
           description: Sorting order to display the field in UI
         RulesAndTermsInfo:
           $ref: '#/components/schemas/RulesAndTermsInfo'
+    RulesAndTermsInfo:
+      type: object
+      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      properties:
+        Text:
+          type: string
+          description: Terms of use label.
+        Link:
+          type: string
+          description: Url of the rules and terms document.
     OptionsListItem:
       type: object
       properties:
@@ -221,28 +253,6 @@ components:
           type: number
           format: decimal
           description: Extra price for selecting this option. Used only by fields with an associated cost.
-    CustomFieldType:
-      type: string
-      enum:
-      - String
-      - DateTime
-      - Boolean
-      - Choice
-      - MultipleChoice
-      - Number
-      - SectionDivider
-      - CalculatedExtraCharge
-      - Picture
-      description: Custom field data type.
-    EditEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
     CreateEntityFieldParams:
       allOf:
       - $ref: '#/components/schemas/EntityFieldDescription'
@@ -252,16 +262,6 @@ components:
         properties:
           FieldType:
             $ref: '#/components/schemas/CustomFieldType'
-    RulesAndTermsInfo:
-      type: object
-      description: Additional info for fields with rules / terms conditions. Not present for other field types.
-      properties:
-        Text:
-          type: string
-          description: Terms of use label.
-        Link:
-          type: string
-          description: Url of the rules and terms document.
   securitySchemes:
     OAuth2:
       type: oauth2

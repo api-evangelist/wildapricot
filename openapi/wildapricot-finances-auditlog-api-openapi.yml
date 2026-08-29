@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Finances.AuditLog API
+  title: WildApricot Admin Accounts Finances.Audit Log API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -117,6 +117,17 @@ paths:
         - auto
 components:
   schemas:
+    AuditItemsListResult:
+      type: object
+      properties:
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogItem'
+          description: List of audit log items that match request criteria.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     LinkedResource:
       type: object
       properties:
@@ -207,17 +218,6 @@ components:
           - Deleted
           - Voided
           - Custom
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    AuditItemsListResult:
-      type: object
-      properties:
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditLogItem'
-          description: List of audit log items that match request criteria.
   securitySchemes:
     OAuth2:
       type: oauth2

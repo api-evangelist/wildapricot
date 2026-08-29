@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Events.EventRegistrationTypes API
+  title: WildApricot Admin Accounts Events.Event Registration Types API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -194,33 +194,6 @@ paths:
         - auto
 components:
   schemas:
-    EventRegistrationTypeResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventRegistrationType'
-      description: List of event registration types that match the request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    EventRegistrationUnavailabilityPolicy:
-      type: string
-      enum:
-      - ShowDisabled
-      - Hide
-      description: Indicates what is displayed if the registration type is not available for a particular visitor.
-    EventRegistrationCancellationBehavior:
-      type: string
-      enum:
-      - DoNotAllow
-      - AllowUpToPeriodBeforeEvent
-      - Allow
-      description: Indicates if it is possible for attendee to self-cancel event registration.
     EventRegistrationType:
       type: object
       properties:
@@ -286,13 +259,18 @@ components:
         IsWaitlistEnabled:
           type: boolean
           description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
-    EventRegistrationTypeAvailability:
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    ResourceUrl:
       type: string
-      enum:
-      - Everyone
-      - MembersOnly
-      - CodeRequired
-      description: Indicates who the registration type is available to.
+      description: Permanent resource URL in API.
     EventRegistrationTypeEditParams:
       type: object
       required:
@@ -364,6 +342,11 @@ components:
         IsWaitlistEnabled:
           type: boolean
           description: Indicated whether registrant should be placed on waitlist if registrations have reached their limit.
+    EventRegistrationTypeResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistrationType'
+      description: List of event registration types that match the request criteria.
     EventGuestRegistrationPolicy:
       type: string
       enum:
@@ -374,9 +357,26 @@ components:
       description: 'Describes how guests are registered. Allowed values are
 
         - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
-    ResourceUrl:
+    EventRegistrationUnavailabilityPolicy:
       type: string
-      description: Permanent resource URL in API.
+      enum:
+      - ShowDisabled
+      - Hide
+      description: Indicates what is displayed if the registration type is not available for a particular visitor.
+    EventRegistrationTypeAvailability:
+      type: string
+      enum:
+      - Everyone
+      - MembersOnly
+      - CodeRequired
+      description: Indicates who the registration type is available to.
+    EventRegistrationCancellationBehavior:
+      type: string
+      enum:
+      - DoNotAllow
+      - AllowUpToPeriodBeforeEvent
+      - Allow
+      description: Indicates if it is possible for attendee to self-cancel event registration.
   securitySchemes:
     OAuth2:
       type: oauth2
