@@ -121,7 +121,7 @@ apis:
   humanURL: https://app.wildapricot.com/interfaces/api
   baseURL: https://api.wildapricot.org/v2.2
   tags:
-  - Contacts Custom Fields
+  - Contacts.CustomFields
   tags_raw:
   - Contacts.CustomFields
   properties:
