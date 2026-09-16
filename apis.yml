@@ -114,29 +114,6 @@ apis:
     url: https://github.com/WildApricot/ApiSamples
   - type: SDKs
     url: https://github.com/douglasdeodato/wildapricot-python-api
-- aid: wildapricot:wildapricot-contacts-customfields-api
-  name: WildApricot Contacts.CustomFields API
-  description: >-
-    The Contacts.CustomFields API from WildApricot — 2 operation(s) for contacts.customfields.
-  humanURL: https://app.wildapricot.com/interfaces/api
-  baseURL: https://api.wildapricot.org/v2.2
-  tags:
-  - Contacts Custom Fields
-  tags_raw:
-  - Contacts.CustomFields
-  properties:
-  - type: OpenAPI
-    url: openapi/wildapricot-contacts-customfields-api-openapi.yml
-  - type: Documentation
-    url: https://app.wildapricot.com/interfaces/api
-  - type: APIReference
-    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
-  - type: Authentication
-    url: https://gethelp.wildapricot.com/en/articles/484
-  - type: SDKs
-    url: https://github.com/WildApricot/ApiSamples
-  - type: SDKs
-    url: https://github.com/douglasdeodato/wildapricot-python-api
 - aid: wildapricot:wildapricot-contacts-savedsearch-api
   name: WildApricot Contacts.SavedSearch API
   description: The Contacts.SavedSearch API from WildApricot — 2 operation(s) for contacts.savedsearch.
@@ -636,6 +613,27 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/wildapricot-pictures-api-openapi.yml
+  - type: Documentation
+    url: https://app.wildapricot.com/interfaces/api
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/WildApricot/wild-apricot_public_api/7.24.0
+  - type: Authentication
+    url: https://gethelp.wildapricot.com/en/articles/484
+  - type: SDKs
+    url: https://github.com/WildApricot/ApiSamples
+  - type: SDKs
+    url: https://github.com/douglasdeodato/wildapricot-python-api
+- aid: wildapricot:wildapricot-contacts-custom-fields-api
+  name: WildApricot Contacts Custom Fields API
+  description: >-
+    The Contacts Custom Fields API from WildApricot — 2 operation(s) for contacts custom fields.
+  humanURL: https://app.wildapricot.com/interfaces/api
+  baseURL: https://api.wildapricot.org/v2.2
+  tags:
+  - Contacts Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/wildapricot-contacts-custom-fields-api-openapi.yml
   - type: Documentation
     url: https://app.wildapricot.com/interfaces/api
   - type: APIReference
