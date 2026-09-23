@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Membership.Groups API
+  title: WildApricot Admin Membership.Groups API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /accounts/{accountId}/membergroups:
     get:
       operationId: GetMembershipGroups
-      summary: WildApricot List of Ad Hoc Member Groups.
+      summary: WildApricot List of Ad Hoc Member Groups
       description: ''
       tags:
       - Membership.Groups
@@ -48,7 +48,7 @@ paths:
   /accounts/{accountId}/membergroups/{memberGroupId}:
     get:
       operationId: GetMembershipGroupDetails
-      summary: WildApricot Ad Hoc Member Group.
+      summary: WildApricot Ad Hoc Member Group
       description: ''
       tags:
       - Membership.Groups
@@ -89,6 +89,18 @@ paths:
         - auto
 components:
   schemas:
+    MembershipGroupListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique group identifier
+        Name:
+          type: string
+          description: group name
+        Description:
+          type: string
+          description: group description
     MembershipGroup:
       allOf:
       - $ref: '#/components/schemas/MembershipGroupListItem'
@@ -102,18 +114,6 @@ components:
             items:
               type: integer
               description: Contact IDs of group participants.
-    MembershipGroupListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Unique group identifier
-        Name:
-          type: string
-          description: group name
-        Description:
-          type: string
-          description: group description
   securitySchemes:
     OAuth2:
       type: oauth2

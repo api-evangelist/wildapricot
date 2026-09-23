@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Finances.Payment Allocations API
+  title: WildApricot Admin Finances.Payment Allocations API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /accounts/{accountId}/paymentAllocations:
     get:
       operationId: GetPaymentAllocationsList
-      summary: WildApricot Get List Describing How Payments Are Allocated Among Invoices.
+      summary: WildApricot Get List Describing How Payments Are Allocated Among Invoices
       description: At least one parameter InvoiceId or PaymentId or RefundId should be specified.
       tags:
       - Finances.PaymentAllocations
@@ -65,15 +65,6 @@ paths:
         - auto
 components:
   schemas:
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     PaymentAllocation:
       type: object
       description: Thhis object describes how payment is allocated among invoices.
@@ -120,6 +111,15 @@ components:
       - InvoicePayment
       - DonationPayment
       description: Payment type.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

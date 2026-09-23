@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Emailing.Operations API
+  title: WildApricot Admin Emailing.Operations API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /rpc/{accountId}/email/SetEmailDraftSchedule:
     post:
       operationId: SetEmailDraftSchedule
-      summary: WildApricot Pause or Resume Scheduled Draft.
+      summary: WildApricot Pause or Resume Scheduled Draft
       description: ''
       tags:
       - Emailing.Operations
@@ -50,7 +50,7 @@ paths:
   /rpc/{accountId}/email/GetEmailDraftPreview:
     post:
       operationId: GetEmailDraftPreview
-      summary: WildApricot Get Preview Version of Email.
+      summary: WildApricot Get Preview Version of Email
       description: ''
       tags:
       - Emailing.Operations
@@ -86,7 +86,7 @@ paths:
   /rpc/{accountId}/email/SendEmailDraft:
     post:
       operationId: SendEmailDraft
-      summary: WildApricot Send Draft.
+      summary: WildApricot Send Draft
       description: ''
       tags:
       - Emailing.Operations
@@ -122,7 +122,7 @@ paths:
   /rpc/{accountId}/email/SendEmail:
     post:
       operationId: SendEmail
-      summary: WildApricot Send Draft.
+      summary: WildApricot Send Draft
       description: ''
       tags:
       - Emailing.Operations
@@ -158,7 +158,7 @@ paths:
   /rpc/{accountId}/email/CountUniqueAddressesForEmailRecipients:
     post:
       operationId: GetUniqueEmailRecipientsCount
-      summary: WildApricot Get Count of Real Email Recipients (unique Addresses).
+      summary: WildApricot Get Count of Real Email Recipients (unique Addresses)
       description: ''
       tags:
       - Emailing.Operations
@@ -194,7 +194,7 @@ paths:
   /rpc/{accountId}/email/CountUniqueAddressesForEmailDraft:
     post:
       operationId: GetUniqueEmailRecipientsCountForDraft
-      summary: WildApricot Get Count of Real Email Recipients (unique Addresses).
+      summary: WildApricot Get Count of Real Email Recipients (unique Addresses)
       description: ''
       tags:
       - Emailing.Operations
@@ -230,7 +230,7 @@ paths:
   /rpc/{accountId}/email/GetUniqueAddressesForEmailRecipients:
     post:
       operationId: GetUniqueAddressesForEmailRecipients
-      summary: WildApricot Get Unique Addresses of Real Email Recipients.
+      summary: WildApricot Get Unique Addresses of Real Email Recipients
       description: ''
       tags:
       - Emailing.Operations
@@ -266,7 +266,7 @@ paths:
   /rpc/{accountId}/email/GetUniqueAddressesForEmailDraft:
     post:
       operationId: GetUniqueAddressesForEmailDraft
-      summary: WildApricot Get Unique Addresses of Real Email Recipients.
+      summary: WildApricot Get Unique Addresses of Real Email Recipients
       description: ''
       tags:
       - Emailing.Operations
@@ -301,6 +301,36 @@ paths:
         - auto
 components:
   schemas:
+    EmailDraftPreview:
+      type: object
+      description: Describes how email will look like when all macros are applied.
+      properties:
+        Subject:
+          type: string
+          description: Email subject with macros applied.
+        Body:
+          type: string
+          description: Email body HTML with mosros applied.
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code, like Validation / Search / ...
+        message:
+          type: string
+          description: An explanation of why this error occured
+        details:
+          type: object
+          description: More information about the error. Data structure is specific for each kind of error.
     EmailRecipient:
       type: object
       properties:
@@ -337,36 +367,6 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    EmailRecipients:
-      type: array
-      description: Collection of recipients.
-      items:
-        $ref: '#/components/schemas/EmailRecipient'
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code, like Validation / Search / ...
-        message:
-          type: string
-          description: An explanation of why this error occured
-        details:
-          type: object
-          description: More information about the error. Data structure is specific for each kind of error.
-    EmailDraftPreview:
-      type: object
-      description: Describes how email will look like when all macros are applied.
-      properties:
-        Subject:
-          type: string
-          description: Email subject with macros applied.
-        Body:
-          type: string
-          description: Email body HTML with mosros applied.
   securitySchemes:
     OAuth2:
       type: oauth2

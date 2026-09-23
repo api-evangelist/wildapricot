@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Emailing.Sent Emails API
+  title: WildApricot Admin Emailing.Sent Emails API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -157,6 +157,65 @@ components:
       - ForumTopicNotification
       - OnlineStore_Order
       description: The reason why the email was sent.
+    EmailLog:
+      allOf:
+      - $ref: '#/components/schemas/EmailLogRecords'
+      - $ref: '#/components/schemas/EmailLogIdentifiers'
+    EmailLogRecords:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailLogRecord'
+          description: 'Collection of email log records.
+
+            '
+    EmailRecipient:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: 'If email was sent to individual recipient, this field contains contact identifier.
+
+            If email was sent to all recipients from some saved search, this field contains saved search identifier.
+
+            '
+        Type:
+          type: integer
+          description: Recipient group type.
+          enum:
+          - IndividualContactRecipient
+          - IndividualEventRegistrationRecipient
+          - EventAttendees_CheckedIn
+          - EventAttendees_NotCheckedIn
+          - EventAttendees_Paid
+          - EventAttendees_NotPaid
+          - EventAttendees_All
+          - EventAttendees_Selected
+          - Contacts_All
+          - Contacts_Selected
+          - Contacts_SavedSearch
+          - Members_All
+          - Members_SavedSearch
+          - SentEmailRecipient
+          - EventWaitlist_All
+          - EventWaitlist_Selected
+        Name:
+          type: string
+          description: Display name of recipient or name of saved search.
+        Email:
+          type: string
+          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    InitializationSourceType:
+      type: string
+      enum:
+      - Automatic
+      - Manual
+      description: Email initialization source type.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EmailLogRecord:
       type: object
       properties:
@@ -211,6 +270,15 @@ components:
         Recipient:
           $ref: '#/components/schemas/EmailRecipient'
           description: only if email has a single recipient
+    EmailLogIdentifiers:
+      type: object
+      properties:
+        EmailsIdentifiers:
+          type: array
+          items:
+            type: integer
+            description: Unique email identifier.
+          description: A collection of email log record identifiers.
     EmailOrigin:
       type: object
       properties:
@@ -221,55 +289,6 @@ components:
           description: Unique origin identifier.
         Name:
           type: string
-    InitializationSourceType:
-      type: string
-      enum:
-      - Automatic
-      - Manual
-      description: Email initialization source type.
-    EmailRecipient:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: 'If email was sent to individual recipient, this field contains contact identifier.
-
-            If email was sent to all recipients from some saved search, this field contains saved search identifier.
-
-            '
-        Type:
-          type: integer
-          description: Recipient group type.
-          enum:
-          - IndividualContactRecipient
-          - IndividualEventRegistrationRecipient
-          - EventAttendees_CheckedIn
-          - EventAttendees_NotCheckedIn
-          - EventAttendees_Paid
-          - EventAttendees_NotPaid
-          - EventAttendees_All
-          - EventAttendees_Selected
-          - Contacts_All
-          - Contacts_Selected
-          - Contacts_SavedSearch
-          - Members_All
-          - Members_SavedSearch
-          - SentEmailRecipient
-          - EventWaitlist_All
-          - EventWaitlist_Selected
-        Name:
-          type: string
-          description: Display name of recipient or name of saved search.
-        Email:
-          type: string
-          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    EmailLog:
-      allOf:
-      - $ref: '#/components/schemas/EmailLogRecords'
-      - $ref: '#/components/schemas/EmailLogIdentifiers'
     EmailOriginType:
       type: string
       enum:
@@ -285,25 +304,6 @@ components:
       - OnlineStoreOrder
       - PollStartAnnouncement
       description: Email origin type.
-    EmailLogIdentifiers:
-      type: object
-      properties:
-        EmailsIdentifiers:
-          type: array
-          items:
-            type: integer
-            description: Unique email identifier.
-          description: A collection of email log record identifiers.
-    EmailLogRecords:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailLogRecord'
-          description: 'Collection of email log records.
-
-            '
   securitySchemes:
     OAuth2:
       type: oauth2

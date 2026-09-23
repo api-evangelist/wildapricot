@@ -19,7 +19,7 @@ paths:
   /:
     get:
       operationId: GetApiResources
-      summary: WildApricot Base URL for Specific API Version.
+      summary: WildApricot Base URL for Specific API Version
       description: base URL for specific API version. It provides a list of resources that can be directly accessible by URL without providing any additional information like account ID etc.
       tags:
       - Accounts
@@ -39,9 +39,7 @@ paths:
     get:
       operationId: GetAccountsList
       summary: WildApricot List of Available Accounts
-      description: 'List of accounts available with current oAuth token. Typicaly here would be only one record in an array
-
-        '
+      description: List of accounts available with current oAuth token. Typicaly here would be only one record in an array
       tags:
       - Accounts
       responses:
@@ -64,9 +62,7 @@ paths:
     get:
       operationId: GetAccount
       summary: WildApricot Details for Specific Account
-      description: 'Details for specific account
-
-        '
+      description: Details for specific account
       tags:
       - Accounts
       parameters:
@@ -94,16 +90,57 @@ paths:
         - auto
 components:
   schemas:
-    BillingPlan:
+    SquareRegisterSettings:
       type: object
-      description: Current account billing plan.
+      required:
+      - IntegrationEnabled
+      description: Settings for Square Register integration, used for mobile app
       properties:
+        IntegrationEnabled:
+          type: boolean
+          description: Is integration enabled in admin UI.
+        ClientId:
+          type: string
+          description: (optional) Square client Id
+    Localization:
+      type: object
+      properties:
+        DateFormat:
+          type: string
+          description: Date format like "d MMM yyyy"
+        TimeFormat:
+          type: string
+          description: Time format like "h:mm tt"
+    Resource:
+      type: object
+      required:
+      - Name
+      - Url
+      - AllowedOperations
+      properties:
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
         Name:
           type: string
-          description: Billing plan name
-        Price:
-          type: number
-          description: Monthly price
+          description: Name of resource
+        Description:
+          type: string
+          description: Text description of the resource
+        AllowedOperations:
+          type: array
+          items:
+            type: string
+          description: 'Collection of allowed operations for this resource. Possible values are
+
+            GET - Resource can be requested
+
+            POST - Resource can be created
+
+            PUT - Resource can be updated
+
+            DELETE - Resource can be deleted
+
+            '
     Currency:
       type: object
       properties:
@@ -116,19 +153,29 @@ components:
         Symbol:
           type: string
           description: Currency symbol like $ or â‚¬
-    TimeZone:
+    BillingPlan:
       type: object
-      description: Details about account time zone
+      description: Current account billing plan.
       properties:
-        ZoneId:
-          type: string
-          description: Time zone id, i.e. "Arabic Standard Time"
         Name:
           type: string
-          description: Time zone name, i.e. "(UTC+03:00) Baghdad"
-        UtcOffset:
+          description: Billing plan name
+        Price:
+          type: number
+          description: Monthly price
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    ContactLimitInfo:
+      type: object
+      description: Details about limits on the number of contacts.
+      properties:
+        CurrentContactsCount:
           type: integer
-          description: Offcet from UTC Time in minutes, i.e. "180"
+          description: Number of contacts currently in database (archived excluded)
+        BillingPlanContactsLimit:
+          type: integer
+          description: Maximum number of contacts allowed by billing plan.
     Account:
       type: object
       description: Information about Wild Apricot account
@@ -173,9 +220,6 @@ components:
           $ref: '#/components/schemas/PaymentSettings'
         BillingPlan:
           $ref: '#/components/schemas/BillingPlan'
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
     PaymentSettings:
       type: object
       properties:
@@ -188,67 +232,19 @@ components:
         MembershipPaymentInstructions:
           type: string
           description: For membership applications, renewals and level changes
-    Localization:
+    TimeZone:
       type: object
+      description: Details about account time zone
       properties:
-        DateFormat:
+        ZoneId:
           type: string
-          description: Date format like "d MMM yyyy"
-        TimeFormat:
-          type: string
-          description: Time format like "h:mm tt"
-    ContactLimitInfo:
-      type: object
-      description: Details about limits on the number of contacts.
-      properties:
-        CurrentContactsCount:
-          type: integer
-          description: Number of contacts currently in database (archived excluded)
-        BillingPlanContactsLimit:
-          type: integer
-          description: Maximum number of contacts allowed by billing plan.
-    Resource:
-      type: object
-      required:
-      - Name
-      - Url
-      - AllowedOperations
-      properties:
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
+          description: Time zone id, i.e. "Arabic Standard Time"
         Name:
           type: string
-          description: Name of resource
-        Description:
-          type: string
-          description: Text description of the resource
-        AllowedOperations:
-          type: array
-          items:
-            type: string
-          description: 'Collection of allowed operations for this resource. Possible values are
-
-            GET - Resource can be requested
-
-            POST - Resource can be created
-
-            PUT - Resource can be updated
-
-            DELETE - Resource can be deleted
-
-            '
-    SquareRegisterSettings:
-      type: object
-      required:
-      - IntegrationEnabled
-      description: Settings for Square Register integration, used for mobile app
-      properties:
-        IntegrationEnabled:
-          type: boolean
-          description: Is integration enabled in admin UI.
-        ClientId:
-          type: string
-          description: (optional) Square client Id
+          description: Time zone name, i.e. "(UTC+03:00) Baghdad"
+        UtcOffset:
+          type: integer
+          description: Offcet from UTC Time in minutes, i.e. "180"
   securitySchemes:
     OAuth2:
       type: oauth2

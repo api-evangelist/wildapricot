@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Finances.Audit Log API
+  title: WildApricot Admin Finances.Audit Log API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,8 +18,12 @@ paths:
   /accounts/{accountId}/auditLogItems:
     get:
       operationId: GetAuditLogItems
-      summary: WildApricot List of Audit Log Items.
-      description: "List filter has limitations.\n - if filterObjectType is set then FilterObjectId must be set too.\n - empty filter not allowed (none of filterObjectType, FilterObjectId, StartDate and EndDate are set).\n"
+      summary: WildApricot List of Audit Log Items
+      description: 'List filter has limitations.
+
+        - if filterObjectType is set then FilterObjectId must be set too.
+
+        - empty filter not allowed (none of filterObjectType, FilterObjectId, StartDate and EndDate are set).'
       tags:
       - Finances.AuditLog
       parameters:
@@ -82,7 +86,7 @@ paths:
   /accounts/{accountId}/auditLogItems/{itemId}:
     get:
       operationId: GetAuditLogItem
-      summary: WildApricot Single Audit Log Item.
+      summary: WildApricot Single Audit Log Item
       description: ''
       tags:
       - Finances.AuditLog
@@ -117,26 +121,9 @@ paths:
         - auto
 components:
   schemas:
-    AuditItemsListResult:
-      type: object
-      properties:
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditLogItem'
-          description: List of audit log items that match request criteria.
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     AuditLogItem:
       type: object
       properties:
@@ -218,6 +205,23 @@ components:
           - Deleted
           - Voided
           - Custom
+    AuditItemsListResult:
+      type: object
+      properties:
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogItem'
+          description: List of audit log items that match request criteria.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

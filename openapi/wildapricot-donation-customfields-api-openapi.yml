@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Donation.Custom Fields API
+  title: WildApricot Admin Donation.Custom Fields API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -17,9 +17,13 @@ tags:
 paths:
   /accounts/{accountId}/donationfields:
     get:
-      operationId: ''
-      summary: WildApricot List of Custom Fields Related to Donations.
-      description: "\nThis list contains a list of fields of 2 different types.\n - System fields are defined by Wild Apricot system and could not be removed.\n - Custom fields could be defined by administrator to store some data specific to your account.\n"
+      operationId: getAccountsByAccountIdDonationfields
+      summary: WildApricot List of Custom Fields Related to Donations
+      description: 'This list contains a list of fields of 2 different types.
+
+        - System fields are defined by Wild Apricot system and could not be removed.
+
+        - Custom fields could be defined by administrator to store some data specific to your account.'
       tags:
       - Donation.CustomFields
       parameters:
@@ -51,8 +55,9 @@ paths:
       security:
       - OAuth2:
         - auto
+      x-operation-id-source: derived
     post:
-      operationId: ''
+      operationId: postAccountsByAccountIdDonationfields
       summary: WildApricot Creates a New Donation Field
       description: ''
       tags:
@@ -86,9 +91,10 @@ paths:
       security:
       - OAuth2:
         - auto
+      x-operation-id-source: derived
   /accounts/{accountId}/donationfields/{donationFieldId}:
     put:
-      operationId: ''
+      operationId: putAccountsByAccountIdDonationfieldsByDonationFieldId
       summary: WildApricot Updates an Existing Donation Field
       description: 'Limitations: field type can not be changed'
       tags:
@@ -130,8 +136,9 @@ paths:
       security:
       - OAuth2:
         - auto
+      x-operation-id-source: derived
     delete:
-      operationId: ''
+      operationId: deleteAccountsByAccountIdDonationfieldsByDonationFieldId
       summary: WildApricot Removes Existing Field by Id
       description: removes existing field by id
       tags:
@@ -165,30 +172,28 @@ paths:
       security:
       - OAuth2:
         - auto
+      x-operation-id-source: derived
 components:
   schemas:
-    CustomFieldType:
-      type: string
-      enum:
-      - String
-      - DateTime
-      - Boolean
-      - Choice
-      - MultipleChoice
-      - Number
-      - SectionDivider
-      - CalculatedExtraCharge
-      - Picture
-      description: Custom field data type.
-    EditEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
+    OptionsListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Item identifier unique in the list
+        Label:
+          type: string
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
+          type: boolean
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
     EntityFieldDescription:
       type: object
       required:
@@ -224,6 +229,37 @@ components:
           description: Sorting order to display the field in UI
         RulesAndTermsInfo:
           $ref: '#/components/schemas/RulesAndTermsInfo'
+    EditEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    CreateEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
     RulesAndTermsInfo:
       type: object
       description: Additional info for fields with rules / terms conditions. Not present for other field types.
@@ -234,34 +270,6 @@ components:
         Link:
           type: string
           description: Url of the rules and terms document.
-    OptionsListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Item identifier unique in the list
-        Label:
-          type: string
-          description: Human-readable text label.
-        Position:
-          type: integer
-          description: Option position among other options.
-        SelectedByDefault:
-          type: boolean
-          description: Indicates whether this option would be selected on form if user did not select another option.
-        ExtraCost:
-          type: number
-          format: decimal
-          description: Extra price for selecting this option. Used only by fields with an associated cost.
-    CreateEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Pictures API
+  title: WildApricot Admin Pictures API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -69,7 +69,25 @@ paths:
     post:
       operationId: UploadPicture
       summary: WildApricot Upload Pictures
-      description: "Picture can be uploaded using multipart/form-data POST request (contains Content-Type header set to 'multipart/form-data'). A multipart/form-data request contains a series of parts, each representing a picture. Each part is expected to contain a \"Content-Disposition\" header whose value is \"form-data\". One of its properties (Name, FileName) must be set and have unique value. In case of similar values, only one of those part will be used, others will be dropped. For example, you have uploaded 2 pictures with same Name set to \"name\". If they have different FileName set, it's ok, but if FileName properties are same as well, only one of those pictures will be saved and available for further processing. Keep this in mind.\nLimitations:\n  - Maximum size for one uploaded picture is 10mb.\n  - Maximum request length is 10mb. It means that you can upload one 10mb picture or 10 pictures 1mb each.\n  - Maximum dimensions for uploaded picture are not set, but each picture will be resized to 110px after uploading.\n  - Supported picture types are: png, jpeg, bmp. Bmp pictures will be converted to png format.\n  - Time period after uploading when picture would be available for use is 30 minutes.\n  - Each uploaded picture can be used only once. After first usage it will be removed permanently.\n  - Mime type must be 'image' and must correlate to picture type. If you upload the 'png' with 'image/bmp' mime type set, this picture will be dropped.\n  - In case of uploading several pictures in one request either 'Name' or 'FileName' property of Content-Disposition header must be set. Otherwise the picture will be dropped.\n"
+      description: 'Picture can be uploaded using multipart/form-data POST request (contains Content-Type header set to ''multipart/form-data''). A multipart/form-data request contains a series of parts, each representing a picture. Each part is expected to contain a "Content-Disposition" header whose value is "form-data". One of its properties (Name, FileName) must be set and have unique value. In case of similar values, only one of those part will be used, others will be dropped. For example, you have uploaded 2 pictures with same Name set to "name". If they have different FileName set, it''s ok, but if FileName properties are same as well, only one of those pictures will be saved and available for further processing. Keep this in mind.
+
+        Limitations:
+
+        - Maximum size for one uploaded picture is 10mb.
+
+        - Maximum request length is 10mb. It means that you can upload one 10mb picture or 10 pictures 1mb each.
+
+        - Maximum dimensions for uploaded picture are not set, but each picture will be resized to 110px after uploading.
+
+        - Supported picture types are: png, jpeg, bmp. Bmp pictures will be converted to png format.
+
+        - Time period after uploading when picture would be available for use is 30 minutes.
+
+        - Each uploaded picture can be used only once. After first usage it will be removed permanently.
+
+        - Mime type must be ''image'' and must correlate to picture type. If you upload the ''png'' with ''image/bmp'' mime type set, this picture will be dropped.
+
+        - In case of uploading several pictures in one request either ''Name'' or ''FileName'' property of Content-Disposition header must be set. Otherwise the picture will be dropped.'
       tags:
       - Pictures
       parameters:

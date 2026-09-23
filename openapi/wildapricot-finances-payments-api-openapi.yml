@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Finances.Payments API
+  title: WildApricot Admin Finances.Payments API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /accounts/{accountId}/payments:
     get:
       operationId: GetPaymentsList
-      summary: WildApricot Get List of Payments by Criteria.
+      summary: WildApricot Get List of Payments by Criteria
       description: ''
       tags:
       - Finances.Payments
@@ -107,7 +107,7 @@ paths:
         - auto
     post:
       operationId: CreatePayment
-      summary: WildApricot Creates a New Payment.
+      summary: WildApricot Creates a New Payment
       description: ''
       tags:
       - Finances.Payments
@@ -436,45 +436,6 @@ paths:
         - auto
 components:
   schemas:
-    PaymentIdsResponse:
-      type: object
-      properties:
-        PaymentIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of payment identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
-    Payment:
-      allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
-      - type: object
-        properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
-            type: string
-            description: Internal note on payment. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on payment. Visible to both administrators and payors.
-          AllocatedValue:
-            type: number
-            format: float
-            description: Total amount allocated to another finance documents (invoices or refunds).
-          RefundedAmount:
-            type: number
-            format: decimal
-            description: Amount of a refund assigned to the payment.
-          Type:
-            $ref: '#/components/schemas/PaymentType'
-          DonationId:
-            type: integer
-            description: Identifyer of Donation for payment of type DonationPayment.
-          FieldValues:
-            type: array
-            description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
-            items:
-              $ref: '#/components/schemas/FieldValue'
     FinanceDocument:
       type: object
       properties:
@@ -510,57 +471,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who modified the document. Could be null.
-    PaymentType:
-      type: string
-      enum:
-      - Unknown
-      - InvoicePayment
-      - DonationPayment
-      description: Payment type.
-    UpdatePaymentParams:
-      allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
-      - type: object
-        properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
-            type: string
-            description: Internal note on payment. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on payment. Visible to both administrators and payors.
-          AllocatedValue:
-            type: number
-            format: float
-            description: Total amount allocated to another finance documents (invoices or refunds).
-          Type:
-            $ref: '#/components/schemas/PaymentType'
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
-    PaymentListResponse:
+    PaymentIdsResponse:
       type: object
       properties:
-        Payments:
+        PaymentIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/Payment'
-          description: List of payments that match request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
+            type: integer
+          description: List of payment identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
     CreatePaymentModel:
       type: object
       properties:
@@ -594,10 +512,64 @@ components:
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    PaymentsResponse:
+    UpdatePaymentParams:
       allOf:
-      - $ref: '#/components/schemas/PaymentIdsResponse'
-      - $ref: '#/components/schemas/PaymentListResponse'
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on payment. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on payment. Visible to both administrators and payors.
+          AllocatedValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (invoices or refunds).
+          Type:
+            $ref: '#/components/schemas/PaymentType'
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    Payment:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on payment. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on payment. Visible to both administrators and payors.
+          AllocatedValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (invoices or refunds).
+          RefundedAmount:
+            type: number
+            format: decimal
+            description: Amount of a refund assigned to the payment.
+          Type:
+            $ref: '#/components/schemas/PaymentType'
+          DonationId:
+            type: integer
+            description: Identifyer of Donation for payment of type DonationPayment.
+          FieldValues:
+            type: array
+            description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
+            items:
+              $ref: '#/components/schemas/FieldValue'
     FieldValue:
       type: object
       properties:
@@ -610,6 +582,34 @@ components:
         Value:
           type: object
           description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    PaymentsResponse:
+      allOf:
+      - $ref: '#/components/schemas/PaymentIdsResponse'
+      - $ref: '#/components/schemas/PaymentListResponse'
+    PaymentListResponse:
+      type: object
+      properties:
+        Payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+          description: List of payments that match request criteria.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    PaymentType:
+      type: string
+      enum:
+      - Unknown
+      - InvoicePayment
+      - DonationPayment
+      description: Payment type.
   securitySchemes:
     OAuth2:
       type: oauth2

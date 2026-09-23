@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Online Store.Orders API
+  title: WildApricot Admin Online Store.Orders API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -121,6 +121,20 @@ paths:
         - auto
 components:
   schemas:
+    OrderDigitalProduct:
+      type: object
+      properties:
+        url:
+          type: string
+        code:
+          type: string
+        emailNote:
+          type: string
+    OrderInternalNote:
+      type: object
+      properties:
+        text:
+          type: string
     PaymentStatus:
       type: string
       description: ''
@@ -136,29 +150,15 @@ components:
       - PARTIALLYPAID
       - NOINVOICE
       - FREE
-    OrderProductType:
+    DeliveryType:
       type: string
       description: ''
       x-enumNames:
-      - Physical
-      - Digital
+      - Shipping
+      - Pickup
       enum:
-      - PHYSICAL
-      - DIGITAL
-    OrderDeliveryOption:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          $ref: '#/components/schemas/DeliveryType'
-        title:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-          format: decimal
+      - SHIPPING
+      - PICKUP
     Currency:
       type: object
       properties:
@@ -171,39 +171,6 @@ components:
         Symbol:
           type: string
           description: Currency symbol like $ or â‚¬
-    BillingPerson:
-      type: object
-      required:
-      - contactId
-      properties:
-        contactId:
-          type: integer
-          format: int32
-        email:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        displayName:
-          type: string
-        phone:
-          type: string
-    ShippingAddress:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        country:
-          $ref: '#/components/schemas/Country'
-        province:
-          type: string
-        city:
-          type: string
-        zip:
-          type: string
     OrderProduct:
       type: object
       required:
@@ -234,51 +201,64 @@ components:
           $ref: '#/components/schemas/OrderProductType'
         digitalProduct:
           $ref: '#/components/schemas/OrderDigitalProduct'
-    DeliveryType:
+    ShippingAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        province:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+    OrderDeliveryOption:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/DeliveryType'
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: decimal
+    BillingPerson:
+      type: object
+      required:
+      - contactId
+      properties:
+        contactId:
+          type: integer
+          format: int32
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        phone:
+          type: string
+    OrderStatus:
       type: string
       description: ''
       x-enumNames:
-      - Shipping
-      - Pickup
+      - Unfulfilled
+      - Fulfilled
+      - Cancelled
       enum:
-      - SHIPPING
-      - PICKUP
-    Country:
-      type: object
-      required:
-      - allowedPaymentMethods
-      properties:
-        name:
-          type: string
-        codeAlpha2:
-          type: string
-        codeAlpha3:
-          type: string
-        codeNumeric:
-          type: integer
-          format: int32
-        allowedPaymentMethods:
-          type: integer
-          format: int32
-    OrderExternalNote:
-      type: object
-      properties:
-        text:
-          type: string
-    OrderDigitalProduct:
-      type: object
-      properties:
-        url:
-          type: string
-        code:
-          type: string
-        emailNote:
-          type: string
-    OrderInternalNote:
-      type: object
-      properties:
-        text:
-          type: string
+      - UNFULFILLED
+      - FULFILLED
+      - CANCELLED
     Order:
       type: object
       required:
@@ -338,17 +318,37 @@ components:
           format: date-time
         deliveryOption:
           $ref: '#/components/schemas/OrderDeliveryOption'
-    OrderStatus:
+    OrderProductType:
       type: string
       description: ''
       x-enumNames:
-      - Unfulfilled
-      - Fulfilled
-      - Cancelled
+      - Physical
+      - Digital
       enum:
-      - UNFULFILLED
-      - FULFILLED
-      - CANCELLED
+      - PHYSICAL
+      - DIGITAL
+    OrderExternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    Country:
+      type: object
+      required:
+      - allowedPaymentMethods
+      properties:
+        name:
+          type: string
+        codeAlpha2:
+          type: string
+        codeAlpha3:
+          type: string
+        codeNumeric:
+          type: integer
+          format: int32
+        allowedPaymentMethods:
+          type: integer
+          format: int32
   securitySchemes:
     OAuth2:
       type: oauth2

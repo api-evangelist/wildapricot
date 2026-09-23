@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Online Store.Orders.Operations API
+  title: WildApricot Admin Online Store.Orders.Operations API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -53,6 +53,13 @@ paths:
         - auto
 components:
   schemas:
+    OrderFulfilment:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/OrderStatus'
     OrderSetStatusResult:
       type: object
       properties:
@@ -69,13 +76,6 @@ components:
       - UNFULFILLED
       - FULFILLED
       - CANCELLED
-    OrderFulfilment:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          $ref: '#/components/schemas/OrderStatus'
   securitySchemes:
     OAuth2:
       type: oauth2

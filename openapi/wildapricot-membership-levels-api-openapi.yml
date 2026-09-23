@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Membership.Levels API
+  title: WildApricot Admin Membership.Levels API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /accounts/{accountId}/membershiplevels:
     get:
       operationId: GetMembershipLevelsList
-      summary: WildApricot Get List of All Membership Levels.
+      summary: WildApricot Get List of All Membership Levels
       description: ''
       tags:
       - Membership.Levels
@@ -134,15 +134,6 @@ components:
                 Indicates that account administrator should approve membership application.
 
                 False means that all applications are considered approved when they are submitted.'
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     MembershipLevel:
       type: object
       properties:
@@ -177,6 +168,15 @@ components:
           description: Member can switch from current level to one of levels from this list.
         RenewalPeriod:
           $ref: '#/components/schemas/MembershipRenewalPeriod'
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

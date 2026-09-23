@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WildApricot Admin Accounts Membership.Bundles API
+  title: WildApricot Admin Membership.Bundles API
   description: The WildApricot Admin API provides programmatic access to membership management features including contacts, events, event registrations, membership levels, invoices, payments, donations, email campaigns, and store orders. Authentication uses OAuth2 with client credentials or authorization code flow.
   version: 7.24.0
   contact:
@@ -18,7 +18,7 @@ paths:
   /accounts/{accountId}/bundles:
     get:
       operationId: GetMembershipBundlesList
-      summary: WildApricot Get List of Membership Bundles.
+      summary: WildApricot Get List of Membership Bundles
       description: ''
       tags:
       - Membership.Bundles
@@ -56,7 +56,7 @@ paths:
   /accounts/{accountId}/bundles/{bundleId}:
     get:
       operationId: GetMembershipBundle
-      summary: WildApricot Get Membership Bundle Details.
+      summary: WildApricot Get Membership Bundle Details
       description: ''
       tags:
       - Membership.Bundles
@@ -123,6 +123,9 @@ components:
           items:
             $ref: '#/components/schemas/LinkedResource'
           description: Collection of links to members of the bundle.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     LinkedResource:
       type: object
       properties:
@@ -132,9 +135,6 @@ components:
         Url:
           type: string
           description: API url to get item details
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
   securitySchemes:
     OAuth2:
       type: oauth2
