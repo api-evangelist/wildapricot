@@ -175,25 +175,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OptionsListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Item identifier unique in the list
-        Label:
-          type: string
-          description: Human-readable text label.
-        Position:
-          type: integer
-          description: Option position among other options.
-        SelectedByDefault:
-          type: boolean
-          description: Indicates whether this option would be selected on form if user did not select another option.
-        ExtraCost:
-          type: number
-          format: decimal
-          description: Extra price for selecting this option. Used only by fields with an associated cost.
     EntityFieldDescription:
       type: object
       required:
@@ -229,7 +210,26 @@ components:
           description: Sorting order to display the field in UI
         RulesAndTermsInfo:
           $ref: '#/components/schemas/RulesAndTermsInfo'
-    EditEntityFieldParams:
+    OptionsListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Item identifier unique in the list
+        Label:
+          type: string
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
+          type: boolean
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
+    CreateEntityFieldParams:
       allOf:
       - $ref: '#/components/schemas/EntityFieldDescription'
       - type: object
@@ -238,7 +238,7 @@ components:
         properties:
           FieldType:
             $ref: '#/components/schemas/CustomFieldType'
-    CreateEntityFieldParams:
+    EditEntityFieldParams:
       allOf:
       - $ref: '#/components/schemas/EntityFieldDescription'
       - type: object

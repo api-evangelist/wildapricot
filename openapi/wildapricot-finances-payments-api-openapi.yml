@@ -436,6 +436,43 @@ paths:
         - auto
 components:
   schemas:
+    CreatePaymentModel:
+      type: object
+      properties:
+        Value:
+          type: number
+          format: float
+          description: Payment amount.
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: If not null or empty then invoices with these IDs will be settled to new payment.
+        Contact:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who made the payment.
+        Tender:
+          $ref: '#/components/schemas/LinkedResource'
+        Comment:
+          type: string
+          description: Internal note on payment. Visible to administrators only.
+        PublicComment:
+          type: string
+          description: Comment to payor. Visible to both administrators and payor.
+        PaymentType:
+          $ref: '#/components/schemas/PaymentType'
+    PaymentType:
+      type: string
+      enum:
+      - Unknown
+      - InvoicePayment
+      - DonationPayment
+      description: Payment type.
     FinanceDocument:
       type: object
       properties:
@@ -479,66 +516,15 @@ components:
           items:
             type: integer
           description: List of payment identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
-    CreatePaymentModel:
+    LinkedResource:
       type: object
       properties:
-        Value:
-          type: number
-          format: float
-          description: Payment amount.
-        DocumentDate:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
           type: string
-          format: date
-          description: Document date.
-        Invoices:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: If not null or empty then invoices with these IDs will be settled to new payment.
-        Contact:
-          allOf:
-          - $ref: '#/components/schemas/LinkedResource'
-          - description: Link to contact who made the payment.
-        Tender:
-          $ref: '#/components/schemas/LinkedResource'
-        Comment:
-          type: string
-          description: Internal note on payment. Visible to administrators only.
-        PublicComment:
-          type: string
-          description: Comment to payor. Visible to both administrators and payor.
-        PaymentType:
-          $ref: '#/components/schemas/PaymentType'
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    UpdatePaymentParams:
-      allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
-      - type: object
-        properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
-            type: string
-            description: Internal note on payment. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on payment. Visible to both administrators and payors.
-          AllocatedValue:
-            type: number
-            format: float
-            description: Total amount allocated to another finance documents (invoices or refunds).
-          Type:
-            $ref: '#/components/schemas/PaymentType'
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
+          description: API url to get item details
     Payment:
       allOf:
       - $ref: '#/components/schemas/FinanceDocument'
@@ -570,6 +556,9 @@ components:
             description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
             items:
               $ref: '#/components/schemas/FieldValue'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     FieldValue:
       type: object
       properties:
@@ -582,10 +571,37 @@ components:
         Value:
           type: object
           description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    UpdatePaymentParams:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on payment. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on payment. Visible to both administrators and payors.
+          AllocatedValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (invoices or refunds).
+          Type:
+            $ref: '#/components/schemas/PaymentType'
     PaymentsResponse:
       allOf:
       - $ref: '#/components/schemas/PaymentIdsResponse'
       - $ref: '#/components/schemas/PaymentListResponse'
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
     PaymentListResponse:
       type: object
       properties:
@@ -594,22 +610,6 @@ components:
           items:
             $ref: '#/components/schemas/Payment'
           description: List of payments that match request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    PaymentType:
-      type: string
-      enum:
-      - Unknown
-      - InvoicePayment
-      - DonationPayment
-      description: Payment type.
   securitySchemes:
     OAuth2:
       type: oauth2

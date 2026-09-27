@@ -326,40 +326,13 @@ paths:
         - auto
 components:
   schemas:
-    Invoice:
+    UpdateInvoiceParams:
       allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
-      - type: object
-        properties:
-          DocumentNumber:
-            type: string
-            description: Invoice number.
-          IsPaid:
-            type: boolean
-            description: Indicates if the invoice is fully paid.
-          PaidAmount:
-            type: number
-            description: Sum already paid for this invoice.
-          OrderType:
-            $ref: '#/components/schemas/InvoiceOrderType'
-          EventRegistration:
-            allOf:
-            - $ref: '#/components/schemas/LinkedResource'
-            - description: Link to related event registration or null.
-          OrderDetails:
-            type: array
-            items:
-              $ref: '#/components/schemas/OrderDetailRecord'
-          Memo:
-            type: string
-            description: Internal note on invoice. Visible to administrators only.
-          PublicMemo:
-            type: string
-            description: Comment on invoice. Visible to both administrators and the person being invoiced.
-          VoidedDate:
-            type: string
-            format: date
-            description: When invoice is voided this field indicates date of void. Voided invoice does not affect balance. For regular invoices this field is null.
+      - $ref: '#/components/schemas/EditInvoiceParams'
+      - properties:
+          Id:
+            type: integer
+            description: Identifier of the invoice to update
     SalesTaxInfo:
       type: object
       description: Describe taxes applied to this invoice item
@@ -387,6 +360,62 @@ components:
           allOf:
           - $ref: '#/components/schemas/SalesTax'
           - description: applied Tax 2 description
+    InvoiceOrderType:
+      type: string
+      description: Type of invoice.
+      enum:
+      - Undefined
+      - MembershipApplication
+      - MembershipRenewal
+      - MembershipLevelChange
+      - EventRegistration
+      - Donation
+      - OnlineStore
+    OrderDetailRecord:
+      type: object
+      properties:
+        Value:
+          type: number
+          format: float
+          description: Sum to pay for this item. Can be negative (discounts).
+        OrderDetailType:
+          $ref: '#/components/schemas/OrderDetailType'
+        Notes:
+          type: string
+          description: Comment to order detail
+        Taxes:
+          $ref: '#/components/schemas/SalesTaxInfo'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code, like Validation / Search / ...
+        message:
+          type: string
+          description: An explanation of why this error occured
+        details:
+          type: object
+          description: More information about the error. Data structure is specific for each kind of error.
+    SalesTax:
+      description: Taxes applied to the invoice according to account Tax Rules settings.
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Internal account tax name.
+        PublicId:
+          type: string
+          description: Public tax ID (displayed on invoices).
+        Rate:
+          type: number
+          description: Tax rate value.
+    CreateInvoiceParams:
+      allOf:
+      - $ref: '#/components/schemas/EditInvoiceParams'
     FinanceDocument:
       type: object
       properties:
@@ -422,21 +451,38 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who modified the document. Could be null.
-    OrderDetailType:
+    InvoicesResponse:
+      allOf:
+      - $ref: '#/components/schemas/InvoiceIdsResponse'
+      - $ref: '#/components/schemas/InvoiceListResponse'
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    InvoiceListResponse:
+      type: object
+      properties:
+        Invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+          description: List of invoices that match request criteria.
+    InvoiceIdsResponse:
+      type: object
+      properties:
+        InvoiceIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of invoices identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    ResourceUrl:
       type: string
-      description: Type of invoice detail item.
-      enum:
-      - Unspecified
-      - EventRegistration
-      - GuestsNumber
-      - GuestCard
-      - ExtraCost
-      - MemberLevel
-      - Prorate
-      - Discount
-      - Donation
-      - OnlineStoreProduct
-      - OnlineStoreShipping
+      description: Permanent resource URL in API.
     EditInvoiceParams:
       type: object
       properties:
@@ -484,45 +530,6 @@ components:
         PublicMemo:
           type: string
           description: Comment on invoice. Visible to both administrators and the person being invoicec.
-    UpdateInvoiceParams:
-      allOf:
-      - $ref: '#/components/schemas/EditInvoiceParams'
-      - properties:
-          Id:
-            type: integer
-            description: Identifier of the invoice to update
-    InvoicesResponse:
-      allOf:
-      - $ref: '#/components/schemas/InvoiceIdsResponse'
-      - $ref: '#/components/schemas/InvoiceListResponse'
-    InvoiceOrderType:
-      type: string
-      description: Type of invoice.
-      enum:
-      - Undefined
-      - MembershipApplication
-      - MembershipRenewal
-      - MembershipLevelChange
-      - EventRegistration
-      - Donation
-      - OnlineStore
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    OrderDetailRecord:
-      type: object
-      properties:
-        Value:
-          type: number
-          format: float
-          description: Sum to pay for this item. Can be negative (discounts).
-        OrderDetailType:
-          $ref: '#/components/schemas/OrderDetailType'
-        Notes:
-          type: string
-          description: Comment to order detail
-        Taxes:
-          $ref: '#/components/schemas/SalesTaxInfo'
     LinkedResourceWithName:
       allOf:
       - $ref: '#/components/schemas/LinkedResource'
@@ -531,62 +538,55 @@ components:
           Name:
             type: string
             description: Resource name
-    InvoiceListResponse:
-      type: object
-      properties:
-        Invoices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Invoice'
-          description: List of invoices that match request criteria.
-    SalesTax:
-      description: Taxes applied to the invoice according to account Tax Rules settings.
-      type: object
-      properties:
-        Name:
-          type: string
-          description: Internal account tax name.
-        PublicId:
-          type: string
-          description: Public tax ID (displayed on invoices).
-        Rate:
-          type: number
-          description: Tax rate value.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code, like Validation / Search / ...
-        message:
-          type: string
-          description: An explanation of why this error occured
-        details:
-          type: object
-          description: More information about the error. Data structure is specific for each kind of error.
-    InvoiceIdsResponse:
-      type: object
-      properties:
-        InvoiceIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of invoices identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
-    CreateInvoiceParams:
+    OrderDetailType:
+      type: string
+      description: Type of invoice detail item.
+      enum:
+      - Unspecified
+      - EventRegistration
+      - GuestsNumber
+      - GuestCard
+      - ExtraCost
+      - MemberLevel
+      - Prorate
+      - Discount
+      - Donation
+      - OnlineStoreProduct
+      - OnlineStoreShipping
+    Invoice:
       allOf:
-      - $ref: '#/components/schemas/EditInvoiceParams'
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          DocumentNumber:
+            type: string
+            description: Invoice number.
+          IsPaid:
+            type: boolean
+            description: Indicates if the invoice is fully paid.
+          PaidAmount:
+            type: number
+            description: Sum already paid for this invoice.
+          OrderType:
+            $ref: '#/components/schemas/InvoiceOrderType'
+          EventRegistration:
+            allOf:
+            - $ref: '#/components/schemas/LinkedResource'
+            - description: Link to related event registration or null.
+          OrderDetails:
+            type: array
+            items:
+              $ref: '#/components/schemas/OrderDetailRecord'
+          Memo:
+            type: string
+            description: Internal note on invoice. Visible to administrators only.
+          PublicMemo:
+            type: string
+            description: Comment on invoice. Visible to both administrators and the person being invoiced.
+          VoidedDate:
+            type: string
+            format: date
+            description: When invoice is voided this field indicates date of void. Voided invoice does not affect balance. For regular invoices this field is null.
   securitySchemes:
     OAuth2:
       type: oauth2

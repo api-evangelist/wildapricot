@@ -288,6 +288,75 @@ paths:
         - auto
 components:
   schemas:
+    CheckInParams:
+      type: object
+      required:
+      - RegistrationId
+      - CheckedIn
+      properties:
+        RegistrationId:
+          type: integer
+          description: Event registration Id.
+        CheckedIn:
+          type: boolean
+          description: Check in (true) or check out (false).
+        CheckedInGuests:
+          type: integer
+          description: For event registrations with anonymous guests (guests as number), sets number of checked-in guests.
+    EventStub:
+      properties:
+        Id:
+          type: integer
+          description: Event identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+          description: Event Url to get event details from API.
+        Name:
+          type: string
+          description: Event title.
+        StartDate:
+          type: string
+          format: datetime
+          description: Date and time when the event is scheduled to start.
+        EndDate:
+          type: string
+          format: datetime
+          description: Date and time when the event is scheduled to end. Could be empty.
+        Location:
+          type: string
+          description: Location where the event will take place.
+    GuestRegistrationsSummary:
+      properties:
+        NumberOfGuests:
+          type: integer
+          description: Number of guests registered along with the registrant. If event registration type requires guests registration with details (contact information, etc.), this value is 0.
+        NumberOfGuestsCheckedIn:
+          type: integer
+          description: Number of guests who already checked in. If event registration type requires guests registration with details (contact information, etc.), this value is null.
+        GuestRegistrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: 'List of guest registrations links. If event registration type expects guest registration by number (without contact information), this value is null. This value cannot be saved or updated using API.
+
+            '
+    RegisterFromWaitlistParams:
+      type: object
+      required:
+      - WaitlistRegistrationId
+      - EventId
+      - GenerateInvoice
+      properties:
+        WaitlistRegistrationId:
+          type: integer
+          description: Event registration Id.
+        EventId:
+          type: integer
+          description: Event Id.
+        GenerateInvoice:
+          type: boolean
+          default: true
+          description: Defines if invoice should be generated in case if registration is considered paid (registration fee > 0 or any extra costs selected)
     EventRegistrationPut:
       type: object
       required:
@@ -318,43 +387,6 @@ components:
         RecreateInvoice:
           type: boolean
           description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
-    EventRegistrationsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventRegistration'
-      description: List of event registrations that matches request criteria.
-    RegisterFromWaitlistParams:
-      type: object
-      required:
-      - WaitlistRegistrationId
-      - EventId
-      - GenerateInvoice
-      properties:
-        WaitlistRegistrationId:
-          type: integer
-          description: Event registration Id.
-        EventId:
-          type: integer
-          description: Event Id.
-        GenerateInvoice:
-          type: boolean
-          default: true
-          description: Defines if invoice should be generated in case if registration is considered paid (registration fee > 0 or any extra costs selected)
-    CheckInParams:
-      type: object
-      required:
-      - RegistrationId
-      - CheckedIn
-      properties:
-        RegistrationId:
-          type: integer
-          description: Event registration Id.
-        CheckedIn:
-          type: boolean
-          description: Check in (true) or check out (false).
-        CheckedInGuests:
-          type: integer
-          description: For event registrations with anonymous guests (guests as number), sets number of checked-in guests.
     EventRegistrationPost:
       type: object
       required:
@@ -424,32 +456,23 @@ components:
       - Free
       - NoInvoice
       - OnWaitlist
-    GuestRegistrationsSummary:
+    LinkedResource:
+      type: object
       properties:
-        NumberOfGuests:
+        Id:
           type: integer
-          description: Number of guests registered along with the registrant. If event registration type requires guests registration with details (contact information, etc.), this value is 0.
-        NumberOfGuestsCheckedIn:
-          type: integer
-          description: Number of guests who already checked in. If event registration type requires guests registration with details (contact information, etc.), this value is null.
-        GuestRegistrations:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: 'List of guest registrations links. If event registration type expects guest registration by number (without contact information), this value is null. This value cannot be saved or updated using API.
-
-            '
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
+    EventRegistrationsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistration'
+      description: List of event registrations that matches request criteria.
     FieldValue:
       type: object
       properties:
@@ -462,15 +485,6 @@ components:
         Value:
           type: object
           description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     EventRegistration:
       type: object
       required:
@@ -560,28 +574,14 @@ components:
           $ref: '#/components/schemas/LinkedResource'
         Status:
           $ref: '#/components/schemas/EventRegistrationStatus'
-    EventStub:
-      properties:
-        Id:
-          type: integer
-          description: Event identifier.
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-          description: Event Url to get event details from API.
-        Name:
-          type: string
-          description: Event title.
-        StartDate:
-          type: string
-          format: datetime
-          description: Date and time when the event is scheduled to start.
-        EndDate:
-          type: string
-          format: datetime
-          description: Date and time when the event is scheduled to end. Could be empty.
-        Location:
-          type: string
-          description: Location where the event will take place.
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
   securitySchemes:
     OAuth2:
       type: oauth2

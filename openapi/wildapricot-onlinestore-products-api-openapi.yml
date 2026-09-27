@@ -97,29 +97,17 @@ paths:
         - auto
 components:
   schemas:
-    ProductFile:
+    Price:
       type: object
+      required:
+      - regular
       properties:
-        name:
-          type: string
-    ProductStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - AdminOnly
-      - Public
-      enum:
-      - ADMINONLY
-      - PUBLIC
-    ProductType:
-      type: string
-      description: ''
-      x-enumNames:
-      - Physical
-      - Digital
-      enum:
-      - PHYSICAL
-      - DIGITAL
+        regular:
+          type: number
+          format: decimal
+        members:
+          type: number
+          format: decimal
     DigitalProduct:
       type: object
       required:
@@ -132,20 +120,6 @@ components:
         productLink:
           $ref: '#/components/schemas/ProductLink'
         emailNote:
-          type: string
-    ProductVariantOptionValue:
-      type: object
-      properties:
-        title:
-          type: string
-        value:
-          type: string
-    ProductLink:
-      type: object
-      properties:
-        url:
-          type: string
-        code:
           type: string
     ProductVariant:
       type: object
@@ -169,17 +143,15 @@ components:
           type: boolean
         trackInventory:
           type: boolean
-    Price:
-      type: object
-      required:
-      - regular
-      properties:
-        regular:
-          type: number
-          format: decimal
-        members:
-          type: number
-          format: decimal
+    DigitalProductType:
+      type: string
+      description: ''
+      x-enumNames:
+      - File
+      - Link
+      enum:
+      - FILE
+      - LINK
     Product:
       type: object
       required:
@@ -246,15 +218,43 @@ components:
           type: array
           items:
             type: string
-    DigitalProductType:
+    ProductFile:
+      type: object
+      properties:
+        name:
+          type: string
+    ProductType:
       type: string
       description: ''
       x-enumNames:
-      - File
-      - Link
+      - Physical
+      - Digital
       enum:
-      - FILE
-      - LINK
+      - PHYSICAL
+      - DIGITAL
+    ProductStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - AdminOnly
+      - Public
+      enum:
+      - ADMINONLY
+      - PUBLIC
+    ProductVariantOptionValue:
+      type: object
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+    ProductLink:
+      type: object
+      properties:
+        url:
+          type: string
+        code:
+          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

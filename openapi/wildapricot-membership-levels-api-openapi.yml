@@ -85,6 +85,15 @@ paths:
         - auto
 components:
   schemas:
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     MembershipRenewalPeriod:
       type: object
       description: Describes membership renewal period.
@@ -168,15 +177,6 @@ components:
           description: Member can switch from current level to one of levels from this list.
         RenewalPeriod:
           $ref: '#/components/schemas/MembershipRenewalPeriod'
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

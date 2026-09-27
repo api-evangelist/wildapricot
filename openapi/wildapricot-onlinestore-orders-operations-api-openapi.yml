@@ -60,11 +60,6 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/OrderStatus'
-    OrderSetStatusResult:
-      type: object
-      properties:
-        isCustomerNotified:
-          type: boolean
     OrderStatus:
       type: string
       description: ''
@@ -76,6 +71,11 @@ components:
       - UNFULFILLED
       - FULFILLED
       - CANCELLED
+    OrderSetStatusResult:
+      type: object
+      properties:
+        isCustomerNotified:
+          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2

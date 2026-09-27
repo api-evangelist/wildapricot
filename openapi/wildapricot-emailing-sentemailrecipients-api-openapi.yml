@@ -81,18 +81,14 @@ paths:
         - auto
 components:
   schemas:
-    ClickedLink:
+    SentEmailRecipientsRecords:
       type: object
       properties:
-        Url:
-          type: string
-          description: Link address.
-        Clicked:
-          type: boolean
-          description: the link is clicked at least once
-        ClicksCount:
-          type: integer
-          description: Total number of link clicks (by all recipients).
+        Recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentEmailRecipient'
+          description: Collection of email recipients.
     SentEmailRecipient:
       type: object
       properties:
@@ -131,14 +127,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClickedLink'
-    SentEmailRecipientsRecords:
+    ClickedLink:
       type: object
       properties:
-        Recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/SentEmailRecipient'
-          description: Collection of email recipients.
+        Url:
+          type: string
+          description: Link address.
+        Clicked:
+          type: boolean
+          description: the link is clicked at least once
+        ClicksCount:
+          type: integer
+          description: Total number of link clicks (by all recipients).
   securitySchemes:
     OAuth2:
       type: oauth2

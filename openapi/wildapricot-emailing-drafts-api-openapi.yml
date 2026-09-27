@@ -181,6 +181,14 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailDraftListResult:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDraft'
+          description: Collection of email drafts.
     ShortContact:
       type: object
       properties:
@@ -195,17 +203,6 @@ components:
         LastName:
           type: string
           description: Contact last name
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    EmailDraftListResult:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailDraft'
-          description: Collection of email drafts.
     EmailDraft:
       type: object
       properties:
@@ -259,6 +256,9 @@ components:
           type: string
           format: datetime
           description: Date and time when the draft will be sent.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EmailDraftType:
       type: string
       enum:

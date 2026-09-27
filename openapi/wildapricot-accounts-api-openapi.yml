@@ -90,18 +90,18 @@ paths:
         - auto
 components:
   schemas:
-    SquareRegisterSettings:
+    Currency:
       type: object
-      required:
-      - IntegrationEnabled
-      description: Settings for Square Register integration, used for mobile app
       properties:
-        IntegrationEnabled:
-          type: boolean
-          description: Is integration enabled in admin UI.
-        ClientId:
+        Code:
           type: string
-          description: (optional) Square client Id
+          description: Currency code according to ISO4217
+        Name:
+          type: string
+          description: Human-readable currency name
+        Symbol:
+          type: string
+          description: Currency symbol like $ or â‚¬
     Localization:
       type: object
       properties:
@@ -141,41 +141,21 @@ components:
             DELETE - Resource can be deleted
 
             '
-    Currency:
+    PaymentSettings:
       type: object
       properties:
-        Code:
+        GeneralPaymentInstructions:
           type: string
-          description: Currency code according to ISO4217
-        Name:
+          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
+        EventPaymentInstructions:
           type: string
-          description: Human-readable currency name
-        Symbol:
+          description: For event registrations (can be changed for each event)
+        MembershipPaymentInstructions:
           type: string
-          description: Currency symbol like $ or â‚¬
-    BillingPlan:
-      type: object
-      description: Current account billing plan.
-      properties:
-        Name:
-          type: string
-          description: Billing plan name
-        Price:
-          type: number
-          description: Monthly price
+          description: For membership applications, renewals and level changes
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    ContactLimitInfo:
-      type: object
-      description: Details about limits on the number of contacts.
-      properties:
-        CurrentContactsCount:
-          type: integer
-          description: Number of contacts currently in database (archived excluded)
-        BillingPlanContactsLimit:
-          type: integer
-          description: Maximum number of contacts allowed by billing plan.
     Account:
       type: object
       description: Information about Wild Apricot account
@@ -220,18 +200,28 @@ components:
           $ref: '#/components/schemas/PaymentSettings'
         BillingPlan:
           $ref: '#/components/schemas/BillingPlan'
-    PaymentSettings:
+    SquareRegisterSettings:
       type: object
+      required:
+      - IntegrationEnabled
+      description: Settings for Square Register integration, used for mobile app
       properties:
-        GeneralPaymentInstructions:
+        IntegrationEnabled:
+          type: boolean
+          description: Is integration enabled in admin UI.
+        ClientId:
           type: string
-          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
-        EventPaymentInstructions:
+          description: (optional) Square client Id
+    BillingPlan:
+      type: object
+      description: Current account billing plan.
+      properties:
+        Name:
           type: string
-          description: For event registrations (can be changed for each event)
-        MembershipPaymentInstructions:
-          type: string
-          description: For membership applications, renewals and level changes
+          description: Billing plan name
+        Price:
+          type: number
+          description: Monthly price
     TimeZone:
       type: object
       description: Details about account time zone
@@ -245,6 +235,16 @@ components:
         UtcOffset:
           type: integer
           description: Offcet from UTC Time in minutes, i.e. "180"
+    ContactLimitInfo:
+      type: object
+      description: Details about limits on the number of contacts.
+      properties:
+        CurrentContactsCount:
+          type: integer
+          description: Number of contacts currently in database (archived excluded)
+        BillingPlanContactsLimit:
+          type: integer
+          description: Maximum number of contacts allowed by billing plan.
   securitySchemes:
     OAuth2:
       type: oauth2

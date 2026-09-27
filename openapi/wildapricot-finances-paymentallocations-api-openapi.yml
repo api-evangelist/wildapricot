@@ -65,6 +65,22 @@ paths:
         - auto
 components:
   schemas:
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    PaymentType:
+      type: string
+      enum:
+      - Unknown
+      - InvoicePayment
+      - DonationPayment
+      description: Payment type.
     PaymentAllocation:
       type: object
       description: Thhis object describes how payment is allocated among invoices.
@@ -104,22 +120,6 @@ components:
           type: string
           format: date
           description: Refund date
-    PaymentType:
-      type: string
-      enum:
-      - Unknown
-      - InvoicePayment
-      - DonationPayment
-      description: Payment type.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

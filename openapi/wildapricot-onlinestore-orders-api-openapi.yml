@@ -121,86 +121,6 @@ paths:
         - auto
 components:
   schemas:
-    OrderDigitalProduct:
-      type: object
-      properties:
-        url:
-          type: string
-        code:
-          type: string
-        emailNote:
-          type: string
-    OrderInternalNote:
-      type: object
-      properties:
-        text:
-          type: string
-    PaymentStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - Unpaid
-      - Paid
-      - PartiallyPaid
-      - NoInvoice
-      - Free
-      enum:
-      - UNPAID
-      - PAID
-      - PARTIALLYPAID
-      - NOINVOICE
-      - FREE
-    DeliveryType:
-      type: string
-      description: ''
-      x-enumNames:
-      - Shipping
-      - Pickup
-      enum:
-      - SHIPPING
-      - PICKUP
-    Currency:
-      type: object
-      properties:
-        Code:
-          type: string
-          description: Currency code according to ISO4217
-        Name:
-          type: string
-          description: Human-readable currency name
-        Symbol:
-          type: string
-          description: Currency symbol like $ or â‚¬
-    OrderProduct:
-      type: object
-      required:
-      - price
-      - amount
-      - productId
-      - quantity
-      - productType
-      properties:
-        title:
-          type: string
-        price:
-          type: number
-          format: decimal
-        amount:
-          type: number
-          format: decimal
-        productId:
-          type: integer
-          format: int32
-        variantId:
-          type: integer
-          format: int32
-        quantity:
-          type: integer
-          format: int32
-        productType:
-          $ref: '#/components/schemas/OrderProductType'
-        digitalProduct:
-          $ref: '#/components/schemas/OrderDigitalProduct'
     ShippingAddress:
       type: object
       properties:
@@ -216,49 +136,18 @@ components:
           type: string
         zip:
           type: string
-    OrderDeliveryOption:
+    Currency:
       type: object
-      required:
-      - type
       properties:
-        type:
-          $ref: '#/components/schemas/DeliveryType'
-        title:
+        Code:
           type: string
-        description:
+          description: Currency code according to ISO4217
+        Name:
           type: string
-        price:
-          type: number
-          format: decimal
-    BillingPerson:
-      type: object
-      required:
-      - contactId
-      properties:
-        contactId:
-          type: integer
-          format: int32
-        email:
+          description: Human-readable currency name
+        Symbol:
           type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        displayName:
-          type: string
-        phone:
-          type: string
-    OrderStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - Unfulfilled
-      - Fulfilled
-      - Cancelled
-      enum:
-      - UNFULFILLED
-      - FULFILLED
-      - CANCELLED
+          description: Currency symbol like $ or â‚¬
     Order:
       type: object
       required:
@@ -318,20 +207,6 @@ components:
           format: date-time
         deliveryOption:
           $ref: '#/components/schemas/OrderDeliveryOption'
-    OrderProductType:
-      type: string
-      description: ''
-      x-enumNames:
-      - Physical
-      - Digital
-      enum:
-      - PHYSICAL
-      - DIGITAL
-    OrderExternalNote:
-      type: object
-      properties:
-        text:
-          type: string
     Country:
       type: object
       required:
@@ -349,6 +224,131 @@ components:
         allowedPaymentMethods:
           type: integer
           format: int32
+    OrderDeliveryOption:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/DeliveryType'
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: decimal
+    OrderExternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    BillingPerson:
+      type: object
+      required:
+      - contactId
+      properties:
+        contactId:
+          type: integer
+          format: int32
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        phone:
+          type: string
+    OrderProduct:
+      type: object
+      required:
+      - price
+      - amount
+      - productId
+      - quantity
+      - productType
+      properties:
+        title:
+          type: string
+        price:
+          type: number
+          format: decimal
+        amount:
+          type: number
+          format: decimal
+        productId:
+          type: integer
+          format: int32
+        variantId:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        productType:
+          $ref: '#/components/schemas/OrderProductType'
+        digitalProduct:
+          $ref: '#/components/schemas/OrderDigitalProduct'
+    PaymentStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - Unpaid
+      - Paid
+      - PartiallyPaid
+      - NoInvoice
+      - Free
+      enum:
+      - UNPAID
+      - PAID
+      - PARTIALLYPAID
+      - NOINVOICE
+      - FREE
+    OrderStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - Unfulfilled
+      - Fulfilled
+      - Cancelled
+      enum:
+      - UNFULFILLED
+      - FULFILLED
+      - CANCELLED
+    OrderInternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    DeliveryType:
+      type: string
+      description: ''
+      x-enumNames:
+      - Shipping
+      - Pickup
+      enum:
+      - SHIPPING
+      - PICKUP
+    OrderDigitalProduct:
+      type: object
+      properties:
+        url:
+          type: string
+        code:
+          type: string
+        emailNote:
+          type: string
+    OrderProductType:
+      type: string
+      description: ''
+      x-enumNames:
+      - Physical
+      - Digital
+      enum:
+      - PHYSICAL
+      - DIGITAL
   securitySchemes:
     OAuth2:
       type: oauth2

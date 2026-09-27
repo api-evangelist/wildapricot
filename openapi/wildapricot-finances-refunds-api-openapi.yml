@@ -240,6 +240,31 @@ paths:
         - auto
 components:
   schemas:
+    UpdateRefundParams:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on refund. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on refund. Visible to both administrators and person being refunded.
+          SettledValue:
+            type: number
+            format: float
+            description: The previously settled amount of the payment.
+    RefundIdsResponse:
+      type: object
+      properties:
+        RefundIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
     FinanceDocument:
       type: object
       properties:
@@ -299,31 +324,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who created the document. Could be null.
-    CreateRefundParams:
-      allOf:
-      - $ref: '#/components/schemas/CreateFinanceDocument'
-      - type: object
-        properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
-            type: string
-            description: Internal note on refund. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on refund. Visible to both administrators and the person being refunded.
-          SettledValue:
-            type: number
-            format: float
-            description: The previously settled amount of the payment.
-    RefundIdsResponse:
+    LinkedResource:
       type: object
       properties:
-        RefundIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     Refund:
       allOf:
       - $ref: '#/components/schemas/FinanceDocument'
@@ -341,9 +350,24 @@ components:
             type: number
             format: float
             description: Total amount allocated to another finance documents (payments or donations).
-    UpdateRefundParams:
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    RefundsResponse:
       allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
+      - $ref: '#/components/schemas/RefundIdsResponse'
+      - $ref: '#/components/schemas/RefundListResponse'
+    RefundListResponse:
+      type: object
+      properties:
+        Refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Refund'
+          description: List of refunds that match request criteria.
+    CreateRefundParams:
+      allOf:
+      - $ref: '#/components/schemas/CreateFinanceDocument'
       - type: object
         properties:
           Tender:
@@ -353,14 +377,11 @@ components:
             description: Internal note on refund. Visible to administrators only.
           PublicComment:
             type: string
-            description: Comment on refund. Visible to both administrators and person being refunded.
+            description: Comment on refund. Visible to both administrators and the person being refunded.
           SettledValue:
             type: number
             format: float
             description: The previously settled amount of the payment.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
     LinkedResourceWithName:
       allOf:
       - $ref: '#/components/schemas/LinkedResource'
@@ -369,27 +390,6 @@ components:
           Name:
             type: string
             description: Resource name
-    RefundListResponse:
-      type: object
-      properties:
-        Refunds:
-          type: array
-          items:
-            $ref: '#/components/schemas/Refund'
-          description: List of refunds that match request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    RefundsResponse:
-      allOf:
-      - $ref: '#/components/schemas/RefundIdsResponse'
-      - $ref: '#/components/schemas/RefundListResponse'
   securitySchemes:
     OAuth2:
       type: oauth2

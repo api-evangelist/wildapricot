@@ -301,36 +301,11 @@ paths:
         - auto
 components:
   schemas:
-    EmailDraftPreview:
-      type: object
-      description: Describes how email will look like when all macros are applied.
-      properties:
-        Subject:
-          type: string
-          description: Email subject with macros applied.
-        Body:
-          type: string
-          description: Email body HTML with mosros applied.
     EmailRecipients:
       type: array
       description: Collection of recipients.
       items:
         $ref: '#/components/schemas/EmailRecipient'
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code, like Validation / Search / ...
-        message:
-          type: string
-          description: An explanation of why this error occured
-        details:
-          type: object
-          description: More information about the error. Data structure is specific for each kind of error.
     EmailRecipient:
       type: object
       properties:
@@ -367,6 +342,31 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code, like Validation / Search / ...
+        message:
+          type: string
+          description: An explanation of why this error occured
+        details:
+          type: object
+          description: More information about the error. Data structure is specific for each kind of error.
+    EmailDraftPreview:
+      type: object
+      description: Describes how email will look like when all macros are applied.
+      properties:
+        Subject:
+          type: string
+          description: Email subject with macros applied.
+        Body:
+          type: string
+          description: Email body HTML with mosros applied.
   securitySchemes:
     OAuth2:
       type: oauth2
