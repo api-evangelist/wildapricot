@@ -175,6 +175,66 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
+    CreateEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    EditEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    OptionsListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Item identifier unique in the list
+        Label:
+          type: string
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
+          type: boolean
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
+    RulesAndTermsInfo:
+      type: object
+      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      properties:
+        Text:
+          type: string
+          description: Terms of use label.
+        Link:
+          type: string
+          description: Url of the rules and terms document.
     EntityFieldDescription:
       type: object
       required:
@@ -210,66 +270,6 @@ components:
           description: Sorting order to display the field in UI
         RulesAndTermsInfo:
           $ref: '#/components/schemas/RulesAndTermsInfo'
-    OptionsListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Item identifier unique in the list
-        Label:
-          type: string
-          description: Human-readable text label.
-        Position:
-          type: integer
-          description: Option position among other options.
-        SelectedByDefault:
-          type: boolean
-          description: Indicates whether this option would be selected on form if user did not select another option.
-        ExtraCost:
-          type: number
-          format: decimal
-          description: Extra price for selecting this option. Used only by fields with an associated cost.
-    CreateEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
-    EditEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
-    CustomFieldType:
-      type: string
-      enum:
-      - String
-      - DateTime
-      - Boolean
-      - Choice
-      - MultipleChoice
-      - Number
-      - SectionDivider
-      - CalculatedExtraCharge
-      - Picture
-      description: Custom field data type.
-    RulesAndTermsInfo:
-      type: object
-      description: Additional info for fields with rules / terms conditions. Not present for other field types.
-      properties:
-        Text:
-          type: string
-          description: Terms of use label.
-        Link:
-          type: string
-          description: Url of the rules and terms document.
   securitySchemes:
     OAuth2:
       type: oauth2

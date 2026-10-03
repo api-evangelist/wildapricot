@@ -186,20 +186,6 @@ paths:
         - auto
 components:
   schemas:
-    TendersResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Tender'
-      description: Collection of tenders.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     Tender:
       allOf:
       - $ref: '#/components/schemas/LinkedResourceWithName'
@@ -211,6 +197,20 @@ components:
           IsCustom:
             type: boolean
             description: Indicates that this tender is created by account admin, otherwise the tender is built-in.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    TendersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tender'
+      description: Collection of tenders.
     LinkedResourceWithName:
       allOf:
       - $ref: '#/components/schemas/LinkedResource'

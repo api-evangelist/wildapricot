@@ -240,6 +240,64 @@ paths:
         - auto
 components:
   schemas:
+    CreateFinanceDocument:
+      type: object
+      properties:
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Value:
+          type: number
+          format: float
+        DocumentDate:
+          type: string
+          format: date
+          description: Document date.
+        Contact:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact assigned to the financial document.
+        CreatedDate:
+          type: string
+          format: date
+          description: Date and time when the document was created.
+        CreatedBy:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to contact who created the document. Could be null.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    RefundIdsResponse:
+      type: object
+      properties:
+        RefundIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    Refund:
+      allOf:
+      - $ref: '#/components/schemas/FinanceDocument'
+      - type: object
+        properties:
+          Tender:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+          Comment:
+            type: string
+            description: Internal note on refund. Visible to administrators only.
+          PublicComment:
+            type: string
+            description: Comment on refund. Visible to both administrators and person being refunded.
+          SettledValue:
+            type: number
+            format: float
+            description: Total amount allocated to another finance documents (payments or donations).
     UpdateRefundParams:
       allOf:
       - $ref: '#/components/schemas/FinanceDocument'
@@ -257,14 +315,9 @@ components:
             type: number
             format: float
             description: The previously settled amount of the payment.
-    RefundIdsResponse:
-      type: object
-      properties:
-        RefundIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of refund identifiers that match request criteria. The field appears if idsOnly parameter was passed in request.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     FinanceDocument:
       type: object
       properties:
@@ -300,59 +353,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/LinkedResource'
           - description: Link to contact who modified the document. Could be null.
-    CreateFinanceDocument:
-      type: object
-      properties:
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        Value:
-          type: number
-          format: float
-        DocumentDate:
-          type: string
-          format: date
-          description: Document date.
-        Contact:
-          allOf:
-          - $ref: '#/components/schemas/LinkedResource'
-          - description: Link to contact assigned to the financial document.
-        CreatedDate:
-          type: string
-          format: date
-          description: Date and time when the document was created.
-        CreatedBy:
-          allOf:
-          - $ref: '#/components/schemas/LinkedResource'
-          - description: Link to contact who created the document. Could be null.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    Refund:
-      allOf:
-      - $ref: '#/components/schemas/FinanceDocument'
-      - type: object
-        properties:
-          Tender:
-            $ref: '#/components/schemas/LinkedResourceWithName'
-          Comment:
-            type: string
-            description: Internal note on refund. Visible to administrators only.
-          PublicComment:
-            type: string
-            description: Comment on refund. Visible to both administrators and person being refunded.
-          SettledValue:
-            type: number
-            format: float
-            description: Total amount allocated to another finance documents (payments or donations).
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
     RefundsResponse:
       allOf:
       - $ref: '#/components/schemas/RefundIdsResponse'
@@ -365,6 +365,14 @@ components:
           items:
             $ref: '#/components/schemas/Refund'
           description: List of refunds that match request criteria.
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
     CreateRefundParams:
       allOf:
       - $ref: '#/components/schemas/CreateFinanceDocument'
@@ -382,14 +390,6 @@ components:
             type: number
             format: float
             description: The previously settled amount of the payment.
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
   securitySchemes:
     OAuth2:
       type: oauth2

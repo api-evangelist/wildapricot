@@ -171,16 +171,191 @@ paths:
         - auto
 components:
   schemas:
-    RenewalPolicy:
+    ContactFieldAccessLevel:
+      type: string
+      enum:
+      - Public
+      - Members
+      - Nobody
+      description: '
+
+        Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
+
+        '
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
+    EditEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    ContactFieldDescription:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescriptionWithExtraCharge'
+      - type: object
+      - required:
+        - Id
+        - Type
+        - Access
+        - AdminOnly
+        - MemberOnly
+      - properties:
+          Id:
+            type: integer
+            description: Unique field identifier.
+          Access:
+            $ref: '#/components/schemas/ContactFieldAccessLevel'
+          AdminOnly:
+            type: boolean
+            description: Indicates that the field is accessible only by administrators.
+          ExistsInLevels:
+            type: array
+            description: If field is defined for specific levels only, this contains list of membership levels.
+            items:
+              $ref: '#/components/schemas/LinkedResource'
+          MemberAccess:
+            $ref: '#/components/schemas/MemberFieldAccess'
+          MemberOnly:
+            type: boolean
+            description: Indicates whether the field is a membership field.
+          IsBuiltIn:
+            type: boolean
+            description: The field is a built-in system field, it cannot be edited or deleted.
+          SupportSearch:
+            type: boolean
+            description: Indicates that this field can be used in $filter expression in contact search.
+          IsEditable:
+            type: boolean
+            description: Indicates that the field's value can be changed with create/update requests. Otherwise value canâ€™t be edited through API. If non-editable field value is provided in create/update contact request, the value is ignored by API.
+          RulesAndTermsInfo:
+            $ref: '#/components/schemas/RulesAndTermsInfo'
+          RenewalPolicy:
+            $ref: '#/components/schemas/RenewalPolicy'
+          ProrateInApplication:
+            type: boolean
+            description: If the field has associated cost, this indicates if the cost should be prorated over a partial period of time.
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
+    RulesAndTermsInfo:
+      type: object
+      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      properties:
+        Text:
+          type: string
+          description: Terms of use label.
+        Link:
+          type: string
+          description: Url of the rules and terms document.
+    OptionsListItem:
       type: object
       properties:
-        IncludeInRenewals:
+        Id:
+          type: integer
+          description: Item identifier unique in the list
+        Label:
+          type: string
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
           type: boolean
-          description: Indicates if the field should be shown in renewal form.
-        AllowedToChangeInRenewal:
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    EntityFieldDescription:
+      type: object
+      required:
+      - FieldName
+      - Description
+      - AdminOnly
+      properties:
+        FieldName:
+          type: string
+          description: Field name title, could be displayed in user interface. Field name could be changed by account administrator.
+        SystemCode:
+          type: string
+          description: System-defined code associated with field. It does not change even if FieldName is edited in admin backend.
+        DisplayType:
+          type: string
+          description: Optional hint, which tells how to display and edit field. It appears for String and Choice fields.
+        IsSystem:
           type: boolean
-          description: Indicates whether field value can be changed during renual process. Can be set to TRUE only if IncludeInRenewals is set to TRUE.
-      description: Defines how system manages field during renewal process. Used only by multichoice fields with an associated cost.
+          description: Field is system-defined and could not be deleted. However, field name could be changed by account administrator.
+        Description:
+          type: string
+          description: System-defined description of the field. Empty for custom fields.
+        FieldInstructions:
+          type: string
+          description: Admin-defined comment for the field. Shown as a tip when members or visitors fill in forms.
+        AllowedValues:
+          type: array
+          description: If field value is limited to set of predefined values, this contains list of allowed values. Normally, AllowedValues appear for MultipleChoice and Choice fields.
+          items:
+            $ref: '#/components/schemas/OptionsListItem'
+        Order:
+          type: integer
+          description: Sorting order to display the field in UI
+        RulesAndTermsInfo:
+          $ref: '#/components/schemas/RulesAndTermsInfo'
+    ExtraCharge:
+      type: object
+      title: ExtraChargeOptions
+      description: This property appears for CalculatedExtraCharge fields only.
+      required:
+      - MultiplierType
+      - Multiplier
+      properties:
+        MultiplierType:
+          type: string
+          description: "Indicates the type of multiplier field.\n  ItemPrice multiplier specifies a price for each requested item.\n  Percentage multiplier specifies a percent of field value to use as extra charge.\n"
+          enum:
+          - ItemPrice
+          - Percentage
+        Multiplier:
+          type: number
+          format: decimal
+          description: value of multiplier for extra charge calculation
+        MinAmount:
+          type: integer
+          description: Minimal amount of items to request (minimal field value). For ItemPrice multiplier type only.
+        MaxAmount:
+          type: integer
+          description: Maximum amount of items to request (maximum field value). For ItemPrice multiplier type only.
+        MinCharge:
+          type: number
+          format: decimal
+          description: Minimal extra charge. (minimal field value). For Percentage multiplier type only.
+        MaxCharge:
+          type: number
+          format: decimal
+          description: Maximum extra charge. (maximum field value). For Percentage multiplier type only.
     EditContactFieldParams:
       type: object
       required:
@@ -238,6 +413,15 @@ components:
           Id:
             type: integer
             description: Unique identifier of existing field.
+    EntityFieldDescriptionWithExtraCharge:
+      allOf:
+      - $ref: '#/components/schemas/EditEntityFieldParams'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          ExtraCharge:
+            $ref: '#/components/schemas/ExtraCharge'
     CreateContactFieldParams:
       allOf:
       - $ref: '#/components/schemas/EditContactFieldParams'
@@ -264,139 +448,6 @@ components:
           MemberOnly:
             type: boolean
             description: Indicates whether a field is available only to members.
-    ExtraCharge:
-      type: object
-      title: ExtraChargeOptions
-      description: This property appears for CalculatedExtraCharge fields only.
-      required:
-      - MultiplierType
-      - Multiplier
-      properties:
-        MultiplierType:
-          type: string
-          description: "Indicates the type of multiplier field.\n  ItemPrice multiplier specifies a price for each requested item.\n  Percentage multiplier specifies a percent of field value to use as extra charge.\n"
-          enum:
-          - ItemPrice
-          - Percentage
-        Multiplier:
-          type: number
-          format: decimal
-          description: value of multiplier for extra charge calculation
-        MinAmount:
-          type: integer
-          description: Minimal amount of items to request (minimal field value). For ItemPrice multiplier type only.
-        MaxAmount:
-          type: integer
-          description: Maximum amount of items to request (maximum field value). For ItemPrice multiplier type only.
-        MinCharge:
-          type: number
-          format: decimal
-          description: Minimal extra charge. (minimal field value). For Percentage multiplier type only.
-        MaxCharge:
-          type: number
-          format: decimal
-          description: Maximum extra charge. (maximum field value). For Percentage multiplier type only.
-    ContactFieldDescription:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescriptionWithExtraCharge'
-      - type: object
-      - required:
-        - Id
-        - Type
-        - Access
-        - AdminOnly
-        - MemberOnly
-      - properties:
-          Id:
-            type: integer
-            description: Unique field identifier.
-          Access:
-            $ref: '#/components/schemas/ContactFieldAccessLevel'
-          AdminOnly:
-            type: boolean
-            description: Indicates that the field is accessible only by administrators.
-          ExistsInLevels:
-            type: array
-            description: If field is defined for specific levels only, this contains list of membership levels.
-            items:
-              $ref: '#/components/schemas/LinkedResource'
-          MemberAccess:
-            $ref: '#/components/schemas/MemberFieldAccess'
-          MemberOnly:
-            type: boolean
-            description: Indicates whether the field is a membership field.
-          IsBuiltIn:
-            type: boolean
-            description: The field is a built-in system field, it cannot be edited or deleted.
-          SupportSearch:
-            type: boolean
-            description: Indicates that this field can be used in $filter expression in contact search.
-          IsEditable:
-            type: boolean
-            description: Indicates that the field's value can be changed with create/update requests. Otherwise value canâ€™t be edited through API. If non-editable field value is provided in create/update contact request, the value is ignored by API.
-          RulesAndTermsInfo:
-            $ref: '#/components/schemas/RulesAndTermsInfo'
-          RenewalPolicy:
-            $ref: '#/components/schemas/RenewalPolicy'
-          ProrateInApplication:
-            type: boolean
-            description: If the field has associated cost, this indicates if the cost should be prorated over a partial period of time.
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
-    OptionsListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Item identifier unique in the list
-        Label:
-          type: string
-          description: Human-readable text label.
-        Position:
-          type: integer
-          description: Option position among other options.
-        SelectedByDefault:
-          type: boolean
-          description: Indicates whether this option would be selected on form if user did not select another option.
-        ExtraCost:
-          type: number
-          format: decimal
-          description: Extra price for selecting this option. Used only by fields with an associated cost.
-    EntityFieldDescription:
-      type: object
-      required:
-      - FieldName
-      - Description
-      - AdminOnly
-      properties:
-        FieldName:
-          type: string
-          description: Field name title, could be displayed in user interface. Field name could be changed by account administrator.
-        SystemCode:
-          type: string
-          description: System-defined code associated with field. It does not change even if FieldName is edited in admin backend.
-        DisplayType:
-          type: string
-          description: Optional hint, which tells how to display and edit field. It appears for String and Choice fields.
-        IsSystem:
-          type: boolean
-          description: Field is system-defined and could not be deleted. However, field name could be changed by account administrator.
-        Description:
-          type: string
-          description: System-defined description of the field. Empty for custom fields.
-        FieldInstructions:
-          type: string
-          description: Admin-defined comment for the field. Shown as a tip when members or visitors fill in forms.
-        AllowedValues:
-          type: array
-          description: If field value is limited to set of predefined values, this contains list of allowed values. Normally, AllowedValues appear for MultipleChoice and Choice fields.
-          items:
-            $ref: '#/components/schemas/OptionsListItem'
-        Order:
-          type: integer
-          description: Sorting order to display the field in UI
-        RulesAndTermsInfo:
-          $ref: '#/components/schemas/RulesAndTermsInfo'
     MemberFieldAccess:
       type: string
       title: MemberAccess
@@ -407,67 +458,16 @@ components:
       - ViewOnly
       - Nobody
       description: Controls whether the member is allowed to view or modify this field. Only for member fields.
-    ContactFieldAccessLevel:
-      type: string
-      enum:
-      - Public
-      - Members
-      - Nobody
-      description: '
-
-        Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
-
-        '
-    EditEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
-    LinkedResource:
+    RenewalPolicy:
       type: object
       properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    CustomFieldType:
-      type: string
-      enum:
-      - String
-      - DateTime
-      - Boolean
-      - Choice
-      - MultipleChoice
-      - Number
-      - SectionDivider
-      - CalculatedExtraCharge
-      - Picture
-      description: Custom field data type.
-    EntityFieldDescriptionWithExtraCharge:
-      allOf:
-      - $ref: '#/components/schemas/EditEntityFieldParams'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          ExtraCharge:
-            $ref: '#/components/schemas/ExtraCharge'
-    RulesAndTermsInfo:
-      type: object
-      description: Additional info for fields with rules / terms conditions. Not present for other field types.
-      properties:
-        Text:
-          type: string
-          description: Terms of use label.
-        Link:
-          type: string
-          description: Url of the rules and terms document.
+        IncludeInRenewals:
+          type: boolean
+          description: Indicates if the field should be shown in renewal form.
+        AllowedToChangeInRenewal:
+          type: boolean
+          description: Indicates whether field value can be changed during renual process. Can be set to TRUE only if IncludeInRenewals is set to TRUE.
+      description: Defines how system manages field during renewal process. Used only by multichoice fields with an associated cost.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -107,6 +107,136 @@ paths:
         - auto
 components:
   schemas:
+    EmailOriginType:
+      type: string
+      enum:
+      - System
+      - Contact
+      - MembershipLevel
+      - Event
+      - Donation
+      - WebPage
+      - ForumTopicSubscription
+      - FinancialDocument
+      - NewPasswordEmail
+      - OnlineStoreOrder
+      - PollStartAnnouncement
+      description: Email origin type.
+    EmailLog:
+      allOf:
+      - $ref: '#/components/schemas/EmailLogRecords'
+      - $ref: '#/components/schemas/EmailLogIdentifiers'
+    EmailLogRecords:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailLogRecord'
+          description: 'Collection of email log records.
+
+            '
+    InitializationSourceType:
+      type: string
+      enum:
+      - Automatic
+      - Manual
+      description: Email initialization source type.
+    EmailLogIdentifiers:
+      type: object
+      properties:
+        EmailsIdentifiers:
+          type: array
+          items:
+            type: integer
+            description: Unique email identifier.
+          description: A collection of email log record identifiers.
+    EmailRecipient:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: 'If email was sent to individual recipient, this field contains contact identifier.
+
+            If email was sent to all recipients from some saved search, this field contains saved search identifier.
+
+            '
+        Type:
+          type: integer
+          description: Recipient group type.
+          enum:
+          - IndividualContactRecipient
+          - IndividualEventRegistrationRecipient
+          - EventAttendees_CheckedIn
+          - EventAttendees_NotCheckedIn
+          - EventAttendees_Paid
+          - EventAttendees_NotPaid
+          - EventAttendees_All
+          - EventAttendees_Selected
+          - Contacts_All
+          - Contacts_Selected
+          - Contacts_SavedSearch
+          - Members_All
+          - Members_SavedSearch
+          - SentEmailRecipient
+          - EventWaitlist_All
+          - EventWaitlist_Selected
+        Name:
+          type: string
+          description: Display name of recipient or name of saved search.
+        Email:
+          type: string
+          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailType:
+      type: string
+      enum:
+      - Unknown
+      - MemberApplication_ActivationEmail
+      - MemberApplication_InitiationEmail
+      - MemberApplication_BundleMember_ActivationEmail
+      - MemberApplication_BundleAdmin_ActivationEmail
+      - MemberRenewal_FreeRenewal
+      - MemberRenewal_RenewalPending
+      - MemberRenewal_RenewalConfirmed
+      - MemberRenewal_RenewalCanceledByMember
+      - MemberRenewal_MemberRenewal_RecurringRenewalFailed
+      - MemberRenewal_Online_PaymentSuccessfull
+      - MemberRenewal_AdvanceRenewalReminder1
+      - MemberRenewal_AdvanceRenewalReminder2
+      - MemberRenewal_RenewalDateNotice
+      - MemberRenewal_GracePeriod
+      - MemberRenewal_Lapsed
+      - MemberLevelChange_InitiationEmail
+      - MemberLevelChange_ActivationEmail
+      - Donation_Confirmation
+      - EventRegistration_OfflinePayment_FreeLevelConfirmationEmail
+      - EventRegistration_OfflinePayment_PaidLevelConfirmationEmail
+      - EventRegistration_OfflinePayment_PaidLevelPendingEmail
+      - EventRegistration_NewWaitlistEntryEmail
+      - EventRegistration_CanceledEmail
+      - EventRegistration_OnlinePayment_PaidLevelConfirmationEmail
+      - EventRegistration_Reminder1
+      - EventRegistration_Reminder2
+      - EventRegistration_Reminder3
+      - EventRegistration_Announcement1
+      - EventRegistration_Announcement2
+      - EventRegistration_Announcement3
+      - EmailBlast_Members
+      - EmailBlast_Registrations
+      - EmailBlast_WaitlistPersons
+      - Finances_Invoice
+      - Finances_PaymentReceipt
+      - Finances_DonationReceipt
+      - Finances_RefundNote
+      - Contact_Password
+      - SubscriptionForm_Confirmation
+      - Public_MemberToMemberEmail
+      - Poll_Announcement_Notification
+      - ForgottenPasswordRequest
+      - ForumNotification
+      - ForumTopicNotification
+      - OnlineStore_Order
+      description: The reason why the email was sent.
     EmailLogRecord:
       type: object
       properties:
@@ -161,139 +291,9 @@ components:
         Recipient:
           $ref: '#/components/schemas/EmailRecipient'
           description: only if email has a single recipient
-    EmailRecipient:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: 'If email was sent to individual recipient, this field contains contact identifier.
-
-            If email was sent to all recipients from some saved search, this field contains saved search identifier.
-
-            '
-        Type:
-          type: integer
-          description: Recipient group type.
-          enum:
-          - IndividualContactRecipient
-          - IndividualEventRegistrationRecipient
-          - EventAttendees_CheckedIn
-          - EventAttendees_NotCheckedIn
-          - EventAttendees_Paid
-          - EventAttendees_NotPaid
-          - EventAttendees_All
-          - EventAttendees_Selected
-          - Contacts_All
-          - Contacts_Selected
-          - Contacts_SavedSearch
-          - Members_All
-          - Members_SavedSearch
-          - SentEmailRecipient
-          - EventWaitlist_All
-          - EventWaitlist_Selected
-        Name:
-          type: string
-          description: Display name of recipient or name of saved search.
-        Email:
-          type: string
-          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    EmailLogIdentifiers:
-      type: object
-      properties:
-        EmailsIdentifiers:
-          type: array
-          items:
-            type: integer
-            description: Unique email identifier.
-          description: A collection of email log record identifiers.
-    EmailType:
-      type: string
-      enum:
-      - Unknown
-      - MemberApplication_ActivationEmail
-      - MemberApplication_InitiationEmail
-      - MemberApplication_BundleMember_ActivationEmail
-      - MemberApplication_BundleAdmin_ActivationEmail
-      - MemberRenewal_FreeRenewal
-      - MemberRenewal_RenewalPending
-      - MemberRenewal_RenewalConfirmed
-      - MemberRenewal_RenewalCanceledByMember
-      - MemberRenewal_MemberRenewal_RecurringRenewalFailed
-      - MemberRenewal_Online_PaymentSuccessfull
-      - MemberRenewal_AdvanceRenewalReminder1
-      - MemberRenewal_AdvanceRenewalReminder2
-      - MemberRenewal_RenewalDateNotice
-      - MemberRenewal_GracePeriod
-      - MemberRenewal_Lapsed
-      - MemberLevelChange_InitiationEmail
-      - MemberLevelChange_ActivationEmail
-      - Donation_Confirmation
-      - EventRegistration_OfflinePayment_FreeLevelConfirmationEmail
-      - EventRegistration_OfflinePayment_PaidLevelConfirmationEmail
-      - EventRegistration_OfflinePayment_PaidLevelPendingEmail
-      - EventRegistration_NewWaitlistEntryEmail
-      - EventRegistration_CanceledEmail
-      - EventRegistration_OnlinePayment_PaidLevelConfirmationEmail
-      - EventRegistration_Reminder1
-      - EventRegistration_Reminder2
-      - EventRegistration_Reminder3
-      - EventRegistration_Announcement1
-      - EventRegistration_Announcement2
-      - EventRegistration_Announcement3
-      - EmailBlast_Members
-      - EmailBlast_Registrations
-      - EmailBlast_WaitlistPersons
-      - Finances_Invoice
-      - Finances_PaymentReceipt
-      - Finances_DonationReceipt
-      - Finances_RefundNote
-      - Contact_Password
-      - SubscriptionForm_Confirmation
-      - Public_MemberToMemberEmail
-      - Poll_Announcement_Notification
-      - ForgottenPasswordRequest
-      - ForumNotification
-      - ForumTopicNotification
-      - OnlineStore_Order
-      description: The reason why the email was sent.
-    EmailLog:
-      allOf:
-      - $ref: '#/components/schemas/EmailLogRecords'
-      - $ref: '#/components/schemas/EmailLogIdentifiers'
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    InitializationSourceType:
-      type: string
-      enum:
-      - Automatic
-      - Manual
-      description: Email initialization source type.
-    EmailLogRecords:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailLogRecord'
-          description: 'Collection of email log records.
-
-            '
-    EmailOriginType:
-      type: string
-      enum:
-      - System
-      - Contact
-      - MembershipLevel
-      - Event
-      - Donation
-      - WebPage
-      - ForumTopicSubscription
-      - FinancialDocument
-      - NewPasswordEmail
-      - OnlineStoreOrder
-      - PollStartAnnouncement
-      description: Email origin type.
     EmailOrigin:
       type: object
       properties:

@@ -93,6 +93,9 @@ paths:
         - auto
 components:
   schemas:
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     LinkedResource:
       type: object
       properties:
@@ -102,9 +105,6 @@ components:
         Url:
           type: string
           description: API url to get item details
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
     Bundle:
       type: object
       properties:

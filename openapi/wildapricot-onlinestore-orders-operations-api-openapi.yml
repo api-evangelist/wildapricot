@@ -53,13 +53,6 @@ paths:
         - auto
 components:
   schemas:
-    OrderFulfilment:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          $ref: '#/components/schemas/OrderStatus'
     OrderStatus:
       type: string
       description: ''
@@ -71,6 +64,13 @@ components:
       - UNFULFILLED
       - FULFILLED
       - CANCELLED
+    OrderFulfilment:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/OrderStatus'
     OrderSetStatusResult:
       type: object
       properties:

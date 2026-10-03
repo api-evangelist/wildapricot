@@ -74,13 +74,6 @@ components:
         Url:
           type: string
           description: API url to get item details
-    PaymentType:
-      type: string
-      enum:
-      - Unknown
-      - InvoicePayment
-      - DonationPayment
-      description: Payment type.
     PaymentAllocation:
       type: object
       description: Thhis object describes how payment is allocated among invoices.
@@ -120,6 +113,13 @@ components:
           type: string
           format: date
           description: Refund date
+    PaymentType:
+      type: string
+      enum:
+      - Unknown
+      - InvoicePayment
+      - DonationPayment
+      description: Payment type.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -194,77 +194,12 @@ paths:
         - auto
 components:
   schemas:
-    EventRegistrationTypeEditParams:
-      type: object
-      required:
-      - EventId
-      properties:
-        Id:
-          type: integer
-          description: Unique event identifier. This field should be provided only when updating existing event registration type
-        EventId:
-          type: integer
-          description: Identifier of event related to the registration type.
-        Name:
-          type: string
-          description: 'Registraton type title. This field should be provided only when creating new registration type
-
-            '
-        IsEnabled:
-          type: boolean
-          description: Indicates whether this registration type is enabled
-        Description:
-          type: string
-          description: Plain text description for the event registration type.
-        BasePrice:
-          type: number
-          description: Base price registrant pays with this registration type.
-        GuestPrice:
-          type: number
-          description: Price for each additional guest.
-        UseTaxScopeSettings:
-          type: boolean
-          default: false
-          description: 'Indicates whether account tax scope settings should be used to calculate final price. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to default value
-
-            '
-        Availability:
-          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
-        RegistrationCode:
-          type: string
-          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
-        AvailableForMembershipLevels:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
-        AvailableFrom:
-          type: string
-          format: datetime
-          description: 'This registration type is available starting from this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
-
-            '
-        AvailableThrough:
-          type: string
-          format: datetime
-          description: 'This registration type is available until this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
-
-            '
-        MaximumRegistrantsCount:
-          type: integer
-          description: Maximum number of registrants for this registration type.
-        GuestRegistrationPolicy:
-          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
-        UnavailabilityPolicy:
-          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
-        CancellationBehaviour:
-          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
-        CancellationDaysBeforeEvent:
-          type: integer
-          description: If CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field contains minimum number of days before the event that cancellations are allowed
-        IsWaitlistEnabled:
-          type: boolean
-          description: Indicated whether registrant should be placed on waitlist if registrations have reached their limit.
+    EventRegistrationUnavailabilityPolicy:
+      type: string
+      enum:
+      - ShowDisabled
+      - Hide
+      description: Indicates what is displayed if the registration type is not available for a particular visitor.
     EventRegistrationTypeAvailability:
       type: string
       enum:
@@ -337,36 +272,6 @@ components:
         IsWaitlistEnabled:
           type: boolean
           description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
-    EventRegistrationTypeResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventRegistrationType'
-      description: List of event registration types that match the request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    EventRegistrationUnavailabilityPolicy:
-      type: string
-      enum:
-      - ShowDisabled
-      - Hide
-      description: Indicates what is displayed if the registration type is not available for a particular visitor.
-    EventRegistrationCancellationBehavior:
-      type: string
-      enum:
-      - DoNotAllow
-      - AllowUpToPeriodBeforeEvent
-      - Allow
-      description: Indicates if it is possible for attendee to self-cancel event registration.
     EventGuestRegistrationPolicy:
       type: string
       enum:
@@ -377,6 +282,101 @@ components:
       description: 'Describes how guests are registered. Allowed values are
 
         - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
+    EventRegistrationTypeEditParams:
+      type: object
+      required:
+      - EventId
+      properties:
+        Id:
+          type: integer
+          description: Unique event identifier. This field should be provided only when updating existing event registration type
+        EventId:
+          type: integer
+          description: Identifier of event related to the registration type.
+        Name:
+          type: string
+          description: 'Registraton type title. This field should be provided only when creating new registration type
+
+            '
+        IsEnabled:
+          type: boolean
+          description: Indicates whether this registration type is enabled
+        Description:
+          type: string
+          description: Plain text description for the event registration type.
+        BasePrice:
+          type: number
+          description: Base price registrant pays with this registration type.
+        GuestPrice:
+          type: number
+          description: Price for each additional guest.
+        UseTaxScopeSettings:
+          type: boolean
+          default: false
+          description: 'Indicates whether account tax scope settings should be used to calculate final price. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to default value
+
+            '
+        Availability:
+          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
+        RegistrationCode:
+          type: string
+          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
+        AvailableForMembershipLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
+        AvailableFrom:
+          type: string
+          format: datetime
+          description: 'This registration type is available starting from this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
+
+            '
+        AvailableThrough:
+          type: string
+          format: datetime
+          description: 'This registration type is available until this date. Can be null. âš  Once set, it has to be provided on every update. Otherwise, it will be overwritten to null
+
+            '
+        MaximumRegistrantsCount:
+          type: integer
+          description: Maximum number of registrants for this registration type.
+        GuestRegistrationPolicy:
+          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
+        UnavailabilityPolicy:
+          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
+        CancellationBehaviour:
+          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
+        CancellationDaysBeforeEvent:
+          type: integer
+          description: If CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field contains minimum number of days before the event that cancellations are allowed
+        IsWaitlistEnabled:
+          type: boolean
+          description: Indicated whether registrant should be placed on waitlist if registrations have reached their limit.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    EventRegistrationTypeResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistrationType'
+      description: List of event registration types that match the request criteria.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    EventRegistrationCancellationBehavior:
+      type: string
+      enum:
+      - DoNotAllow
+      - AllowUpToPeriodBeforeEvent
+      - Allow
+      description: Indicates if it is possible for attendee to self-cancel event registration.
   securitySchemes:
     OAuth2:
       type: oauth2

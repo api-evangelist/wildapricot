@@ -140,47 +140,6 @@ paths:
         - auto
 components:
   schemas:
-    EmailRecipients:
-      type: array
-      description: Collection of recipients.
-      items:
-        $ref: '#/components/schemas/EmailRecipient'
-    EmailRecipient:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: 'If email was sent to individual recipient, this field contains contact identifier.
-
-            If email was sent to all recipients from some saved search, this field contains saved search identifier.
-
-            '
-        Type:
-          type: integer
-          description: Recipient group type.
-          enum:
-          - IndividualContactRecipient
-          - IndividualEventRegistrationRecipient
-          - EventAttendees_CheckedIn
-          - EventAttendees_NotCheckedIn
-          - EventAttendees_Paid
-          - EventAttendees_NotPaid
-          - EventAttendees_All
-          - EventAttendees_Selected
-          - Contacts_All
-          - Contacts_Selected
-          - Contacts_SavedSearch
-          - Members_All
-          - Members_SavedSearch
-          - SentEmailRecipient
-          - EventWaitlist_All
-          - EventWaitlist_Selected
-        Name:
-          type: string
-          description: Display name of recipient or name of saved search.
-        Email:
-          type: string
-          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
     EmailDraftListResult:
       type: object
       properties:
@@ -189,20 +148,6 @@ components:
           items:
             $ref: '#/components/schemas/EmailDraft'
           description: Collection of email drafts.
-    ShortContact:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Unique contact identifier.
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        FirstName:
-          type: string
-          description: Contact first name
-        LastName:
-          type: string
-          description: Contact last name
     EmailDraft:
       type: object
       properties:
@@ -256,9 +201,64 @@ components:
           type: string
           format: datetime
           description: Date and time when the draft will be sent.
+    ShortContact:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique contact identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        FirstName:
+          type: string
+          description: Contact first name
+        LastName:
+          type: string
+          description: Contact last name
+    EmailRecipient:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: 'If email was sent to individual recipient, this field contains contact identifier.
+
+            If email was sent to all recipients from some saved search, this field contains saved search identifier.
+
+            '
+        Type:
+          type: integer
+          description: Recipient group type.
+          enum:
+          - IndividualContactRecipient
+          - IndividualEventRegistrationRecipient
+          - EventAttendees_CheckedIn
+          - EventAttendees_NotCheckedIn
+          - EventAttendees_Paid
+          - EventAttendees_NotPaid
+          - EventAttendees_All
+          - EventAttendees_Selected
+          - Contacts_All
+          - Contacts_Selected
+          - Contacts_SavedSearch
+          - Members_All
+          - Members_SavedSearch
+          - SentEmailRecipient
+          - EventWaitlist_All
+          - EventWaitlist_Selected
+        Name:
+          type: string
+          description: Display name of recipient or name of saved search.
+        Email:
+          type: string
+          description: recipient email. for IndividualRecipient and SentEmailRecipient types only
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
     EmailDraftType:
       type: string
       enum:

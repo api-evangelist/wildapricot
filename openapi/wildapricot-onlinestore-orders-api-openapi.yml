@@ -121,33 +121,36 @@ paths:
         - auto
 components:
   schemas:
-    ShippingAddress:
+    OrderProduct:
       type: object
+      required:
+      - price
+      - amount
+      - productId
+      - quantity
+      - productType
       properties:
-        addressLine1:
+        title:
           type: string
-        addressLine2:
-          type: string
-        country:
-          $ref: '#/components/schemas/Country'
-        province:
-          type: string
-        city:
-          type: string
-        zip:
-          type: string
-    Currency:
-      type: object
-      properties:
-        Code:
-          type: string
-          description: Currency code according to ISO4217
-        Name:
-          type: string
-          description: Human-readable currency name
-        Symbol:
-          type: string
-          description: Currency symbol like $ or â‚¬
+        price:
+          type: number
+          format: decimal
+        amount:
+          type: number
+          format: decimal
+        productId:
+          type: integer
+          format: int32
+        variantId:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        productType:
+          $ref: '#/components/schemas/OrderProductType'
+        digitalProduct:
+          $ref: '#/components/schemas/OrderDigitalProduct'
     Order:
       type: object
       required:
@@ -207,42 +210,6 @@ components:
           format: date-time
         deliveryOption:
           $ref: '#/components/schemas/OrderDeliveryOption'
-    Country:
-      type: object
-      required:
-      - allowedPaymentMethods
-      properties:
-        name:
-          type: string
-        codeAlpha2:
-          type: string
-        codeAlpha3:
-          type: string
-        codeNumeric:
-          type: integer
-          format: int32
-        allowedPaymentMethods:
-          type: integer
-          format: int32
-    OrderDeliveryOption:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          $ref: '#/components/schemas/DeliveryType'
-        title:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-          format: decimal
-    OrderExternalNote:
-      type: object
-      properties:
-        text:
-          type: string
     BillingPerson:
       type: object
       required:
@@ -261,36 +228,72 @@ components:
           type: string
         phone:
           type: string
-    OrderProduct:
+    Country:
       type: object
       required:
-      - price
-      - amount
-      - productId
-      - quantity
-      - productType
+      - allowedPaymentMethods
       properties:
+        name:
+          type: string
+        codeAlpha2:
+          type: string
+        codeAlpha3:
+          type: string
+        codeNumeric:
+          type: integer
+          format: int32
+        allowedPaymentMethods:
+          type: integer
+          format: int32
+    ShippingAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        province:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+    OrderStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - Unfulfilled
+      - Fulfilled
+      - Cancelled
+      enum:
+      - UNFULFILLED
+      - FULFILLED
+      - CANCELLED
+    OrderDeliveryOption:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/DeliveryType'
         title:
+          type: string
+        description:
           type: string
         price:
           type: number
           format: decimal
-        amount:
-          type: number
-          format: decimal
-        productId:
-          type: integer
-          format: int32
-        variantId:
-          type: integer
-          format: int32
-        quantity:
-          type: integer
-          format: int32
-        productType:
-          $ref: '#/components/schemas/OrderProductType'
-        digitalProduct:
-          $ref: '#/components/schemas/OrderDigitalProduct'
+    OrderProductType:
+      type: string
+      description: ''
+      x-enumNames:
+      - Physical
+      - Digital
+      enum:
+      - PHYSICAL
+      - DIGITAL
     PaymentStatus:
       type: string
       description: ''
@@ -306,22 +309,6 @@ components:
       - PARTIALLYPAID
       - NOINVOICE
       - FREE
-    OrderStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - Unfulfilled
-      - Fulfilled
-      - Cancelled
-      enum:
-      - UNFULFILLED
-      - FULFILLED
-      - CANCELLED
-    OrderInternalNote:
-      type: object
-      properties:
-        text:
-          type: string
     DeliveryType:
       type: string
       description: ''
@@ -331,6 +318,28 @@ components:
       enum:
       - SHIPPING
       - PICKUP
+    Currency:
+      type: object
+      properties:
+        Code:
+          type: string
+          description: Currency code according to ISO4217
+        Name:
+          type: string
+          description: Human-readable currency name
+        Symbol:
+          type: string
+          description: Currency symbol like $ or â‚¬
+    OrderExternalNote:
+      type: object
+      properties:
+        text:
+          type: string
+    OrderInternalNote:
+      type: object
+      properties:
+        text:
+          type: string
     OrderDigitalProduct:
       type: object
       properties:
@@ -340,15 +349,6 @@ components:
           type: string
         emailNote:
           type: string
-    OrderProductType:
-      type: string
-      description: ''
-      x-enumNames:
-      - Physical
-      - Digital
-      enum:
-      - PHYSICAL
-      - DIGITAL
   securitySchemes:
     OAuth2:
       type: oauth2

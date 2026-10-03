@@ -144,20 +144,18 @@ paths:
         - auto
 components:
   schemas:
-    DonationType:
-      type: string
-      enum:
-      - Online
-      - Manual
-      description: Donation type.
-    DonationListResponse:
+    FieldValue:
       type: object
       properties:
-        Payments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Donation'
-          description: List of donations that match request criteria.
+        FieldName:
+          type: string
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
+          type: string
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
     LinkedResource:
       type: object
       properties:
@@ -167,6 +165,14 @@ components:
         Url:
           type: string
           description: API url to get item details
+    DonationListResponse:
+      type: object
+      properties:
+        Payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Donation'
+          description: List of donations that match request criteria.
     Donation:
       type: object
       properties:
@@ -214,18 +220,12 @@ components:
           description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
           items:
             $ref: '#/components/schemas/FieldValue'
-    FieldValue:
-      type: object
-      properties:
-        FieldName:
-          type: string
-          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
-        SystemCode:
-          type: string
-          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
-        Value:
-          type: object
-          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    DonationType:
+      type: string
+      enum:
+      - Online
+      - Manual
+      description: Donation type.
   securitySchemes:
     OAuth2:
       type: oauth2

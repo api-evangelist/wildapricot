@@ -301,11 +301,16 @@ paths:
         - auto
 components:
   schemas:
-    EmailRecipients:
-      type: array
-      description: Collection of recipients.
-      items:
-        $ref: '#/components/schemas/EmailRecipient'
+    EmailDraftPreview:
+      type: object
+      description: Describes how email will look like when all macros are applied.
+      properties:
+        Subject:
+          type: string
+          description: Email subject with macros applied.
+        Body:
+          type: string
+          description: Email body HTML with mosros applied.
     EmailRecipient:
       type: object
       properties:
@@ -342,6 +347,11 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
     Error:
       type: object
       required:
@@ -357,16 +367,6 @@ components:
         details:
           type: object
           description: More information about the error. Data structure is specific for each kind of error.
-    EmailDraftPreview:
-      type: object
-      description: Describes how email will look like when all macros are applied.
-      properties:
-        Subject:
-          type: string
-          description: Email subject with macros applied.
-        Body:
-          type: string
-          description: Email body HTML with mosros applied.
   securitySchemes:
     OAuth2:
       type: oauth2
