@@ -89,18 +89,6 @@ paths:
         - auto
 components:
   schemas:
-    MembershipGroupListItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: Unique group identifier
-        Name:
-          type: string
-          description: group name
-        Description:
-          type: string
-          description: group description
     MembershipGroup:
       allOf:
       - $ref: '#/components/schemas/MembershipGroupListItem'
@@ -114,6 +102,18 @@ components:
             items:
               type: integer
               description: Contact IDs of group participants.
+    MembershipGroupListItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique group identifier
+        Name:
+          type: string
+          description: group name
+        Description:
+          type: string
+          description: group description
   securitySchemes:
     OAuth2:
       type: oauth2

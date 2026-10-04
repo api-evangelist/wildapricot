@@ -96,15 +96,6 @@ components:
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     Bundle:
       type: object
       properties:
@@ -135,6 +126,15 @@ components:
           items:
             $ref: '#/components/schemas/LinkedResource'
           description: Collection of links to members of the bundle.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

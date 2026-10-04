@@ -107,41 +107,6 @@ paths:
         - auto
 components:
   schemas:
-    EmailOriginType:
-      type: string
-      enum:
-      - System
-      - Contact
-      - MembershipLevel
-      - Event
-      - Donation
-      - WebPage
-      - ForumTopicSubscription
-      - FinancialDocument
-      - NewPasswordEmail
-      - OnlineStoreOrder
-      - PollStartAnnouncement
-      description: Email origin type.
-    EmailLog:
-      allOf:
-      - $ref: '#/components/schemas/EmailLogRecords'
-      - $ref: '#/components/schemas/EmailLogIdentifiers'
-    EmailLogRecords:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailLogRecord'
-          description: 'Collection of email log records.
-
-            '
-    InitializationSourceType:
-      type: string
-      enum:
-      - Automatic
-      - Manual
-      description: Email initialization source type.
     EmailLogIdentifiers:
       type: object
       properties:
@@ -151,6 +116,15 @@ components:
             type: integer
             description: Unique email identifier.
           description: A collection of email log record identifiers.
+    InitializationSourceType:
+      type: string
+      enum:
+      - Automatic
+      - Manual
+      description: Email initialization source type.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EmailRecipient:
       type: object
       properties:
@@ -187,6 +161,35 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
+    EmailLog:
+      allOf:
+      - $ref: '#/components/schemas/EmailLogRecords'
+      - $ref: '#/components/schemas/EmailLogIdentifiers'
+    EmailOriginType:
+      type: string
+      enum:
+      - System
+      - Contact
+      - MembershipLevel
+      - Event
+      - Donation
+      - WebPage
+      - ForumTopicSubscription
+      - FinancialDocument
+      - NewPasswordEmail
+      - OnlineStoreOrder
+      - PollStartAnnouncement
+      description: Email origin type.
+    EmailLogRecords:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailLogRecord'
+          description: 'Collection of email log records.
+
+            '
     EmailType:
       type: string
       enum:
@@ -291,9 +294,6 @@ components:
         Recipient:
           $ref: '#/components/schemas/EmailRecipient'
           description: only if email has a single recipient
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
     EmailOrigin:
       type: object
       properties:

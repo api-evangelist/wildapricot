@@ -188,15 +188,6 @@ components:
       - CalculatedExtraCharge
       - Picture
       description: Custom field data type.
-    CreateEntityFieldParams:
-      allOf:
-      - $ref: '#/components/schemas/EntityFieldDescription'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          FieldType:
-            $ref: '#/components/schemas/CustomFieldType'
     EditEntityFieldParams:
       allOf:
       - $ref: '#/components/schemas/EntityFieldDescription'
@@ -235,6 +226,15 @@ components:
         Link:
           type: string
           description: Url of the rules and terms document.
+    CreateEntityFieldParams:
+      allOf:
+      - $ref: '#/components/schemas/EntityFieldDescription'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          FieldType:
+            $ref: '#/components/schemas/CustomFieldType'
     EntityFieldDescription:
       type: object
       required:

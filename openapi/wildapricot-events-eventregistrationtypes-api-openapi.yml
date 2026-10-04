@@ -194,19 +194,6 @@ paths:
         - auto
 components:
   schemas:
-    EventRegistrationUnavailabilityPolicy:
-      type: string
-      enum:
-      - ShowDisabled
-      - Hide
-      description: Indicates what is displayed if the registration type is not available for a particular visitor.
-    EventRegistrationTypeAvailability:
-      type: string
-      enum:
-      - Everyone
-      - MembersOnly
-      - CodeRequired
-      description: Indicates who the registration type is available to.
     EventRegistrationType:
       type: object
       properties:
@@ -272,16 +259,16 @@ components:
         IsWaitlistEnabled:
           type: boolean
           description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
-    EventGuestRegistrationPolicy:
+    EventRegistrationCancellationBehavior:
       type: string
       enum:
-      - Disabled
-      - NumberOfGuests
-      - CollectContactDetails
-      - CollectFullInfo
-      description: 'Describes how guests are registered. Allowed values are
-
-        - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
+      - DoNotAllow
+      - AllowUpToPeriodBeforeEvent
+      - Allow
+      description: Indicates if it is possible for attendee to self-cancel event registration.
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EventRegistrationTypeEditParams:
       type: object
       required:
@@ -353,6 +340,34 @@ components:
         IsWaitlistEnabled:
           type: boolean
           description: Indicated whether registrant should be placed on waitlist if registrations have reached their limit.
+    EventRegistrationTypeResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistrationType'
+      description: List of event registration types that match the request criteria.
+    EventRegistrationUnavailabilityPolicy:
+      type: string
+      enum:
+      - ShowDisabled
+      - Hide
+      description: Indicates what is displayed if the registration type is not available for a particular visitor.
+    EventRegistrationTypeAvailability:
+      type: string
+      enum:
+      - Everyone
+      - MembersOnly
+      - CodeRequired
+      description: Indicates who the registration type is available to.
+    EventGuestRegistrationPolicy:
+      type: string
+      enum:
+      - Disabled
+      - NumberOfGuests
+      - CollectContactDetails
+      - CollectFullInfo
+      description: 'Describes how guests are registered. Allowed values are
+
+        - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
     LinkedResource:
       type: object
       properties:
@@ -362,21 +377,6 @@ components:
         Url:
           type: string
           description: API url to get item details
-    EventRegistrationTypeResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventRegistrationType'
-      description: List of event registration types that match the request criteria.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    EventRegistrationCancellationBehavior:
-      type: string
-      enum:
-      - DoNotAllow
-      - AllowUpToPeriodBeforeEvent
-      - Allow
-      description: Indicates if it is possible for attendee to self-cancel event registration.
   securitySchemes:
     OAuth2:
       type: oauth2

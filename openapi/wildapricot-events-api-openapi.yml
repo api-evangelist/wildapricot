@@ -293,6 +293,13 @@ paths:
         - auto
 components:
   schemas:
+    EventRegistrationCancellationBehavior:
+      type: string
+      enum:
+      - DoNotAllow
+      - AllowUpToPeriodBeforeEvent
+      - Allow
+      description: Indicates if it is possible for attendee to self-cancel event registration.
     TimeZone:
       type: object
       description: Details about account time zone
@@ -306,213 +313,39 @@ components:
         UtcOffset:
           type: integer
           description: Offcet from UTC Time in minutes, i.e. "180"
-    CustomFieldType:
-      type: string
-      enum:
-      - String
-      - DateTime
-      - Boolean
-      - Choice
-      - MultipleChoice
-      - Number
-      - SectionDivider
-      - CalculatedExtraCharge
-      - Picture
-      description: Custom field data type.
-    EventGuestRegistrationPolicy:
-      type: string
-      enum:
-      - Disabled
-      - NumberOfGuests
-      - CollectContactDetails
-      - CollectFullInfo
-      description: 'Describes how guests are registered. Allowed values are
-
-        - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
-    OptionsListItem:
+    EventInviteeStatistics:
       type: object
+      description: Statistics related to invitees to RSVP events.
       properties:
-        Id:
+        NotResponded:
           type: integer
-          description: Item identifier unique in the list
-        Label:
-          type: string
-          description: Human-readable text label.
-        Position:
+          description: Number of invitees who did not respond yet.
+        NotAttended:
           type: integer
-          description: Option position among other options.
-        SelectedByDefault:
-          type: boolean
-          description: Indicates whether this option would be selected on form if user did not select another option.
-        ExtraCost:
-          type: number
-          format: decimal
-          description: Extra price for selecting this option. Used only by fields with an associated cost.
-    EntityFieldDescription:
-      type: object
-      required:
-      - FieldName
-      - Description
-      - AdminOnly
-      properties:
-        FieldName:
-          type: string
-          description: Field name title, could be displayed in user interface. Field name could be changed by account administrator.
-        SystemCode:
-          type: string
-          description: System-defined code associated with field. It does not change even if FieldName is edited in admin backend.
-        DisplayType:
-          type: string
-          description: Optional hint, which tells how to display and edit field. It appears for String and Choice fields.
-        IsSystem:
-          type: boolean
-          description: Field is system-defined and could not be deleted. However, field name could be changed by account administrator.
-        Description:
-          type: string
-          description: System-defined description of the field. Empty for custom fields.
-        FieldInstructions:
-          type: string
-          description: Admin-defined comment for the field. Shown as a tip when members or visitors fill in forms.
-        AllowedValues:
-          type: array
-          description: If field value is limited to set of predefined values, this contains list of allowed values. Normally, AllowedValues appear for MultipleChoice and Choice fields.
-          items:
-            $ref: '#/components/schemas/OptionsListItem'
-        Order:
+          description: Number of invitees who answered NO to the invite.
+        Attended:
           type: integer
-          description: Sorting order to display the field in UI
-        RulesAndTermsInfo:
-          $ref: '#/components/schemas/RulesAndTermsInfo'
-    EventEditParams:
-      type: object
-      required:
-      - Name
-      - EventType
-      - StartDate
-      properties:
-        Id:
+          description: Number of invitees who answered YES to the invite.
+        MaybeAttended:
           type: integer
-          description: Unique identifier of event. This field should be provided only when updating existing event.
-        Name:
-          type: string
-          description: Event title
-        EventType:
-          type: string
-          enum:
-          - Reqular
-          - RSVP
-          description: Indicates if event is simple (RSVP) or regular.
-        StartDate:
-          type: string
-          format: datetime
-          description: Date and time when the event is scheduled to start. If no time offset is specified, counts as UTC and will be converted into event timezone.
-        StartTimeSpecified:
-          type: boolean
-          description: Indicates if event start time is specified. False means that StartDate contains only date component.
-        EndDate:
-          type: string
-          format: datetime
-          description: Date and time when the event is scheduled to end. Could be empty. If no time offset is specified, counts as UTC and will be converted into event timezone.
-        EndTimeSpecified:
-          type: boolean
-          description: Indicates if event end time is specified. False means that EndDate contains only date component.
-        Location:
-          type: string
-          description: Location where the event will take place.
-        RegistrationEnabled:
-          type: boolean
-          description: Indicates that registration to this event is enabled
-        Tags:
-          type: array
-          items:
-            type: string
-          description: A collection of tags associated with the event.
-        Details:
-          $ref: '#/components/schemas/EventDetailsEditParams'
-        Sessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventSesssion'
-          description: Collection of event sessions. Exist in multisessions events only.
-        RegistrationsLimit:
-          type: integer
-          description: Maximum number of registrations for this event.
-    EventsCountResponse:
-      type: object
-      properties:
-        Count:
-          type: integer
-          description: Number of events that match request criteria. This field appears only if $count parameter was passed in request.
-    EventsResponse:
+          description: Number of invitees who answered MAY BE to the invite.
+    EventRegistrationFieldDescription:
       allOf:
-      - $ref: '#/components/schemas/EventIdsResponse'
-      - $ref: '#/components/schemas/EventsListResponse'
-      - $ref: '#/components/schemas/EventsCountResponse'
-    EventRegistrationCancellationBehavior:
+      - $ref: '#/components/schemas/EntityFieldDescriptionWithExtraCharge'
+      - properties:
+          Kind:
+            type: string
+            enum:
+            - Common
+            - Custom
+            description: Indicated is the field is common for all contacts or custom for the event.
+    EventRegistrationTypeAvailability:
       type: string
       enum:
-      - DoNotAllow
-      - AllowUpToPeriodBeforeEvent
-      - Allow
-      description: Indicates if it is possible for attendee to self-cancel event registration.
-    EventAttendeesDisplaySettings:
-      type: object
-      description: Settings for section "List of event registrants" on UI.
-      properties:
-        VisibleTo:
-          allOf:
-          - $ref: '#/components/schemas/ContactFieldAccessLevel'
-          - description: Indicates who is allowed to see list of event registrants.
-        ShowPendingAttendees:
-          type: boolean
-          description: Indicates if pending registrants should be included in the list of registrants.
-    ExtraCharge:
-      type: object
-      title: ExtraChargeOptions
-      description: This property appears for CalculatedExtraCharge fields only.
-      required:
-      - MultiplierType
-      - Multiplier
-      properties:
-        MultiplierType:
-          type: string
-          description: "Indicates the type of multiplier field.\n  ItemPrice multiplier specifies a price for each requested item.\n  Percentage multiplier specifies a percent of field value to use as extra charge.\n"
-          enum:
-          - ItemPrice
-          - Percentage
-        Multiplier:
-          type: number
-          format: decimal
-          description: value of multiplier for extra charge calculation
-        MinAmount:
-          type: integer
-          description: Minimal amount of items to request (minimal field value). For ItemPrice multiplier type only.
-        MaxAmount:
-          type: integer
-          description: Maximum amount of items to request (maximum field value). For ItemPrice multiplier type only.
-        MinCharge:
-          type: number
-          format: decimal
-          description: Minimal extra charge. (minimal field value). For Percentage multiplier type only.
-        MaxCharge:
-          type: number
-          format: decimal
-          description: Maximum extra charge. (maximum field value). For Percentage multiplier type only.
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Error code, like Validation / Search / ...
-        message:
-          type: string
-          description: An explanation of why this error occured
-        details:
-          type: object
-          description: More information about the error. Data structure is specific for each kind of error.
+      - Everyone
+      - MembersOnly
+      - CodeRequired
+      description: Indicates who the registration type is available to.
     EventDetailsEditParams:
       type: object
       properties:
@@ -554,6 +387,14 @@ components:
           description: Indicates if it is allowed to have multiple registrations for the same contact.
         AttendeesDisplaySettings:
           $ref: '#/components/schemas/EventAttendeesDisplaySettings'
+    EventsResponse:
+      allOf:
+      - $ref: '#/components/schemas/EventIdsResponse'
+      - $ref: '#/components/schemas/EventsListResponse'
+      - $ref: '#/components/schemas/EventsCountResponse'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EventsListResponse:
       type: object
       properties:
@@ -568,47 +409,6 @@ components:
       - ShowDisabled
       - Hide
       description: Indicates what is displayed if the registration type is not available for a particular visitor.
-    EventGuestRegistrationSettings:
-      type: object
-      description: Control how system works with guest registrations for specific event.
-      properties:
-        Enabled:
-          type: boolean
-          description: Indicates if guest registrations are allowed.
-        CreateContactMode:
-          type: string
-          enum:
-          - NeverCreateContact
-          - CreateContactForAllGuests
-          - CreateContactForGuestsWithEmail
-          description: Indicates whether guests are automatically added to database after the main registrant confirms the registration
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    EventIdsResponse:
-      type: object
-      properties:
-        EventsIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of event identifiers that match request criteria. The field appears only if idsOnly parameter was passed in request.
-    EventAccessLevel:
-      type: string
-      enum:
-      - Public
-      - AdminOnly
-      - Restricted
-      description: "\nEvent accessability.\n  - Public means event accessible for everyone\n  - AdminOnly means event accessible for administrators only\n  - Restricted means event accessible for specific membership levels or groups."
-    EntityFieldDescriptionWithExtraCharge:
-      allOf:
-      - $ref: '#/components/schemas/EditEntityFieldParams'
-      - type: object
-        required:
-        - FieldType
-        properties:
-          ExtraCharge:
-            $ref: '#/components/schemas/ExtraCharge'
     EventSesssion:
       type: object
       properties:
@@ -632,34 +432,31 @@ components:
         EndTimeSpecified:
           type: boolean
           description: Indicates if session end time is specified. False means that EndDate contains only date component.
-    EventAccessControl:
+    EventAttendeesDisplaySettings:
       type: object
-      description: Describes event availability.
-      required:
-      - AccessLevel
+      description: Settings for section "List of event registrants" on UI.
       properties:
-        AccessLevel:
-          $ref: '#/components/schemas/EventAccessLevel'
-        AvailableForAnyLevel:
+        VisibleTo:
+          allOf:
+          - $ref: '#/components/schemas/ContactFieldAccessLevel'
+          - description: Indicates who is allowed to see list of event registrants.
+        ShowPendingAttendees:
           type: boolean
-          description: If AccessLevel is Restricted, then indicates if the event is available to any member on any level.
-        AvailableForLevels:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: 'Event is available to members who are on these levels.
-
-            This field appears only if AccessLevel is Restricted and AvailableForAnyLevel is false.'
-        AvailableForAnyGroup:
+          description: Indicates if pending registrants should be included in the list of registrants.
+    EventGuestRegistrationSettings:
+      type: object
+      description: Control how system works with guest registrations for specific event.
+      properties:
+        Enabled:
           type: boolean
-          description: If AccessLevel is Restricted, then indicates if the event is available to any member in any membership group.
-        AvailableForGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: 'Event is available to members who are any of these groups.
-
-            This field appears only if AccessLevel is Restricted and AvailableForAnyGroup is false.'
+          description: Indicates if guest registrations are allowed.
+        CreateContactMode:
+          type: string
+          enum:
+          - NeverCreateContact
+          - CreateContactForAllGuests
+          - CreateContactForGuestsWithEmail
+          description: Indicates whether guests are automatically added to database after the main registrant confirms the registration
     ContactFieldAccessLevel:
       type: string
       enum:
@@ -671,13 +468,103 @@ components:
         Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
 
         '
-    EventRegistrationTypeAvailability:
+    EventGuestRegistrationPolicy:
       type: string
       enum:
-      - Everyone
-      - MembersOnly
-      - CodeRequired
-      description: Indicates who the registration type is available to.
+      - Disabled
+      - NumberOfGuests
+      - CollectContactDetails
+      - CollectFullInfo
+      description: 'Describes how guests are registered. Allowed values are
+
+        - Disabled - guest registration is not allowed - NumberOfGuests - number of guests should be specified. - CollectContactDetails - contact information should be collected for each guest. - CollectFullInfo - full registration info should be collected for each guest.'
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
+    EventsCountResponse:
+      type: object
+      properties:
+        Count:
+          type: integer
+          description: Number of events that match request criteria. This field appears only if $count parameter was passed in request.
+    EventRegistrationType:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique event registration type identifier.
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        IsEnabled:
+          type: boolean
+          description: Indicates whether this registration type is enabled
+        EventId:
+          type: integer
+          description: Identifier of event related to the registration type.
+        Name:
+          type: string
+          description: Registraton type title.
+        Description:
+          type: string
+          description: Plain text description for the event registration type.
+        BasePrice:
+          type: number
+          description: Base price registrant pays for this registration type.
+        GuestPrice:
+          type: number
+          description: Price for each additional guest.
+        UseTaxScopeSettings:
+          type: boolean
+          description: Indicates whether account tax scope settings should be used to calculate final price.
+        Availability:
+          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
+        RegistrationCode:
+          type: string
+          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
+        AvailableForMembershipLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
+        AvailableFrom:
+          type: string
+          format: datetime
+          description: This registration type is available starting from this date. Can be null.
+        AvailableThrough:
+          type: string
+          format: datetime
+          description: This registration type is available until this date. Can be null.
+        MaximumRegistrantsCount:
+          type: integer
+          description: Maximum number of registrants for this registration type.
+        CurrentRegistrantsCount:
+          type: integer
+          description: Current number of registrants for this registration type.
+        GuestRegistrationPolicy:
+          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
+        UnavailabilityPolicy:
+          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
+        CancellationBehaviour:
+          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
+        CancellationDaysBeforeEvent:
+          type: integer
+          description: In case if CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field indicates the minimum number of days before the event that cancellations are allowed.
+        IsWaitlistEnabled:
+          type: boolean
+          description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
+    EventAccessLevel:
+      type: string
+      enum:
+      - Public
+      - AdminOnly
+      - Restricted
+      description: "\nEvent accessability.\n  - Public means event accessible for everyone\n  - AdminOnly means event accessible for administrators only\n  - Restricted means event accessible for specific membership levels or groups."
     EventWaitlistSettings:
       type: object
       properties:
@@ -705,6 +592,24 @@ components:
         properties:
           FieldType:
             $ref: '#/components/schemas/CustomFieldType'
+    EventPaymentMethodType:
+      type: string
+      enum:
+      - Undefined
+      - OnlineAndOffline
+      - OfflineOnly
+      - OnlineOnly
+      description: "How attendees can pay for the ticket.\n\n  - OnlineAndOffline\n  - OfflineOnly\n  - OnlineOnly"
+    RulesAndTermsInfo:
+      type: object
+      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      properties:
+        Text:
+          type: string
+          description: Terms of use label.
+        Link:
+          type: string
+          description: Url of the rules and terms document.
     Event:
       type: object
       required:
@@ -779,98 +684,210 @@ components:
         CheckedInAttendeesNumber:
           type: integer
           description: Number of attendees already checked in on this event.
-    EventRegistrationType:
+    EntityFieldDescription:
       type: object
+      required:
+      - FieldName
+      - Description
+      - AdminOnly
+      properties:
+        FieldName:
+          type: string
+          description: Field name title, could be displayed in user interface. Field name could be changed by account administrator.
+        SystemCode:
+          type: string
+          description: System-defined code associated with field. It does not change even if FieldName is edited in admin backend.
+        DisplayType:
+          type: string
+          description: Optional hint, which tells how to display and edit field. It appears for String and Choice fields.
+        IsSystem:
+          type: boolean
+          description: Field is system-defined and could not be deleted. However, field name could be changed by account administrator.
+        Description:
+          type: string
+          description: System-defined description of the field. Empty for custom fields.
+        FieldInstructions:
+          type: string
+          description: Admin-defined comment for the field. Shown as a tip when members or visitors fill in forms.
+        AllowedValues:
+          type: array
+          description: If field value is limited to set of predefined values, this contains list of allowed values. Normally, AllowedValues appear for MultipleChoice and Choice fields.
+          items:
+            $ref: '#/components/schemas/OptionsListItem'
+        Order:
+          type: integer
+          description: Sorting order to display the field in UI
+        RulesAndTermsInfo:
+          $ref: '#/components/schemas/RulesAndTermsInfo'
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Error code, like Validation / Search / ...
+        message:
+          type: string
+          description: An explanation of why this error occured
+        details:
+          type: object
+          description: More information about the error. Data structure is specific for each kind of error.
+    EventEditParams:
+      type: object
+      required:
+      - Name
+      - EventType
+      - StartDate
       properties:
         Id:
           type: integer
-          description: Unique event registration type identifier.
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        IsEnabled:
-          type: boolean
-          description: Indicates whether this registration type is enabled
-        EventId:
-          type: integer
-          description: Identifier of event related to the registration type.
+          description: Unique identifier of event. This field should be provided only when updating existing event.
         Name:
           type: string
-          description: Registraton type title.
-        Description:
+          description: Event title
+        EventType:
           type: string
-          description: Plain text description for the event registration type.
-        BasePrice:
-          type: number
-          description: Base price registrant pays for this registration type.
-        GuestPrice:
-          type: number
-          description: Price for each additional guest.
-        UseTaxScopeSettings:
+          enum:
+          - Reqular
+          - RSVP
+          description: Indicates if event is simple (RSVP) or regular.
+        StartDate:
+          type: string
+          format: datetime
+          description: Date and time when the event is scheduled to start. If no time offset is specified, counts as UTC and will be converted into event timezone.
+        StartTimeSpecified:
           type: boolean
-          description: Indicates whether account tax scope settings should be used to calculate final price.
-        Availability:
-          $ref: '#/components/schemas/EventRegistrationTypeAvailability'
-        RegistrationCode:
+          description: Indicates if event start time is specified. False means that StartDate contains only date component.
+        EndDate:
           type: string
-          description: Registration code required to apply for event with this registration type. This property has value only if Availability is CodeRequired.
-        AvailableForMembershipLevels:
+          format: datetime
+          description: Date and time when the event is scheduled to end. Could be empty. If no time offset is specified, counts as UTC and will be converted into event timezone.
+        EndTimeSpecified:
+          type: boolean
+          description: Indicates if event end time is specified. False means that EndDate contains only date component.
+        Location:
+          type: string
+          description: Location where the event will take place.
+        RegistrationEnabled:
+          type: boolean
+          description: Indicates that registration to this event is enabled
+        Tags:
+          type: array
+          items:
+            type: string
+          description: A collection of tags associated with the event.
+        Details:
+          $ref: '#/components/schemas/EventDetailsEditParams'
+        Sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSesssion'
+          description: Collection of event sessions. Exist in multisessions events only.
+        RegistrationsLimit:
+          type: integer
+          description: Maximum number of registrations for this event.
+    CustomFieldType:
+      type: string
+      enum:
+      - String
+      - DateTime
+      - Boolean
+      - Choice
+      - MultipleChoice
+      - Number
+      - SectionDivider
+      - CalculatedExtraCharge
+      - Picture
+      description: Custom field data type.
+    EventAccessControl:
+      type: object
+      description: Describes event availability.
+      required:
+      - AccessLevel
+      properties:
+        AccessLevel:
+          $ref: '#/components/schemas/EventAccessLevel'
+        AvailableForAnyLevel:
+          type: boolean
+          description: If AccessLevel is Restricted, then indicates if the event is available to any member on any level.
+        AvailableForLevels:
           type: array
           items:
             $ref: '#/components/schemas/LinkedResource'
-          description: Which membership levels can apply for event. This property has value only if Availability is MembersOnly.
-        AvailableFrom:
-          type: string
-          format: datetime
-          description: This registration type is available starting from this date. Can be null.
-        AvailableThrough:
-          type: string
-          format: datetime
-          description: This registration type is available until this date. Can be null.
-        MaximumRegistrantsCount:
-          type: integer
-          description: Maximum number of registrants for this registration type.
-        CurrentRegistrantsCount:
-          type: integer
-          description: Current number of registrants for this registration type.
-        GuestRegistrationPolicy:
-          $ref: '#/components/schemas/EventGuestRegistrationPolicy'
-        UnavailabilityPolicy:
-          $ref: '#/components/schemas/EventRegistrationUnavailabilityPolicy'
-        CancellationBehaviour:
-          $ref: '#/components/schemas/EventRegistrationCancellationBehavior'
-        CancellationDaysBeforeEvent:
-          type: integer
-          description: In case if CancellationBehaviour = AllowUpToPeriodBeforeEvent, this field indicates the minimum number of days before the event that cancellations are allowed.
-        IsWaitlistEnabled:
+          description: 'Event is available to members who are on these levels.
+
+            This field appears only if AccessLevel is Restricted and AvailableForAnyLevel is false.'
+        AvailableForAnyGroup:
           type: boolean
-          description: Indicated if registrant should be added to waitlist if registrations have reached their limit.
-    LinkedResource:
+          description: If AccessLevel is Restricted, then indicates if the event is available to any member in any membership group.
+        AvailableForGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: 'Event is available to members who are any of these groups.
+
+            This field appears only if AccessLevel is Restricted and AvailableForAnyGroup is false.'
+    OptionsListItem:
       type: object
       properties:
         Id:
           type: integer
-          description: unique item identifier
-        Url:
+          description: Item identifier unique in the list
+        Label:
           type: string
-          description: API url to get item details
-    RulesAndTermsInfo:
+          description: Human-readable text label.
+        Position:
+          type: integer
+          description: Option position among other options.
+        SelectedByDefault:
+          type: boolean
+          description: Indicates whether this option would be selected on form if user did not select another option.
+        ExtraCost:
+          type: number
+          format: decimal
+          description: Extra price for selecting this option. Used only by fields with an associated cost.
+    ExtraCharge:
       type: object
-      description: Additional info for fields with rules / terms conditions. Not present for other field types.
+      title: ExtraChargeOptions
+      description: This property appears for CalculatedExtraCharge fields only.
+      required:
+      - MultiplierType
+      - Multiplier
       properties:
-        Text:
+        MultiplierType:
           type: string
-          description: Terms of use label.
-        Link:
-          type: string
-          description: Url of the rules and terms document.
-    EventPaymentMethodType:
-      type: string
-      enum:
-      - Undefined
-      - OnlineAndOffline
-      - OfflineOnly
-      - OnlineOnly
-      description: "How attendees can pay for the ticket.\n\n  - OnlineAndOffline\n  - OfflineOnly\n  - OnlineOnly"
+          description: "Indicates the type of multiplier field.\n  ItemPrice multiplier specifies a price for each requested item.\n  Percentage multiplier specifies a percent of field value to use as extra charge.\n"
+          enum:
+          - ItemPrice
+          - Percentage
+        Multiplier:
+          type: number
+          format: decimal
+          description: value of multiplier for extra charge calculation
+        MinAmount:
+          type: integer
+          description: Minimal amount of items to request (minimal field value). For ItemPrice multiplier type only.
+        MaxAmount:
+          type: integer
+          description: Maximum amount of items to request (maximum field value). For ItemPrice multiplier type only.
+        MinCharge:
+          type: number
+          format: decimal
+          description: Minimal extra charge. (minimal field value). For Percentage multiplier type only.
+        MaxCharge:
+          type: number
+          format: decimal
+          description: Maximum extra charge. (maximum field value). For Percentage multiplier type only.
+    EventIdsResponse:
+      type: object
+      properties:
+        EventsIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of event identifiers that match request criteria. The field appears only if idsOnly parameter was passed in request.
     EventDetails:
       type: object
       properties:
@@ -927,32 +944,15 @@ components:
           description: Indicates if multiple registrations are allowed for the same contact.
         AttendeesDisplaySettings:
           $ref: '#/components/schemas/EventAttendeesDisplaySettings'
-    EventInviteeStatistics:
-      type: object
-      description: Statistics related to invitees to RSVP events.
-      properties:
-        NotResponded:
-          type: integer
-          description: Number of invitees who did not respond yet.
-        NotAttended:
-          type: integer
-          description: Number of invitees who answered NO to the invite.
-        Attended:
-          type: integer
-          description: Number of invitees who answered YES to the invite.
-        MaybeAttended:
-          type: integer
-          description: Number of invitees who answered MAY BE to the invite.
-    EventRegistrationFieldDescription:
+    EntityFieldDescriptionWithExtraCharge:
       allOf:
-      - $ref: '#/components/schemas/EntityFieldDescriptionWithExtraCharge'
-      - properties:
-          Kind:
-            type: string
-            enum:
-            - Common
-            - Custom
-            description: Indicated is the field is common for all contacts or custom for the event.
+      - $ref: '#/components/schemas/EditEntityFieldParams'
+      - type: object
+        required:
+        - FieldType
+        properties:
+          ExtraCharge:
+            $ref: '#/components/schemas/ExtraCharge'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -101,6 +101,16 @@ paths:
         - auto
 components:
   schemas:
+    SavedSearch:
+      allOf:
+      - $ref: '#/components/schemas/SavedSearchListItem'
+      - type: object
+        properties:
+          ContactIds:
+            type: array
+            items:
+              type: integer
+              description: Contact IDs found by Saved Search.
     SavedSearchListItem:
       type: object
       properties:
@@ -113,16 +123,6 @@ components:
         Description:
           type: string
           description: Save search description
-    SavedSearch:
-      allOf:
-      - $ref: '#/components/schemas/SavedSearchListItem'
-      - type: object
-        properties:
-          ContactIds:
-            type: array
-            items:
-              type: integer
-              description: Contact IDs found by Saved Search.
   securitySchemes:
     OAuth2:
       type: oauth2

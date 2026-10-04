@@ -97,15 +97,36 @@ paths:
         - auto
 components:
   schemas:
-    ProductStatus:
-      type: string
-      description: ''
-      x-enumNames:
-      - AdminOnly
-      - Public
-      enum:
-      - ADMINONLY
-      - PUBLIC
+    ProductVariantOptionValue:
+      type: object
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+    ProductLink:
+      type: object
+      properties:
+        url:
+          type: string
+        code:
+          type: string
+    ProductFile:
+      type: object
+      properties:
+        name:
+          type: string
+    Price:
+      type: object
+      required:
+      - regular
+      properties:
+        regular:
+          type: number
+          format: decimal
+        members:
+          type: number
+          format: decimal
     ProductVariant:
       type: object
       required:
@@ -128,24 +149,37 @@ components:
           type: boolean
         trackInventory:
           type: boolean
-    ProductVariantOptionValue:
+    ProductStatus:
+      type: string
+      description: ''
+      x-enumNames:
+      - AdminOnly
+      - Public
+      enum:
+      - ADMINONLY
+      - PUBLIC
+    ProductOption:
       type: object
       properties:
         title:
           type: string
-        value:
-          type: string
-    Price:
+        values:
+          type: array
+          items:
+            type: string
+    DigitalProduct:
       type: object
       required:
-      - regular
+      - type
       properties:
-        regular:
-          type: number
-          format: decimal
-        members:
-          type: number
-          format: decimal
+        type:
+          $ref: '#/components/schemas/DigitalProductType'
+        productFile:
+          $ref: '#/components/schemas/ProductFile'
+        productLink:
+          $ref: '#/components/schemas/ProductLink'
+        emailNote:
+          type: string
     DigitalProductType:
       type: string
       description: ''
@@ -155,13 +189,6 @@ components:
       enum:
       - FILE
       - LINK
-    ProductLink:
-      type: object
-      properties:
-        url:
-          type: string
-        code:
-          type: string
     Product:
       type: object
       required:
@@ -219,11 +246,6 @@ components:
         created:
           type: string
           format: date-time
-    ProductFile:
-      type: object
-      properties:
-        name:
-          type: string
     ProductType:
       type: string
       description: ''
@@ -233,28 +255,6 @@ components:
       enum:
       - PHYSICAL
       - DIGITAL
-    ProductOption:
-      type: object
-      properties:
-        title:
-          type: string
-        values:
-          type: array
-          items:
-            type: string
-    DigitalProduct:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          $ref: '#/components/schemas/DigitalProductType'
-        productFile:
-          $ref: '#/components/schemas/ProductFile'
-        productLink:
-          $ref: '#/components/schemas/ProductLink'
-        emailNote:
-          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -288,21 +288,6 @@ paths:
         - auto
 components:
   schemas:
-    GuestRegistrationsSummary:
-      properties:
-        NumberOfGuests:
-          type: integer
-          description: Number of guests registered along with the registrant. If event registration type requires guests registration with details (contact information, etc.), this value is 0.
-        NumberOfGuestsCheckedIn:
-          type: integer
-          description: Number of guests who already checked in. If event registration type requires guests registration with details (contact information, etc.), this value is null.
-        GuestRegistrations:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkedResource'
-          description: 'List of guest registrations links. If event registration type expects guest registration by number (without contact information), this value is null. This value cannot be saved or updated using API.
-
-            '
     EventRegistrationStatus:
       type: string
       description: 'Describes event registration status
@@ -317,11 +302,6 @@ components:
       - Free
       - NoInvoice
       - OnWaitlist
-    EventRegistrationsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventRegistration'
-      description: List of event registrations that matches request criteria.
     EventStub:
       properties:
         Id:
@@ -344,42 +324,9 @@ components:
         Location:
           type: string
           description: Location where the event will take place.
-    FieldValue:
-      type: object
-      properties:
-        FieldName:
-          type: string
-          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
-        SystemCode:
-          type: string
-          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
-        Value:
-          type: object
-          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
-    CheckInParams:
-      type: object
-      required:
-      - RegistrationId
-      - CheckedIn
-      properties:
-        RegistrationId:
-          type: integer
-          description: Event registration Id.
-        CheckedIn:
-          type: boolean
-          description: Check in (true) or check out (false).
-        CheckedInGuests:
-          type: integer
-          description: For event registrations with anonymous guests (guests as number), sets number of checked-in guests.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     EventRegistrationPost:
       type: object
       required:
@@ -435,64 +382,33 @@ components:
           type: boolean
           default: false
           description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    RegisterFromWaitlistParams:
+    FieldValue:
       type: object
-      required:
-      - WaitlistRegistrationId
-      - EventId
-      - GenerateInvoice
       properties:
-        WaitlistRegistrationId:
-          type: integer
-          description: Event registration Id.
-        EventId:
-          type: integer
-          description: Event Id.
-        GenerateInvoice:
-          type: boolean
-          default: true
-          description: Defines if invoice should be generated in case if registration is considered paid (registration fee > 0 or any extra costs selected)
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
-    EventRegistrationPut:
-      type: object
-      required:
-      - Id
-      properties:
-        Id:
-          type: integer
-          description: Unique identifier of event registration
-        RegistrationTypeId:
-          type: integer
-          description: Unique identifier of event registration type
-        IsCheckedIn:
-          type: boolean
-          description: Indicates if registrant is already checked in on event.
-        RegistrationFields:
-          type: array
-          description: A collection of registration fields values
-          items:
-            $ref: '#/components/schemas/FieldValue'
-        ShowToPublic:
-          type: boolean
-          description: Indicates whether this registration can be shown to other event registrants.
-        Memo:
+        FieldName:
           type: string
-          description: Some additional notes about this registration.
-        GuestRegistrationsSummary:
-          $ref: '#/components/schemas/GuestRegistrationsSummary'
-        RecreateInvoice:
-          type: boolean
-          description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
+          type: string
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+    GuestRegistrationsSummary:
+      properties:
+        NumberOfGuests:
+          type: integer
+          description: Number of guests registered along with the registrant. If event registration type requires guests registration with details (contact information, etc.), this value is 0.
+        NumberOfGuestsCheckedIn:
+          type: integer
+          description: Number of guests who already checked in. If event registration type requires guests registration with details (contact information, etc.), this value is null.
+        GuestRegistrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedResource'
+          description: 'List of guest registrations links. If event registration type expects guest registration by number (without contact information), this value is null. This value cannot be saved or updated using API.
+
+            '
     EventRegistration:
       type: object
       required:
@@ -582,6 +498,90 @@ components:
           $ref: '#/components/schemas/LinkedResource'
         Status:
           $ref: '#/components/schemas/EventRegistrationStatus'
+    CheckInParams:
+      type: object
+      required:
+      - RegistrationId
+      - CheckedIn
+      properties:
+        RegistrationId:
+          type: integer
+          description: Event registration Id.
+        CheckedIn:
+          type: boolean
+          description: Check in (true) or check out (false).
+        CheckedInGuests:
+          type: integer
+          description: For event registrations with anonymous guests (guests as number), sets number of checked-in guests.
+    RegisterFromWaitlistParams:
+      type: object
+      required:
+      - WaitlistRegistrationId
+      - EventId
+      - GenerateInvoice
+      properties:
+        WaitlistRegistrationId:
+          type: integer
+          description: Event registration Id.
+        EventId:
+          type: integer
+          description: Event Id.
+        GenerateInvoice:
+          type: boolean
+          default: true
+          description: Defines if invoice should be generated in case if registration is considered paid (registration fee > 0 or any extra costs selected)
+    EventRegistrationsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventRegistration'
+      description: List of event registrations that matches request criteria.
+    LinkedResourceWithName:
+      allOf:
+      - $ref: '#/components/schemas/LinkedResource'
+      - type: object
+        properties:
+          Name:
+            type: string
+            description: Resource name
+    EventRegistrationPut:
+      type: object
+      required:
+      - Id
+      properties:
+        Id:
+          type: integer
+          description: Unique identifier of event registration
+        RegistrationTypeId:
+          type: integer
+          description: Unique identifier of event registration type
+        IsCheckedIn:
+          type: boolean
+          description: Indicates if registrant is already checked in on event.
+        RegistrationFields:
+          type: array
+          description: A collection of registration fields values
+          items:
+            $ref: '#/components/schemas/FieldValue'
+        ShowToPublic:
+          type: boolean
+          description: Indicates whether this registration can be shown to other event registrants.
+        Memo:
+          type: string
+          description: Some additional notes about this registration.
+        GuestRegistrationsSummary:
+          $ref: '#/components/schemas/GuestRegistrationsSummary'
+        RecreateInvoice:
+          type: boolean
+          description: Optional boolean value. If specified and equals true, related invoice will be automatically updated (or created) to match selected registration type and extra cost options.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2
