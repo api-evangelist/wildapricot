@@ -645,6 +645,10 @@ apis:
   - type: SDKs
     url: https://github.com/douglasdeodato/wildapricot-python-api
 common:
+  - type: Plans
+    url: plans/wildapricot-plans-pricing.yml
+  - type: FinOps
+    url: finops/wildapricot-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/wildapricot/overview
   - type: AgenticAccess
