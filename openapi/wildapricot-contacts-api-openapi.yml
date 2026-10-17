@@ -372,20 +372,6 @@ paths:
         - auto
 components:
   schemas:
-    ContactsCountResponse:
-      type: object
-      properties:
-        Count:
-          type: integer
-          description: Number of contacts that match request criteria. This field appears only if $count parameter was passed in request.
-    ContactIdsResponse:
-      type: object
-      properties:
-        ContactIdentifiers:
-          type: array
-          items:
-            type: integer
-          description: List of contact identifiers that match request criteria. The field appears only if idsOnly parameter was passed in request.
     contactExtendedMembershipInfo:
       type: object
       properties:
@@ -442,34 +428,61 @@ components:
           description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this contact are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned. If a custom field is restricted to certain access levels, then CustomAccessLevel indicates the level to which the field is restricted. Possible values are AdminOnly, Member, and Public.
           items:
             $ref: '#/components/schemas/ContactFieldValue'
-    ContactsResponse:
+    ExtendedMembershipInfo:
+      type: object
+      description: 'Readonly object '
+      properties:
+        PendingMembershipOrderStatusType:
+          type: string
+          enum:
+          - Invisible
+          - PendingNoCorrespondingInvoice
+          - PendingNotPaidYet
+          - InvoicePaidManualApprovalRequired
+          - FreeOrderManualApprovalRequired
+          - InvoiceNotPaidButOperationApproved
+          - MultipleInvoiceNotPaidMemberActivated
+          - MultipleInvoiceNotPaidMemberPending
+        PendingMembershipInvoice:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResource'
+          - description: Link to unpaid invoice, related to pending membership application.
+        AllowedActions:
+          type: array
+          description: List of allowed actions related to contact. Each action is described with title and URL, which should be used in POST request.
+          items:
+            $ref: '#/components/schemas/LinkedResourceWithName'
+    LinkedResourceWithName:
       allOf:
-      - $ref: '#/components/schemas/ContactsAsyncResponse'
-      - $ref: '#/components/schemas/ContactIdsResponse'
-      - $ref: '#/components/schemas/ContactsCountResponse'
-      - $ref: '#/components/schemas/ContactsListResponse'
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    ContactFieldValue:
-      allOf:
-      - $ref: '#/components/schemas/FieldValue'
+      - $ref: '#/components/schemas/LinkedResource'
       - type: object
         properties:
-          CustomAccessLevel:
-            $ref: '#/components/schemas/ContactFieldAccessLevel'
-    FieldValue:
+          Name:
+            type: string
+            description: Resource name
+    ContactIdsResponse:
       type: object
       properties:
-        FieldName:
+        ContactIdentifiers:
+          type: array
+          items:
+            type: integer
+          description: List of contact identifiers that match request criteria. The field appears only if idsOnly parameter was passed in request.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
           type: string
-          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
-        SystemCode:
-          type: string
-          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
-        Value:
-          type: object
-          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
+          description: API url to get item details
+    ContactsCountResponse:
+      type: object
+      properties:
+        Count:
+          type: integer
+          description: Number of contacts that match request criteria. This field appears only if $count parameter was passed in request.
     ContactsAsyncResponse:
       type: object
       properties:
@@ -521,6 +534,14 @@ components:
           Id:
             type: integer
             description: Unique contact identifier.
+    ContactsListResponse:
+      type: object
+      properties:
+        Contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: List of contacts that match request criteria.
     Contact:
       type: object
       properties:
@@ -575,56 +596,24 @@ components:
           description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this contact are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned. If a custom field is restricted to certain access levels, then CustomAccessLevel indicates the level to which the field is restricted. Possible values are AdminOnly, Member, and Public.
           items:
             $ref: '#/components/schemas/ContactFieldValue'
-    ContactsMe:
+    ContactsResponse:
+      allOf:
+      - $ref: '#/components/schemas/ContactsAsyncResponse'
+      - $ref: '#/components/schemas/ContactIdsResponse'
+      - $ref: '#/components/schemas/ContactsCountResponse'
+      - $ref: '#/components/schemas/ContactsListResponse'
+    FieldValue:
       type: object
       properties:
-        Id:
-          type: integer
-          description: Contact unique identifier.
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        DisplayName:
+        FieldName:
           type: string
-          description: Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists.
-        FirstName:
+          description: Field title. Custom field names are defined by account adinistrator. System field names are predefined by Wild Apricot system.
+        SystemCode:
           type: string
-          description: Shortcut for custom field value with system code 'FirstName'
-        LastName:
-          type: string
-          description: Shortcut for custom field value with system code 'LastName'
-        Email:
-          type: string
-          description: Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account.
-        Organization:
-          type: string
-          description: Shortcut for custom field value with system code 'Organization'
-        Status:
-          type: string
-          enum:
-          - Active
-          - Lapsed
-          - PendingNew
-          - PendingRenewal
-          - PendingUpgrade
-          description: The status of the contact's membership. The status is only included in the results if the contact is a member.
-        MembershipLevel:
-          allOf:
-          - $ref: '#/components/schemas/LinkedResourceWithName'
-          - description: Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results.
-        IsAccountAdministrator:
-          type: boolean
-          description: Indicates if the contact is an account administrator.
-        TermsOfUseAccepted:
-          type: boolean
-          description: Indicates if the contact already accepted Wild Apricot's terms of use.
-    ContactsListResponse:
-      type: object
-      properties:
-        Contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-          description: List of contacts that match request criteria.
+          description: The system code is a unique field identifier that can be used instead of the field name to identify the field. While field name could be changed by administrators, system codes are defined by the system and cannot be changed.
+        Value:
+          type: object
+          description: Field value could be an integer / string / date in ISO8601 format / boolean / an object consisting of Id and Label or array of such objects. The content format depends on custom field description.
     CreateContactParams:
       type: object
       properties:
@@ -669,30 +658,6 @@ components:
         RecreateInvoice:
           type: boolean
           description: Indicates whether to create invoice is required. Default value is **TRUE**
-    ExtendedMembershipInfo:
-      type: object
-      description: 'Readonly object '
-      properties:
-        PendingMembershipOrderStatusType:
-          type: string
-          enum:
-          - Invisible
-          - PendingNoCorrespondingInvoice
-          - PendingNotPaidYet
-          - InvoicePaidManualApprovalRequired
-          - FreeOrderManualApprovalRequired
-          - InvoiceNotPaidButOperationApproved
-          - MultipleInvoiceNotPaidMemberActivated
-          - MultipleInvoiceNotPaidMemberPending
-        PendingMembershipInvoice:
-          allOf:
-          - $ref: '#/components/schemas/LinkedResource'
-          - description: Link to unpaid invoice, related to pending membership application.
-        AllowedActions:
-          type: array
-          description: List of allowed actions related to contact. Each action is described with title and URL, which should be used in POST request.
-          items:
-            $ref: '#/components/schemas/LinkedResourceWithName'
     ContactFieldAccessLevel:
       type: string
       enum:
@@ -704,23 +669,58 @@ components:
         Indicates who is allowed to view the field value. - **Public** - value is visible to anyone who has access to members directory - **Members** - value is visible only to members - **Nobody* - value is visible only to account administrators
 
         '
-    LinkedResourceWithName:
-      allOf:
-      - $ref: '#/components/schemas/LinkedResource'
-      - type: object
-        properties:
-          Name:
-            type: string
-            description: Resource name
-    LinkedResource:
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    ContactsMe:
       type: object
       properties:
         Id:
           type: integer
-          description: unique item identifier
+          description: Contact unique identifier.
         Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        DisplayName:
           type: string
-          description: API url to get item details
+          description: Combination of names or organization or email. Value depends on presence of values. It could be used to display contact record on lists.
+        FirstName:
+          type: string
+          description: Shortcut for custom field value with system code 'FirstName'
+        LastName:
+          type: string
+          description: Shortcut for custom field value with system code 'LastName'
+        Email:
+          type: string
+          description: Contact primary email, shortcut for custom field value with system code 'Email'. Should be unique in account.
+        Organization:
+          type: string
+          description: Shortcut for custom field value with system code 'Organization'
+        Status:
+          type: string
+          enum:
+          - Active
+          - Lapsed
+          - PendingNew
+          - PendingRenewal
+          - PendingUpgrade
+          description: The status of the contact's membership. The status is only included in the results if the contact is a member.
+        MembershipLevel:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResourceWithName'
+          - description: Information about current membership level assigned to the contact. If the contact is not a member, then the MembershipLevel field is not included in the results.
+        IsAccountAdministrator:
+          type: boolean
+          description: Indicates if the contact is an account administrator.
+        TermsOfUseAccepted:
+          type: boolean
+          description: Indicates if the contact already accepted Wild Apricot's terms of use.
+    ContactFieldValue:
+      allOf:
+      - $ref: '#/components/schemas/FieldValue'
+      - type: object
+        properties:
+          CustomAccessLevel:
+            $ref: '#/components/schemas/ContactFieldAccessLevel'
   securitySchemes:
     OAuth2:
       type: oauth2

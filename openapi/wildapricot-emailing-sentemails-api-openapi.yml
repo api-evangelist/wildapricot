@@ -116,15 +116,31 @@ components:
             type: integer
             description: Unique email identifier.
           description: A collection of email log record identifiers.
-    InitializationSourceType:
+    EmailOriginType:
       type: string
       enum:
-      - Automatic
-      - Manual
-      description: Email initialization source type.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
+      - System
+      - Contact
+      - MembershipLevel
+      - Event
+      - Donation
+      - WebPage
+      - ForumTopicSubscription
+      - FinancialDocument
+      - NewPasswordEmail
+      - OnlineStoreOrder
+      - PollStartAnnouncement
+      description: Email origin type.
+    EmailLogRecords:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailLogRecord'
+          description: 'Collection of email log records.
+
+            '
     EmailRecipient:
       type: object
       properties:
@@ -161,35 +177,6 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    EmailLog:
-      allOf:
-      - $ref: '#/components/schemas/EmailLogRecords'
-      - $ref: '#/components/schemas/EmailLogIdentifiers'
-    EmailOriginType:
-      type: string
-      enum:
-      - System
-      - Contact
-      - MembershipLevel
-      - Event
-      - Donation
-      - WebPage
-      - ForumTopicSubscription
-      - FinancialDocument
-      - NewPasswordEmail
-      - OnlineStoreOrder
-      - PollStartAnnouncement
-      description: Email origin type.
-    EmailLogRecords:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailLogRecord'
-          description: 'Collection of email log records.
-
-            '
     EmailType:
       type: string
       enum:
@@ -294,6 +281,12 @@ components:
         Recipient:
           $ref: '#/components/schemas/EmailRecipient'
           description: only if email has a single recipient
+    InitializationSourceType:
+      type: string
+      enum:
+      - Automatic
+      - Manual
+      description: Email initialization source type.
     EmailOrigin:
       type: object
       properties:
@@ -304,6 +297,13 @@ components:
           description: Unique origin identifier.
         Name:
           type: string
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
+    EmailLog:
+      allOf:
+      - $ref: '#/components/schemas/EmailLogRecords'
+      - $ref: '#/components/schemas/EmailLogIdentifiers'
   securitySchemes:
     OAuth2:
       type: oauth2

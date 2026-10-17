@@ -193,9 +193,21 @@ components:
           type: string
           format: datetime
           description: Date and time when the draft will be sent.
-    ResourceUrl:
+    EmailDraftType:
       type: string
-      description: Permanent resource URL in API.
+      enum:
+      - Unknown
+      - ContactBlast
+      - EventAttendees
+      - EventWaitlistPersons
+    EmailDraftListResult:
+      type: object
+      properties:
+        Emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDraft'
+          description: Collection of email drafts.
     EmailRecipient:
       type: object
       properties:
@@ -232,14 +244,14 @@ components:
         Email:
           type: string
           description: recipient email. for IndividualRecipient and SentEmailRecipient types only
-    EmailDraftListResult:
-      type: object
-      properties:
-        Emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailDraft'
-          description: Collection of email drafts.
+    EmailRecipients:
+      type: array
+      description: Collection of recipients.
+      items:
+        $ref: '#/components/schemas/EmailRecipient'
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
     ShortContact:
       type: object
       properties:
@@ -254,18 +266,6 @@ components:
         LastName:
           type: string
           description: Contact last name
-    EmailDraftType:
-      type: string
-      enum:
-      - Unknown
-      - ContactBlast
-      - EventAttendees
-      - EventWaitlistPersons
-    EmailRecipients:
-      type: array
-      description: Collection of recipients.
-      items:
-        $ref: '#/components/schemas/EmailRecipient'
   securitySchemes:
     OAuth2:
       type: oauth2

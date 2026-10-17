@@ -85,15 +85,6 @@ paths:
         - auto
 components:
   schemas:
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
     MembershipLevel:
       type: object
       properties:
@@ -177,6 +168,15 @@ components:
                 Indicates that account administrator should approve membership application.
 
                 False means that all applications are considered approved when they are submitted.'
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

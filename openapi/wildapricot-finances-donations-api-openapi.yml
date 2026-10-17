@@ -144,6 +144,15 @@ paths:
         - auto
 components:
   schemas:
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     Donation:
       type: object
       properties:
@@ -191,6 +200,12 @@ components:
           description: For each custom field you have added to your Wild Apricot database, the name of the field, its system code, and its value for this donation are returned. The system code is a unique field identifier that can be used instead of the field name to identify the field. As well, a number of system fields are returned.
           items:
             $ref: '#/components/schemas/FieldValue'
+    DonationType:
+      type: string
+      enum:
+      - Online
+      - Manual
+      description: Donation type.
     FieldValue:
       type: object
       properties:
@@ -211,21 +226,6 @@ components:
           items:
             $ref: '#/components/schemas/Donation'
           description: List of donations that match request criteria.
-    DonationType:
-      type: string
-      enum:
-      - Online
-      - Manual
-      description: Donation type.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

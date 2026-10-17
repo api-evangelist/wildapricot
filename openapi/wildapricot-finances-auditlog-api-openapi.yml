@@ -124,6 +124,23 @@ components:
     ResourceUrl:
       type: string
       description: Permanent resource URL in API.
+    AuditItemsListResult:
+      type: object
+      properties:
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogItem'
+          description: List of audit log items that match request criteria.
+    LinkedResource:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: unique item identifier
+        Url:
+          type: string
+          description: API url to get item details
     AuditLogItem:
       type: object
       properties:
@@ -205,23 +222,6 @@ components:
           - Deleted
           - Voided
           - Custom
-    AuditItemsListResult:
-      type: object
-      properties:
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditLogItem'
-          description: List of audit log items that match request criteria.
-    LinkedResource:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: unique item identifier
-        Url:
-          type: string
-          description: API url to get item details
   securitySchemes:
     OAuth2:
       type: oauth2

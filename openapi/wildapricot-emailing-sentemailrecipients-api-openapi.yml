@@ -119,14 +119,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClickedLink'
-    SentEmailRecipientsRecords:
-      type: object
-      properties:
-        Recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/SentEmailRecipient'
-          description: Collection of email recipients.
     ClickedLink:
       type: object
       properties:
@@ -139,6 +131,14 @@ components:
         ClicksCount:
           type: integer
           description: Total number of link clicks (by all recipients).
+    SentEmailRecipientsRecords:
+      type: object
+      properties:
+        Recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentEmailRecipient'
+          description: Collection of email recipients.
   securitySchemes:
     OAuth2:
       type: oauth2

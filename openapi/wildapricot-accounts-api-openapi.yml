@@ -90,43 +90,6 @@ paths:
         - auto
 components:
   schemas:
-    Currency:
-      type: object
-      properties:
-        Code:
-          type: string
-          description: Currency code according to ISO4217
-        Name:
-          type: string
-          description: Human-readable currency name
-        Symbol:
-          type: string
-          description: Currency symbol like $ or â‚¬
-    ContactLimitInfo:
-      type: object
-      description: Details about limits on the number of contacts.
-      properties:
-        CurrentContactsCount:
-          type: integer
-          description: Number of contacts currently in database (archived excluded)
-        BillingPlanContactsLimit:
-          type: integer
-          description: Maximum number of contacts allowed by billing plan.
-    ResourceUrl:
-      type: string
-      description: Permanent resource URL in API.
-    PaymentSettings:
-      type: object
-      properties:
-        GeneralPaymentInstructions:
-          type: string
-          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
-        EventPaymentInstructions:
-          type: string
-          description: For event registrations (can be changed for each event)
-        MembershipPaymentInstructions:
-          type: string
-          description: For membership applications, renewals and level changes
     SquareRegisterSettings:
       type: object
       required:
@@ -139,49 +102,6 @@ components:
         ClientId:
           type: string
           description: (optional) Square client Id
-    TimeZone:
-      type: object
-      description: Details about account time zone
-      properties:
-        ZoneId:
-          type: string
-          description: Time zone id, i.e. "Arabic Standard Time"
-        Name:
-          type: string
-          description: Time zone name, i.e. "(UTC+03:00) Baghdad"
-        UtcOffset:
-          type: integer
-          description: Offcet from UTC Time in minutes, i.e. "180"
-    Resource:
-      type: object
-      required:
-      - Name
-      - Url
-      - AllowedOperations
-      properties:
-        Url:
-          $ref: '#/components/schemas/ResourceUrl'
-        Name:
-          type: string
-          description: Name of resource
-        Description:
-          type: string
-          description: Text description of the resource
-        AllowedOperations:
-          type: array
-          items:
-            type: string
-          description: 'Collection of allowed operations for this resource. Possible values are
-
-            GET - Resource can be requested
-
-            POST - Resource can be created
-
-            PUT - Resource can be updated
-
-            DELETE - Resource can be deleted
-
-            '
     Account:
       type: object
       description: Information about Wild Apricot account
@@ -226,6 +146,71 @@ components:
           $ref: '#/components/schemas/PaymentSettings'
         BillingPlan:
           $ref: '#/components/schemas/BillingPlan'
+    TimeZone:
+      type: object
+      description: Details about account time zone
+      properties:
+        ZoneId:
+          type: string
+          description: Time zone id, i.e. "Arabic Standard Time"
+        Name:
+          type: string
+          description: Time zone name, i.e. "(UTC+03:00) Baghdad"
+        UtcOffset:
+          type: integer
+          description: Offcet from UTC Time in minutes, i.e. "180"
+    Resource:
+      type: object
+      required:
+      - Name
+      - Url
+      - AllowedOperations
+      properties:
+        Url:
+          $ref: '#/components/schemas/ResourceUrl'
+        Name:
+          type: string
+          description: Name of resource
+        Description:
+          type: string
+          description: Text description of the resource
+        AllowedOperations:
+          type: array
+          items:
+            type: string
+          description: 'Collection of allowed operations for this resource. Possible values are
+
+            GET - Resource can be requested
+
+            POST - Resource can be created
+
+            PUT - Resource can be updated
+
+            DELETE - Resource can be deleted
+
+            '
+    ContactLimitInfo:
+      type: object
+      description: Details about limits on the number of contacts.
+      properties:
+        CurrentContactsCount:
+          type: integer
+          description: Number of contacts currently in database (archived excluded)
+        BillingPlanContactsLimit:
+          type: integer
+          description: Maximum number of contacts allowed by billing plan.
+    Currency:
+      type: object
+      properties:
+        Code:
+          type: string
+          description: Currency code according to ISO4217
+        Name:
+          type: string
+          description: Human-readable currency name
+        Symbol:
+          type: string
+          description: Currency symbol like $ or â‚¬
     BillingPlan:
       type: object
       description: Current account billing plan.
@@ -245,6 +230,21 @@ components:
         TimeFormat:
           type: string
           description: Time format like "h:mm tt"
+    PaymentSettings:
+      type: object
+      properties:
+        GeneralPaymentInstructions:
+          type: string
+          description: General payment instructions (shown on the Invoices & Payments page and Manual invoices)
+        EventPaymentInstructions:
+          type: string
+          description: For event registrations (can be changed for each event)
+        MembershipPaymentInstructions:
+          type: string
+          description: For membership applications, renewals and level changes
+    ResourceUrl:
+      type: string
+      description: Permanent resource URL in API.
   securitySchemes:
     OAuth2:
       type: oauth2
